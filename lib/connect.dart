@@ -3,24 +3,24 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:mathforkids/studenthome.dart';
-import 'package:mathforkids/studentresults.dart';
-import 'package:mathforkids/teacherhome.dart';
+import 'package:mathforkids/login.dart';
+import 'package:mathforkids/register.dart';
+import 'package:mathforkids/main.dart';
 
 
-class loginPageState extends StatefulWidget{
+class connectPageState extends StatefulWidget{
   @override
-  LoginPage createState() => LoginPage();
+  ConnectPage createState() => ConnectPage();
 }
 
-class LoginPage extends State<loginPageState>{
+class ConnectPage extends State<connectPageState>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.green[50],
         appBar: AppBar(
           title: Text(
-            "Login",
+            "Math for Kids",
             style: TextStyle(
               fontSize: 30,
               fontFamily: "Crimson",
@@ -32,7 +32,7 @@ class LoginPage extends State<loginPageState>{
         ),
         body:  Center(
           child: Column( mainAxisAlignment: MainAxisAlignment.end, crossAxisAlignment: CrossAxisAlignment.start,
-              children: [Expanded(child: Text("email/username:",
+              children: [Expanded(child: Text("Enter code:",
                 style: TextStyle(fontSize: 20,
                     fontWeight: FontWeight.bold
                 ),
@@ -42,33 +42,19 @@ class LoginPage extends State<loginPageState>{
                   obscureText: false,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'email/username',
+                    labelText: 'code',
                   ),
                 ),),
-                Expanded(child: Text("Password:",
-                  style: TextStyle(fontSize: 20,
-                      fontWeight: FontWeight.bold
-                  ),
-                ),
-                ),
-                Expanded(child: TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Password',
-                  ),
-                ),),
-
                 Expanded(child: RaisedButton(
                   onPressed: (){
-                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherPageState()));
+                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
                   },
                   color: Colors.red,
-                  child: Text("Next", style: TextStyle(
+                  child: Text("Connect", style: TextStyle(
                     fontSize: 25,
                     color: Colors.black,fontFamily: 'Crimson',
                   ),),
-                ),)
+                ),),
               ]),
         )
     );
