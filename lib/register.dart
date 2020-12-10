@@ -109,8 +109,21 @@ class ListPage extends State<ListPageState>{
                     });
                   },
                   items: <String>['Teacher', 'Student'].map<DropdownMenuItem<String>>((String value) { return DropdownMenuItem<String>(value: value, child: Text(value),);
-                  }).toList(),))]),
-        ));
+                  }).toList(),)
+                ),
+                Expanded(child: RaisedButton(
+                  onPressed: (){
+                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new ListPageState()));
+                  },
+                  color: Colors.red,
+                  child: Text("Next", style: TextStyle(
+                    fontSize: 25,
+                    color: Colors.black,fontFamily: 'Crimson',
+                  ),),
+                ),)
+              ]),
+        )
+    );
   }
 }
 
