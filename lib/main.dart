@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:mathforkids/login.dart';
 import 'package:mathforkids/register.dart';
 
 void main() {
@@ -73,7 +74,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>{
             alignment: FractionalOffset.bottomCenter,
             child:RaisedButton(
               onPressed: (){
-                Navigator.push(context, new MaterialPageRoute(builder: (context) => new ListPageState()));
+                Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
               },
               color: Colors.red,
               child: Text("Login", style: TextStyle(
