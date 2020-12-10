@@ -35,7 +35,7 @@ class teacherPage extends State<teacherPageState>{
                     Navigator.push(context, new MaterialPageRoute(builder: (context) => new connectPageState()));
                   },
                   color: Colors.red,
-                  child: Text("Join Quiz", style: TextStyle(
+                  child: Text("View Quiz", style: TextStyle(
                     fontSize: 25,
                     color: Colors.black,fontFamily: 'Crimson',
                   ),),
