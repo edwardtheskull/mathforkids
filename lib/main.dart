@@ -31,6 +31,7 @@ class MyStatefulWidget extends StatefulWidget{
   _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
 }
 
+
 class _MyStatefulWidgetState extends State<MyStatefulWidget>{
   TextEditingController textInput = new TextEditingController();
   @override
@@ -53,29 +54,35 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>{
             centerTitle:true,
             backgroundColor: Colors.green[600],
           ),
-          body:  Center(
-            child: Column( mainAxisAlignment: MainAxisAlignment.end, crossAxisAlignment: CrossAxisAlignment.start,
-                children: [Expanded(child: RaisedButton(
-                    onPressed: (){
-                      Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
-                    },
-                    color: Colors.red,
-                    child: Text("Login", style: TextStyle(
-                      fontSize: 25,
-                      color: Colors.black,fontFamily: 'Crimson',
-                    ),),
-                  ),),
-                  Expanded(child: RaisedButton(
-                    onPressed: (){
-                      Navigator.push(context, new MaterialPageRoute(builder: (context) => new registerPageState()));
-                    },
-                    color: Colors.red,
-                    child: Text("Registration", style: TextStyle(
-                      fontSize: 25,
-                      color: Colors.black,fontFamily: 'Crimson',
-                    ),),
-                  ),)
-                ]),
+          body:  Container(height: MediaQuery.of(context).size.height, width: MediaQuery.of(context).size.width, padding: const EdgeInsets.only(left:100),
+            child: Column(mainAxisAlignment: MainAxisAlignment.center,
+              children: [Row(children: [ButtonTheme(minWidth: MediaQuery.of(context).size.width/2.2, height: MediaQuery.of(context).size.height/8,
+                child: RaisedButton(elevation: 2,
+            onPressed: (){
+          Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
+          },
+                color: Colors.green[600],
+                child: Text("Login", style: TextStyle(letterSpacing: 2,
+                  fontSize: 25,
+                  color: Colors.black,fontFamily: 'Crimson')),),
+              )],
+              ),
+                Row(children: [Padding(
+                  padding: const EdgeInsets.only(top: 15),
+                  child: ButtonTheme(minWidth: MediaQuery.of(context).size.width/2.2, height: MediaQuery.of(context).size.height/8,
+                    child: RaisedButton(elevation: 3,
+                      onPressed: (){
+                        Navigator.push(context, new MaterialPageRoute(builder: (context) => new registerPageState()));
+                      },
+                      color: Colors.green[600],
+                      child: Text("Register", style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.black,fontFamily: 'Crimson')),),
+                  ),
+                )],
+                ),
+              ],
+            )
           )
       ),
     );
