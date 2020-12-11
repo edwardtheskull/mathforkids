@@ -36,8 +36,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>{
   @override
   Widget build(BuildContext context){
     return Container(
+      decoration: BoxDecoration(
+        image:DecorationImage(image: AssetImage('images/test.jpg'),
+          fit: BoxFit.cover,),),
       child: Scaffold(
-          backgroundColor: Colors.green[50],
+          backgroundColor: Colors.transparent,
           appBar: AppBar(
             title: Text(
               "Math for Kids",
