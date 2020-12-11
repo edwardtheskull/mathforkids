@@ -47,7 +47,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>{
               "Math for Kids",
               style: TextStyle(
                 fontSize: 30,
-                fontFamily: "Montserrat",
+                fontFamily: "Architect",
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -64,7 +64,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>{
                 color: Colors.green[600],
                 child: Text("Login", style: TextStyle(letterSpacing: 1,
                   fontSize: 25,
-                  color: Colors.black,fontFamily: 'Montserrat')),),
+                  color: Colors.white,fontFamily: 'Architect')),),
               )],
               ),
                 Row(children: [Padding(
@@ -77,7 +77,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>{
                       color: Colors.green[600],
                       child: Text("Register", style: TextStyle(letterSpacing: 1,
                           fontSize: 25,
-                          color: Colors.black,fontFamily: 'Montserrat',)),),
+                          color: Colors.white,fontFamily: 'Architect',)),),
                   ),
                 )],
                 ),
