@@ -62,20 +62,20 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>{
           Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
           },
                 color: Colors.green[600],
-                child: Text("Login", style: TextStyle(letterSpacing: 2,
+                child: Text("Login", style: TextStyle(letterSpacing: 1,
                   fontSize: 25,
                   color: Colors.black,fontFamily: 'Crimson')),),
               )],
               ),
                 Row(children: [Padding(
-                  padding: const EdgeInsets.only(top: 15),
+                  padding: const EdgeInsets.only(top: 20),
                   child: ButtonTheme(minWidth: MediaQuery.of(context).size.width/2.2, height: MediaQuery.of(context).size.height/8,
                     child: RaisedButton(elevation: 3,
                       onPressed: (){
                         Navigator.push(context, new MaterialPageRoute(builder: (context) => new registerPageState()));
                       },
                       color: Colors.green[600],
-                      child: Text("Register", style: TextStyle(
+                      child: Text("Register", style: TextStyle(letterSpacing: 1,
                           fontSize: 25,
                           color: Colors.black,fontFamily: 'Crimson')),),
                   ),
