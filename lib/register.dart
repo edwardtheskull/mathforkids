@@ -5,14 +5,14 @@ import 'package:mathforkids/login.dart';
 import 'package:sqflite/sqflite.dart';
 
 
-class ListPageState extends StatefulWidget{
+class registerPageState extends StatefulWidget{
   @override
-  ListPage createState() => ListPage();
+  RegisterPage createState() => RegisterPage();
 }
 
 String dropdownvalue = "Teacher";
 
-class ListPage extends State<ListPageState>{
+class RegisterPage extends State<registerPageState>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(

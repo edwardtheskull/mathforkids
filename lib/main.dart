@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:mathforkids/login.dart';
 import 'package:mathforkids/register.dart';
+import 'package:mathforkids/register.dart';
 import 'package:sqflite/sqflite.dart';
 
 void main() {
@@ -17,17 +18,6 @@ class Home extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-        backgroundColor: Colors.green[50],
-        appBar: AppBar(
-          title: Text(
-            "Math for Kids",
-            style: TextStyle(
-              fontSize: 30,
-            ),
-          ),
-          centerTitle:true,
-          backgroundColor: Colors.green[600],
-        ),
         body: Center(
           child: MyStatefulWidget(),
         )
@@ -45,47 +35,48 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>{
   TextEditingController textInput = new TextEditingController();
   @override
   Widget build(BuildContext context){
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children:<Widget> [
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children:[ Align(
-            alignment: FractionalOffset.bottomCenter,
-            child:RaisedButton(
-              onPressed: (){
-                Navigator.push(context, new MaterialPageRoute(builder: (context) => new ListPageState()));
-              },
-              color: Colors.red,
-              child: Text("Register", style: TextStyle(
-                fontSize: 25,
-                color: Colors.black,fontFamily: 'Crimson',
-              wordSpacing: 2),),
+    return Container(
+      child: Scaffold(
+          backgroundColor: Colors.green[50],
+          appBar: AppBar(
+            title: Text(
+              "Math for Kids",
+              style: TextStyle(
+                fontSize: 30,
+                fontFamily: "Crimson",
+                fontWeight: FontWeight.bold,
+              ),
             ),
+            centerTitle:true,
+            backgroundColor: Colors.green[600],
           ),
-          ],
-        ),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children:[ Align(
-            alignment: FractionalOffset.bottomCenter,
-            child:RaisedButton(
-              onPressed: (){
-                Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
-              },
-              color: Colors.red,
-              child: Text("Login", style: TextStyle(
-                fontSize: 25,
-                color: Colors.black,fontFamily: 'Crimson',
-              ),),
-            ),
-          ),
-          ],
-        ),
-      ],
+          body:  Center(
+            child: Column( mainAxisAlignment: MainAxisAlignment.end, crossAxisAlignment: CrossAxisAlignment.start,
+                children: [Expanded(child: RaisedButton(
+                    onPressed: (){
+                      Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
+                    },
+                    color: Colors.red,
+                    child: Text("Login", style: TextStyle(
+                      fontSize: 25,
+                      color: Colors.black,fontFamily: 'Crimson',
+                    ),),
+                  ),),
+                  Expanded(child: RaisedButton(
+                    onPressed: (){
+                      Navigator.push(context, new MaterialPageRoute(builder: (context) => new registerPageState()));
+                    },
+                    color: Colors.red,
+                    child: Text("Registration", style: TextStyle(
+                      fontSize: 25,
+                      color: Colors.black,fontFamily: 'Crimson',
+                    ),),
+                  ),)
+                ]),
+          )
+      ),
     );
   }
 }
+
 
