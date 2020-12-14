@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:mathforkids/login.dart';
 import 'package:mathforkids/register.dart';
-import 'package:mathforkids/register.dart';
 import 'package:sqflite/sqflite.dart';
 
 void main() {
@@ -54,9 +53,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>{
             centerTitle:true,
             backgroundColor: Colors.green[600],
           ),
-          body:  Container(height: MediaQuery.of(context).size.height, width: MediaQuery.of(context).size.width, padding: const EdgeInsets.only(left:100),
+          body:  Container(height: MediaQuery.of(context).size.height, width: MediaQuery.of(context).size.width,
             child: Column(mainAxisAlignment: MainAxisAlignment.center,
-              children: [Row(children: [ButtonTheme(minWidth: MediaQuery.of(context).size.width/2.2, height: MediaQuery.of(context).size.height/8,
+              children: [Row(mainAxisAlignment: MainAxisAlignment.center,
+                children: [ButtonTheme(minWidth: MediaQuery.of(context).size.width/2.2, height: MediaQuery.of(context).size.height/8,
                 child: RaisedButton(elevation: 2, onPressed: (){Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));},
                 color: Colors.green[600],
                 child: Text("Login", style: TextStyle(letterSpacing: 1,
@@ -64,7 +64,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>{
                   color: Colors.white,fontFamily: 'Architect')),),
               )],
               ),
-                Row(children: [Padding(
+                Row(mainAxisAlignment: MainAxisAlignment.center,
+                  children: [Padding(
                   padding: const EdgeInsets.only(top: 20),
                   child: ButtonTheme(minWidth: MediaQuery.of(context).size.width/2.2, height: MediaQuery.of(context).size.height/8,
                     child: RaisedButton(elevation: 3,
