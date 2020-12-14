@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:mathforkids/connect.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -49,6 +50,8 @@ class createquizPage extends State<createquizPageState>{
                 ),
                 Expanded(child: TextField(
                   obscureText: false,
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Number of Questions',
