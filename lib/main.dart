@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:mathforkids/login.dart';
 import 'package:mathforkids/register.dart';
-import 'package:mathforkids/register.dart';
 import 'package:sqflite/sqflite.dart';
 
 void main() {
