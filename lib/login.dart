@@ -15,61 +15,84 @@ class loginPageState extends StatefulWidget{
 class LoginPage extends State<loginPageState>{
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.green[50],
-        appBar: AppBar(
-          title: Text(
-            "Login",
-            style: TextStyle(
-              fontSize: 30,
-              fontFamily: "Crimson",
-              fontWeight: FontWeight.bold,
+    return Container(
+      child: Scaffold(
+          backgroundColor: Color.fromRGBO(31, 69, 82, 1),
+          appBar: AppBar(
+            title: Text(
+              "Login",
+              style: TextStyle(
+                fontSize: 30,
+                fontFamily: "Architect",
+                fontWeight: FontWeight.bold,
+              ),
             ),
+            centerTitle:true,
+            backgroundColor: Colors.green[600],
           ),
-          centerTitle:true,
-          backgroundColor: Colors.green[600],
-        ),
-        body:  Center(
-          child: Column( mainAxisAlignment: MainAxisAlignment.end, crossAxisAlignment: CrossAxisAlignment.start,
-              children: [Expanded(child: Text("email/username:",
-                style: TextStyle(fontSize: 20,
-                    fontWeight: FontWeight.bold
+          body:  Container(
+            child: Column(
+                children: [Row(children: [
+                    Expanded(child: Text("email/username:",
+                      style: TextStyle(fontSize: 20, color: Colors.white,
+                          fontWeight: FontWeight.bold, fontFamily: 'Architect'
+                      ),
+                    ),
+                    ),
+                  ],
                 ),
-              ),
-              ),
-                Expanded(child: TextField(
-                  obscureText: false,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'email/username',
+                  Row(
+                    children: [
+                      Expanded(child: TextField(style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white, obscureText: false,
+                        decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
+                          border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
+                          labelText: 'email/username', focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
+                        ),
+                      ),),
+                    ],
                   ),
-                ),),
-                Expanded(child: Text("Password:",
-                  style: TextStyle(fontSize: 20,
-                      fontWeight: FontWeight.bold
+                  Row(
+                    children: [
+                      Expanded(child: Text("Password:",
+                        style: TextStyle(fontSize: 20, color: Colors.white,
+                            fontWeight: FontWeight.bold, fontFamily: 'Architect'
+                        ),
+                      ),
+                      ),
+                    ],
                   ),
-                ),
-                ),
-                Expanded(child: TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Password',
+                  Row(
+                    children: [
+                      Expanded(child: TextField(style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
+                        obscureText: true,
+                        decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
+                          border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
+                          labelText: 'Password', focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
+                        ),
+                      ),),
+                    ],
                   ),
-                ),),
-
-                Expanded(child: RaisedButton(
-                  onPressed: (){
-                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherPageState()));
-                  },
-                  color: Colors.red,
-                  child: Text("Next", style: TextStyle(
-                    fontSize: 25,
-                    color: Colors.black,fontFamily: 'Crimson',
-                  ),),
-                ),)
-              ]),
-        )
+                  Column(
+                    children: [
+                      Row(children: [Padding(
+                        padding: const EdgeInsets.only(top: 40, left: 100),
+                        child: ButtonTheme(minWidth: MediaQuery.of(context).size.width/2.2, height: MediaQuery.of(context).size.height/8,
+                          child: RaisedButton(elevation: 3,
+                            onPressed: (){
+                              Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherPageState()));
+                            },
+                            color: Colors.green[600],
+                            child: Text("Next", style: TextStyle(letterSpacing: 1,
+                              fontSize: 25,
+                              color: Colors.white,fontFamily: 'Architect',)),),
+                        ),
+                      )],
+                      ),
+                    ],
+                  ),
+                ]),
+          )
+      ),
     );
   }
 }
