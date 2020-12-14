@@ -16,45 +16,63 @@ class ConnectPage extends State<connectPageState>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.green[50],
+        backgroundColor: Color.fromRGBO(31, 69, 82, 1),
         appBar: AppBar(
           title: Text(
             "Math for Kids",
             style: TextStyle(
               fontSize: 30,
-              fontFamily: "Crimson",
+              fontFamily: "Architect",
               fontWeight: FontWeight.bold,
             ),
           ),
           centerTitle:true,
           backgroundColor: Colors.green[600],
         ),
-        body:  Center(
-          child: Column( mainAxisAlignment: MainAxisAlignment.end, crossAxisAlignment: CrossAxisAlignment.start,
-              children: [Expanded(child: Text("Enter code:",
-                style: TextStyle(fontSize: 20,
-                    fontWeight: FontWeight.bold
+        body:  Container(
+          child: Column(mainAxisAlignment: MainAxisAlignment.center,
+            children: [Row(children: [
+              Expanded(child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text("Code:",
+                  style: TextStyle(fontSize: 20, color: Colors.white,
+                      fontWeight: FontWeight.bold, fontFamily: 'Architect'
+                  ),
                 ),
               ),
               ),
-                Expanded(child: TextField(
-                  obscureText: false,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'code',
-                  ),
-                ),),
-                Expanded(child: RaisedButton(
-                  onPressed: (){
-                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
-                  },
-                  color: Colors.red,
-                  child: Text("Connect", style: TextStyle(
-                    fontSize: 25,
-                    color: Colors.black,fontFamily: 'Crimson',
+            ],
+            ),
+              Row(
+                children: [
+                  Expanded(child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextField(style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white, obscureText: false,
+                      decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
+                          border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
+                          labelText: 'Code', focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
+                      ),
+                    ),
                   ),),
-                ),),
-              ]),
+                ],
+              ),
+                Row(mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ButtonTheme(minWidth: MediaQuery.of(context).size.width/2.2, height: MediaQuery.of(context).size.height/8,
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: RaisedButton(elevation: 3,
+                          onPressed: (){
+                            Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
+                          },
+                          color: Colors.green[600],
+                          child: Text("Connect", style: TextStyle(letterSpacing: 1,
+                            fontSize: 25,
+                            color: Colors.white,fontFamily: 'Architect',)),),
+                      ),
+                    ),
+                  ],
+                )],),
         )
     );
   }
