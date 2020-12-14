@@ -90,7 +90,7 @@ class RegisterPage extends State<registerPageState>{
                   ),),
                   Expanded(child: Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: Text("mail:",
+                    child: Text("Mail:",
                       style: TextStyle(fontSize: 20,
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
