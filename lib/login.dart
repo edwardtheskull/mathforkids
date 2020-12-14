@@ -75,7 +75,7 @@ class LoginPage extends State<loginPageState>{
                   Column(
                     children: [
                       Row(children: [Padding(
-                        padding: const EdgeInsets.only(top: 40, left: 100),
+                        padding: const EdgeInsets.only(top: 35, left: 100),
                         child: ButtonTheme(minWidth: MediaQuery.of(context).size.width/2.2, height: MediaQuery.of(context).size.height/8,
                           child: RaisedButton(elevation: 3,
                             onPressed: (){
