@@ -30,58 +30,61 @@ class LearnPage extends State<learnPageState>{
           backgroundColor: Colors.green[600],
         ),
         body:  Column(mainAxisAlignment: MainAxisAlignment.center,
-            children: [Row(mainAxisAlignment: MainAxisAlignment.center, children: [ButtonTheme(minWidth: MediaQuery.of(context).size.width/1.6, height: MediaQuery.of(context).size.height/8,
-              child: RaisedButton(elevation: 2,
-                onPressed: (){
-                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnPageState()));
-                },
-                color: Colors.green[600],
-                child: Text("Addition", style: TextStyle(letterSpacing: 1,
-                    fontSize: 25,
-                    color: Colors.white,fontFamily: 'Architect')),),
-            )],
+            children: [Row(mainAxisAlignment: MainAxisAlignment.center, children: [ButtonTheme(minWidth: MediaQuery.of(context).size.width/4.0, height: MediaQuery.of(context).size.width/4.0,
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: RaisedButton(elevation: 2,
+                  onPressed: (){
+                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnPageState()));
+                  },
+                  color: Colors.green[600],
+                  child: Text("+", style: TextStyle(letterSpacing: 1,
+                      fontSize: 50,
+                      color: Colors.white,fontFamily: 'Architect')),),
+              ),
             ),
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: ButtonTheme(minWidth: MediaQuery.of(context).size.width/1.6, height: MediaQuery.of(context).size.height/8,
+              ButtonTheme(minWidth: MediaQuery.of(context).size.width/4.0, height: MediaQuery.of(context).size.width/4.0,
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
                   child: RaisedButton(elevation: 3,
                     onPressed: (){
                       Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnPageState()));
                     },
                     color: Colors.green[600],
-                    child: Text("Subtraction", style: TextStyle(letterSpacing: 1,
-                      fontSize: 25,
+                    child: Text("-", style: TextStyle(letterSpacing: 1,
+                      fontSize: 50,
                       color: Colors.white,fontFamily: 'Architect',)),),
                 ),
-              )],
               ),
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: ButtonTheme(minWidth: MediaQuery.of(context).size.width/1.6, height: MediaQuery.of(context).size.height/8,
-                  child: RaisedButton(elevation: 3,
+            ],
+            ),
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [ButtonTheme(minWidth: MediaQuery.of(context).size.width/4.0, height: MediaQuery.of(context).size.width/4.0,
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: RaisedButton(elevation: 2,
                     onPressed: (){
                       Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnPageState()));
                     },
                     color: Colors.green[600],
-                    child: Text("Multiplication", style: TextStyle(letterSpacing: 1,
-                      fontSize: 25,
-                      color: Colors.white,fontFamily: 'Architect',)),),
+                    child: Text("x", style: TextStyle(letterSpacing: 1,
+                        fontSize: 50,
+                        color: Colors.white,fontFamily: 'Architect')),),
                 ),
-              )],
               ),
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: ButtonTheme(minWidth: MediaQuery.of(context).size.width/1.6, height: MediaQuery.of(context).size.height/8,
-                  child: RaisedButton(elevation: 3,
-                    onPressed: (){
-                      Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnPageState()));
-                    },
-                    color: Colors.green[600],
-                    child: Text("Division", style: TextStyle(letterSpacing: 1,
-                      fontSize: 25,
-                      color: Colors.white,fontFamily: 'Architect',)),),
+                ButtonTheme(minWidth: MediaQuery.of(context).size.width/4.0, height: MediaQuery.of(context).size.width/4.0,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: RaisedButton(elevation: 3,
+                      onPressed: (){
+                        Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnPageState()));
+                      },
+                      color: Colors.green[600],
+                      child: Text("/", style: TextStyle(letterSpacing: 1,
+                        fontSize: 50,
+                        color: Colors.white,fontFamily: 'Architect',)),),
+                  ),
                 ),
-              )],
+              ],
               ),
             ])
     );
