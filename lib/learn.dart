@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:mathforkids/learnQuestions.dart';
 import 'package:mathforkids/studenthome.dart';
 import 'package:mathforkids/studentresults.dart';
 import 'package:mathforkids/teacherhome.dart';
@@ -35,7 +36,7 @@ class LearnPage extends State<learnPageState>{
                 padding: const EdgeInsets.all(10.0),
                 child: RaisedButton(elevation: 2,
                   onPressed: (){
-                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnPageState()));
+                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnQPageState()));
                   },
                   color: Colors.green[600],
                   child: Text("+", style: TextStyle(letterSpacing: 1,
@@ -48,7 +49,7 @@ class LearnPage extends State<learnPageState>{
                   padding: const EdgeInsets.all(10.0),
                   child: RaisedButton(elevation: 3,
                     onPressed: (){
-                      Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnPageState()));
+                      Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnQPageState()));
                     },
                     color: Colors.green[600],
                     child: Text("-", style: TextStyle(letterSpacing: 1,
@@ -63,7 +64,7 @@ class LearnPage extends State<learnPageState>{
                   padding: const EdgeInsets.all(10.0),
                   child: RaisedButton(elevation: 2,
                     onPressed: (){
-                      Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnPageState()));
+                      Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnQPageState()));
                     },
                     color: Colors.green[600],
                     child: Text("x", style: TextStyle(letterSpacing: 1,
@@ -76,7 +77,7 @@ class LearnPage extends State<learnPageState>{
                     padding: const EdgeInsets.all(10.0),
                     child: RaisedButton(elevation: 3,
                       onPressed: (){
-                        Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnPageState()));
+                        Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnQPageState()));
                       },
                       color: Colors.green[600],
                       child: Text("/", style: TextStyle(letterSpacing: 1,
