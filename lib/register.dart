@@ -34,136 +34,114 @@ class RegisterPage extends State<registerPageState>{
         ),
         body: SingleChildScrollView(
           child: Container( height: MediaQuery.of(context).size.height, width: MediaQuery.of(context).size.width,
-            child: Column( mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [Expanded(
-                    child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text("Name:",
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column( crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text("Name:",
                       style: TextStyle(fontSize: 20,
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontFamily: "Architect",
-
                       ),
-                    ),
-                  ),
-                  ),
-                    Expanded(child: TextField(controller: textname, style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
-                      obscureText: false,
-                      decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
-                      border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
-                      labelText: 'Name', focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
+                        ),
+                      TextField(controller: textname, style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
+                        obscureText: false,
+                        decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
+                        border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
+                        labelText: 'Name', focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
+                        ),
                       ),
-                    ),),
-                    Expanded(child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text("Password:",
+                      Text("Password:",
                         style: TextStyle(fontSize: 20,
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontFamily: "Architect",
                         ),
                       ),
-                    ),
-                    ),
-                    Expanded(child: TextField(controller: textpassword, style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
-                      obscureText: true,
-                      decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
-                          border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
-                          labelText: 'Password', focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
+                      TextField(controller: textpassword, style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
+                        obscureText: true,
+                        decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
+                            border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
+                            labelText: 'Password', focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
+                        ),
                       ),
-                    ),),
-                    Expanded(child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text("Confirm Password:",
+                      Text("Confirm Password:",
                         style: TextStyle(fontSize: 20,
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontFamily: "Architect",
                         ),
                       ),
-                    ),
-                    ),
-                    Expanded(child: TextField( style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
-                      obscureText: true,
-                      decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
-                          border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
-                          labelText: 'Confirm Password', focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
+                      TextField( style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
+                        obscureText: true,
+                        decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
+                            border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
+                            labelText: 'Confirm Password', focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
+                        ),
                       ),
-                    ),),
-                    Expanded(child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text("Mail:",
+                      Text("Mail:",
                         style: TextStyle(fontSize: 20,
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontFamily: "Architect",
                         ),
                       ),
-                    ),
-                    ),
-                    Expanded(child: TextField( style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
-                      obscureText: false,
-                      decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
-                          border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
-                          labelText: 'Mail', focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
+                      TextField( style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
+                        obscureText: false,
+                        decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
+                            border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
+                            labelText: 'Mail', focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
+                        ),
                       ),
-                    ),),
-                    Expanded(child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Text("Nickname:",
+                      Text("Nickname:",
                         style: TextStyle(fontSize: 20,
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontFamily: "Architect",
                         ),
                       ),
-                    ),
-                    ),
-                    TextField( style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
-                      obscureText: false,
-                      decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
-                          border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
-                          labelText: 'Nickname', focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
+                      TextField( style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
+                        obscureText: false,
+                        decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
+                            border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
+                            labelText: 'Nickname', focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
+                        ),
                       ),
-                    ),
-                    Expanded(child: Row( mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("Role:",
-                          style: TextStyle(fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: "Architect",
+                      Row( mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("Role:",
+                            style: TextStyle(fontSize: 20,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: "Architect",
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: DropdownButton<String>(value: dropdownvalue, style: TextStyle(color: Colors.green), underline: Container(height:2, color: Colors.purple),
+                          DropdownButton<String>(value: dropdownvalue, style: TextStyle(color: Colors.green), underline: Container(height:2, color: Colors.purple),
                             onChanged: (String newValue) {
                               setState(() {
                                 dropdownvalue = newValue;
                               });
                             },
                             items: <String>['Teacher','Student'].map<DropdownMenuItem<String>>((String value) { return DropdownMenuItem<String>(value: value, child: Text(value),);
-                            }).toList(),),
-                        )
-                      ],
-                    ),
-                    ),
-
-                    Expanded(child: Center(
-                      child: RaisedButton(
-                        onPressed: (){
-                          Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
-                        },
-                        color: Colors.green,
-                        child: Text("Next", style: TextStyle(
-                          fontSize: 30,
-                          color: Colors.white,fontFamily: 'Architect',
-                        ),),
+                            }).toList(),)
+                        ],
                       ),
-                    ),)
-                  ]),
+
+                      Center(
+                        child: RaisedButton(
+                          onPressed: (){
+                            Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
+                          },
+                          color: Colors.green,
+                          child: Text("Next", style: TextStyle(
+                            fontSize: 30,
+                            color: Colors.white,fontFamily: 'Architect',
+                          ),),
+                        ),
+                      )
+                    ]),
+            ),
           ),
         )
     );
