@@ -11,6 +11,8 @@ class registerPageState extends StatefulWidget{
 }
 
 String dropdownvalue = "Student";
+TextEditingController textname = new TextEditingController();
+TextEditingController textpassword = new TextEditingController();
 
 class RegisterPage extends State<registerPageState>{
   @override
@@ -45,7 +47,7 @@ class RegisterPage extends State<registerPageState>{
                     ),
                   ),
                   ),
-                    Expanded(child: TextField( style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
+                    Expanded(child: TextField(controller: textname, style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
                       obscureText: false,
                       decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
                       border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
@@ -63,7 +65,7 @@ class RegisterPage extends State<registerPageState>{
                       ),
                     ),
                     ),
-                    Expanded(child: TextField( style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
+                    Expanded(child: TextField(controller: textpassword, style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
                       obscureText: true,
                       decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
                           border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
