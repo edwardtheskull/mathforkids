@@ -17,62 +17,76 @@ class createquizPage extends State<createquizPageState>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.green[50],
+        backgroundColor: Color.fromRGBO(31, 69, 82, 1),
         appBar: AppBar(
           title: Text(
-            "Math for Kids",
+            "Create Quiz",
             style: TextStyle(
               fontSize: 30,
-              fontFamily: "Crimson",
+              color: Colors.white,
+              fontFamily: "Architect",
               fontWeight: FontWeight.bold,
             ),
           ),
           centerTitle:true,
           backgroundColor: Colors.green[600],
         ),
-        body:  Center(
-          child: Column( mainAxisAlignment: MainAxisAlignment.end, crossAxisAlignment: CrossAxisAlignment.start,
-              children: [ Expanded(child: TextField(
-                obscureText: false,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Choose Category',
+        body:  Scrollbar(
+          child: Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [Text("Name:",
+                        style: TextStyle(fontSize: 20,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Architect",
+                        ),
+                      ),
+                      Expanded(child: TextField( style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
+                        obscureText: true,
+                        decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
+                            border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
+                            labelText: 'Name', focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
+                        ),
+                      ),),
+                    ],
+                  ),
                 ),
-              ),),
-                Expanded(child: DropdownButton<String>(value: dropdownvalue, style: TextStyle(color: Colors.indigo), underline: Container(height:2, color: Colors.purple),
-                  onChanged: (String newValue) {
-                    setState(() {
-                      dropdownvalue = newValue;
-                    });
-                  },
-                  items: <String>['Multiplication', 'Division', 'Subtraction', 'Addition'].map<DropdownMenuItem<String>>((String value) { return DropdownMenuItem<String>(value: value, child: Text(value),);
-                  }).toList(),)
                 ),
-                Expanded(child: TextField(
-                  obscureText: false,
-                  keyboardType: TextInputType.number,
-                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Number of Questions',
+                Expanded(child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: RaisedButton(
+                      onPressed: (){
+                        Navigator.push(context, new MaterialPageRoute(builder: (context) => new connectPageState()));
+                      },
+                      color: Colors.green,
+                      child: Text("Add Question", style: TextStyle(
+                        fontSize: 30,
+                        color: Colors.white,fontFamily: 'Architect',
+                      ),),
+                    ),
                   ),
                 ),),
-                Expanded(child: RaisedButton(
-                  onPressed: (){
-                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new connectPageState()));
-                  },
-                  color: Colors.red,
-                  child: Text("Next Page", style: TextStyle(
-                    fontSize: 25,
-                    color: Colors.black,fontFamily: 'Crimson',
-                  ),),
+                Expanded(child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: RaisedButton(
+                      onPressed: (){
+                        Navigator.push(context, new MaterialPageRoute(builder: (context) => new connectPageState()));
+                      },
+                      color: Colors.green,
+                      child: Text("Create Quiz", style: TextStyle(
+                        fontSize: 30,
+                        color: Colors.white,fontFamily: 'Architect',
+                      ),),
+                    ),
+                  ),
                 ),)
               ]),
         )
     );
   }
 }
-
-
-
-
