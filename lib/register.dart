@@ -35,8 +35,9 @@ class RegisterPage extends State<registerPageState>{
         body: SingleChildScrollView(
           child: Container( height: MediaQuery.of(context).size.height, width: MediaQuery.of(context).size.width,
             child: Column( mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [Expanded(child: Padding(
-                    padding: const EdgeInsets.all(10.0),
+                  children: [Expanded(
+                    child: Padding(
+                    padding: const EdgeInsets.all(8.0),
                     child: Text("Name:",
                       style: TextStyle(fontSize: 20,
                         color: Colors.white,
@@ -55,7 +56,7 @@ class RegisterPage extends State<registerPageState>{
                       ),
                     ),),
                     Expanded(child: Padding(
-                      padding: const EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(8.0),
                       child: Text("Password:",
                         style: TextStyle(fontSize: 20,
                           color: Colors.white,
@@ -73,7 +74,7 @@ class RegisterPage extends State<registerPageState>{
                       ),
                     ),),
                     Expanded(child: Padding(
-                      padding: const EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(8.0),
                       child: Text("Confirm Password:",
                         style: TextStyle(fontSize: 20,
                           color: Colors.white,
@@ -91,7 +92,7 @@ class RegisterPage extends State<registerPageState>{
                       ),
                     ),),
                     Expanded(child: Padding(
-                      padding: const EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(8.0),
                       child: Text("Mail:",
                         style: TextStyle(fontSize: 20,
                           color: Colors.white,
@@ -151,18 +152,15 @@ class RegisterPage extends State<registerPageState>{
                     ),
 
                     Expanded(child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: RaisedButton(
-                          onPressed: (){
-                            Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
-                          },
-                          color: Colors.green,
-                          child: Text("Next", style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.white,fontFamily: 'Architect',
-                          ),),
-                        ),
+                      child: RaisedButton(
+                        onPressed: (){
+                          Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
+                        },
+                        color: Colors.green,
+                        child: Text("Next", style: TextStyle(
+                          fontSize: 30,
+                          color: Colors.white,fontFamily: 'Architect',
+                        ),),
                       ),
                     ),)
                   ]),
