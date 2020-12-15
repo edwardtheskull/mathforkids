@@ -117,14 +117,17 @@ class RegisterPage extends State<registerPageState>{
                               fontFamily: "Architect",
                             ),
                           ),
-                          DropdownButton<String>(value: dropdownvalue, style: TextStyle(color: Colors.green), underline: Container(height:2, color: Colors.purple),
-                            onChanged: (String newValue) {
-                              setState(() {
-                                dropdownvalue = newValue;
-                              });
-                            },
-                            items: <String>['Teacher','Student'].map<DropdownMenuItem<String>>((String value) { return DropdownMenuItem<String>(value: value, child: Text(value),);
-                            }).toList(),)
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: DropdownButton<String>(value: dropdownvalue, style: TextStyle(color: Colors.green), underline: Container(height:2, color: Colors.purple),
+                              onChanged: (String newValue) {
+                                setState(() {
+                                  dropdownvalue = newValue;
+                                });
+                              },
+                              items: <String>['Teacher','Student'].map<DropdownMenuItem<String>>((String value) { return DropdownMenuItem<String>(value: value, child: Text(value),);
+                              }).toList(),),
+                          )
                         ],
                       ),
 
