@@ -45,7 +45,6 @@ class createquizPage extends State<createquizPageState>{
                         ),
                       ),
                       Expanded(child: TextField( style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
-                        obscureText: true,
                         decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
                             border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
                             labelText: 'Name', focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))

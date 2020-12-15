@@ -17,47 +17,76 @@ class StudentPage extends State<studentPageState>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.green[50],
+        backgroundColor: Color.fromRGBO(31, 69, 82, 1),
         appBar: AppBar(
           title: Text(
             "Math for Kids",
             style: TextStyle(
               fontSize: 30,
-              fontFamily: "Crimson",
+              fontFamily: "Architect",
               fontWeight: FontWeight.bold,
             ),
           ),
           centerTitle:true,
           backgroundColor: Colors.green[600],
         ),
-        body:  Center(
-          child: Column( mainAxisAlignment: MainAxisAlignment.end, crossAxisAlignment: CrossAxisAlignment.start,
-              children: [Expanded(child: RaisedButton(
-                  onPressed: (){
-                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new connectPageState()));
-                  },
-                  color: Colors.red,
-                  child: Text("Join Quiz", style: TextStyle(
+        body:  Column(mainAxisAlignment: MainAxisAlignment.center,
+            children: [Row(mainAxisAlignment: MainAxisAlignment.center, children: [ButtonTheme(minWidth: MediaQuery.of(context).size.width/1.6, height: MediaQuery.of(context).size.height/8,
+              child: RaisedButton(elevation: 2,
+                onPressed: (){
+                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new connectPageState()));
+                },
+                color: Colors.green[600],
+                child: Text("Join quiz", style: TextStyle(letterSpacing: 1,
                     fontSize: 25,
-                    color: Colors.black,fontFamily: 'Crimson',
-                  ),),
-                ),),
-                Expanded(child: RaisedButton(
-                  onPressed: (){
-                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
-                  },
-                  color: Colors.red,
-                  child: Text("Previous results/history", style: TextStyle(
-                    fontSize: 25,
-                    color: Colors.black,fontFamily: 'Crimson',
-                  ),),
-                ),)
-              ]),
-        )
+                    color: Colors.white,fontFamily: 'Architect')),),
+            )],
+            ),
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: ButtonTheme(minWidth: MediaQuery.of(context).size.width/1.6, height: MediaQuery.of(context).size.height/8,
+                  child: RaisedButton(elevation: 3,
+                    onPressed: (){
+                      Navigator.push(context, new MaterialPageRoute(builder: (context) => new connectPageState()));
+                    },
+                    color: Colors.green[600],
+                    child: Text("Class", style: TextStyle(letterSpacing: 1,
+                      fontSize: 25,
+                      color: Colors.white,fontFamily: 'Architect',)),),
+                ),
+              )],
+              ),
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: ButtonTheme(minWidth: MediaQuery.of(context).size.width/1.6, height: MediaQuery.of(context).size.height/8,
+                  child: RaisedButton(elevation: 3,
+                    onPressed: (){
+                      Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
+                    },
+                    color: Colors.green[600],
+                    child: Text("Previous quizzes", style: TextStyle(letterSpacing: 1,
+                      fontSize: 25,
+                      color: Colors.white,fontFamily: 'Architect',)),),
+                ),
+              )],
+              ),
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: ButtonTheme(minWidth: MediaQuery.of(context).size.width/1.6, height: MediaQuery.of(context).size.height/8,
+                  child: RaisedButton(elevation: 3,
+                    onPressed: (){
+                      Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
+                    },
+                    color: Colors.green[600],
+                    child: Text("Learn", style: TextStyle(letterSpacing: 1,
+                      fontSize: 25,
+                      color: Colors.white,fontFamily: 'Architect',)),),
+                ),
+              )],
+              ),
+            ])
     );
   }
 }
-
-
 
 
