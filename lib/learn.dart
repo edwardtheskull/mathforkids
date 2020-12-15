@@ -1,27 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:mathforkids/connect.dart';
-import 'package:mathforkids/learn.dart';
-import 'package:mathforkids/login.dart';
-import 'package:mathforkids/register.dart';
-import 'package:mathforkids/main.dart';
+import 'package:mathforkids/studenthome.dart';
+import 'package:mathforkids/studentresults.dart';
+import 'package:mathforkids/teacherhome.dart';
 import 'package:sqflite/sqflite.dart';
 
 
-class studentPageState extends StatefulWidget{
+class learnPageState extends StatefulWidget{
   @override
-  StudentPage createState() => StudentPage();
+  LearnPage createState() => LearnPage();
 }
 
-class StudentPage extends State<studentPageState>{
+class LearnPage extends State<learnPageState>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Color.fromRGBO(31, 69, 82, 1),
         appBar: AppBar(
           title: Text(
-            "Math for Kids",
+            "Learn",
             style: TextStyle(
               fontSize: 30,
               fontFamily: "Architect",
@@ -35,10 +33,10 @@ class StudentPage extends State<studentPageState>{
             children: [Row(mainAxisAlignment: MainAxisAlignment.center, children: [ButtonTheme(minWidth: MediaQuery.of(context).size.width/1.6, height: MediaQuery.of(context).size.height/8,
               child: RaisedButton(elevation: 2,
                 onPressed: (){
-                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new connectPageState()));
+                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnPageState()));
                 },
                 color: Colors.green[600],
-                child: Text("Join quiz", style: TextStyle(letterSpacing: 1,
+                child: Text("Addition", style: TextStyle(letterSpacing: 1,
                     fontSize: 25,
                     color: Colors.white,fontFamily: 'Architect')),),
             )],
@@ -48,24 +46,10 @@ class StudentPage extends State<studentPageState>{
                 child: ButtonTheme(minWidth: MediaQuery.of(context).size.width/1.6, height: MediaQuery.of(context).size.height/8,
                   child: RaisedButton(elevation: 3,
                     onPressed: (){
-                      Navigator.push(context, new MaterialPageRoute(builder: (context) => new connectPageState()));
+                      Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnPageState()));
                     },
                     color: Colors.green[600],
-                    child: Text("Class", style: TextStyle(letterSpacing: 1,
-                      fontSize: 25,
-                      color: Colors.white,fontFamily: 'Architect',)),),
-                ),
-              )],
-              ),
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: ButtonTheme(minWidth: MediaQuery.of(context).size.width/1.6, height: MediaQuery.of(context).size.height/8,
-                  child: RaisedButton(elevation: 3,
-                    onPressed: (){
-                      Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
-                    },
-                    color: Colors.green[600],
-                    child: Text("Previous quizzes", style: TextStyle(letterSpacing: 1,
+                    child: Text("Subtraction", style: TextStyle(letterSpacing: 1,
                       fontSize: 25,
                       color: Colors.white,fontFamily: 'Architect',)),),
                 ),
@@ -79,7 +63,21 @@ class StudentPage extends State<studentPageState>{
                       Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnPageState()));
                     },
                     color: Colors.green[600],
-                    child: Text("Learn", style: TextStyle(letterSpacing: 1,
+                    child: Text("Multiplication", style: TextStyle(letterSpacing: 1,
+                      fontSize: 25,
+                      color: Colors.white,fontFamily: 'Architect',)),),
+                ),
+              )],
+              ),
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: ButtonTheme(minWidth: MediaQuery.of(context).size.width/1.6, height: MediaQuery.of(context).size.height/8,
+                  child: RaisedButton(elevation: 3,
+                    onPressed: (){
+                      Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnPageState()));
+                    },
+                    color: Colors.green[600],
+                    child: Text("Division", style: TextStyle(letterSpacing: 1,
                       fontSize: 25,
                       color: Colors.white,fontFamily: 'Architect',)),),
                 ),
@@ -89,5 +87,3 @@ class StudentPage extends State<studentPageState>{
     );
   }
 }
-
-
