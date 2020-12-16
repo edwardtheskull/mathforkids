@@ -10,18 +10,16 @@ class registerPageState extends StatefulWidget{
   RegisterPage createState() => RegisterPage();
 }
 
-String hahahh = "Hej";
-String dropdownvalue = "Student";
-TextEditingController textname = new TextEditingController();
-TextEditingController textpassword = new TextEditingController();
-TextEditingController textconfirmpassword = new TextEditingController();
-TextEditingController textmail = new TextEditingController();
-TextEditingController textnick = new TextEditingController();
-TextEditingController textrole = new TextEditingController();
-
 class RegisterPage extends State<registerPageState>{
   @override
   Widget build(BuildContext context) {
+    String dropdownvalue = "Student";
+    TextEditingController textname = new TextEditingController();
+    TextEditingController textpassword = new TextEditingController();
+    TextEditingController textconfirmpassword = new TextEditingController();
+    TextEditingController textmail = new TextEditingController();
+    TextEditingController textnick = new TextEditingController();
+    TextEditingController textrole = new TextEditingController();
     return Scaffold(
         backgroundColor: Color.fromRGBO(31, 69, 82, 1),
         appBar: AppBar(
