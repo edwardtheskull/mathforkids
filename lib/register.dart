@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:mathforkids/login.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:mathforkids/user.dart';
+import 'package:mathforkids/database_connect.dart';
 
 
 class registerPageState extends StatefulWidget{
@@ -38,6 +40,7 @@ class RegisterPage extends State<registerPageState>{
         ),
         body: SingleChildScrollView(
           child: Container( height: MediaQuery.of(context).size.height, width: MediaQuery.of(context).size.width,
+<<<<<<< Updated upstream
             child: Padding(
               padding: const EdgeInsets.all(12.0),
               child: Column( crossAxisAlignment: CrossAxisAlignment.center,
@@ -67,15 +70,46 @@ class RegisterPage extends State<registerPageState>{
                             fontWeight: FontWeight.bold,
                             fontFamily: "Architect",
                           ),
+=======
+            child: Column( mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [Expanded(child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text("Name:",
+                      style: TextStyle(fontSize: 20,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "Architect",
+
+                      ),
+                    ),
+                  ),
+                  ),
+                    Expanded(child: TextField(controller: textname, style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
+                      obscureText: false,
+                      decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
+                      border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
+                      labelText: 'Name', focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
+                      ),
+                    ),),
+                    Expanded(child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text("Password:",
+                        style: TextStyle(fontSize: 20,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Architect",
+>>>>>>> Stashed changes
                         ),
                       ),
-                      TextField(controller: textpassword, style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
-                        obscureText: true,
-                        decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
-                            border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
-                            labelText: 'Password', focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
-                        ),
+                    ),
+                    ),
+                    Expanded(child: TextField(controller: textpassword, style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
+                      obscureText: true,
+                      decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
+                          border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
+                          labelText: 'Password', focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
                       ),
+<<<<<<< Updated upstream
                       Padding(
                         padding: const EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 2.0),
                         child: Text("Confirm Password:",
@@ -126,33 +160,94 @@ class RegisterPage extends State<registerPageState>{
                             border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
                             labelText: 'Nickname', focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
                         ),
+=======
+                    ),),
+                    Expanded(child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text("Confirm Password:",
+                        style: TextStyle(fontSize: 20,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Architect",
+                        ),
                       ),
-                      Row( mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("Role:",
-                            style: TextStyle(fontSize: 20,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: "Architect",
-                            ),
+                    ),
+                    ),
+                    Expanded(child: TextField( style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
+                      obscureText: true,
+                      decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
+                          border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
+                          labelText: 'Confirm Password', focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
+                      ),
+                    ),),
+                    Expanded(child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text("Mail:",
+                        style: TextStyle(fontSize: 20,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Architect",
+                        ),
+                      ),
+                    ),
+                    ),
+                    Expanded(child: TextField( style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
+                      obscureText: false,
+                      decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
+                          border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
+                          labelText: 'Mail', focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
+                      ),
+                    ),),
+                    Expanded(child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text("Nickname:",
+                        style: TextStyle(fontSize: 20,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Architect",
+                        ),
+                      ),
+                    ),
+                    ),
+                    TextField( style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
+                      obscureText: false,
+                      decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
+                          border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
+                          labelText: 'Nickname', focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
+>>>>>>> Stashed changes
+                      ),
+                    ),
+                    Expanded(child: Row( mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Role:",
+                          style: TextStyle(fontSize: 20,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Architect",
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: DropdownButton<String>(value: dropdownvalue, style: TextStyle(color: Colors.green), underline: Container(height:2, color: Colors.purple),
-                              onChanged: (String newValue) {
-                                setState(() {
-                                  dropdownvalue = newValue;
-                                });
-                              },
-                              items: <String>['Teacher','Student'].map<DropdownMenuItem<String>>((String value) { return DropdownMenuItem<String>(value: value, child: Text(value),);
-                              }).toList(),),
-                          )
-                        ],
-                      ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: DropdownButton<String>(value: dropdownvalue, style: TextStyle(color: Colors.green), underline: Container(height:2, color: Colors.purple),
+                            onChanged: (String newValue) {
+                              setState(() {
+                                dropdownvalue = newValue;
+                              });
+                            },
+                            items: <String>['Teacher','Student'].map<DropdownMenuItem<String>>((String value) { return DropdownMenuItem<String>(value: value, child: Text(value),);
+                            }).toList(),),
+                        )
+                      ],
+                    ),
+                    ),
 
-                      Center(
+                    Expanded(child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
                         child: RaisedButton(
                           onPressed: (){
+                            var newDBUser = User(username: textname.text, password: textpassword.text);
+                            DBProvider.db.newUser(newDBUser);
                             Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
                           },
                           color: Colors.green,
@@ -161,9 +256,9 @@ class RegisterPage extends State<registerPageState>{
                             color: Colors.white,fontFamily: 'Architect',
                           ),),
                         ),
-                      )
-                    ]),
-            ),
+                      ),
+                    ),)
+                  ]),
           ),
         )
     );
