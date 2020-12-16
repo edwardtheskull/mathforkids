@@ -6,14 +6,18 @@ import 'package:mathforkids/connect.dart';
 import 'package:sqflite/sqflite.dart';
 
 
+
 class createquizPageState extends StatefulWidget{
   @override
   createquizPage createState() => createquizPage();
 }
 
-String dropdownvalue = "Multiplication";
+
+
 
 class createquizPage extends State<createquizPageState>{
+  bool test = false;
+  String Dropdownquestionvalue = "Multiple choice";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,12 +58,14 @@ class createquizPage extends State<createquizPageState>{
                   ),
                 ),
                 ),
+                SwitchListTile(title: const Text('test'), value:test, onChanged: (bool value) { setState(() {
+                  test = value;}); },),
                 Expanded(child: Center(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: RaisedButton(
-                      onPressed: (){
-                        Navigator.push(context, new MaterialPageRoute(builder: (context) => new connectPageState()));
+                      onPressed: () async{
+                        showInformationDialog(context);
                       },
                       color: Colors.green,
                       child: Text("Add Question", style: TextStyle(
@@ -88,4 +94,38 @@ class createquizPage extends State<createquizPageState>{
         )
     );
   }
+
+  showInformationDialog (BuildContext context) async {
+    return showDialog(context: context,
+        builder: (context){
+          return AlertDialog(
+            content: StatefulBuilder(
+            builder: (BuildContext context, StateSetter setState){
+            return Column(
+                children: [
+                  DropdownButton<String>(value: Dropdownquestionvalue, style: TextStyle(color: Colors.black), underline: Container(height:2, color: Colors.purple),
+                    onChanged: (String newValue) {
+                      setState(() {
+                        Dropdownquestionvalue = newValue;
+                      });
+                    },
+                    items: <String>['Multiple choice','Written answer','Pair options'].map<DropdownMenuItem<String>>((String value) { return DropdownMenuItem<String>(value: value, child: Text(value),);
+                    }).toList(),),
+                ]
+            );}),
+            actions: <Widget> [
+              TextButton(
+                child: Text ("Okay"),
+                onPressed: (){
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        });
+  }
+
 }
+
+
+
