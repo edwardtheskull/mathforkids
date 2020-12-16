@@ -13,6 +13,10 @@ class registerPageState extends StatefulWidget{
 String dropdownvalue = "Student";
 TextEditingController textname = new TextEditingController();
 TextEditingController textpassword = new TextEditingController();
+TextEditingController textconfirmpassword = new TextEditingController();
+TextEditingController textmail = new TextEditingController();
+TextEditingController textnick = new TextEditingController();
+TextEditingController textrole = new TextEditingController();
 
 class RegisterPage extends State<registerPageState>{
   @override
@@ -73,7 +77,7 @@ class RegisterPage extends State<registerPageState>{
                           fontFamily: "Architect",
                         ),
                       ),
-                      TextField( style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
+                      TextField(controller: textconfirmpassword, style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
                         obscureText: true,
                         decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
                             border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
@@ -87,7 +91,7 @@ class RegisterPage extends State<registerPageState>{
                           fontFamily: "Architect",
                         ),
                       ),
-                      TextField( style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
+                      TextField(controller: textmail, style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
                         obscureText: false,
                         decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
                             border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
@@ -101,7 +105,7 @@ class RegisterPage extends State<registerPageState>{
                           fontFamily: "Architect",
                         ),
                       ),
-                      TextField( style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
+                      TextField(controller: textnick, style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
                         obscureText: false,
                         decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
                             border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),

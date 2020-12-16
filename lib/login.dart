@@ -5,12 +5,15 @@ import 'package:mathforkids/studenthome.dart';
 import 'package:mathforkids/studentresults.dart';
 import 'package:mathforkids/teacherhome.dart';
 import 'package:sqflite/sqflite.dart';
+import 'register.dart';
 
 
 class loginPageState extends StatefulWidget{
   @override
   LoginPage createState() => LoginPage();
 }
+
+
 
 class LoginPage extends State<loginPageState>{
   @override
@@ -43,7 +46,7 @@ class LoginPage extends State<loginPageState>{
                 ),
                   Row(
                     children: [
-                      Expanded(child: TextField(style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white, obscureText: false,
+                      Expanded(child: TextField(controller: textname, style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white, obscureText: false,
                         decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
                           border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
                           labelText: 'email/username', focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
@@ -63,7 +66,7 @@ class LoginPage extends State<loginPageState>{
                   ),
                   Row(
                     children: [
-                      Expanded(child: TextField(style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
+                      Expanded(child: TextField(controller: textpassword, style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
                         obscureText: true,
                         decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
                           border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
@@ -80,7 +83,7 @@ class LoginPage extends State<loginPageState>{
                         child: ButtonTheme(minWidth: MediaQuery.of(context).size.width/2.2, height: MediaQuery.of(context).size.height/8,
                           child: RaisedButton(elevation: 3,
                             onPressed: (){
-                              Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherPageState()));
+                              Navigator.push(context, new MaterialPageRoute(builder: (context) => new studentPageState()));
                             },
                             color: Colors.green[600],
                             child: Text("Next", style: TextStyle(letterSpacing: 1,
