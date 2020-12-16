@@ -4,64 +4,119 @@ import 'package:flutter/rendering.dart';
 import 'package:sqflite/sqflite.dart';
 
 
-class studentresultPageState extends StatefulWidget{
+class studentresultPageState extends StatefulWidget {
   @override
   studentresultPage createState() => studentresultPage();
 }
 
-class studentresultPage extends State<studentresultPageState>{
+class studentresultPage extends State<studentresultPageState> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromRGBO(31, 69, 82, 1),
-        appBar: AppBar(
-          title: Text(
-            "Math for Kids",
-            style: TextStyle(
-              fontSize: 30,
-              fontFamily: "Architect",
-              fontWeight: FontWeight.bold,
-            ),
+      backgroundColor: Color.fromRGBO(31, 69, 82, 1),
+      appBar: AppBar(
+        title: Text(
+          "Math for Kids",
+          style: TextStyle(
+            fontSize: 30,
+            fontFamily: "Architect",
+            fontWeight: FontWeight.bold,
           ),
-          centerTitle:true,
-          backgroundColor: Colors.green[600],
         ),
-        body:  Column(mainAxisAlignment: MainAxisAlignment.center,
+        centerTitle: true,
+        backgroundColor: Colors.green[600],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.only(top: 16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
 
-            children:
-            //row 1
-            [Row(mainAxisAlignment: MainAxisAlignment.center, children: [ButtonTheme(minWidth: MediaQuery.of(context).size.width/1.8, height: MediaQuery.of(context).size.height/8,
-              child: RaisedButton(elevation: 2,
-                onPressed: (){
-                  //Navigator.push(context, new MaterialPageRoute(builder: (context) => new connectPageState()));
-                },
-                color: Colors.green[600],
-                child: Text("Most recent quiz", style: TextStyle(letterSpacing: 1,
-                    fontSize: 25,
-                    color: Colors.white,fontFamily: 'Architect')),),
-            )],
-            ),
-
-              //Row 2
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: ButtonTheme(minWidth: MediaQuery.of(context).size.width/1.8, height: MediaQuery.of(context).size.height/8,
-                  child: RaisedButton(elevation: 3,
-                    onPressed: (){
-                      //Navigator.push(context, new MaterialPageRoute(builder: (context) => new createquizPageState()));
-                    },
-                    color: Colors.green[600],
-                    child: Text("Previous quizzes", style: TextStyle(letterSpacing: 1,
-                      fontSize: 25,
-                      color: Colors.white,fontFamily: 'Architect',)),),
+          children:
+          [Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text("Most recent quiz", style: TextStyle(
+                fontSize: 22,
+                fontFamily: "Architect",
+                backgroundColor: Colors.green[600],
+                color: Colors.white),),
+          ),
+            Container(
+              width: 400,
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
                 ),
-              )],
+                color: Color.fromRGBO(31, 69, 82, 1),
+                elevation: 10,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const ListTile(
+                      title: Text('Multiplikation',
+                          style: TextStyle(color: Colors.white)),
+                      subtitle: Text(
+                          '2020-12-12', style: TextStyle(color: Colors.white)),
+                    ),
+                  ],
+                ),
               ),
-            ])
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text("Previous quizzes", style: TextStyle(
+                  fontSize: 22,
+                  fontFamily: "Architect",
+                  backgroundColor: Colors.green[600],
+                  color: Colors.white),
+              ),
+            ),
+            Container(
+              width: 400,
+              child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  color: Color.fromRGBO(31, 69, 82, 1),
+                  elevation: 10,
+                  child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const ListTile(
+                          title: Text('Multiplikation', style: TextStyle(
+                              color: Colors.white)),
+                          subtitle: Text('2020-12-12', style: TextStyle(
+                              color: Colors.white)),
+                        ),
+                       const ListTile(
+                          title: Text('Subtraktion', style: TextStyle(
+                              color: Colors.white)),
+                          subtitle: Text('2020-12-12', style: TextStyle(
+                              color: Colors.white)),
+                        ),
+                        const ListTile(
+                          title: Text('addition', style: TextStyle(
+                              color: Colors.white)),
+                          subtitle: Text('2020-12-12', style: TextStyle(
+                              color: Colors.white)),
+                        ),
+                        const ListTile(
+                          title: Text('division', style: TextStyle(
+                              color: Colors.white)),
+                          subtitle: Text('2020-12-12', style: TextStyle(
+                              color: Colors.white)),
+                        ),
+                      ]
+                  )
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
-    /*return Scaffold(
+/*return Scaffold(
         backgroundColor: Colors.green[50],
         appBar: AppBar(
           title: Text(
