@@ -5,6 +5,7 @@ import 'package:mathforkids/studenthome.dart';
 import 'package:mathforkids/studentresults.dart';
 import 'package:mathforkids/teacherhome.dart';
 import 'package:sqflite/sqflite.dart';
+import 'register.dart';
 
 
 class loginPageState extends StatefulWidget{
@@ -13,6 +14,8 @@ class loginPageState extends StatefulWidget{
 }
 
 class LoginPage extends State<loginPageState>{
+  TextEditingController textname = new TextEditingController();
+  TextEditingController textpassword = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -43,7 +46,7 @@ class LoginPage extends State<loginPageState>{
                 ),
                   Row(
                     children: [
-                      Expanded(child: TextField(style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white, obscureText: false,
+                      Expanded(child: TextField(controller: textname, style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white, obscureText: false,
                         decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
                           border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
                           labelText: 'email/username', focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
@@ -63,7 +66,7 @@ class LoginPage extends State<loginPageState>{
                   ),
                   Row(
                     children: [
-                      Expanded(child: TextField(style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
+                      Expanded(child: TextField(controller: textpassword, style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
                         obscureText: true,
                         decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
                           border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
