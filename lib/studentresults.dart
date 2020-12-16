@@ -53,8 +53,13 @@ class studentresultPage extends State<studentresultPageState> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const ListTile(
-                      title: Text('Multiplikation',
-                          style: TextStyle(color: Colors.white)),
+                      leading: Icon(
+                        Icons.add_circle,
+                        color: Colors.green,
+                        size: 40,
+                      ),
+                      title: Text('Addition',
+                          style: TextStyle(color: Colors.white, fontSize: 18)),
                       subtitle: Text(
                           '2020-12-12', style: TextStyle(color: Colors.white)),
                     ),
