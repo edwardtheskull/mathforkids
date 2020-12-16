@@ -11,15 +11,15 @@ class registerPageState extends StatefulWidget{
 }
 
 class RegisterPage extends State<registerPageState>{
+  String dropdownvalue = "Student";
+  TextEditingController textname = new TextEditingController();
+  TextEditingController textpassword = new TextEditingController();
+  TextEditingController textconfirmpassword = new TextEditingController();
+  TextEditingController textmail = new TextEditingController();
+  TextEditingController textnick = new TextEditingController();
+  TextEditingController textrole = new TextEditingController();
   @override
   Widget build(BuildContext context) {
-    String dropdownvalue = "Student";
-    TextEditingController textname = new TextEditingController();
-    TextEditingController textpassword = new TextEditingController();
-    TextEditingController textconfirmpassword = new TextEditingController();
-    TextEditingController textmail = new TextEditingController();
-    TextEditingController textnick = new TextEditingController();
-    TextEditingController textrole = new TextEditingController();
     return Scaffold(
         backgroundColor: Color.fromRGBO(31, 69, 82, 1),
         appBar: AppBar(
@@ -43,7 +43,7 @@ class RegisterPage extends State<registerPageState>{
                   children: [
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 2.0),
-                      child: Text("Name:",
+                      child: Text(textname.text,
                         style: TextStyle(fontSize: 20,
                           color: Colors.white,
                           fontWeight: FontWeight.bold,

@@ -14,10 +14,10 @@ class loginPageState extends StatefulWidget{
 }
 
 class LoginPage extends State<loginPageState>{
+  TextEditingController textname = new TextEditingController();
+  TextEditingController textpassword = new TextEditingController();
   @override
   Widget build(BuildContext context) {
-    TextEditingController textname = new TextEditingController();
-    TextEditingController textpassword = new TextEditingController();
     return Container(
       child: Scaffold(
           backgroundColor: Color.fromRGBO(31, 69, 82, 1),
