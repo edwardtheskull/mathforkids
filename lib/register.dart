@@ -43,7 +43,7 @@ class RegisterPage extends State<registerPageState>{
                   children: [
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 2.0),
-                      child: Text(textname.text,
+                      child: Text("Name:",
                         style: TextStyle(fontSize: 20,
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
