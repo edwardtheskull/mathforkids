@@ -13,11 +13,11 @@ class loginPageState extends StatefulWidget{
   LoginPage createState() => LoginPage();
 }
 
-
-
 class LoginPage extends State<loginPageState>{
   @override
   Widget build(BuildContext context) {
+    TextEditingController textname = new TextEditingController();
+    TextEditingController textpassword = new TextEditingController();
     return Container(
       child: Scaffold(
           backgroundColor: Color.fromRGBO(31, 69, 82, 1),
@@ -83,7 +83,7 @@ class LoginPage extends State<loginPageState>{
                         child: ButtonTheme(minWidth: MediaQuery.of(context).size.width/2.2, height: MediaQuery.of(context).size.height/8,
                           child: RaisedButton(elevation: 3,
                             onPressed: (){
-                              Navigator.push(context, new MaterialPageRoute(builder: (context) => new studentPageState()));
+                              Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherPageState()));
                             },
                             color: Colors.green[600],
                             child: Text("Next", style: TextStyle(letterSpacing: 1,
