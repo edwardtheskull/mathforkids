@@ -36,7 +36,7 @@ class RegisterPage extends State<registerPageState>{
           backgroundColor: Colors.green[600],
         ),
         body: SingleChildScrollView(
-          child: Container( height: MediaQuery.of(context).size.height, width: MediaQuery.of(context).size.width,
+          child: Container( height: MediaQuery.of(context).size.height*1.1, width: MediaQuery.of(context).size.width,
             child: Padding(
               padding: const EdgeInsets.all(12.0),
               child: Column( crossAxisAlignment: CrossAxisAlignment.center,
