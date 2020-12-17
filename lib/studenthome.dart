@@ -5,6 +5,7 @@ import 'package:mathforkids/connect.dart';
 import 'package:mathforkids/learn.dart';
 import 'package:mathforkids/login.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:mathforkids/SizeConfig.dart';
 
 
 class studentPageState extends StatefulWidget{
@@ -15,6 +16,7 @@ class studentPageState extends StatefulWidget{
 class StudentPage extends State<studentPageState>{
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
         backgroundColor: Color.fromRGBO(31, 69, 82, 1),
         appBar: AppBar(
@@ -37,7 +39,7 @@ class StudentPage extends State<studentPageState>{
                 },
                 color: Colors.green[600],
                 child: Text("Join quiz", style: TextStyle(letterSpacing: 1,
-                    fontSize: 25,
+                    fontSize: SizeConfig.safeBlockHorizontal * 7,
                     color: Colors.white,fontFamily: 'Architect')),),
             )],
             ),
@@ -50,7 +52,7 @@ class StudentPage extends State<studentPageState>{
                     },
                     color: Colors.green[600],
                     child: Text("Class", style: TextStyle(letterSpacing: 1,
-                      fontSize: 25,
+                      fontSize: SizeConfig.safeBlockHorizontal * 7,
                       color: Colors.white,fontFamily: 'Architect',)),),
                 ),
               )],
@@ -64,7 +66,7 @@ class StudentPage extends State<studentPageState>{
                     },
                     color: Colors.green[600],
                     child: Text("Previous quizzes", style: TextStyle(letterSpacing: 1,
-                      fontSize: 25,
+                      fontSize: SizeConfig.safeBlockHorizontal * 7,
                       color: Colors.white,fontFamily: 'Architect',)),),
                 ),
               )],
@@ -78,7 +80,7 @@ class StudentPage extends State<studentPageState>{
                     },
                     color: Colors.green[600],
                     child: Text("Learn", style: TextStyle(letterSpacing: 1,
-                      fontSize: 25,
+                      fontSize: SizeConfig.safeBlockHorizontal * 7,
                       color: Colors.white,fontFamily: 'Architect',)),),
                 ),
               )],

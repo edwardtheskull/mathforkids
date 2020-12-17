@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:mathforkids/SizeConfig.dart';
 
 
 class studentresultPageState extends StatefulWidget {
@@ -12,6 +13,7 @@ class studentresultPageState extends StatefulWidget {
 class studentresultPage extends State<studentresultPageState> {
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       backgroundColor: Color.fromRGBO(31, 69, 82, 1),
       appBar: AppBar(

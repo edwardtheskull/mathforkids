@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:mathforkids/login.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:mathforkids/SizeConfig.dart';
 
 
 class connectPageState extends StatefulWidget{
@@ -13,6 +14,7 @@ class connectPageState extends StatefulWidget{
 class ConnectPage extends State<connectPageState>{
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
         backgroundColor: Color.fromRGBO(31, 69, 82, 1),
         appBar: AppBar(
@@ -33,7 +35,7 @@ class ConnectPage extends State<connectPageState>{
               Expanded(child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text("Code:",
-                  style: TextStyle(fontSize: 20, color: Colors.white,
+                  style: TextStyle(fontSize: SizeConfig.safeBlockHorizontal * 6, color: Colors.white,
                       fontWeight: FontWeight.bold, fontFamily: 'Architect'
                   ),
                 ),
@@ -45,10 +47,10 @@ class ConnectPage extends State<connectPageState>{
                 children: [
                   Expanded(child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: TextField(style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white, obscureText: false,
+                    child: TextField(style: TextStyle(color: Colors.white, fontFamily: 'Architect', fontSize: SizeConfig.safeBlockHorizontal * 5), cursorColor: Colors.white, obscureText: false,
                       decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
                           border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
-                          labelText: 'Code', focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
+                          focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
                       ),
                     ),
                   ),),
@@ -65,7 +67,7 @@ class ConnectPage extends State<connectPageState>{
                           },
                           color: Colors.green[600],
                           child: Text("Connect", style: TextStyle(letterSpacing: 1,
-                            fontSize: 25,
+                            fontSize: SizeConfig.safeBlockHorizontal * 7,
                             color: Colors.white,fontFamily: 'Architect',)),),
                       ),
                     ),
