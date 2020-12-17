@@ -37,70 +37,74 @@ class LoginPage extends State<loginPageState>{
             centerTitle:true,
             backgroundColor: Colors.green[600],
           ),
-          body:  Center(
-            child: Container(width: MediaQuery.of(context).size.width*0.8,
-              child: Column(mainAxisAlignment: MainAxisAlignment.center,
-                  children: [Row(children: [
-                      Expanded(child: Text("email/username:",
-                        style: TextStyle(fontSize: SizeConfig.safeBlockHorizontal * 6, color: Colors.white,
-                            fontWeight: FontWeight.bold, fontFamily: 'Architect'
-                        ),
-                      ),
-                      ),
-                    ],
-                  ),
-                    Row(
-                      children: [
-                        Expanded(child: TextField(controller: textname, style: TextStyle(color: Colors.white, fontFamily: 'Architect', fontSize: SizeConfig.safeBlockHorizontal * 5), cursorColor: Colors.white, obscureText: false,
-                          decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
-                            border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
-                          focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
+          body:  SingleChildScrollView(
+            child: Container(height: MediaQuery.of(context).size.height*1, width: MediaQuery.of(context).size.width,
+              child: Center(
+                child: Container(width: MediaQuery.of(context).size.width*0.8,
+                  child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                      children: [Row(children: [
+                          Expanded(child: Text("email/username:",
+                            style: TextStyle(fontSize: SizeConfig.safeBlockHorizontal * 6, color: Colors.white,
+                                fontWeight: FontWeight.bold, fontFamily: 'Architect'
+                            ),
                           ),
-                        ),),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Expanded(child: Text("Password:",
-                          style: TextStyle(fontSize: SizeConfig.safeBlockHorizontal * 6, color: Colors.white,
-                              fontWeight: FontWeight.bold, fontFamily: 'Architect'
                           ),
+                        ],
+                      ),
+                        Row(
+                          children: [
+                            Expanded(child: TextField(controller: textname, style: TextStyle(color: Colors.white, fontFamily: 'Architect', fontSize: SizeConfig.safeBlockHorizontal * 5), cursorColor: Colors.white, obscureText: false,
+                              decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
+                                border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
+                              focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
+                              ),
+                            ),),
+                          ],
                         ),
+                        Row(
+                          children: [
+                            Expanded(child: Text("Password:",
+                              style: TextStyle(fontSize: SizeConfig.safeBlockHorizontal * 6, color: Colors.white,
+                                  fontWeight: FontWeight.bold, fontFamily: 'Architect'
+                              ),
+                            ),
 
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                    Row(
-                      children: [
-                        Expanded(child: TextField(controller: textpassword, style: TextStyle(color: Colors.white, fontFamily: 'Architect', fontSize: SizeConfig.safeBlockHorizontal * 5), cursorColor: Colors.white,
-                          obscureText: true,
-                          decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
-                            border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
-                            focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
-                          ),
-                        ),),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Row(mainAxisAlignment: MainAxisAlignment.center,
-                          children: [Padding(
-                          padding: const EdgeInsets.only(top: 35),
-                          child: ButtonTheme(minWidth: MediaQuery.of(context).size.width/2.5, height: MediaQuery.of(context).size.height/9,
-                            child: RaisedButton(elevation: 3,
-                              onPressed: (){
-                                Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherPageState()));
-                              },
-                              color: Colors.green[600],
-                              child: Text("Next", style: TextStyle(letterSpacing: 1,
-                                fontSize: SizeConfig.safeBlockHorizontal * 7,
-                                color: Colors.white,fontFamily: 'Architect',)),),
-                          ),
-                        )],
+                        Row(
+                          children: [
+                            Expanded(child: TextField(controller: textpassword, style: TextStyle(color: Colors.white, fontFamily: 'Architect', fontSize: SizeConfig.safeBlockHorizontal * 5), cursorColor: Colors.white,
+                              obscureText: true,
+                              decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
+                                border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
+                                focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
+                              ),
+                            ),),
+                          ],
                         ),
-                      ],
-                    ),
-                  ]),
+                        Column(
+                          children: [
+                            Row(mainAxisAlignment: MainAxisAlignment.center,
+                              children: [Padding(
+                              padding: const EdgeInsets.only(top: 35),
+                              child: ButtonTheme(minWidth: MediaQuery.of(context).size.width/2.5, height: MediaQuery.of(context).size.height/9,
+                                child: RaisedButton(elevation: 3,
+                                  onPressed: (){
+                                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherPageState()));
+                                  },
+                                  color: Colors.green[600],
+                                  child: Text("Next", style: TextStyle(letterSpacing: 1,
+                                    fontSize: SizeConfig.safeBlockHorizontal * 7,
+                                    color: Colors.white,fontFamily: 'Architect',)),),
+                              ),
+                            )],
+                            ),
+                          ],
+                        ),
+                      ]),
+                ),
+              ),
             ),
           )
       ),
