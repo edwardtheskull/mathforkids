@@ -78,8 +78,8 @@ class createquizPage extends State<createquizPageState>{
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: RaisedButton(
-                      onPressed: (){
-                        Navigator.push(context, new MaterialPageRoute(builder: (context) => new connectPageState()));
+                      onPressed: () async{
+                        confirmDialog(context);
                       },
                       color: Colors.green,
                       child: Text("Create Quiz", style: TextStyle(
@@ -122,8 +122,36 @@ class createquizPage extends State<createquizPageState>{
             ],
           );
         });
+
   }
 
+  confirmDialog (BuildContext context) async {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Create Quiz'),
+          content: Text("Are You Sure Want To Proceed?"),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("YES"),
+              onPressed: () {
+                //Put your code here which you want to execute on Yes button click.
+                Navigator.of(context).pop();
+              },
+            ),
+
+            FlatButton(
+              child: Text("NO"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 }
 
 
