@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:mathforkids/login.dart';
 import 'package:sqflite/sqflite.dart';
-
+import 'package:mathforkids/database_connect.dart';
+import 'package:mathforkids/user.dart';
 
 class registerPageState extends StatefulWidget{
   @override
@@ -152,6 +153,8 @@ class RegisterPage extends State<registerPageState>{
                     Center(
                       child: RaisedButton(
                         onPressed: (){
+                          var newDBUser = User(username: textname.text, password: textpassword.text);
+                          DBProvider.db.newUser(newDBUser);
                           Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
                         },
                         color: Colors.green,
