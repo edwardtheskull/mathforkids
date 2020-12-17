@@ -67,27 +67,9 @@ class LoginPage extends State<loginPageState>{
                           ),
                         ),
 
-                      ),),
+                      ),
                     ],
                   ),
-                  Column(
-                    children: [
-                      Row(mainAxisAlignment: MainAxisAlignment.center,
-                        children: [Padding(
-                        padding: const EdgeInsets.only(top: 35),
-                          child: ButtonTheme(minWidth: MediaQuery.of(context).size.width/2.2, height: MediaQuery.of(context).size.height/8,
-                          child: RaisedButton(elevation: 3,
-                            onPressed: (){
-                              Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherPageState()));
-                            },
-                            color: Colors.green[600],
-                            child: Text("Next", style: TextStyle(letterSpacing: 1,
-                              fontSize: 25,
-                              color: Colors.white,fontFamily: 'Architect',)),),
-
-                        ),
-                      ],
-                    ),
                     Row(
                       children: [
                         Expanded(child: TextField(controller: textpassword, style: TextStyle(color: Colors.white, fontFamily: 'Architect', fontSize: SizeConfig.safeBlockHorizontal * 5), cursorColor: Colors.white,
