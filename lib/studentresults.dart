@@ -88,25 +88,55 @@ class studentresultPage extends State<studentresultPageState> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         const ListTile(
-                          title: Text('Multiplikation', style: TextStyle(
+                          leading: Icon(
+                            Icons.calculate_rounded,
+                            color: Colors.green,
+                            size: 40,
+                          ),
+                          title: Text('Blandat', style: TextStyle(
                               color: Colors.white)),
                           subtitle: Text('2020-12-12', style: TextStyle(
                               color: Colors.white)),
                         ),
                        const ListTile(
+                         leading: Icon(
+                           Icons.remove_circle,
+                           color: Colors.green,
+                           size: 40,
+                         ),
                           title: Text('Subtraktion', style: TextStyle(
                               color: Colors.white)),
                           subtitle: Text('2020-12-12', style: TextStyle(
                               color: Colors.white)),
                         ),
                         const ListTile(
+                          leading: Icon(
+                            Icons.add_circle,
+                            color: Colors.green,
+                            size: 40,
+                          ),
                           title: Text('addition', style: TextStyle(
                               color: Colors.white)),
                           subtitle: Text('2020-12-12', style: TextStyle(
                               color: Colors.white)),
                         ),
-                        const ListTile(
-                          title: Text('division', style: TextStyle(
+                         ListTile(
+                          leading:
+                          Padding(
+                            padding: const EdgeInsets.only(left:16.0),
+                            child: Text('/',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 20,
+                                  background: Paint()
+                                    ..strokeWidth = 25
+                                    ..color = Colors.green
+                                    ..style = PaintingStyle.stroke
+                                    ..strokeJoin = StrokeJoin.round),
+                            ),
+                          ),
+
+                          title: Text('Division', style: TextStyle(
                               color: Colors.white)),
                           subtitle: Text('2020-12-12', style: TextStyle(
                               color: Colors.white)),

@@ -80,7 +80,7 @@ class LoginPage extends State<loginPageState>{
                       Row(mainAxisAlignment: MainAxisAlignment.center,
                         children: [Padding(
                         padding: const EdgeInsets.only(top: 35),
-                        child: ButtonTheme(minWidth: MediaQuery.of(context).size.width/2.2, height: MediaQuery.of(context).size.height/8,
+                          child: ButtonTheme(minWidth: MediaQuery.of(context).size.width/2.2, height: MediaQuery.of(context).size.height/8,
                           child: RaisedButton(elevation: 3,
                             onPressed: (){
                               Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherPageState()));
