@@ -6,14 +6,25 @@ class SizeConfig {
   static double screenHeight;
   static double blockSizeHorizontal;
   static double blockSizeVertical;
-  double ratio;
 
   static double _safeAreaHorizontal;
   static double _safeAreaVertical;
   static double safeBlockHorizontal;
   static double safeBlockVertical;
 
-  double init(BuildContext context) {
+  static double TextFontSize;
+  static double TextFieldFontSize;
+  static double ButtonWidth;
+  static double ButtonHeight;
+  static double ButtonTextSize;
+  static double AppbarFontSize;
+  static double LargeButtonTextSize;
+  static double SquareButton;
+
+  double ShortestLength;
+
+
+  void init(BuildContext context) {
     _mediaQueryData = MediaQuery.of(context);
     screenWidth = _mediaQueryData.size.width;
     screenHeight = _mediaQueryData.size.height;
@@ -30,23 +41,29 @@ class SizeConfig {
         _safeAreaVertical) / 100;
 
         if(screenWidth < screenHeight)
-            ratio = screenWidth/screenHeight;
+            ShortestLength = screenWidth;
         else
-            ratio = screenHeight/screenWidth;
+            ShortestLength = screenHeight;
 
-         if(ratio < 0.6)
+
+         print(screenWidth);
+         print(screenHeight);
+         if(ShortestLength < 650)
          {
-            print(screenWidth);
-            print(screenHeight);
-            ratio = 5;
+            TextFontSize = safeBlockHorizontal*6;
+            TextFieldFontSize = safeBlockHorizontal*5;
+            ButtonWidth = MediaQuery.of(context).size.width/1.5;
+            ButtonHeight = MediaQuery.of(context).size.height/9;
+            ButtonTextSize = safeBlockHorizontal * 7;
+            AppbarFontSize = SizeConfig.safeBlockHorizontal * 8;
+            LargeButtonTextSize = 50;
+            SquareButton = MediaQuery.of(context).size.width/4.0;
          }
          else
          {
               print(screenWidth);
               print(screenHeight);
-              ratio = 10;
-         }
 
-         return ratio;
+         }
   }
 }

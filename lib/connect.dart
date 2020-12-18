@@ -21,7 +21,7 @@ class ConnectPage extends State<connectPageState>{
           title: Text(
             "Math for Kids",
             style: TextStyle(
-              fontSize: SizeConfig.safeBlockHorizontal * 3.5,
+              fontSize: SizeConfig.AppbarFontSize,
               fontFamily: "Architect",
               fontWeight: FontWeight.bold,
             ),
@@ -35,7 +35,7 @@ class ConnectPage extends State<connectPageState>{
               Expanded(child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text("Code:",
-                  style: TextStyle(fontSize: SizeConfig.safeBlockHorizontal * 6, color: Colors.white,
+                  style: TextStyle(fontSize: SizeConfig.TextFontSize, color: Colors.white,
                       fontWeight: FontWeight.bold, fontFamily: 'Architect'
                   ),
                 ),
@@ -47,7 +47,7 @@ class ConnectPage extends State<connectPageState>{
                 children: [
                   Expanded(child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: TextField(style: TextStyle(color: Colors.white, fontFamily: 'Architect', fontSize: SizeConfig.safeBlockHorizontal * 5), cursorColor: Colors.white, obscureText: false,
+                    child: TextField(style: TextStyle(color: Colors.white, fontFamily: 'Architect', fontSize: SizeConfig.TextFieldFontSize), cursorColor: Colors.white, obscureText: false,
                       decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
                           border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
                           focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
@@ -58,7 +58,7 @@ class ConnectPage extends State<connectPageState>{
               ),
                 Row(mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    ButtonTheme(minWidth: MediaQuery.of(context).size.width/2.2, height: MediaQuery.of(context).size.height/8,
+                    ButtonTheme(minWidth: SizeConfig.ButtonWidth, height: SizeConfig.ButtonHeight,
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: RaisedButton(elevation: 3,
@@ -67,7 +67,7 @@ class ConnectPage extends State<connectPageState>{
                           },
                           color: Colors.green[600],
                           child: Text("Connect", style: TextStyle(letterSpacing: 1,
-                            fontSize: SizeConfig.safeBlockHorizontal * 7,
+                            fontSize: SizeConfig.ButtonTextSize,
                             color: Colors.white,fontFamily: 'Architect',)),),
                       ),
                     ),

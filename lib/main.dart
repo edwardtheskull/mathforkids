@@ -46,7 +46,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>{
             title: Text(
               "Math for Kids",
               style: TextStyle(
-                fontSize: SizeConfig.safeBlockHorizontal * 3.5,
+                fontSize: SizeConfig.AppbarFontSize,
                 fontFamily: "Architect",
                 fontWeight: FontWeight.bold,
               ),
@@ -57,25 +57,25 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>{
           body:  Container(height: MediaQuery.of(context).size.height, width: MediaQuery.of(context).size.width,
             child: Column(mainAxisAlignment: MainAxisAlignment.center,
               children: [Row(mainAxisAlignment: MainAxisAlignment.center,
-                children: [ButtonTheme(minWidth: MediaQuery.of(context).size.width/2.2, height: MediaQuery.of(context).size.height/8,
+                children: [ButtonTheme(minWidth: SizeConfig.ButtonWidth, height: SizeConfig.ButtonHeight,
                 child: RaisedButton(elevation: 2, onPressed: (){Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));},
                 color: Colors.green[600],
                 child: Text("Login", style: TextStyle(letterSpacing: 1,
-                  fontSize: SizeConfig.safeBlockHorizontal * 7,
+                  fontSize: SizeConfig.ButtonTextSize,
                   color: Colors.white,fontFamily: 'Architect')),),
               )],
               ),
                 Row(mainAxisAlignment: MainAxisAlignment.center,
                   children: [Padding(
                   padding: const EdgeInsets.only(top: 20),
-                  child: ButtonTheme(minWidth: MediaQuery.of(context).size.width/2.2, height: MediaQuery.of(context).size.height/8,
+                  child: ButtonTheme(minWidth: SizeConfig.ButtonWidth, height: SizeConfig.ButtonHeight,
                     child: RaisedButton(elevation: 3,
                       onPressed: (){
                         Navigator.push(context, new MaterialPageRoute(builder: (context) => new registerPageState()));
                       },
                       color: Colors.green[600],
                       child: Text("Register", style: TextStyle(letterSpacing: 1,
-                          fontSize: SizeConfig.safeBlockHorizontal * 7,
+                          fontSize: SizeConfig.ButtonTextSize,
                           color: Colors.white,fontFamily: 'Architect',)),),
                   ),
                 )],
