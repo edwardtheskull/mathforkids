@@ -4,6 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:mathforkids/login.dart';
 import 'package:mathforkids/register.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:mathforkids/SizeConfig.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -30,11 +31,11 @@ class MyStatefulWidget extends StatefulWidget{
   _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
 }
 
-
 class _MyStatefulWidgetState extends State<MyStatefulWidget>{
   TextEditingController textInput = new TextEditingController();
   @override
   Widget build(BuildContext context){
+    SizeConfig().init(context);
     return Container(
       decoration: BoxDecoration(
         image:DecorationImage(image: AssetImage('images/test.jpg'),
@@ -45,7 +46,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>{
             title: Text(
               "Math for Kids",
               style: TextStyle(
-                fontSize: 30,
+                fontSize: SizeConfig.safeBlockHorizontal * 3.5,
                 fontFamily: "Architect",
                 fontWeight: FontWeight.bold,
               ),
@@ -60,7 +61,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>{
                 child: RaisedButton(elevation: 2, onPressed: (){Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));},
                 color: Colors.green[600],
                 child: Text("Login", style: TextStyle(letterSpacing: 1,
-                  fontSize: 25,
+                  fontSize: SizeConfig.safeBlockHorizontal * 7,
                   color: Colors.white,fontFamily: 'Architect')),),
               )],
               ),
@@ -74,7 +75,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>{
                       },
                       color: Colors.green[600],
                       child: Text("Register", style: TextStyle(letterSpacing: 1,
-                          fontSize: 25,
+                          fontSize: SizeConfig.safeBlockHorizontal * 7,
                           color: Colors.white,fontFamily: 'Architect',)),),
                   ),
                 )],

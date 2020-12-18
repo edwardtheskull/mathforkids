@@ -4,13 +4,14 @@ import 'package:flutter/rendering.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:mathforkids/SizeConfig.dart';
 
-
-class studentresultPageState extends StatefulWidget {
+class DispStudTestResState extends StatefulWidget {
   @override
-  studentresultPage createState() => studentresultPage();
+  dispResultPage createState() => dispResultPage();
 }
 
-class studentresultPage extends State<studentresultPageState> {
+class dispResultPage extends State<DispStudTestResState> {
+
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -20,7 +21,7 @@ class studentresultPage extends State<studentresultPageState> {
         title: Text(
           "Math for Kids",
           style: TextStyle(
-            fontSize: SizeConfig.safeBlockHorizontal * 3.5,
+            fontSize: 30,
             fontFamily: "Architect",
             fontWeight: FontWeight.bold,
           ),
@@ -37,7 +38,7 @@ class studentresultPage extends State<studentresultPageState> {
           children:
           [Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text("Most recent quiz", style: TextStyle(
+            child: Text("Ditt senaste quiz", style: TextStyle(
                 fontSize: 22,
                 fontFamily: "Architect",
                 backgroundColor: Colors.green[600],
@@ -54,24 +55,36 @@ class studentresultPage extends State<studentresultPageState> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const ListTile(
+                     ListTile(
                       leading: Icon(
                         Icons.add_circle,
                         color: Colors.green,
                         size: 40,
                       ),
-                      title: Text('Addition',
+                      title: Text('Addition diagnos 2',
                           style: TextStyle(color: Colors.white, fontSize: 18)),
                       subtitle: Text(
                           '2020-12-12', style: TextStyle(color: Colors.white)),
+                         trailing: Row(
+                           mainAxisSize: MainAxisSize.min,
+                           children: [
+                             InkWell(
+                                 child: Text(
+                                   "Mer info",
+                                   style: TextStyle(
+                                       color: Colors.green, fontSize: 20),
+                                 ),
+                                 onTap: () {}),
+                           ],
+                         ),
                     ),
                   ],
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text("Previous quizzes", style: TextStyle(
+              padding: const EdgeInsets.all(8.0) ,
+              child: Text("Tidigare quizzar", style: TextStyle(
                   fontSize: 22,
                   fontFamily: "Architect",
                   backgroundColor: Colors.green[600],
@@ -89,43 +102,67 @@ class studentresultPage extends State<studentresultPageState> {
                   child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const ListTile(
+                         ListTile(
                           leading: Icon(
                             Icons.calculate_rounded,
                             color: Colors.green,
                             size: 40,
                           ),
-                          title: Text('Blandat', style: TextStyle(
+                          title: Text('Blandat test', style: TextStyle(
                               color: Colors.white)),
                           subtitle: Text('2020-12-12', style: TextStyle(
                               color: Colors.white)),
-                        ),
-                       const ListTile(
-                         leading: Icon(
-                           Icons.remove_circle,
-                           color: Colors.green,
-                           size: 40,
-                         ),
-                          title: Text('Subtraktion', style: TextStyle(
-                              color: Colors.white)),
-                          subtitle: Text('2020-12-12', style: TextStyle(
-                              color: Colors.white)),
+                            trailing: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                InkWell(
+                                    child: Text(
+                                      "Mer info",
+                                      style: TextStyle(
+                                          color: Colors.green, fontSize: 20),
+                                    ),
+                                    onTap: () {}),
+                              ],
+                            ),
                         ),
                         const ListTile(
                           leading: Icon(
-                            Icons.add_circle,
+                            Icons.remove_circle,
                             color: Colors.green,
                             size: 40,
                           ),
-                          title: Text('addition', style: TextStyle(
+                          title: Text('Subtraktion diagnos 1', style: TextStyle(
                               color: Colors.white)),
                           subtitle: Text('2020-12-12', style: TextStyle(
                               color: Colors.white)),
                         ),
                          ListTile(
+                          leading: Icon(
+                            Icons.add_circle,
+                            color: Colors.green,
+                            size: 40,
+                          ),
+                          title: Text('Addition diagnos 1', style: TextStyle(
+                              color: Colors.white)),
+                          subtitle: Text('2020-12-12', style: TextStyle(
+                              color: Colors.white)),
+                             trailing: Row(
+                               mainAxisSize: MainAxisSize.min,
+                               children: [
+                                 InkWell(
+                                     child: Text(
+                                       "Mer info",
+                                       style: TextStyle(
+                                           color: Colors.green, fontSize: 20),
+                                     ),
+                                     onTap: () {}),
+                               ],
+                             )
+                        ),
+                        ListTile(
                           leading:
                           Padding(
-                            padding: const EdgeInsets.only(left:16.0),
+                            padding: const EdgeInsets.only(left: 16.0),
                             child: Text('/',
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
@@ -138,10 +175,22 @@ class studentresultPage extends State<studentresultPageState> {
                             ),
                           ),
 
-                          title: Text('Division', style: TextStyle(
+                          title: Text('Division diagnos 1', style: TextStyle(
                               color: Colors.white)),
                           subtitle: Text('2020-12-12', style: TextStyle(
                               color: Colors.white)),
+                            trailing: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                InkWell(
+                                    child: Text(
+                                      "Mer info",
+                                      style: TextStyle(
+                                          color: Colors.green, fontSize: 20),
+                                    ),
+                                    onTap: () {}),
+                              ],
+                            )
                         ),
                       ]
                   )
@@ -150,53 +199,9 @@ class studentresultPage extends State<studentresultPageState> {
           ],
         ),
       ),
+
     );
   }
 }
-/*return Scaffold(
-        backgroundColor: Colors.green[50],
-        appBar: AppBar(
-          title: Text(
-            "Math for Kids",
-            style: TextStyle(
-              fontSize: 30,
-              fontFamily: "Crimson",
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          centerTitle:true,
-          backgroundColor: Colors.green[600],
-        ),
-        body:  Center(
-          child: Column( mainAxisAlignment: MainAxisAlignment.end, crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: Container(
-                    color: Colors.black,
-                    child: Text("Most recent quiz",
-                      style: TextStyle(fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.cyan,
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    color: Colors.yellow,
-                    child: Text("Most recent quiz",
-                      style: TextStyle(fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.red,
-                      ),
-                    ),
-                  ),
-                ),
-              ]),
-        )
-    );*/
-
-
-
 
 
