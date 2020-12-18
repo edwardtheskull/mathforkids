@@ -22,25 +22,25 @@ class LoginPage extends State<loginPageState>{
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Container(
-      child: Scaffold(
-          backgroundColor: Color.fromRGBO(31, 69, 82, 1),
-          appBar: AppBar(
-            title: Text(
-              "Login",
-              style: TextStyle(
-                fontSize: SizeConfig.safeBlockHorizontal * 3.5,
-                fontFamily: "Architect",
-                fontWeight: FontWeight.bold,
-              ),
+    return Scaffold(
+        backgroundColor: Color.fromRGBO(31, 69, 82, 1),
+        appBar: AppBar(
+          title: Text(
+            "Login",
+            style: TextStyle(
+              fontSize: SizeConfig.safeBlockHorizontal * 3.5,
+              fontFamily: "Architect",
+              fontWeight: FontWeight.bold,
             ),
-            centerTitle:true,
-            backgroundColor: Colors.green[600],
           ),
-          body:  SingleChildScrollView(
-            child: Container(height: MediaQuery.of(context).size.height*1, width: MediaQuery.of(context).size.width,
+          centerTitle:true,
+          backgroundColor: Colors.green[600],
+        ),
+        body: Column(
+          children: [
+            Expanded(
               child: Center(
-                child: Container(width: MediaQuery.of(context).size.width*0.8,
+                  child: Container(width: MediaQuery.of(context).size.width*0.8,
                   child: Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [Row(children: [
                           Expanded(child: Text("email/username:",
@@ -106,8 +106,8 @@ class LoginPage extends State<loginPageState>{
                 ),
               ),
             ),
-          )
-      ),
+          ],
+        )
     );
   }
 }
