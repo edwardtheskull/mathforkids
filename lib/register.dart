@@ -6,20 +6,28 @@ import 'package:sqflite/sqflite.dart';
 import 'package:mathforkids/database_connect.dart';
 import 'package:mathforkids/user.dart';
 import 'package:mathforkids/SizeConfig.dart';
+import 'package:http/http.dart' as http;
 
 class registerPageState extends StatefulWidget{
   @override
   RegisterPage createState() => RegisterPage();
 }
 
+String dropdownvalue = "Student";
+TextEditingController textname = new TextEditingController();
+TextEditingController textpassword = new TextEditingController();
+TextEditingController textconfirmpassword = new TextEditingController();
+TextEditingController textmail = new TextEditingController();
+TextEditingController textnick = new TextEditingController();
+TextEditingController textrole = new TextEditingController();
+
+Future<List> senddata() async {
+  final response = await http.post("http://localhost/mathforkids/insertdata.php", body: {
+    "username": textname.text,
+    "password": textpassword.text,
+  });}
+
 class RegisterPage extends State<registerPageState>{
-  String dropdownvalue = "Student";
-  TextEditingController textname = new TextEditingController();
-  TextEditingController textpassword = new TextEditingController();
-  TextEditingController textconfirmpassword = new TextEditingController();
-  TextEditingController textmail = new TextEditingController();
-  TextEditingController textnick = new TextEditingController();
-  TextEditingController textrole = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -155,6 +163,7 @@ class RegisterPage extends State<registerPageState>{
                     Center(
                       child: RaisedButton(
                         onPressed: (){
+                          senddata();
                           var newDBUser = User(username: textname.text, password: textpassword.text);
                           DBProvider.db.newUser(newDBUser);
                           Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));

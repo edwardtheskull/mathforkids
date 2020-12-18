@@ -31,7 +31,6 @@ class MyStatefulWidget extends StatefulWidget{
   _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
 }
 
-
 class _MyStatefulWidgetState extends State<MyStatefulWidget>{
   TextEditingController textInput = new TextEditingController();
   @override
