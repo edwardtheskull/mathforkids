@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:mathforkids/DispStudTestRes.dart';
 import 'package:mathforkids/connect.dart';
 import 'package:mathforkids/learn.dart';
 import 'package:mathforkids/login.dart';
@@ -62,7 +63,7 @@ class StudentPage extends State<studentPageState>{
                 child: ButtonTheme(minWidth: MediaQuery.of(context).size.width/1.6, height: MediaQuery.of(context).size.height/8,
                   child: RaisedButton(elevation: 3,
                     onPressed: (){
-                      Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
+                      Navigator.push(context, new MaterialPageRoute(builder: (context) => new DispStudTestResState()));
                     },
                     color: Colors.green[600],
                     child: Text("Previous quizzes", style: TextStyle(letterSpacing: 1,
