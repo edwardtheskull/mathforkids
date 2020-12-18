@@ -19,13 +19,10 @@ class loginPageState extends StatefulWidget{
 class LoginPage extends State<loginPageState>{
   TextEditingController textname = new TextEditingController();
   TextEditingController textpassword = new TextEditingController();
-  MediaQueryData queryData;
   @override
   Widget build(BuildContext context) {
-    //double ratio = SizeConfig().init(context);
-   // print(ratio);
-    queryData = MediaQuery.of(context);
-    double devicePixelRatio = queryData.devicePixelRatio;
+    double ratio = SizeConfig().init(context);
+    print(ratio);
     return Scaffold(
         backgroundColor: Color.fromRGBO(31, 69, 82, 1),
         appBar: AppBar(
@@ -92,7 +89,7 @@ class LoginPage extends State<loginPageState>{
                             Row(mainAxisAlignment: MainAxisAlignment.center,
                               children: [Padding(
                               padding: const EdgeInsets.only(top: 35),
-                              child: ButtonTheme(minWidth: queryData.size.width/devicePixelRatio, height: (MediaQuery.of(context).size.height/devicePixelRatio/4),
+                              child: ButtonTheme(minWidth: MediaQuery.of(context).size.width*MediaQuery.of(context).devicePixelRatio/2.5, height: MediaQuery.of(context).size.height*MediaQuery.of(context).devicePixelRatio/15,
                                 child: RaisedButton(elevation: 3,
                                   onPressed: (){
                                     Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherPageState()));
