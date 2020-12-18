@@ -21,7 +21,8 @@ class LoginPage extends State<loginPageState>{
   TextEditingController textpassword = new TextEditingController();
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
+    double ratio = SizeConfig().init(context);
+    print(ratio);
     return Scaffold(
         backgroundColor: Color.fromRGBO(31, 69, 82, 1),
         appBar: AppBar(

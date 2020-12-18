@@ -6,13 +6,14 @@ class SizeConfig {
   static double screenHeight;
   static double blockSizeHorizontal;
   static double blockSizeVertical;
+  double ratio;
 
   static double _safeAreaHorizontal;
   static double _safeAreaVertical;
   static double safeBlockHorizontal;
   static double safeBlockVertical;
 
-  void init(BuildContext context) {
+  double init(BuildContext context) {
     _mediaQueryData = MediaQuery.of(context);
     screenWidth = _mediaQueryData.size.width;
     screenHeight = _mediaQueryData.size.height;
@@ -28,5 +29,24 @@ class SizeConfig {
     safeBlockVertical = (screenHeight -
         _safeAreaVertical) / 100;
 
+        if(screenWidth < screenHeight)
+            ratio = screenWidth/screenHeight;
+        else
+            ratio = screenHeight/screenWidth;
+
+         if(ratio < 0.6)
+         {
+            print(screenWidth);
+            print(screenHeight);
+            ratio = 5;
+         }
+         else
+         {
+              print(screenWidth);
+              print(screenHeight);
+              ratio = 10;
+         }
+
+         return ratio;
   }
 }
