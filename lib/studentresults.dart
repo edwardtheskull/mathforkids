@@ -20,7 +20,7 @@ class studentresultPage extends State<studentresultPageState> {
         title: Text(
           "Math for Kids",
           style: TextStyle(
-            fontSize: 30,
+            fontSize: SizeConfig.safeBlockHorizontal * 3.5,
             fontFamily: "Architect",
             fontWeight: FontWeight.bold,
           ),

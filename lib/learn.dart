@@ -21,7 +21,7 @@ class LearnPage extends State<learnPageState>{
           title: Text(
             "Learn",
             style: TextStyle(
-              fontSize: 30,
+              fontSize: SizeConfig.safeBlockHorizontal * 3.5,
               fontFamily: "Architect",
               fontWeight: FontWeight.bold,
             ),

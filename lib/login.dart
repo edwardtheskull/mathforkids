@@ -29,7 +29,7 @@ class LoginPage extends State<loginPageState>{
             title: Text(
               "Login",
               style: TextStyle(
-                fontSize: SizeConfig.safeBlockHorizontal * 9,
+                fontSize: SizeConfig.safeBlockHorizontal * 3.5,
                 fontFamily: "Architect",
                 fontWeight: FontWeight.bold,
               ),

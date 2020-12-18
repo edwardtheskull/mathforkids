@@ -22,7 +22,7 @@ class teacherPage extends State<teacherPageState>{
           title: Text(
             "Math for Kids",
             style: TextStyle(
-              fontSize: SizeConfig.safeBlockHorizontal * 9,
+              fontSize: SizeConfig.safeBlockHorizontal * 3.5,
               fontFamily: "Architect",
               fontWeight: FontWeight.bold,
             ),

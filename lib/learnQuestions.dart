@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:mathforkids/studenthome.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:mathforkids/SizeConfig.dart';
 
 class learnQPageState extends StatefulWidget {
   @override
@@ -19,7 +20,7 @@ class LearnQPage extends State<learnQPageState> {
             title: Text(
               "Math for Kids",
               style: TextStyle(
-                fontSize: 30,
+                fontSize: SizeConfig.safeBlockHorizontal * 3.5,
                 fontFamily: "Architect",
                 fontWeight: FontWeight.bold,
               ),

@@ -37,7 +37,7 @@ class RegisterPage extends State<registerPageState>{
           title: Text(
             "Register",
             style: TextStyle(
-              fontSize: 30,
+              fontSize: SizeConfig.safeBlockHorizontal * 3.5,
               color: Colors.white,
               fontFamily: "Architect",
               fontWeight: FontWeight.bold,
