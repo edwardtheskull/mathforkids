@@ -46,8 +46,8 @@ class SizeConfig {
             ShortestLength = screenHeight;
 
 
-         print(screenWidth);
-         print(screenHeight);
+       //  print(screenWidth);
+       //  print(screenHeight);
          if(ShortestLength < 650)
          {
             TextFontSize = safeBlockHorizontal*6;

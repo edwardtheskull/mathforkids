@@ -23,7 +23,6 @@ class LoginPage extends State<loginPageState>{
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    print(MediaQuery.of(context).devicePixelRatio);
     return Scaffold(
         backgroundColor: Color.fromRGBO(31, 69, 82, 1),
         appBar: AppBar(
@@ -93,7 +92,7 @@ class LoginPage extends State<loginPageState>{
                               child: ButtonTheme(minWidth: SizeConfig.ButtonWidth, height: SizeConfig.ButtonHeight,
                                 child: RaisedButton(elevation: 3,
                                   onPressed: (){
-                                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new studentPageState()));
+                                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherPageState()));
                                   },
                                   color: Colors.green[600],
                                   child: Text("Next", style: TextStyle(letterSpacing: 1,
