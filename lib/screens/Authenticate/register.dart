@@ -134,16 +134,19 @@ class RegisterPage extends State<registerPageState>{
                       ),
                       Row( mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Role:",
-                            style: TextStyle(fontSize: SizeConfig.TextFontSize,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: "Architect",
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("Role:",
+                              style: TextStyle(fontSize: SizeConfig.TextFontSize,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: "Architect",
+                              ),
                             ),
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: DropdownButton<String>(value: dropdownvalue, style: TextStyle(color: Colors.green, fontSize: SizeConfig.TextFieldFontSize,), underline: Container(height:2, color: Colors.white),
+                            child: DropdownButton<String>(value: dropdownvalue, style: TextStyle(color: Colors.green, fontSize: SizeConfig.TextFieldFontSize), underline: Container(color: Colors.transparent),
                               onChanged: (String newValue) {
                                 setState(() {
                                   dropdownvalue = newValue;
