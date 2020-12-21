@@ -68,14 +68,7 @@ class specTestPage extends State<specTestResultState> {
                               style: TextStyle(
                                   color: Colors.green, fontSize: SizeConfig.MiniTextFontSize),
                             ),
-                            onTap: (){Navigator.push(context,
-                                new MaterialPageRoute(
-                                    builder: (context) => new specTestResultState(),
-                                  settings: RouteSettings(
-                                    arguments: ListTile
-                                  )),
-                                );
-                            },
+                            onTap: (){},
                           )],
                       ),
                     ),
