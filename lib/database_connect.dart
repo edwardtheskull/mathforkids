@@ -1,6 +1,6 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-import 'file:///C:/Users/sleve/Documents/GitHub/mathforkids/lib/screens/Authenticate/user.dart';
+import 'package:mathforkids/screens/Authenticate/user.dart';
 
 class DBProvider{
   DBProvider._();
