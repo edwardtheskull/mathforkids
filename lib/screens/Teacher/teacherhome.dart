@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:mathforkids/connect.dart';
-import 'package:mathforkids/createquiz.dart';
-import 'package:mathforkids/studentresults.dart';
+import 'file:///C:/Users/sleve/Documents/GitHub/mathforkids/lib/screens/Teacher/createquiz.dart';
+import 'file:///C:/Users/sleve/Documents/GitHub/mathforkids/lib/screens/Pupil/studentresults.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:mathforkids/SizeConfig.dart';
+import 'file:///C:/Users/sleve/Documents/GitHub/mathforkids/lib/utils/SizeConfig.dart';
 
 class teacherPageState extends StatefulWidget{
   @override

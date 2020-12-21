@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:mathforkids/login.dart';
+import 'file:///C:/Users/sleve/Documents/GitHub/mathforkids/lib/screens/Authenticate/login.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:mathforkids/SizeConfig.dart';
+import 'file:///C:/Users/sleve/Documents/GitHub/mathforkids/lib/utils/SizeConfig.dart';
 
 
 class connectPageState extends StatefulWidget{

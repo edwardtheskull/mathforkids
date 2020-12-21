@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:mathforkids/studenthome.dart';
-import 'package:mathforkids/studentresults.dart';
-import 'package:mathforkids/teacherhome.dart';
+import 'file:///C:/Users/sleve/Documents/GitHub/mathforkids/lib/screens/Pupil/studenthome.dart';
+import 'file:///C:/Users/sleve/Documents/GitHub/mathforkids/lib/screens/Pupil/studentresults.dart';
+import 'file:///C:/Users/sleve/Documents/GitHub/mathforkids/lib/screens/Teacher/teacherhome.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:flutter/widgets.dart';
 import 'register.dart';
-import 'package:mathforkids/SizeConfig.dart';
+import 'file:///C:/Users/sleve/Documents/GitHub/mathforkids/lib/utils/SizeConfig.dart';
 
 
 class loginPageState extends StatefulWidget{
