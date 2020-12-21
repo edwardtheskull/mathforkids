@@ -20,7 +20,7 @@ class LearnQPage extends State<learnQPageState> {
             title: Text(
               "Math for Kids",
               style: TextStyle(
-                fontSize: SizeConfig.safeBlockHorizontal * 3.5,
+                fontSize: SizeConfig.AppbarFontSize,
                 fontFamily: "Architect",
                 fontWeight: FontWeight.bold,
               ),
@@ -36,7 +36,7 @@ class LearnQPage extends State<learnQPageState> {
                     child: Text(
                       "Addition",
                       style: TextStyle(
-                          fontSize: 20,
+                          fontSize: SizeConfig.MiniTextFontSize,
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontFamily: 'Architect'),
@@ -47,7 +47,6 @@ class LearnQPage extends State<learnQPageState> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  width: 400,
                   child: Card(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0),
@@ -59,12 +58,12 @@ class LearnQPage extends State<learnQPageState> {
                             leading: Icon(
                               Icons.add_circle,
                               color: Colors.green,
-                              size: 40,
+                              size: SizeConfig.SmallIconSize,
                             ),
                             title: Text('Addition',
-                                style: TextStyle(color: Colors.white)),
-                            subtitle: Text('Enkel',
-                                style: TextStyle(color: Colors.white)),
+                                style: TextStyle(color: Colors.white, fontSize: SizeConfig.MiniTextFontSize)),
+                            subtitle: Text('Easy',
+                                style: TextStyle(color: Colors.white, fontSize: SizeConfig.XSMiniTextFontSize)),
                             trailing: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
@@ -72,7 +71,7 @@ class LearnQPage extends State<learnQPageState> {
                                     child: Text(
                                       "Take quiz",
                                       style: TextStyle(
-                                          color: Colors.green, fontSize: 20),
+                                          color: Colors.green, fontSize: SizeConfig.MiniTextFontSize),
                                     ),
                                     onTap: () {}),
                               ],
@@ -99,7 +98,7 @@ class LearnQPage extends State<learnQPageState> {
                           ),
                           title: Text('Addition',
                               style: TextStyle(color: Colors.white)),
-                          subtitle: Text('Medel',
+                          subtitle: Text('Intermidiate',
                               style: TextStyle(color: Colors.white)),
                           trailing: Row(
                             mainAxisSize: MainAxisSize.min,
@@ -108,7 +107,7 @@ class LearnQPage extends State<learnQPageState> {
                                   child: Text(
                                     "Take quiz",
                                     style: TextStyle(
-                                        color: Colors.green, fontSize: 20),
+                                        color: Colors.green, fontSize: SizeConfig.MiniTextFontSize),
                                   ),
                                   onTap: () {}),
                             ],
@@ -136,7 +135,7 @@ class LearnQPage extends State<learnQPageState> {
                             ),
                             title: Text('Addition',
                                 style: TextStyle(color: Colors.white)),
-                            subtitle: Text('Svår',
+                            subtitle: Text('Hard',
                                 style: TextStyle(color: Colors.white)),
                             trailing: Row(
                               mainAxisSize: MainAxisSize.min,
@@ -145,7 +144,7 @@ class LearnQPage extends State<learnQPageState> {
                                     child: Text(
                                       "Take quiz",
                                       style: TextStyle(
-                                          color: Colors.green, fontSize: 20),
+                                          color: Colors.green, fontSize: SizeConfig.MiniTextFontSize),
                                     ),
                                     onTap: () {}),
                               ],
