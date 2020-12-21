@@ -1,15 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:mathforkids/screens/Pupil/studenthome.dart';
-import 'package:mathforkids/screens/Pupil/studentresults.dart';
-import 'package:mathforkids/screens/Teacher/teacherhome.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:flutter/widgets.dart';
-import 'register.dart';
-import 'package:mathforkids/screens/Authenticate/login.dart';
-import 'package:mathforkids/utils/SizeConfig.dart';
-import 'package:mathforkids/screens/Authenticate/user.dart';
+import 'package:mathforkids/utils/Imports.dart';
 
 
 class loginPageState extends StatefulWidget{

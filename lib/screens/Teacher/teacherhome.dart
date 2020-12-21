@@ -1,11 +1,5 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:mathforkids/connect.dart';
-import 'package:mathforkids/screens/Teacher/createquiz.dart';
-import 'package:mathforkids/screens/Pupil/studentresults.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:mathforkids/utils/SizeConfig.dart';
+import 'package:mathforkids/utils/Imports.dart';
+
 
 class teacherPageState extends StatefulWidget{
   @override
