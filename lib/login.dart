@@ -23,7 +23,6 @@ class LoginPage extends State<loginPageState>{
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    print(MediaQuery.of(context).devicePixelRatio);
     return Scaffold(
         backgroundColor: Color.fromRGBO(31, 69, 82, 1),
         appBar: AppBar(
@@ -90,7 +89,7 @@ class LoginPage extends State<loginPageState>{
                             Row(mainAxisAlignment: MainAxisAlignment.center,
                               children: [Padding(
                               padding: const EdgeInsets.only(top: 35),
-                              child: ButtonTheme(minWidth: SizeConfig.ButtonWidth, height: SizeConfig.ButtonHeight,
+                              child: ButtonTheme(minWidth: SizeConfig.SmallButtonWidth, height: SizeConfig.ButtonHeight,
                                 child: RaisedButton(elevation: 3,
                                   onPressed: (){
                                     Navigator.push(context, new MaterialPageRoute(builder: (context) => new studentPageState()));
