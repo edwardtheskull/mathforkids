@@ -26,6 +26,7 @@ class SizeConfig {
   static double SmallIconSize;
   static double MiniTextFontSize;
   static double XSMiniTextFontSize;
+  static double ScreenHeight;
 
   double ShortestLength;
 
@@ -46,47 +47,67 @@ class SizeConfig {
     safeBlockVertical = (screenHeight -
         _safeAreaVertical) / 100;
 
-        if(screenWidth < screenHeight)
-            ShortestLength = screenWidth;
-        else
-            ShortestLength = screenHeight;
+    if(screenWidth < screenHeight)
+      ShortestLength = screenWidth;
+    else
+      ShortestLength = screenHeight;
 
 
-       print(screenWidth);
-       print(screenHeight);
-         if(ShortestLength < 650)
-         {
-            TextFontSize = safeBlockHorizontal*6;
-            TextFieldFontSize = safeBlockHorizontal*5;
-            ButtonWidth = MediaQuery.of(context).size.width/1.5;
-            ButtonHeight = MediaQuery.of(context).size.height/9;
-            ButtonTextSize = safeBlockHorizontal * 7;
-            AppbarFontSize = SizeConfig.safeBlockHorizontal * 8;
-            LargeButtonTextSize = 50;
-            SquareButton = MediaQuery.of(context).size.width/4.0;
-            HeaderTextFontSize = safeBlockHorizontal*5.5;
-            SmallTextFontSize = safeBlockHorizontal*5;
-            SmallIconSize = 40;
-            MiniTextFontSize = safeBlockHorizontal*4.5;
-            XSMiniTextFontSize = safeBlockHorizontal*4;
-            SmallButtonWidth = MediaQuery.of(context).size.width/1.8;
-         }
-         else
-         {
-                        TextFontSize = safeBlockHorizontal*6;
-                        TextFieldFontSize = safeBlockHorizontal*5;
-                        ButtonWidth = MediaQuery.of(context).size.width/2;
-                        ButtonHeight = MediaQuery.of(context).size.height/9;
-                        ButtonTextSize = safeBlockHorizontal * 6;
-                        AppbarFontSize = SizeConfig.safeBlockHorizontal * 5;
-                        LargeButtonTextSize = 50;
-                        SquareButton = MediaQuery.of(context).size.width/4.0;
-                        HeaderTextFontSize = safeBlockHorizontal*5.5;
-                        SmallTextFontSize = safeBlockHorizontal*5;
-                        SmallIconSize = 80;
-                        MiniTextFontSize = safeBlockHorizontal*4.5;
-                        XSMiniTextFontSize = safeBlockHorizontal*4;
-                        SmallButtonWidth = MediaQuery.of(context).size.width/2.3;
-         }
+    print(screenWidth);
+    print(screenHeight);
+    if(ShortestLength < 650)
+    {
+      TextFontSize = safeBlockHorizontal*6;
+      TextFieldFontSize = safeBlockHorizontal*5;
+      ButtonWidth = MediaQuery.of(context).size.width/1.5;
+      ButtonHeight = MediaQuery.of(context).size.height/9;
+      ButtonTextSize = safeBlockHorizontal * 7;
+      AppbarFontSize = SizeConfig.safeBlockHorizontal * 8;
+      LargeButtonTextSize = 50;
+      SquareButton = MediaQuery.of(context).size.width/4.0;
+      HeaderTextFontSize = safeBlockHorizontal*5.5;
+      SmallTextFontSize = safeBlockHorizontal*5;
+      SmallIconSize = 40;
+      MiniTextFontSize = safeBlockHorizontal*4.5;
+      XSMiniTextFontSize = safeBlockHorizontal*4;
+      SmallButtonWidth = MediaQuery.of(context).size.width/1.8;
+      ScreenHeight = MediaQuery.of(context).size.height*1.3;
+    }
+    else if(ShortestLength < 350)
+    {
+         TextFontSize = safeBlockHorizontal*6;
+              TextFieldFontSize = safeBlockHorizontal*5;
+              ButtonWidth = MediaQuery.of(context).size.width/1.5;
+              ButtonHeight = MediaQuery.of(context).size.height/9;
+              ButtonTextSize = safeBlockHorizontal * 7;
+              AppbarFontSize = SizeConfig.safeBlockHorizontal * 8;
+              LargeButtonTextSize = 50;
+              SquareButton = MediaQuery.of(context).size.width/4.0;
+              HeaderTextFontSize = safeBlockHorizontal*5.5;
+              SmallTextFontSize = safeBlockHorizontal*5;
+              SmallIconSize = 40;
+              MiniTextFontSize = safeBlockHorizontal*4.5;
+              XSMiniTextFontSize = safeBlockHorizontal*4;
+              SmallButtonWidth = MediaQuery.of(context).size.width/1.8;
+              ScreenHeight = MediaQuery.of(context).size.height*1.6;
+    }
+    else
+    {
+      TextFontSize = safeBlockHorizontal*6;
+      TextFieldFontSize = safeBlockHorizontal*5;
+      ButtonWidth = MediaQuery.of(context).size.width/2;
+      ButtonHeight = MediaQuery.of(context).size.height/9;
+      ButtonTextSize = safeBlockHorizontal * 6;
+      AppbarFontSize = SizeConfig.safeBlockHorizontal * 5;
+      LargeButtonTextSize = 80;
+      SquareButton = MediaQuery.of(context).size.width/4.0;
+      HeaderTextFontSize = safeBlockHorizontal*5.5;
+      SmallTextFontSize = safeBlockHorizontal*5;
+      SmallIconSize = 80;
+      MiniTextFontSize = safeBlockHorizontal*4.5;
+      XSMiniTextFontSize = safeBlockHorizontal*4;
+      SmallButtonWidth = MediaQuery.of(context).size.width/2.3;
+      ScreenHeight = MediaQuery.of(context).size.height*1;
+    }
   }
 }

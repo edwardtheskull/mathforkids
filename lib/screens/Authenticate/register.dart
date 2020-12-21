@@ -50,7 +50,7 @@ class RegisterPage extends State<registerPageState>{
         ),
         body: SingleChildScrollView(
           child: Center(
-            child: Container(height: MediaQuery.of(context).size.height*1.3, width: MediaQuery.of(context).size.width*0.8,
+            child: Container(height: SizeConfig.ScreenHeight, width: MediaQuery.of(context).size.width*0.8,
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Column( crossAxisAlignment: CrossAxisAlignment.center,
