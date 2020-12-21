@@ -1,21 +1,18 @@
 import 'package:mathforkids/utils/Imports.dart';
+import 'package:mathforkids/screens/Authenticate/wrapper.dart';
+import 'package:provider/provider.dart';
+import 'package:mathforkids/screens/services/auth.dart';
 
-
-void main() {
-  runApp(MaterialApp(
-    routes: {
-      '/': (context) => Home()
-    },
-  ));
-}
+void main() => runApp(Home());
 
 class Home extends StatelessWidget{
   @override
   Widget build(BuildContext context){
-    return Scaffold(
-        body: Center(
-          child: MyStatefulWidget(),
-        )
+    return StreamProvider<User>.value(
+      value: AuthService().user,
+      child: MaterialApp(
+        home: Wrapper(),
+      )
     );
   }
 }

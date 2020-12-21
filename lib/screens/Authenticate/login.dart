@@ -1,6 +1,5 @@
-<<<<<<< Updated upstream
+
 import 'package:mathforkids/utils/Imports.dart';
-=======
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -14,7 +13,6 @@ import 'register.dart';
 import 'package:mathforkids/screens/Authenticate/login.dart';
 import 'package:mathforkids/utils/SizeConfig.dart';
 import 'package:mathforkids/screens/Authenticate/user.dart';
->>>>>>> Stashed changes
 
 
 class loginPageState extends StatefulWidget{
@@ -25,6 +23,10 @@ class loginPageState extends StatefulWidget{
 
 class LoginPage extends State<loginPageState>{
   final AuthService _auth = AuthService();
+  final _formKey = GlobalKey<FormState>();
+  String email = '';
+  String password = '';
+  String error = '';
   TextEditingController textname = new TextEditingController();
   TextEditingController textpassword = new TextEditingController();
   MediaQueryData queryData;
@@ -100,14 +102,14 @@ class LoginPage extends State<loginPageState>{
                               child: ButtonTheme(minWidth: SizeConfig.SmallButtonWidth, height: SizeConfig.ButtonHeight,
                                 child: RaisedButton(elevation: 3,
                                   onPressed: () async{
-                                    dynamic res = await _auth.signIn();
+                                    dynamic res = await _auth.signInWithEmailAndPassword(textname.text, textpassword.text);
                                     if(res == null){
                                       print('error signing in');
                                     } else {
                                       print('signed in');
                                       print(res.uid);
+                                      Navigator.push(context, new MaterialPageRoute(builder: (context) => new studentPageState()));
                                     }
-                                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new studentPageState()));
                                   },
                                   color: Colors.green[600],
                                   child: Text("Next", style: TextStyle(letterSpacing: 1,

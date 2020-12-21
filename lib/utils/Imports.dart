@@ -7,7 +7,6 @@ export 'dart:convert';
 export 'dart:async';
 
 export 'package:mathforkids/utils/SizeConfig.dart';
-export 'package:mathforkids/database_connect.dart';
 export 'package:mathforkids/connect.dart';
 export 'package:mathforkids/screens/Authenticate/register.dart';
 export 'package:mathforkids/screens/Authenticate/login.dart';
