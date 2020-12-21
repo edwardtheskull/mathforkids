@@ -98,7 +98,7 @@ class LearnQPage extends State<learnQPageState> {
                           ),
                           title: Text('Addition',
                               style: TextStyle(color: Colors.white)),
-                          subtitle: Text('Intermidiate',
+                          subtitle: Text('Intermediate',
                               style: TextStyle(color: Colors.white)),
                           trailing: Row(
                             mainAxisSize: MainAxisSize.min,
@@ -131,7 +131,7 @@ class LearnQPage extends State<learnQPageState> {
                             leading: Icon(
                               Icons.add_circle,
                               color: Colors.green,
-                              size: 40,
+                              size: SizeConfig.SmallIconSize,
                             ),
                             title: Text('Addition',
                                 style: TextStyle(color: Colors.white)),
