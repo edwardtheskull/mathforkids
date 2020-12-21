@@ -168,8 +168,8 @@ class RegisterPage extends State<registerPageState>{
                           child: RaisedButton(elevation: 3,
                             onPressed: (){
                               senddata();
-                              var newDBUser = User(username: textname.text, password: textpassword.text);
-                              DBProvider.db.newUser(newDBUser);
+                              /*var newDBUser = User(username: textname.text, password: textpassword.text);
+                              DBProvider.db.newUser(newDBUser);*/
                               Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
                             },
                             color: Colors.green[600],
