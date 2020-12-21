@@ -92,7 +92,7 @@ class LoginPage extends State<loginPageState>{
                               child: ButtonTheme(minWidth: SizeConfig.ButtonWidth, height: SizeConfig.ButtonHeight,
                                 child: RaisedButton(elevation: 3,
                                   onPressed: (){
-                                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherPageState()));
+                                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new studentPageState()));
                                   },
                                   color: Colors.green[600],
                                   child: Text("Next", style: TextStyle(letterSpacing: 1,

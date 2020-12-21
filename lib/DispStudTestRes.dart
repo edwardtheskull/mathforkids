@@ -21,7 +21,7 @@ class dispResultPage extends State<DispStudTestResState> {
         title: Text(
           "Math for Kids",
           style: TextStyle(
-            fontSize: 30,
+            fontSize: SizeConfig.AppbarFontSize,
             fontFamily: "Architect",
             fontWeight: FontWeight.bold,
           ),
@@ -38,14 +38,13 @@ class dispResultPage extends State<DispStudTestResState> {
           children:
           [Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text("Ditt senaste quiz", style: TextStyle(
-                fontSize: 22,
+            child: Text("Your most recent quiz", style: TextStyle(
+                fontSize: SizeConfig.HeaderTextFontSize,
                 fontFamily: "Architect",
                 backgroundColor: Colors.green[600],
                 color: Colors.white),),
           ),
             Container(
-              width: 400,
               child: Card(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15.0),
@@ -59,20 +58,20 @@ class dispResultPage extends State<DispStudTestResState> {
                       leading: Icon(
                         Icons.add_circle,
                         color: Colors.green,
-                        size: 40,
+                        size: SizeConfig.SmallIconSize,
                       ),
                       title: Text('Addition diagnos 2',
-                          style: TextStyle(color: Colors.white, fontSize: 18)),
+                          style: TextStyle(color: Colors.white, fontSize: SizeConfig.MiniTextFontSize)),
                       subtitle: Text(
-                          '2020-12-12', style: TextStyle(color: Colors.white)),
+                          '2020-12-12', style: TextStyle(color: Colors.white, fontSize: SizeConfig.XSMiniTextFontSize)),
                          trailing: Row(
                            mainAxisSize: MainAxisSize.min,
                            children: [
                              InkWell(
                                  child: Text(
-                                   "Mer info",
+                                   "More info",
                                    style: TextStyle(
-                                       color: Colors.green, fontSize: 20),
+                                       color: Colors.green, fontSize: SizeConfig.SmallTextFontSize),
                                  ),
                                  onTap: () {}),
                            ],
@@ -84,15 +83,14 @@ class dispResultPage extends State<DispStudTestResState> {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0) ,
-              child: Text("Tidigare quizzar", style: TextStyle(
-                  fontSize: 22,
+              child: Text("Earlier Quizzes", style: TextStyle(
+                  fontSize: SizeConfig.HeaderTextFontSize,
                   fontFamily: "Architect",
                   backgroundColor: Colors.green[600],
                   color: Colors.white),
               ),
             ),
             Container(
-              width: 400,
               child: Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15.0),
@@ -106,54 +104,54 @@ class dispResultPage extends State<DispStudTestResState> {
                           leading: Icon(
                             Icons.calculate_rounded,
                             color: Colors.green,
-                            size: 40,
+                            size: SizeConfig.SmallIconSize,
                           ),
-                          title: Text('Blandat test', style: TextStyle(
-                              color: Colors.white)),
+                          title: Text('Mixed test', style: TextStyle(
+                              color: Colors.white, fontSize: SizeConfig.MiniTextFontSize)),
                           subtitle: Text('2020-12-12', style: TextStyle(
-                              color: Colors.white)),
+                              color: Colors.white, fontSize: SizeConfig.XSMiniTextFontSize)),
                             trailing: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 InkWell(
                                     child: Text(
-                                      "Mer info",
+                                      "More info",
                                       style: TextStyle(
-                                          color: Colors.green, fontSize: 20),
+                                          color: Colors.green, fontSize: SizeConfig.MiniTextFontSize),
                                     ),
                                     onTap: () {}),
                               ],
                             ),
                         ),
-                        const ListTile(
+                        ListTile(
                           leading: Icon(
                             Icons.remove_circle,
                             color: Colors.green,
-                            size: 40,
+                            size: SizeConfig.SmallIconSize,
                           ),
                           title: Text('Subtraktion diagnos 1', style: TextStyle(
-                              color: Colors.white)),
+                              color: Colors.white, fontSize: SizeConfig.MiniTextFontSize )),
                           subtitle: Text('2020-12-12', style: TextStyle(
-                              color: Colors.white)),
+                              color: Colors.white, fontSize: SizeConfig.XSMiniTextFontSize)),
                         ),
                          ListTile(
                           leading: Icon(
                             Icons.add_circle,
                             color: Colors.green,
-                            size: 40,
+                            size: SizeConfig.SmallIconSize,
                           ),
                           title: Text('Addition diagnos 1', style: TextStyle(
-                              color: Colors.white)),
+                              color: Colors.white, fontSize: SizeConfig.MiniTextFontSize)),
                           subtitle: Text('2020-12-12', style: TextStyle(
-                              color: Colors.white)),
+                              color: Colors.white, fontSize: SizeConfig.XSMiniTextFontSize)),
                              trailing: Row(
                                mainAxisSize: MainAxisSize.min,
                                children: [
                                  InkWell(
                                      child: Text(
-                                       "Mer info",
+                                       "More info",
                                        style: TextStyle(
-                                           color: Colors.green, fontSize: 20),
+                                           color: Colors.green, fontSize: SizeConfig.MiniTextFontSize),
                                      ),
                                      onTap: () {}),
                                ],
@@ -176,17 +174,17 @@ class dispResultPage extends State<DispStudTestResState> {
                           ),
 
                           title: Text('Division diagnos 1', style: TextStyle(
-                              color: Colors.white)),
+                              color: Colors.white, fontSize: SizeConfig.MiniTextFontSize)),
                           subtitle: Text('2020-12-12', style: TextStyle(
-                              color: Colors.white)),
+                              color: Colors.white, fontSize: SizeConfig.XSMiniTextFontSize)),
                             trailing: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 InkWell(
                                     child: Text(
-                                      "Mer info",
+                                      "More info",
                                       style: TextStyle(
-                                          color: Colors.green, fontSize: 20),
+                                          color: Colors.green, fontSize: SizeConfig.MiniTextFontSize),
                                     ),
                                     onTap: () {}),
                               ],
