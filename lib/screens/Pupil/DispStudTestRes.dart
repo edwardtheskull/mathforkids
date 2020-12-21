@@ -166,7 +166,7 @@ class dispResultPage extends State<DispStudTestResState> {
                             child: Text('/',
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
-                                  fontSize: 20,
+                                  fontSize: SizeConfig.SmallIconSize,
                                   background: Paint()
                                     ..strokeWidth = 25
                                     ..color = Colors.green

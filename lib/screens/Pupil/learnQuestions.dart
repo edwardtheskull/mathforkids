@@ -61,9 +61,9 @@ class LearnQPage extends State<learnQPageState> {
                               size: SizeConfig.SmallIconSize,
                             ),
                             title: Text('Addition',
-                                style: TextStyle(color: Colors.white, fontSize: SizeConfig.MiniTextFontSize)),
+                                style: TextStyle(color: Colors.white, fontSize: SizeConfig.MiniTextFontSize, fontFamily: "Architect")),
                             subtitle: Text('Easy',
-                                style: TextStyle(color: Colors.white, fontSize: SizeConfig.XSMiniTextFontSize)),
+                                style: TextStyle(color: Colors.white, fontSize: SizeConfig.XSMiniTextFontSize, fontFamily: "Architect")),
                             trailing: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
@@ -71,7 +71,7 @@ class LearnQPage extends State<learnQPageState> {
                                     child: Text(
                                       "Take quiz",
                                       style: TextStyle(
-                                          color: Colors.green, fontSize: SizeConfig.MiniTextFontSize),
+                                          color: Colors.green, fontSize: SizeConfig.MiniTextFontSize, fontFamily: "Architect"),
                                     ),
                                     onTap: () {}),
                               ],
@@ -82,7 +82,6 @@ class LearnQPage extends State<learnQPageState> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  width: 400,
                   child: Card(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0),
@@ -94,12 +93,12 @@ class LearnQPage extends State<learnQPageState> {
                           leading: Icon(
                             Icons.add_circle,
                             color: Colors.green,
-                            size: 40,
+                            size: SizeConfig.SmallIconSize,
                           ),
                           title: Text('Addition',
-                              style: TextStyle(color: Colors.white)),
+                              style: TextStyle(color: Colors.white, fontSize:  SizeConfig.MiniTextFontSize, fontFamily: "Architect")),
                           subtitle: Text('Intermediate',
-                              style: TextStyle(color: Colors.white)),
+                              style: TextStyle(color: Colors.white, fontSize: SizeConfig.XSMiniTextFontSize, fontFamily: "Architect")),
                           trailing: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
@@ -107,7 +106,7 @@ class LearnQPage extends State<learnQPageState> {
                                   child: Text(
                                     "Take quiz",
                                     style: TextStyle(
-                                        color: Colors.green, fontSize: SizeConfig.MiniTextFontSize),
+                                        color: Colors.green, fontSize: SizeConfig.MiniTextFontSize, fontFamily: "Architect"),
                                   ),
                                   onTap: () {}),
                             ],
@@ -119,7 +118,6 @@ class LearnQPage extends State<learnQPageState> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  width: 400,
                   child: Card(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0),
@@ -134,9 +132,9 @@ class LearnQPage extends State<learnQPageState> {
                               size: SizeConfig.SmallIconSize,
                             ),
                             title: Text('Addition',
-                                style: TextStyle(color: Colors.white)),
+                                style: TextStyle(color: Colors.white, fontSize:  SizeConfig.MiniTextFontSize, fontFamily: "Architect")),
                             subtitle: Text('Hard',
-                                style: TextStyle(color: Colors.white)),
+                                style: TextStyle(color: Colors.white, fontSize:  SizeConfig.XSMiniTextFontSize, fontFamily: "Architect")),
                             trailing: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
@@ -144,7 +142,7 @@ class LearnQPage extends State<learnQPageState> {
                                     child: Text(
                                       "Take quiz",
                                       style: TextStyle(
-                                          color: Colors.green, fontSize: SizeConfig.MiniTextFontSize),
+                                          color: Colors.green, fontSize: SizeConfig.MiniTextFontSize, fontFamily: "Architect"),
                                     ),
                                     onTap: () {}),
                               ],
