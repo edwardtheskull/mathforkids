@@ -1,4 +1,20 @@
+<<<<<<< Updated upstream
 import 'package:mathforkids/utils/Imports.dart';
+=======
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:mathforkids/screens/Pupil/studenthome.dart';
+import 'package:mathforkids/screens/Pupil/studentresults.dart';
+import 'package:mathforkids/screens/Teacher/teacherhome.dart';
+import 'package:mathforkids/screens/services/auth.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:flutter/widgets.dart';
+import 'register.dart';
+import 'package:mathforkids/screens/Authenticate/login.dart';
+import 'package:mathforkids/utils/SizeConfig.dart';
+import 'package:mathforkids/screens/Authenticate/user.dart';
+>>>>>>> Stashed changes
 
 
 class loginPageState extends StatefulWidget{
@@ -8,6 +24,7 @@ class loginPageState extends StatefulWidget{
 
 
 class LoginPage extends State<loginPageState>{
+  final AuthService _auth = AuthService();
   TextEditingController textname = new TextEditingController();
   TextEditingController textpassword = new TextEditingController();
   MediaQueryData queryData;
@@ -82,7 +99,14 @@ class LoginPage extends State<loginPageState>{
                               padding: const EdgeInsets.only(top: 35),
                               child: ButtonTheme(minWidth: SizeConfig.SmallButtonWidth, height: SizeConfig.ButtonHeight,
                                 child: RaisedButton(elevation: 3,
-                                  onPressed: (){
+                                  onPressed: () async{
+                                    dynamic res = await _auth.signIn();
+                                    if(res == null){
+                                      print('error signing in');
+                                    } else {
+                                      print('signed in');
+                                      print(res.uid);
+                                    }
                                     Navigator.push(context, new MaterialPageRoute(builder: (context) => new studentPageState()));
                                   },
                                   color: Colors.green[600],
