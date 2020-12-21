@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:mathforkids/SizeConfig.dart';
+import 'specTestResult.dart';
 
 class DispStudTestResState extends StatefulWidget {
   @override
@@ -71,10 +72,11 @@ class dispResultPage extends State<DispStudTestResState> {
                                  child: Text(
                                    "More info",
                                    style: TextStyle(
-                                       color: Colors.green, fontSize: SizeConfig.SmallTextFontSize),
+                                       color: Colors.green, fontSize: SizeConfig.MiniTextFontSize),
                                  ),
-                                 onTap: () {}),
-                           ],
+                                  onTap: (){Navigator.push(context, new MaterialPageRoute(builder: (context) => new specTestResultState()));
+                                  },
+                             )],
                          ),
                     ),
                   ],
