@@ -15,6 +15,7 @@ class SizeConfig {
   static double TextFontSize;
   static double TextFieldFontSize;
   static double ButtonWidth;
+  static double SmallButtonWidth;
   static double ButtonHeight;
   static double ButtonTextSize;
   static double AppbarFontSize;
@@ -68,6 +69,7 @@ class SizeConfig {
             SmallIconSize = 40;
             MiniTextFontSize = safeBlockHorizontal*4.5;
             XSMiniTextFontSize = safeBlockHorizontal*4;
+            SmallButtonWidth = MediaQuery.of(context).size.width/1.8;
          }
          else
          {
@@ -84,6 +86,7 @@ class SizeConfig {
                         SmallIconSize = 40;
                          MiniTextFontSize = safeBlockHorizontal*4.5;
                             XSMiniTextFontSize = safeBlockHorizontal*4;
+                             SmallButtonWidth = MediaQuery.of(context).size.width/1.8;
          }
   }
 }

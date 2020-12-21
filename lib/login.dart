@@ -89,7 +89,7 @@ class LoginPage extends State<loginPageState>{
                             Row(mainAxisAlignment: MainAxisAlignment.center,
                               children: [Padding(
                               padding: const EdgeInsets.only(top: 35),
-                              child: ButtonTheme(minWidth: SizeConfig.ButtonWidth, height: SizeConfig.ButtonHeight,
+                              child: ButtonTheme(minWidth: SizeConfig.SmallButtonWidth, height: SizeConfig.ButtonHeight,
                                 child: RaisedButton(elevation: 3,
                                   onPressed: (){
                                     Navigator.push(context, new MaterialPageRoute(builder: (context) => new studentPageState()));

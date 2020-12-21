@@ -162,7 +162,7 @@ class RegisterPage extends State<registerPageState>{
                       ),
                       Row(mainAxisAlignment: MainAxisAlignment.center, children: [Padding(
                         padding: const EdgeInsets.only(top: 20),
-                        child: ButtonTheme(minWidth: SizeConfig.ButtonWidth, height: SizeConfig.ButtonHeight,
+                        child: ButtonTheme(minWidth: SizeConfig.SmallButtonWidth, height: SizeConfig.ButtonHeight,
                           child: RaisedButton(elevation: 3,
                             onPressed: (){
                               senddata();

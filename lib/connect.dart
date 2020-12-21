@@ -59,7 +59,7 @@ class ConnectPage extends State<connectPageState>{
                 ),
                   Row(mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      ButtonTheme(minWidth: SizeConfig.ButtonWidth, height: SizeConfig.ButtonHeight,
+                      ButtonTheme(minWidth: SizeConfig.SmallButtonWidth, height: SizeConfig.ButtonHeight,
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: RaisedButton(elevation: 3,
