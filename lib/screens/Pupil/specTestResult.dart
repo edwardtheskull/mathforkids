@@ -137,7 +137,20 @@ class specTestPage extends State<specTestResultState> {
                                       style: TextStyle(
                                           color: Colors.green, fontSize: SizeConfig.MiniTextFontSize),
                                     ),
-                                    onTap: () {}),
+                                    onTap: () {
+                                      showDialog(context: context,
+                                      builder: (context){
+                                        return AlertDialog(
+                                          title: Text("Question 2"),
+                                          content: Text("Your answer: 2+2=5\nRight answer: 2+2=4"),
+                                          actions: [
+                                            FlatButton(
+                                                onPressed: () => Navigator.pop(context),
+                                                child: Text("close"))
+                                          ],
+                                        );
+                                      });
+                                    }),
                               ],
                             )
                         ),
