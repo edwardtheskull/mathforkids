@@ -1,16 +1,21 @@
 export 'package:flutter/material.dart';
 export 'package:flutter/widgets.dart';
-import 'package:flutter/cupertino.dart';
 export 'package:flutter/rendering.dart';
 export 'package:sqflite/sqflite.dart';
 export 'dart:convert';
 export 'dart:async';
+export 'package:provider/provider.dart';
 
+export 'package:mathforkids/screens/Authenticate/authenticate.dart';
+export 'package:mathforkids/screens/Authenticate/home.dart';
+export 'package:mathforkids/screens/Authenticate/user.dart';
+export 'package:flutter_test/flutter_test.dart';
+export 'package:mathforkids/screens/Authenticate/wrapper.dart';
+export 'package:mathforkids/screens/services/auth.dart';
 export 'package:mathforkids/utils/SizeConfig.dart';
-export 'package:mathforkids/connect.dart';
+export 'package:mathforkids/screens/transition/connect.dart';
 export 'package:mathforkids/screens/Authenticate/register.dart';
 export 'package:mathforkids/screens/Authenticate/login.dart';
-export 'package:mathforkids/screens/Authenticate/user.dart';
 export 'package:mathforkids/screens/Pupil/studenthome.dart';
 export 'package:mathforkids/screens/Pupil/studentresults.dart';
 export 'package:mathforkids/screens/Teacher/teacherhome.dart';

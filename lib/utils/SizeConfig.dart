@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:mathforkids/utils/Imports.dart';
 
 class SizeConfig {
   static MediaQueryData _mediaQueryData;
@@ -27,6 +28,7 @@ class SizeConfig {
   static double MiniTextFontSize;
   static double XSMiniTextFontSize;
   static double ScreenHeight;
+  static double SmallScreenHeight;
 
   double ShortestLength;
   double LongestLength;
@@ -81,6 +83,7 @@ class SizeConfig {
         XSMiniTextFontSize = safeBlockHorizontal*4;
         SmallButtonWidth = MediaQuery.of(context).size.width/1.8;
         ScreenHeight = MediaQuery.of(context).size.height*1;
+         SmallScreenHeight = ScreenHeight * 0.8;
     }
     else if(ShortestLength < 650 && ShortestLength > 350)
     {
@@ -99,6 +102,7 @@ class SizeConfig {
           XSMiniTextFontSize = safeBlockHorizontal*4;
           SmallButtonWidth = MediaQuery.of(context).size.width/2.2;
           ScreenHeight = MediaQuery.of(context).size.height*1.22;
+          SmallScreenHeight = ScreenHeight * 0.6;
     }
     else if(ShortestLength < 350)
     {
@@ -117,6 +121,7 @@ class SizeConfig {
               XSMiniTextFontSize = safeBlockHorizontal*4;
               SmallButtonWidth = MediaQuery.of(context).size.width/1.8;
               ScreenHeight = MediaQuery.of(context).size.height*1.6;
+              SmallScreenHeight = ScreenHeight * 0.6;
     }
     else
     {
@@ -135,6 +140,7 @@ class SizeConfig {
       XSMiniTextFontSize = safeBlockHorizontal*4;
       SmallButtonWidth = MediaQuery.of(context).size.width/2.3;
       ScreenHeight = MediaQuery.of(context).size.height*0.9;
+      SmallScreenHeight = ScreenHeight;
     }
   }
 }

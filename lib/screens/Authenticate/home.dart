@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:mathforkids/screens/services/auth.dart';
-import 'package:mathforkids/screens/services/auth.dart';
+import 'package:mathforkids/utils/Imports.dart';
 
 class Home extends StatelessWidget{
   final AuthService _auth = AuthService();

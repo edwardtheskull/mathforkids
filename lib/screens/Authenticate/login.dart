@@ -1,18 +1,4 @@
-
 import 'package:mathforkids/utils/Imports.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:mathforkids/screens/Pupil/studenthome.dart';
-import 'package:mathforkids/screens/Pupil/studentresults.dart';
-import 'package:mathforkids/screens/Teacher/teacherhome.dart';
-import 'package:mathforkids/screens/services/auth.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:flutter/widgets.dart';
-import 'register.dart';
-import 'package:mathforkids/screens/Authenticate/login.dart';
-import 'package:mathforkids/utils/SizeConfig.dart';
-import 'package:mathforkids/screens/Authenticate/user.dart';
 
 
 class loginPageState extends StatefulWidget{
@@ -49,7 +35,7 @@ class LoginPage extends State<loginPageState>{
         ),
         body: SingleChildScrollView(
           child: Center(
-              child: Container(width: MediaQuery.of(context).size.width*0.8, height: SizeConfig.ScreenHeight*0.6,
+              child: Container(width: MediaQuery.of(context).size.width*0.8, height: SizeConfig.SmallScreenHeight,
               child: Column(mainAxisAlignment: MainAxisAlignment.center,
                   children: [Row(children: [
                       Expanded(child: Text("email/username:",

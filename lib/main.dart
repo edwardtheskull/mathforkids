@@ -1,7 +1,4 @@
 import 'package:mathforkids/utils/Imports.dart';
-import 'package:mathforkids/screens/Authenticate/wrapper.dart';
-import 'package:provider/provider.dart';
-import 'package:mathforkids/screens/services/auth.dart';
 
 void main() => runApp(Home());
 
