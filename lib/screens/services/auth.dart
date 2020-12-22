@@ -1,5 +1,6 @@
 import 'package:mathforkids/screens/Authenticate/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:mathforkids/screens/services/database.dart';
 
 
 class AuthService{
@@ -43,10 +44,12 @@ class AuthService{
   }
 
   //register with email and pwd
-  Future registerWithEmailAndPassword(String username, String password) async{
+  Future registerWithEmailAndPassword(String name, String username, String password) async{
     try{
       AuthResult res = await _auth.createUserWithEmailAndPassword(email: username, password: password);
       FirebaseUser user = res.user;
+
+      await DatabaseService(uid: user.uid).updateUserData(name);
       return _userFromFirebaseUser(user);
     } catch(e){
       print(e.toString());
