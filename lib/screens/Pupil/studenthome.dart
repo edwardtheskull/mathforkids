@@ -1,5 +1,5 @@
 import 'package:mathforkids/utils/Imports.dart';
-
+import 'package:mathforkids/screens/services/auth.dart';
 
 class studentPageState extends StatefulWidget{
   @override
@@ -7,6 +7,7 @@ class studentPageState extends StatefulWidget{
 }
 
 class StudentPage extends State<studentPageState>{
+  final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -23,6 +24,15 @@ class StudentPage extends State<studentPageState>{
           ),
           centerTitle:true,
           backgroundColor: Colors.green[600],
+            actions: <Widget>[
+              FlatButton.icon(
+              icon: Icon(Icons.person),
+              label: Text('logout'),
+              onPressed: () async{
+                await _auth.signOut();
+                },
+              )
+            ],
         ),
         body:  Column(mainAxisAlignment: MainAxisAlignment.center,
             children: [Row(mainAxisAlignment: MainAxisAlignment.center, children: [ButtonTheme(minWidth: SizeConfig.ButtonWidth, height: SizeConfig.ButtonHeight,

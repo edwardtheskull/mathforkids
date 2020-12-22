@@ -1,6 +1,6 @@
 import 'package:mathforkids/utils/Imports.dart';
-import 'package:http/http.dart' as http;
-
+import 'package:flutter/material.dart';
+import 'package:mathforkids/screens/services/auth.dart';
 
 class registerPageState extends StatefulWidget{
   @override
@@ -15,13 +15,10 @@ TextEditingController textmail = new TextEditingController();
 TextEditingController textnick = new TextEditingController();
 TextEditingController textrole = new TextEditingController();
 
-Future<List> senddata() async {
-  final response = await http.post("http://localhost/mathforkids/insertdata.php", body: {
-    "username": textname.text,
-    "password": textpassword.text,
-  });}
-
 class RegisterPage extends State<registerPageState>{
+  final AuthService _auth = AuthService();
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -43,8 +40,10 @@ class RegisterPage extends State<registerPageState>{
         body: SingleChildScrollView(
           child: Center(
             child: Container(height: SizeConfig.ScreenHeight, width: MediaQuery.of(context).size.width*0.8,
+              key: _formKey,
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
+                
                 child: Column( crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
@@ -162,9 +161,6 @@ class RegisterPage extends State<registerPageState>{
                         child: ButtonTheme(minWidth: SizeConfig.SmallButtonWidth, height: SizeConfig.ButtonHeight,
                           child: RaisedButton(elevation: 3,
                             onPressed: (){
-                              senddata();
-                              /*var newDBUser = User(username: textname.text, password: textpassword.text);
-                              DBProvider.db.newUser(newDBUser);*/
                               Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
                             },
                             color: Colors.green[600],
