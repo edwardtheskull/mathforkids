@@ -146,7 +146,7 @@ class RegisterPage extends State<registerPageState>{
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: DropdownButton<String>(value: dropdownvalue, style: TextStyle(color: Colors.green, fontSize: SizeConfig.TextFieldFontSize), underline: Container(color: Colors.transparent),
+                            child: DropdownButton<String>(value: dropdownvalue, dropdownColor: Color.fromRGBO(31, 69, 82, 1), style: TextStyle(color: Colors.white, fontSize: SizeConfig.TextFieldFontSize, fontFamily:"Architect" ), underline: Container(color: Colors.transparent),
                               onChanged: (String newValue) {
                                 setState(() {
                                   dropdownvalue = newValue;
