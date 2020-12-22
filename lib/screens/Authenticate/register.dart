@@ -168,8 +168,8 @@ class RegisterPage extends State<registerPageState>{
                               Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
                             },
                             color: Colors.green[600],
-                            child: Text("Teacher Page", style: TextStyle(letterSpacing: 1,
-                              fontSize: SizeConfig.safeBlockHorizontal * 7,
+                            child: Text("Register", style: TextStyle(letterSpacing: 1,
+                              fontSize: SizeConfig.ButtonTextSize,
                               color: Colors.white,fontFamily: 'Architect',)),),
                         ),
                       )],
