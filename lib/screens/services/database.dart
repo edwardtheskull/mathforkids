@@ -6,9 +6,14 @@ class DatabaseService {
 
   final CollectionReference mathCollection = Firestore.instance.collection('users');
 
-  Future updateUserData(String name) async{
+  Future updateUserData(String name, String role) async{
     return await mathCollection.document(uid).setData({
       'name': name,
+      'role' : role,
     });
+  }
+
+  Stream<QuerySnapshot> get users {
+    return mathCollection.snapshots();
   }
 }

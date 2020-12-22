@@ -156,7 +156,7 @@ class RegisterPage extends State<registerPageState>{
                             child: RaisedButton(elevation: 3,
                               onPressed: () async{
                                 if(_formKey.currentState.validate()){
-                                  dynamic res = await _auth.registerWithEmailAndPassword(textname.text, textmail.text, textpassword.text);
+                                  dynamic res = await _auth.registerWithEmailAndPassword(dropdownvalue, textname.text, textmail.text, textpassword.text);
                                   if(res == null){
                                     setState(() => error = 'error');
                                   } else {
