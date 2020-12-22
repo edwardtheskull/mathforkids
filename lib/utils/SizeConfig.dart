@@ -97,7 +97,7 @@ class SizeConfig {
           SmallIconSize = 40;
           MiniTextFontSize = safeBlockHorizontal*4.5;
           XSMiniTextFontSize = safeBlockHorizontal*4;
-          SmallButtonWidth = MediaQuery.of(context).size.width/1.8;
+          SmallButtonWidth = MediaQuery.of(context).size.width/2.2;
           ScreenHeight = MediaQuery.of(context).size.height*1.22;
     }
     else if(ShortestLength < 350)
