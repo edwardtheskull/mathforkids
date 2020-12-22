@@ -18,7 +18,8 @@ TextEditingController textrole = new TextEditingController();
 class RegisterPage extends State<registerPageState>{
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
-
+  bool _validate = false;
+  String error = '';
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -43,7 +44,7 @@ class RegisterPage extends State<registerPageState>{
               key: _formKey,
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
-                
+
                 child: Column( crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
@@ -160,8 +161,17 @@ class RegisterPage extends State<registerPageState>{
                         padding: const EdgeInsets.only(top: 20),
                         child: ButtonTheme(minWidth: SizeConfig.SmallButtonWidth, height: SizeConfig.ButtonHeight,
                           child: RaisedButton(elevation: 3,
-                            onPressed: (){
-                              Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
+                            onPressed: () async{
+                              //if(_formKey.currentState.validate()){
+                              dynamic res = await _auth.registerWithEmailAndPassword(textname.text, textpassword.text);
+                              if(res == null){
+                                setState(() => error = 'error');
+                              } else {
+                                print('user created');
+                                print(res.uid);
+                                Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
+                              }
+                              //}
                             },
                             color: Colors.green[600],
                             child: Text("Register", style: TextStyle(letterSpacing: 1,
