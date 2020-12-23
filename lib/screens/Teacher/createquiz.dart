@@ -1,3 +1,4 @@
+import 'package:mathforkids/screens/Teacher/createquestion.dart';
 import 'package:mathforkids/utils/Imports.dart';
 
 class createquizPageState extends StatefulWidget{
@@ -66,7 +67,7 @@ class createquizPage extends State<createquizPageState>{
                             padding: const EdgeInsets.all(8.0),
                             child: RaisedButton(
                               onPressed: () async{
-
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => createquestionPageState(Dropdownquestionvalue: Dropdownquestionvalue),));
                               },
                               color: Colors.green,
                               child: Text("Add Question", style: TextStyle(
