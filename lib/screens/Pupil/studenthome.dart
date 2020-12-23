@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:mathforkids/utils/Imports.dart';
 import 'package:mathforkids/screens/services/auth.dart';
+import 'package:mathforkids/ChangeTheme.dart';
 
 class studentPageState extends StatefulWidget{
   @override
@@ -11,8 +13,10 @@ class StudentPage extends State<studentPageState>{
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Scaffold(
-        backgroundColor: Color.fromRGBO(31, 69, 82, 1),
+    return MaterialApp(
+    theme: setTheme,
+    home: Scaffold(
+      //  backgroundColor: Color.fromRGBO(31, 69, 82, 1),
         appBar: AppBar(
           title: Text(
             "Math for Kids",
@@ -23,9 +27,8 @@ class StudentPage extends State<studentPageState>{
             ),
           ),
           centerTitle:true,
-          backgroundColor: Colors.green[600],
-          actions: <Widget>[
-            FlatButton.icon(
+            actions: <Widget>[
+              FlatButton.icon(
               icon: Icon(Icons.person),
               label: Text('logout'),
               onPressed: () async{
@@ -41,10 +44,10 @@ class StudentPage extends State<studentPageState>{
                 onPressed: (){
                   Navigator.push(context, new MaterialPageRoute(builder: (context) => new connectPageState()));
                 },
-                color: Colors.green[600],
+                color: setTheme.buttonColor,
                 child: Text("Join quiz", style: TextStyle(letterSpacing: 1,
                     fontSize: SizeConfig.ButtonTextSize,
-                    color: Colors.white,fontFamily: 'Architect')),),
+                   fontFamily: 'Architect')),),
             )],
             ),
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [Padding(
@@ -52,12 +55,12 @@ class StudentPage extends State<studentPageState>{
                 child: ButtonTheme(minWidth: SizeConfig.ButtonWidth, height: SizeConfig.ButtonHeight,
                   child: RaisedButton(elevation: 3,
                     onPressed: (){
-                      Navigator.push(context, new MaterialPageRoute(builder: (context) => new connectPageState()));
+                      Navigator.push(context, new MaterialPageRoute(builder: (context) => new Class()));
                     },
-                    color: Colors.green[600],
+                    color: setTheme.buttonColor,
                     child: Text("Class", style: TextStyle(letterSpacing: 1,
                       fontSize: SizeConfig.ButtonTextSize,
-                      color: Colors.white,fontFamily: 'Architect',)),),
+                      fontFamily: 'Architect',)),),
                 ),
               )],
               ),
@@ -68,10 +71,10 @@ class StudentPage extends State<studentPageState>{
                     onPressed: (){
                       Navigator.push(context, new MaterialPageRoute(builder: (context) => new DispStudTestResState()));
                     },
-                    color: Colors.green[600],
+                    color: setTheme.buttonColor,
                     child: Text("Previous quizzes", style: TextStyle(letterSpacing: 1,
                       fontSize: SizeConfig.ButtonTextSize,
-                      color: Colors.white,fontFamily: 'Architect',)),),
+                     fontFamily: 'Architect',)),),
                 ),
               )],
               ),
@@ -82,15 +85,23 @@ class StudentPage extends State<studentPageState>{
                     onPressed: (){
                       Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnPageState()));
                     },
-                    color: Colors.green[600],
+                    color: setTheme.buttonColor,
                     child: Text("Learn", style: TextStyle(letterSpacing: 1,
                       fontSize: SizeConfig.ButtonTextSize,
-                      color: Colors.white,fontFamily: 'Architect',)),),
+                     fontFamily: 'Architect',)),),
                 ),
               )],
               ),
+              Switch(
+                value: dark,
+                onChanged: (state){
+                  setState(() {
+                    dark = state;
+                    switchTheme();
+                  });
+                }),
             ])
-    );
+    ));
   }
 }
 

@@ -6,6 +6,7 @@ export 'dart:convert';
 export 'dart:async';
 export 'package:provider/provider.dart';
 
+export 'package:mathforkids/ChangeTheme.dart';
 export 'package:mathforkids/screens/Authenticate/authenticate.dart';
 export 'package:mathforkids/screens/Authenticate/home.dart';
 export 'package:mathforkids/screens/Authenticate/user.dart';

@@ -1,5 +1,5 @@
 import 'package:mathforkids/utils/Imports.dart';
-
+import 'package:mathforkids/ChangeTheme.dart';
 
 class connectPageState extends StatefulWidget{
   @override
@@ -10,8 +10,10 @@ class ConnectPage extends State<connectPageState>{
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Scaffold(
-        backgroundColor: Color.fromRGBO(31, 69, 82, 1),
+    return MaterialApp(
+        theme: setTheme,
+      home:Scaffold(
+       // backgroundColor: Color.fromRGBO(31, 69, 82, 1),
         appBar: AppBar(
           title: Text(
             "Math for Kids",
@@ -71,7 +73,7 @@ class ConnectPage extends State<connectPageState>{
                   )],),
           ),
         )
-    );
+    ));
   }
 }
 
