@@ -29,6 +29,7 @@ class SizeConfig {
   static double XSMiniTextFontSize;
   static double ScreenHeight;
   static double SmallScreenHeight;
+  static double Createquestionbutton;
 
   double ShortestLength;
   double LongestLength;
@@ -84,6 +85,7 @@ class SizeConfig {
         SmallButtonWidth = MediaQuery.of(context).size.width/2.2;
         ScreenHeight = MediaQuery.of(context).size.height*0.93;
         SmallScreenHeight = ScreenHeight * 0.8;
+        Createquestionbutton = safeBlockHorizontal * 5;
     }
     else if(ShortestLength < 650 && ShortestLength > 350)
     {
@@ -103,6 +105,7 @@ class SizeConfig {
           SmallButtonWidth = MediaQuery.of(context).size.width/2.2;
           ScreenHeight = MediaQuery.of(context).size.height*1.22;
           SmallScreenHeight = ScreenHeight * 0.6;
+          Createquestionbutton = safeBlockHorizontal * 5;
     }
     else if(ShortestLength < 350)
     {
@@ -122,6 +125,7 @@ class SizeConfig {
           SmallButtonWidth = MediaQuery.of(context).size.width/1.8;
           ScreenHeight = MediaQuery.of(context).size.height*1.6;
           SmallScreenHeight = ScreenHeight * 0.6;
+          Createquestionbutton = safeBlockHorizontal * 5;
     }
     else
     {
@@ -141,6 +145,7 @@ class SizeConfig {
       SmallButtonWidth = MediaQuery.of(context).size.width/2.3;
       ScreenHeight = MediaQuery.of(context).size.height*0.9;
       SmallScreenHeight = ScreenHeight;
+      Createquestionbutton = safeBlockHorizontal * 5;
     }
   }
 }
