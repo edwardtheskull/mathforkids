@@ -30,6 +30,7 @@ class StudentPage extends State<studentPageState>{
               label: Text('logout'),
               onPressed: () async{
                 await _auth.signOut();
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => loginPageState()));
                 },
               )
             ],
