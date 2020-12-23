@@ -1,5 +1,5 @@
 import 'package:mathforkids/utils/Imports.dart';
-
+import 'package:mathforkids/ChangeTheme.dart';
 
 class learnPageState extends StatefulWidget{
   @override
@@ -10,8 +10,10 @@ class LearnPage extends State<learnPageState>{
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Scaffold(
-        backgroundColor: Color.fromRGBO(31, 69, 82, 1),
+    return MaterialApp(
+        theme: setTheme,
+      home: Scaffold(
+      //  backgroundColor: Color.fromRGBO(31, 69, 82, 1),
         appBar: AppBar(
           title: Text(
             "Learn",
@@ -35,7 +37,7 @@ class LearnPage extends State<learnPageState>{
                   color: Colors.green[600],
                   child: Text("+", style: TextStyle(letterSpacing: 1,
                       fontSize: SizeConfig.LargeButtonTextSize,
-                      color: Colors.white,fontFamily: 'Architect')),),
+                      fontFamily: 'Architect')),),
               ),
             ),
               ButtonTheme(minWidth: SizeConfig.SquareButton, height: SizeConfig.SquareButton,
@@ -48,7 +50,7 @@ class LearnPage extends State<learnPageState>{
                     color: Colors.green[600],
                     child: Text("-", style: TextStyle(letterSpacing: 1,
                       fontSize: SizeConfig.LargeButtonTextSize,
-                      color: Colors.white,fontFamily: 'Architect',)),),
+                      fontFamily: 'Architect',)),),
                 ),
               ),
             ],
@@ -63,7 +65,7 @@ class LearnPage extends State<learnPageState>{
                     color: Colors.green[600],
                     child: Text("x", style: TextStyle(letterSpacing: 1,
                         fontSize: SizeConfig.LargeButtonTextSize,
-                        color: Colors.white,fontFamily: 'Architect')),),
+                       fontFamily: 'Architect')),),
                 ),
               ),
                 ButtonTheme(minWidth: SizeConfig.SquareButton, height: SizeConfig.SquareButton,
@@ -76,12 +78,12 @@ class LearnPage extends State<learnPageState>{
                       color: Colors.green[600],
                       child: Text("/", style: TextStyle(letterSpacing: 1,
                         fontSize: SizeConfig.LargeButtonTextSize,
-                        color: Colors.white,fontFamily: 'Architect',)),),
+                        fontFamily: 'Architect',)),),
                   ),
                 ),
               ],
               ),
             ])
-    );
+    ));
   }
 }

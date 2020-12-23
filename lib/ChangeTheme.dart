@@ -9,7 +9,8 @@ ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     scaffoldBackgroundColor: Colors.grey[300],
     buttonColor: Colors.green[600],
-    buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.normal)
+    buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.normal),
+    accentColor: Colors.black
 );
 
 ThemeData darkTheme = ThemeData(
@@ -18,15 +19,18 @@ ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     scaffoldBackgroundColor: Color.fromRGBO(31, 69, 82, 1),
     buttonColor: Colors.green[600],
-    buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.normal)
+    buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.normal),
+    accentColor: Colors.white
 );
 
 ThemeData setTheme = ThemeData(
   primaryColor: Colors.green[600],
   brightness: Brightness.dark,
+    primaryTextTheme: TextTheme(headline6: TextStyle(color: Colors.white)),
   scaffoldBackgroundColor: Color.fromRGBO(31, 69, 82, 1),
   buttonColor: Colors.green[600],
-  buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.normal)
+  buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.normal),
+    accentColor: Colors.white
 );
 
 void switchTheme()
