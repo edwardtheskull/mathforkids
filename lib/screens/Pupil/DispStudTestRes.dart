@@ -3,6 +3,7 @@ import 'package:mathforkids/screens/Pupil/testInfo.dart';
 import 'package:mathforkids/utils/Imports.dart';
 import 'specTestResult.dart';
 import 'package:mathforkids/screens/Pupil/data.dart';
+import 'package:mathforkids/screens/Pupil/testInfo.dart';
 
 class DispStudTestResState extends StatefulWidget {
   @override
@@ -35,23 +36,35 @@ class dispResultPage extends State<DispStudTestResState> {
 class MyDynamicList extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-
-    //final tests = ['addition 1', 'subtraction 1', 'multiplication 1', 'division 1'];
-
-    return ListView.builder(
-      itemCount: tests.length,
-
-      itemBuilder: (context, index){
-        return Card(
-          child: ListTile(
-            onTap: (){},
-            title: Text(tests[index].name),
-
-          ),
-        );
-      },
-    );
-
+    if (tests.length > 0) {
+      return ListView.builder(
+        itemCount: tests.length,
+        itemBuilder: (context, index) {
+          return Card(
+            color: Colors.black,
+            child: ListTile(
+                leading: tests[index].blabla(tests[index].passed),
+                title: Text(tests[index].name, style: TextStyle(
+                    color: Colors.white, fontSize: SizeConfig.MiniTextFontSize)),
+                subtitle: Text(tests[index].date, style: TextStyle(
+                    color: Colors.white, fontSize: SizeConfig.XSMiniTextFontSize)),
+                trailing: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    InkWell(
+                        child: Text(
+                          "More info",
+                          style: TextStyle(
+                              color: Colors.green, fontSize: SizeConfig.MiniTextFontSize),
+                        ),
+                        onTap: () {Navigator.push(context, new MaterialPageRoute(builder: (context) => new specTestResultState()));}),
+                  ],
+                )
+            )
+          );
+        },
+      );
+    }
   }
 
 }

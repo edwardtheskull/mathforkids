@@ -1,11 +1,24 @@
 import 'package:mathforkids/utils/Imports.dart';
+import 'package:mathforkids/screens/Pupil/data.dart';
+
 
 
 class TestInfo{
   String type;
   String name;
- //bool passed;
+  bool passed;
   String date;
+  int testID;
+  TestInfo({this.date, this.type, this.name, this.passed}) ;
 
-  TestInfo({this.date, this.type, this.name,}) ;
+  CircleAvatar blabla( bool bla){
+    if(bla){
+      return CircleAvatar(
+        backgroundColor: Colors.green,
+      );
+    }
+    return CircleAvatar(
+      backgroundColor: Colors.red,
+    );
+  }
 }
