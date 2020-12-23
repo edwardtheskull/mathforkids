@@ -24,12 +24,13 @@ class StudentPage extends State<studentPageState>{
           ),
           centerTitle:true,
           backgroundColor: Colors.green[600],
-            actions: <Widget>[
-              FlatButton.icon(
+          actions: <Widget>[
+            FlatButton.icon(
               icon: Icon(Icons.person),
               label: Text('logout'),
               onPressed: () async{
                 await _auth.signOut();
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => loginPageState()));
                 },
               )
             ],

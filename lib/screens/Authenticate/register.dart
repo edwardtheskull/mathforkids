@@ -1,6 +1,7 @@
 import 'package:mathforkids/utils/Imports.dart';
 import 'package:flutter/material.dart';
 import 'package:mathforkids/screens/services/auth.dart';
+import 'package:mathforkids/screens/services/load.dart';
 
 class registerPageState extends StatefulWidget{
   @override
@@ -18,13 +19,13 @@ TextEditingController textrole = new TextEditingController();
 class RegisterPage extends State<registerPageState>{
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
-  bool _validate = false;
+  bool load = false;
   String password = '';
   String error = '';
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Scaffold(
+    return load ? Loading() : Scaffold(
         backgroundColor: Color.fromRGBO(31, 69, 82, 1),
         appBar: AppBar(
           title: Text(
@@ -42,7 +43,6 @@ class RegisterPage extends State<registerPageState>{
         body: SingleChildScrollView(
           child: Center(
             child: Container(height: SizeConfig.ScreenHeight, width: MediaQuery.of(context).size.width*0.8,
-
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Form(
@@ -156,9 +156,11 @@ class RegisterPage extends State<registerPageState>{
                             child: RaisedButton(elevation: 3,
                               onPressed: () async{
                                 if(_formKey.currentState.validate()){
+                                  setState(() => load = true);
                                   dynamic res = await _auth.registerWithEmailAndPassword(dropdownvalue, textname.text, textmail.text, textpassword.text);
                                   if(res == null){
                                     setState(() => error = 'error');
+                                    setState(() => load = false);
                                   } else {
                                     print('user created');
                                     print(res.uid);
