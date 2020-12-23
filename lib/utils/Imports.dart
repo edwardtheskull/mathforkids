@@ -23,3 +23,4 @@ export 'package:mathforkids/screens/Teacher/createquiz.dart';
 export 'package:mathforkids/screens/Pupil/learn.dart';
 export 'package:mathforkids/screens/Pupil/learnQuestions.dart';
 export 'package:mathforkids/screens/Pupil/DispStudTestRes.dart';
+export 'package:mathforkids/screens/class.dart';
