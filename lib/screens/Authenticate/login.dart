@@ -26,7 +26,8 @@ class LoginPage extends State<loginPageState>{
     SizeConfig().init(context);
     return load ? Loading() : StreamProvider<List<User>>.value(
       value: DatabaseService().users,
-      child: Scaffold(
+      child: MaterialApp(
+        home: Scaffold(
           backgroundColor: Color.fromRGBO(31, 69, 82, 1),
           appBar: AppBar(
             title: Text(
@@ -142,6 +143,7 @@ class LoginPage extends State<loginPageState>{
               ),
             ),
           )
+      ),
       ),
     );
   }

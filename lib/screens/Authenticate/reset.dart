@@ -77,7 +77,7 @@ class _ResetScreenState extends State<ResetScreen>{
                                       if(_formKey.currentState.validate()){
                                         setState(() => load = true);
                                         _auth.forgotPassword(textemail.text);
-                                        Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
+                                        Navigator.pushReplacementNamed(context, '/screens/Authenticate/login');
                                       }
                                     },
                                     color: Colors.green[600],
