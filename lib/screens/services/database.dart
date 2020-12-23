@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:mathforkids/screens/Authenticate/user.dart';
+import 'package:mathforkids/screens/Authenticate/user.dart';
 
 class DatabaseService {
   final String uid;
@@ -13,7 +15,17 @@ class DatabaseService {
     });
   }
 
-  Stream<QuerySnapshot> get users {
-    return mathCollection.snapshots();
+  List<User> _userListFromSnapshot(QuerySnapshot snapshot) {
+    return snapshot.documents.map((doc){
+      return User(
+        name: doc.data['name'] ?? '',
+        role: doc.data['role'] ?? '',
+      );
+    }).toList();
+  }
+
+  Stream<List<User>> get users {
+    return mathCollection.snapshots()
+    .map(_userListFromSnapshot);
   }
 }

@@ -1,7 +1,6 @@
 import 'package:mathforkids/utils/Imports.dart';
 import 'package:mathforkids/screens/services/database.dart';
 import 'package:provider/provider.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mathforkids/screens/services/user_list.dart';
 
 
@@ -9,7 +8,6 @@ class loginPageState extends StatefulWidget{
   @override
   LoginPage createState() => LoginPage();
 }
-
 
 class LoginPage extends State<loginPageState>{
   final AuthService _auth = AuthService();
@@ -23,7 +21,7 @@ class LoginPage extends State<loginPageState>{
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return StreamProvider<QuerySnapshot>.value(
+    return StreamProvider<List<User>>.value(
       value: DatabaseService().users,
       child: Scaffold(
           backgroundColor: Color.fromRGBO(31, 69, 82, 1),
@@ -92,7 +90,7 @@ class LoginPage extends State<loginPageState>{
                             child: ButtonTheme(minWidth: SizeConfig.SmallButtonWidth, height: SizeConfig.ButtonHeight,
                               child: RaisedButton(elevation: 3,
                                 onPressed: () async{
-                                  UserList();
+                                  
                                   dynamic res = await _auth.signInWithEmailAndPassword(textname.text, textpassword.text);
                                   if(res == null){
                                     print('error signing in');
@@ -109,7 +107,7 @@ class LoginPage extends State<loginPageState>{
                             ),
                           )],
                           ),
-                          UserList(),
+
                         ],
                       ),
                     ]),
