@@ -1,6 +1,5 @@
 import 'package:mathforkids/utils/Imports.dart';
 
-
 class createquizPageState extends StatefulWidget{
   @override
   createquizPage createState() => createquizPage();
@@ -42,33 +41,47 @@ class createquizPage extends State<createquizPageState>{
                         fontFamily: "Architect",
                       ),
                     ),
-                      Expanded(child: TextField( style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
+                      TextField( style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
                         decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
                             border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
                             labelText: 'Name', focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
                         ),
-                      ),),
+                      ),
+                      SwitchListTile(title: const Text('test'), value:test, onChanged: (bool value) { setState(() {
+                        test = value;}); },),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: DropdownButton<String>(value: Dropdownquestionvalue, style: TextStyle(color: Colors.green, fontSize: SizeConfig.TextFieldFontSize, fontFamily:"Architect" ), underline: Container(height:2, color: Colors.purple),
+                              onChanged: (String newValue) {
+                                setState(() {
+                                  Dropdownquestionvalue = newValue;
+                                });
+                              },
+                              items: <String>['Multiple choice','Written answer','Pair options'].map<DropdownMenuItem<String>>((String value) { return DropdownMenuItem<String>(value: value, child: Text(value),);
+                              }).toList(),),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: RaisedButton(
+                              onPressed: () async{
+
+                              },
+                              color: Colors.green,
+                              child: Text("Add Question", style: TextStyle(
+                                fontSize: SizeConfig.Createquestionbutton,
+                                color: Colors.white,fontFamily: 'Architect',
+                              ),),
+                            ),
+                          )
+                        ],
+                      )
                     ],
                   ),
                 ),
                 ),
-                SwitchListTile(title: const Text('test'), value:test, onChanged: (bool value) { setState(() {
-                  test = value;}); },),
-                Expanded(child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: RaisedButton(
-                      onPressed: () async{
-                        showInformationDialog(context);
-                      },
-                      color: Colors.green,
-                      child: Text("Add Question", style: TextStyle(
-                        fontSize: 30,
-                        color: Colors.white,fontFamily: 'Architect',
-                      ),),
-                    ),
-                  ),
-                ),),
+
                 Expanded(child: Center(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -89,193 +102,35 @@ class createquizPage extends State<createquizPageState>{
     );
   }
 
-   showInformationDialog (BuildContext context) {
-    return showDialog(context: context,
-        builder: (context){
-          return AlertDialog(
-              title: Text('Create question'),
-              content: StatefulBuilder(
-              builder: (BuildContext context, StateSetter setState){
-                return Container(height: MediaQuery.of(context).size.height*0.9, width: MediaQuery.of(context).size.width ,
-              child: Column(
-                children: [
-                DropdownButton<String>(value: Dropdownquestionvalue, style: TextStyle(color: Colors.black), underline: Container(height:2, color: Colors.purple),
-                onChanged: (String newValue) {
-                  setState(() {
-                    Dropdownquestionvalue = newValue;
-
-                  });
-                },
-                items: <String>['Multiple choice','Written answer','Pair options'].map<DropdownMenuItem<String>>((String value) { return DropdownMenuItem<String>(value: value, child: Text(value),);
-                }).toList(),),
-                  Expanded(child: selectform())
-                ],
-              ),
-                );}
-              )
-          );});
-   }
-
-Widget selectform(){
-
-  if(Dropdownquestionvalue == 'Multiple choice'){
-    return Form(
-        key: formKey,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            TextFormField(decoration: InputDecoration(hintText: 'Write question here'),),
-            Text('Add Friends', style: TextStyle(
-                fontWeight: FontWeight.w700, fontSize: 16),),
-            ..._getFriends(),
-            SizedBox(height: 40,),
-
-          ],
-        ));
-  }
-  else if(Dropdownquestionvalue == 'Written answer'){
-    return Form(
-        key: formKey,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            TextFormField(decoration: InputDecoration(hintText: 'Write question here'),)
-          ],
-        )
-    );
-  }
-  else{
-    return Form(
-        key: formKey,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            TextFormField(decoration: InputDecoration(hintText: 'Write question here'),)
-          ],
-        ),);
-    }
-}
 
   confirmDialog (BuildContext context) async {
-  return showDialog(
-  context: context,
-  builder: (BuildContext context) {
-  return AlertDialog(
-  title: Text('Create Quiz'),
-  content: Text("Are You Sure Want To Proceed?"),
-  actions: <Widget>[
-  FlatButton(
-  child: Text("YES"),
-  onPressed: () {
-  //Put your code here which you want to execute on Yes button click.
-  Navigator.of(context).pop();
-  },
-  ),
+   return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Create Quiz'),
+          content: Text("Are You Sure Want To Proceed?"),
+          actions: <Widget>[
+          FlatButton(
+            child: Text("YES"),
+              onPressed: () {
+              //Put your code here which you want to execute on Yes button click.
+              Navigator.of(context).pop();
+            },
+            ),
 
-  FlatButton(
-  child: Text("NO"),
-  onPressed: () {
-  Navigator.of(context).pop();
-  },
-  ),
-  ],
-  );
-  },
-  );
-  }
-
-
-
-
-}
-
-
-List<Widget> _getFriends(){
-  List<Widget> MCTextFieldsList = [];
-  for(int i=0; i<createquizPage.multiplechoiceanswers.length; i++){
-    MCTextFieldsList.add(
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 16.0),
-          child: Row(
-            children: [
-              Expanded(child: mchoicefields(i)),
-              SizedBox(width: 16,),
-              // we need add button at last friends row only
-              _addRemoveButton(i == createquizPage.multiplechoiceanswers.length-1, i),
-            ],
-          ),
-        )
-    );
-  }
-  return MCTextFieldsList;
-}
-
-Widget _addRemoveButton(bool add, int index){
-  return InkWell(
-    onTap: (){
-      if(add){
-        createquizPage.multiplechoiceanswers.insert(0, null);
-      }
-      else {createquizPage.multiplechoiceanswers.removeAt(index);}
-
-    },
-    child: Container(
-      width: 30,
-      height: 30,
-      decoration: BoxDecoration(
-        color: (add) ? Colors.green : Colors.red,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Icon(
-        (add) ? Icons.add : Icons.remove, color: Colors.white,
-      ),
-    ),
-  );
-}
-
-
-
-class mchoicefields extends StatefulWidget{
-
-  final int index;
-  mchoicefields(this.index);
-
-  @override
-  _mchoicefieldsState createState() => _mchoicefieldsState();
-}
-
-
-
-class _mchoicefieldsState extends State<mchoicefields>{
-
-  TextEditingController _namecontroller;
-
-  @override
-  void initState(){
-    super.initState();
-    _namecontroller = TextEditingController();
-  }
-
-  @override
-  void dispose(){
-    _namecontroller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      _namecontroller.text = createquizPage.multiplechoiceanswers[widget.index]??'';
-    });
-
-    return TextFormField(controller: _namecontroller,
-      onChanged: (v) => createquizPage.multiplechoiceanswers[widget.index] = v,
-      decoration: InputDecoration(hintText: 'Enter Answer'),
-      validator: (v){
-        if(v.trim().isEmpty) return 'Please enter something';
-        return null;
+          FlatButton(
+            child: Text("NO"),
+              onPressed: () {
+              Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
       },
     );
   }
+
 }
+
+
