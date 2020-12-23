@@ -3,6 +3,7 @@ import 'package:mathforkids/screens/services/database.dart';
 import 'package:provider/provider.dart';
 import 'package:mathforkids/screens/services/user_list.dart';
 import 'package:mathforkids/screens/services/load.dart';
+import 'package:mathforkids/screens/Authenticate/reset.dart';
 
 
 class loginPageState extends StatefulWidget{
@@ -89,6 +90,21 @@ class LoginPage extends State<loginPageState>{
                               ),
                             ),),
                           ],
+                        ),
+                        Row(mainAxisAlignment: MainAxisAlignment.center,
+                          children: [Padding(
+                            padding: const EdgeInsets.only(top: 0),
+                            child: ButtonTheme(minWidth: 12.0, height: 12.0,
+                              child: RaisedButton(elevation: 0.0,
+                                onPressed: () {
+                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ResetScreen()));
+                                },
+                                color: Color.fromRGBO(31, 69, 82, 1),
+                                child: Text("Forgot Password", style: TextStyle(letterSpacing: 1,
+                                  fontSize: 12.0,
+                                  color: Colors.white,fontFamily: 'Architect',)),),
+                            ),
+                          )],
                         ),
                         Column(
                           children: [
