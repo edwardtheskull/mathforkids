@@ -10,10 +10,8 @@ class ConnectPage extends State<connectPageState>{
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return MaterialApp(
-        theme: setTheme,
-      home:Scaffold(
-       // backgroundColor: Color.fromRGBO(31, 69, 82, 1),
+    return Scaffold(
+      backgroundColor: setTheme.scaffoldBackgroundColor,
         appBar: AppBar(
           title: Text(
             "Math for Kids",
@@ -21,6 +19,7 @@ class ConnectPage extends State<connectPageState>{
               fontSize: SizeConfig.AppbarFontSize,
               fontFamily: "Architect",
               fontWeight: FontWeight.bold,
+              color: setTheme.primaryTextTheme.headline6.color
             ),
           ),
           centerTitle:true,
@@ -45,10 +44,10 @@ class ConnectPage extends State<connectPageState>{
                   children: [
                     Expanded(child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: TextField(style: TextStyle(color: Colors.white, fontFamily: 'Architect', fontSize: SizeConfig.TextFieldFontSize), cursorColor: Colors.white, obscureText: false,
-                        decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
-                            border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
-                            focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
+                      child: TextField(style: TextStyle(color: setTheme.accentColor, fontFamily: 'Architect', fontSize: SizeConfig.TextFieldFontSize), cursorColor: setTheme.accentColor, obscureText: false,
+                        decoration: InputDecoration(enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor)),
+                            border: OutlineInputBorder(), labelStyle: TextStyle(color: setTheme.accentColor),
+                            focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor))
                         ),
                       ),
                     ),),
@@ -63,17 +62,16 @@ class ConnectPage extends State<connectPageState>{
                             onPressed: (){
                               Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
                             },
-                            color: Colors.green[600],
+                            color: setTheme.buttonColor,
                             child: Text("Connect", style: TextStyle(letterSpacing: 1,
-                              fontSize: SizeConfig.ButtonTextSize,
-                              color: Colors.white,fontFamily: 'Architect',)),),
+                              fontSize: SizeConfig.ButtonTextSize,fontFamily: 'Architect')),),
                         ),
                       ),
                     ],
                   )],),
           ),
         )
-    ));
+    );
   }
 }
 

@@ -16,7 +16,6 @@ class StudentPage extends State<studentPageState>{
     return MaterialApp(
     theme: setTheme,
     home: Scaffold(
-      //  backgroundColor: Color.fromRGBO(31, 69, 82, 1),
         appBar: AppBar(
           title: Text(
             "Math for Kids",
