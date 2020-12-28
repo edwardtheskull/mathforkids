@@ -41,8 +41,10 @@ class MyDynamicList extends StatelessWidget{
         itemCount: tests.length,
         itemBuilder: (context, index) {
           return Card(
-            color: Colors.black,
+            color: Color.fromRGBO(31, 69, 82, 1),
+
             child: ListTile(
+                hoverColor: Colors.blue,
                 leading: tests[index].blabla(tests[index].passed),
                 title: Text(tests[index].name, style: TextStyle(
                     color: Colors.white, fontSize: SizeConfig.MiniTextFontSize)),
