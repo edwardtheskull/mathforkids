@@ -13,15 +13,16 @@ class _ClassState extends State<Class> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Color.fromRGBO(31, 69, 82, 1),
+      backgroundColor: setTheme.scaffoldBackgroundColor,
       appBar: AppBar(
         centerTitle:true,
         backgroundColor: Colors.green[600],
         title: Text("Class",
         style: TextStyle(
           fontSize: SizeConfig.AppbarFontSize,
-          color: Colors.white,
+          color: setTheme.primaryTextTheme.headline6.color,
           fontFamily: "Architect",
           fontWeight: FontWeight.bold,),
       ),
@@ -37,7 +38,7 @@ class _ClassState extends State<Class> {
                 onTap: () {
                   print(Students[index]);
                 },
-                title: Text(Students[index], style: TextStyle(color: Colors.white),),
+                title: Text(Students[index], style: TextStyle(color: setTheme.primaryTextTheme.headline6.color),),
                 leading: CircleAvatar(
                   backgroundImage: AssetImage('images/no-profile-picture.png'),
                 ),
