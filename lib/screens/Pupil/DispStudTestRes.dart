@@ -46,7 +46,7 @@ class MyDynamicList extends StatelessWidget{
 
             child: ListTile(
                 hoverColor: Colors.blue,
-                leading: tests[index].blabla(tests[index].passed),
+                leading: tests[index].whatIcon(tests[index].studP),
                 title: Text(tests[index].name, style: TextStyle(
                     color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
                 subtitle: Text(tests[index].date, style: TextStyle(
@@ -56,11 +56,11 @@ class MyDynamicList extends StatelessWidget{
                   children: [
                     InkWell(
                         child: Text(
-                          "More info",
+                          "${tests[index].studP}/${tests[index].maxP}",
                           style: TextStyle(
-                              color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize),
+                              color: Colors.green, fontSize: SizeConfig.MiniTextFontSize),
                         ),
-                        onTap: () {Navigator.push(context, new MaterialPageRoute(builder: (context) => new specTestResultState()));}),
+                        onTap: () {Navigator.push(context, new MaterialPageRoute(builder: (context) => new specTestResultState(test: tests[index])));}),
                   ],
                 )
             )
