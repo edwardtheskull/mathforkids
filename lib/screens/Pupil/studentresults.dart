@@ -11,18 +11,20 @@ class studentresultPage extends State<studentresultPageState> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Color.fromRGBO(31, 69, 82, 1),
+      backgroundColor: setTheme.scaffoldBackgroundColor,
       appBar: AppBar(
+          iconTheme: IconThemeData(color: setTheme.accentColor),
         title: Text(
           "Math for Kids",
           style: TextStyle(
-            fontSize: SizeConfig.safeBlockHorizontal * 3.5,
+            fontSize: SizeConfig.AppbarFontSize,
             fontFamily: "Architect",
             fontWeight: FontWeight.bold,
+              color: setTheme.primaryTextTheme.headline6.color
           ),
         ),
         centerTitle: true,
-        backgroundColor: Colors.green[600],
+        backgroundColor: setTheme.primaryColor
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 16.0),
@@ -34,32 +36,31 @@ class studentresultPage extends State<studentresultPageState> {
           [Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text("Most recent quiz", style: TextStyle(
-                fontSize: 22,
+                fontSize: SizeConfig.TextFontSize,
                 fontFamily: "Architect",
-                backgroundColor: Colors.green[600],
-                color: Colors.white),),
+                backgroundColor: setTheme.primaryColor,
+                color: setTheme.accentColor),),
           ),
             Container(
-              width: 400,
               child: Card(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15.0),
                 ),
-                color: Color.fromRGBO(31, 69, 82, 1),
+                color: setTheme.scaffoldBackgroundColor,
                 elevation: 10,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const ListTile(
+                     ListTile(
                       leading: Icon(
                         Icons.add_circle,
-                        color: Colors.green,
-                        size: 40,
+                        color: setTheme.buttonColor,
+                        size: SizeConfig.SmallIconSize,
                       ),
                       title: Text('Addition',
-                          style: TextStyle(color: Colors.white, fontSize: 18)),
+                          style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
                       subtitle: Text(
-                          '2020-12-12', style: TextStyle(color: Colors.white)),
+                          '2020-12-12', style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.XSMiniTextFontSize)),
                     ),
                   ],
                 ),
@@ -68,10 +69,10 @@ class studentresultPage extends State<studentresultPageState> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text("Previous quizzes", style: TextStyle(
-                  fontSize: 22,
+                  fontSize: SizeConfig.TextFontSize,
                   fontFamily: "Architect",
-                  backgroundColor: Colors.green[600],
-                  color: Colors.white),
+                  backgroundColor: setTheme.buttonColor,
+                  color: setTheme.accentColor),
               ),
             ),
             Container(
@@ -80,43 +81,43 @@ class studentresultPage extends State<studentresultPageState> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15.0),
                   ),
-                  color: Color.fromRGBO(31, 69, 82, 1),
+                  color: setTheme.scaffoldBackgroundColor,
                   elevation: 10,
                   child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const ListTile(
+                        ListTile(
                           leading: Icon(
                             Icons.calculate_rounded,
-                            color: Colors.green,
-                            size: 40,
+                            color: setTheme.buttonColor,
+                            size: SizeConfig.SmallIconSize,
                           ),
                           title: Text('Blandat', style: TextStyle(
-                              color: Colors.white)),
+                              color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
                           subtitle: Text('2020-12-12', style: TextStyle(
-                              color: Colors.white)),
+                              color: setTheme.accentColor, fontSize: SizeConfig.XSMiniTextFontSize)),
                         ),
-                       const ListTile(
+                        ListTile(
                          leading: Icon(
                            Icons.remove_circle,
-                           color: Colors.green,
-                           size: 40,
+                           color: setTheme.buttonColor,
+                           size: SizeConfig.SmallIconSize,
                          ),
                           title: Text('Subtraktion', style: TextStyle(
-                              color: Colors.white)),
+                              color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
                           subtitle: Text('2020-12-12', style: TextStyle(
-                              color: Colors.white)),
+                              color: setTheme.accentColor, fontSize: SizeConfig.XSMiniTextFontSize)),
                         ),
-                        const ListTile(
+                        ListTile(
                           leading: Icon(
                             Icons.add_circle,
-                            color: Colors.green,
+                            color: setTheme.buttonColor,
                             size: 40,
                           ),
                           title: Text('addition', style: TextStyle(
-                              color: Colors.white)),
+                              color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
                           subtitle: Text('2020-12-12', style: TextStyle(
-                              color: Colors.white)),
+                              color: setTheme.accentColor, fontSize: SizeConfig.XSMiniTextFontSize)),
                         ),
                          ListTile(
                           leading:
@@ -128,16 +129,16 @@ class studentresultPage extends State<studentresultPageState> {
                                   fontSize: 20,
                                   background: Paint()
                                     ..strokeWidth = 25
-                                    ..color = Colors.green
+                                    ..color = setTheme.buttonColor
                                     ..style = PaintingStyle.stroke
                                     ..strokeJoin = StrokeJoin.round),
                             ),
                           ),
 
                           title: Text('Division', style: TextStyle(
-                              color: Colors.white)),
+                              color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
                           subtitle: Text('2020-12-12', style: TextStyle(
-                              color: Colors.white)),
+                              color: setTheme.accentColor, fontSize: SizeConfig.XSMiniTextFontSize)),
                         ),
                       ]
                   )
@@ -149,48 +150,7 @@ class studentresultPage extends State<studentresultPageState> {
     );
   }
 }
-/*return Scaffold(
-        backgroundColor: Colors.green[50],
-        appBar: AppBar(
-          title: Text(
-            "Math for Kids",
-            style: TextStyle(
-              fontSize: 30,
-              fontFamily: "Crimson",
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          centerTitle:true,
-          backgroundColor: Colors.green[600],
-        ),
-        body:  Center(
-          child: Column( mainAxisAlignment: MainAxisAlignment.end, crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: Container(
-                    color: Colors.black,
-                    child: Text("Most recent quiz",
-                      style: TextStyle(fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.cyan,
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    color: Colors.yellow,
-                    child: Text("Most recent quiz",
-                      style: TextStyle(fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.red,
-                      ),
-                    ),
-                  ),
-                ),
-              ]),
-        )
-    );*/
+
 
 
 
