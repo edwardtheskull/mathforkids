@@ -15,19 +15,19 @@ class createquizPage extends State<createquizPageState>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromRGBO(31, 69, 82, 1),
+        backgroundColor: setTheme.scaffoldBackgroundColor,
         appBar: AppBar(
           title: Text(
             "Create Quiz",
             style: TextStyle(
-              fontSize: 30,
-              color: Colors.white,
+              fontSize: SizeConfig.AppbarFontSize,
+              color: setTheme.accentColor,
               fontFamily: "Architect",
               fontWeight: FontWeight.bold,
             ),
           ),
           centerTitle:true,
-          backgroundColor: Colors.green[600],
+          backgroundColor: setTheme.primaryColor,
         ),
         body:  Scrollbar(
           child: Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,23 +36,23 @@ class createquizPage extends State<createquizPageState>{
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     children: [Text("Name:",
-                      style: TextStyle(fontSize: 20,
-                        color: Colors.white,
+                      style: TextStyle(fontSize: SizeConfig.TextFontSize,
+                        color: setTheme.accentColor,
                         fontWeight: FontWeight.bold,
                         fontFamily: "Architect",
                       ),
                     ),
-                      TextField( style: TextStyle(color: Colors.white, fontFamily: 'Architect'), cursorColor: Colors.white,
-                        decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
-                            border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
-                            labelText: 'Name', focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
+                      TextField( style: TextStyle(color: setTheme.accentColor, fontFamily: 'Architect'), cursorColor: setTheme.accentColor,
+                        decoration: InputDecoration(enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor)),
+                            border: OutlineInputBorder(), labelStyle: TextStyle(color: setTheme.accentColor),
+                           focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor))
                         ),
                       ),
                       Row(
                         children: [
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: DropdownButton<String>(value: Dropdownquestionvalue, style: TextStyle(color: Colors.green, fontSize: SizeConfig.TextFieldFontSize, fontFamily:"Architect" ), underline: Container(height:2, color: Colors.purple),
+                            child: DropdownButton<String>(value: Dropdownquestionvalue, dropdownColor: setTheme.scaffoldBackgroundColor, style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize, fontFamily:"Architect" ), underline: Container(height:2, color: setTheme.accentColor),
                               onChanged: (String newValue) {
                                 setState(() {
                                   Dropdownquestionvalue = newValue;
@@ -67,10 +67,10 @@ class createquizPage extends State<createquizPageState>{
                               onPressed: () async{
                                 Navigator.push(context, MaterialPageRoute(builder: (context) => createquestionPageState(Dropdownquestionvalue: Dropdownquestionvalue),));
                               },
-                              color: Colors.green,
+                              color: setTheme.buttonColor,
                               child: Text("Add Question", style: TextStyle(
                                 fontSize: SizeConfig.Createquestionbutton,
-                                color: Colors.white,fontFamily: 'Architect',
+                                color: setTheme.accentColor, fontFamily: 'Architect',
                               ),),
                             ),
                           )
@@ -88,10 +88,10 @@ class createquizPage extends State<createquizPageState>{
                       onPressed: () async{
                         confirmDialog(context);
                       },
-                      color: Colors.green,
+                      color: setTheme.buttonColor,
                       child: Text("Create Quiz", style: TextStyle(
-                        fontSize: 30,
-                        color: Colors.white,fontFamily: 'Architect',
+                        fontSize: SizeConfig.TextFontSize,
+                        color: setTheme.accentColor, fontFamily: 'Architect',
                       ),),
                     ),
                   ),
