@@ -26,19 +26,20 @@ class RegisterPage extends State<registerPageState>{
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return load ? Loading() : Scaffold(
-        backgroundColor: Color.fromRGBO(31, 69, 82, 1),
+        backgroundColor: setTheme.scaffoldBackgroundColor,
         appBar: AppBar(
+          iconTheme: IconThemeData(color: setTheme.accentColor),
           title: Text(
             "Register",
             style: TextStyle(
               fontSize: SizeConfig.AppbarFontSize,
-              color: Colors.white,
+              color: setTheme.primaryTextTheme.headline6.color,
               fontFamily: "Architect",
               fontWeight: FontWeight.bold,
             ),
           ),
           centerTitle:true,
-          backgroundColor: Colors.green[600],
+          backgroundColor: setTheme.primaryColor,
         ),
         body: SingleChildScrollView(
           child: Center(
@@ -53,76 +54,76 @@ class RegisterPage extends State<registerPageState>{
                           padding: const EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 2.0),
                           child: Text("Name:",
                             style: TextStyle(fontSize: SizeConfig.TextFontSize,
-                              color: Colors.white,
+                              color: setTheme.accentColor,
                               fontWeight: FontWeight.bold,
                               fontFamily: "Architect",
                             ),
                           ),
                         ),
-                        TextFormField(controller: textname, style: TextStyle(color: Colors.white, fontFamily: 'Architect', fontSize: SizeConfig.TextFieldFontSize), cursorColor: Colors.white,
+                        TextFormField(controller: textname, style: TextStyle(color: setTheme.accentColor, fontFamily: 'Architect', fontSize: SizeConfig.TextFieldFontSize), cursorColor: setTheme.accentColor,
                           validator: (val) => val.isEmpty ? 'Enter name' : null,
                           obscureText: false,
-                          decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
-                              border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
-                               focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
+                          decoration: InputDecoration(enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor)),
+                              border: OutlineInputBorder(), labelStyle: TextStyle(color: setTheme.accentColor),
+                               focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor))
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 2.0),
                           child: Text("Password:",
                             style: TextStyle(fontSize: SizeConfig.TextFontSize,
-                              color: Colors.white,
+                              color: setTheme.accentColor,
                               fontWeight: FontWeight.bold,
                               fontFamily: "Architect",
                             ),
                           ),
                         ),
-                        TextFormField(controller: textpassword, style: TextStyle(color: Colors.white, fontFamily: 'Architect', fontSize: SizeConfig.TextFieldFontSize), cursorColor: Colors.white,
+                        TextFormField(controller: textpassword, style: TextStyle(color: setTheme.accentColor, fontFamily: 'Architect', fontSize: SizeConfig.TextFieldFontSize), cursorColor: setTheme.accentColor,
                           validator: (val) => val.isEmpty ? 'Enter password' : val.length < 6 ?
                           'Must be at least 6 characters' : null,
                           obscureText: true,
-                          decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
-                              border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
-                               focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
+                          decoration: InputDecoration(enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor)),
+                              border: OutlineInputBorder(), labelStyle: TextStyle(color: setTheme.accentColor),
+                               focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor))
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 2.0),
                           child: Text("Confirm Password:",
                             style: TextStyle(fontSize: SizeConfig.TextFontSize,
-                              color: Colors.white,
+                              color: setTheme.accentColor,
                               fontWeight: FontWeight.bold,
                               fontFamily: "Architect",
                             ),
                           ),
                         ),
-                        TextFormField(controller: textconfirmpassword, style: TextStyle(color: Colors.white, fontFamily: 'Architect', fontSize: SizeConfig.TextFieldFontSize), cursorColor: Colors.white,
+                        TextFormField(controller: textconfirmpassword, style: TextStyle(color: setTheme.accentColor, fontFamily: 'Architect', fontSize: SizeConfig.TextFieldFontSize), cursorColor: setTheme.accentColor,
                           validator: (val) => val.isEmpty ?
                           'Enter password' :
                            val != textpassword.text ?
                           'Passwords not matching' : null,
                           obscureText: true,
-                          decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
-                              border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
-                               focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
+                          decoration: InputDecoration(enabledBorder:  OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor)),
+                              border: OutlineInputBorder(), labelStyle: TextStyle(color: setTheme.accentColor),
+                               focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor))
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 2.0),
                           child: Text("Mail:",
                             style: TextStyle(fontSize: SizeConfig.TextFontSize,
-                              color: Colors.white,
+                              color: setTheme.accentColor,
                               fontWeight: FontWeight.bold,
                               fontFamily: "Architect",
                             ),
                           ),
                         ),
-                        TextFormField(controller: textmail, style: TextStyle(color: Colors.white, fontFamily: 'Architect', fontSize: SizeConfig.TextFieldFontSize), cursorColor: Colors.white,
+                        TextFormField(controller: textmail, style: TextStyle(color: setTheme.accentColor, fontFamily: 'Architect', fontSize: SizeConfig.TextFieldFontSize), cursorColor: setTheme.accentColor,
                           validator: (val) => val.isEmpty ? 'Enter mail' : null,
                           obscureText: false,
-                          decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
-                              border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
-                               focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
+                          decoration: InputDecoration(enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor)),
+                              border: OutlineInputBorder(), labelStyle: TextStyle(color: setTheme.accentColor),
+                               focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor))
                           ),
                         ),
                         Row( mainAxisAlignment: MainAxisAlignment.center,
@@ -131,7 +132,7 @@ class RegisterPage extends State<registerPageState>{
                               padding: const EdgeInsets.all(8.0),
                               child: Text("Role:",
                                 style: TextStyle(fontSize: SizeConfig.TextFontSize,
-                                  color: Colors.white,
+                                  color: setTheme.accentColor,
                                   fontWeight: FontWeight.bold,
                                   fontFamily: "Architect",
                                 ),
@@ -139,7 +140,7 @@ class RegisterPage extends State<registerPageState>{
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: DropdownButton<String>(value: dropdownvalue, dropdownColor: Color.fromRGBO(31, 69, 82, 1), style: TextStyle(color: Colors.white, fontSize: SizeConfig.TextFieldFontSize, fontFamily:"Architect" ), underline: Container(color: Colors.transparent),
+                              child: DropdownButton<String>(value: dropdownvalue, dropdownColor: Color.fromRGBO(31, 69, 82, 1), style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize, fontFamily:"Architect" ), underline: Container(color: Colors.transparent),
                                 onChanged: (String newValue) {
                                   setState(() {
                                     dropdownvalue = newValue;
@@ -168,10 +169,10 @@ class RegisterPage extends State<registerPageState>{
                                   }
                                 }
                               },
-                              color: Colors.green[600],
+                              color: setTheme.primaryColor,
                               child: Text("Register", style: TextStyle(letterSpacing: 1,
                                 fontSize: SizeConfig.ButtonTextSize,
-                                color: Colors.white,fontFamily: 'Architect',)),),
+                                color: setTheme.accentColor,fontFamily: 'Architect',)),),
                           ),
                         )],
                         ),
