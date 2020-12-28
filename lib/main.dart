@@ -38,20 +38,21 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>{
                 fontSize: SizeConfig.AppbarFontSize,
                 fontFamily: "Architect",
                 fontWeight: FontWeight.bold,
+                  color: setTheme.primaryTextTheme.headline6.color
               ),
             ),
             centerTitle:true,
-            backgroundColor: Colors.green[600],
+            backgroundColor: setTheme.primaryColor,
           ),
           body:  Container(height: MediaQuery.of(context).size.height, width: MediaQuery.of(context).size.width,
             child: Column(mainAxisAlignment: MainAxisAlignment.center,
               children: [Row(mainAxisAlignment: MainAxisAlignment.center,
                 children: [ButtonTheme(minWidth: SizeConfig.SmallButtonWidth, height: SizeConfig.ButtonHeight,
                 child: RaisedButton(elevation: 2, onPressed: (){Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));},
-                color: Colors.green[600],
+                color: setTheme.buttonColor,
                 child: Text("Login", style: TextStyle(letterSpacing: 1,
                   fontSize: SizeConfig.ButtonTextSize,
-                  color: Colors.white,fontFamily: 'Architect')),),
+                  color: setTheme.accentColor, fontFamily: 'Architect')),),
               )],
               ),
                 Row(mainAxisAlignment: MainAxisAlignment.center,
@@ -62,13 +63,21 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>{
                       onPressed: (){
                         Navigator.push(context, new MaterialPageRoute(builder: (context) => new registerPageState()));
                       },
-                      color: Colors.green[600],
+                      color: setTheme.buttonColor,
                       child: Text("Register", style: TextStyle(letterSpacing: 1,
                           fontSize: SizeConfig.ButtonTextSize,
-                          color: Colors.white,fontFamily: 'Architect',)),),
+                          color: setTheme.accentColor, fontFamily: 'Architect',)),),
                   ),
                 )],
                 ),
+                Switch(
+                    value: dark,
+                    onChanged: (state){
+                      setState(() {
+                        dark = state;
+                        switchTheme();
+                      });
+                    }),
               ],
             )
           )

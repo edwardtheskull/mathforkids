@@ -36,6 +36,7 @@ class StudentPage extends State<studentPageState>{
                 },
               )
             ],
+
         ),
         body:  Column(mainAxisAlignment: MainAxisAlignment.center,
             children: [Row(mainAxisAlignment: MainAxisAlignment.center, children: [ButtonTheme(minWidth: SizeConfig.ButtonWidth, height: SizeConfig.ButtonHeight,

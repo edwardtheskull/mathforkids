@@ -28,7 +28,7 @@ class LoginPage extends State<loginPageState>{
       value: DatabaseService().users,
       child: MaterialApp(
         home: Scaffold(
-          backgroundColor: Color.fromRGBO(31, 69, 82, 1),
+          backgroundColor: setTheme.scaffoldBackgroundColor,
           appBar: AppBar(
             title: Text(
               "Login",
@@ -36,10 +36,11 @@ class LoginPage extends State<loginPageState>{
                 fontSize: SizeConfig.AppbarFontSize,
                 fontFamily: "Architect",
                 fontWeight: FontWeight.bold,
+                  color: setTheme.primaryTextTheme.headline6.color
               ),
             ),
             centerTitle:true,
-            backgroundColor: Colors.green[600],
+            backgroundColor: setTheme.primaryColor,
           ),
           body: SingleChildScrollView(
             child: Center(
@@ -49,7 +50,7 @@ class LoginPage extends State<loginPageState>{
                   child: Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [Row(children: [
                           Expanded(child: Text("email/username:",
-                            style: TextStyle(fontSize: SizeConfig.TextFontSize, color: Colors.white,
+                            style: TextStyle(fontSize: SizeConfig.TextFontSize, color: setTheme.accentColor,
                                 fontWeight: FontWeight.bold, fontFamily: 'Architect'
                             ),
                           ),
@@ -58,12 +59,12 @@ class LoginPage extends State<loginPageState>{
                       ),
                         Row(
                           children: [
-                            Expanded(child: TextFormField(controller: textname, style: TextStyle(color: Colors.white, fontFamily: 'Architect', fontSize: SizeConfig.TextFieldFontSize), cursorColor: Colors.white,
+                            Expanded(child: TextFormField(controller: textname, style: TextStyle(color: setTheme.accentColor, fontFamily: 'Architect', fontSize: SizeConfig.TextFieldFontSize), cursorColor: setTheme.accentColor,
                               validator: (val) => val.isEmpty ? 'Enter mail' : null,
                               obscureText: false,
-                              decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
-                                border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
-                              focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
+                              decoration: InputDecoration(enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor)),
+                                border: OutlineInputBorder(), labelStyle: TextStyle(color: setTheme.accentColor),
+                              focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor))
                               ),
                             ),),
                           ],
@@ -71,7 +72,7 @@ class LoginPage extends State<loginPageState>{
                         Row(
                           children: [
                             Expanded(child: Text("Password:",
-                              style: TextStyle(fontSize: SizeConfig.TextFontSize, color: Colors.white,
+                              style: TextStyle(fontSize: SizeConfig.TextFontSize, color: setTheme.accentColor,
                                   fontWeight: FontWeight.bold, fontFamily: 'Architect'
                               ),
                             ),
@@ -81,13 +82,13 @@ class LoginPage extends State<loginPageState>{
                       ),
                         Row(
                           children: [
-                            Expanded(child: TextFormField(controller: textpassword, style: TextStyle(color: Colors.white, fontFamily: 'Architect', fontSize: SizeConfig.TextFieldFontSize), cursorColor: Colors.white,
+                            Expanded(child: TextFormField(controller: textpassword, style: TextStyle(color: setTheme.accentColor, fontFamily: 'Architect', fontSize: SizeConfig.TextFieldFontSize), cursorColor: setTheme.accentColor,
                               validator: (val) => val.isEmpty ? 'Enter password' : val.length < 6 ?
                               'Must be at least 6 characters' : null,
                               obscureText: true,
-                              decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
-                                border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
-                                focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
+                              decoration: InputDecoration(enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor)),
+                                border: OutlineInputBorder(), labelStyle: TextStyle(color: setTheme.accentColor),
+                                focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor))
                               ),
                             ),),
                           ],
@@ -100,10 +101,10 @@ class LoginPage extends State<loginPageState>{
                                 onPressed: () {
                                   Navigator.of(context).push(MaterialPageRoute(builder: (context) => ResetScreen()));
                                 },
-                                color: Color.fromRGBO(31, 69, 82, 1),
+                                color: setTheme.scaffoldBackgroundColor,
                                 child: Text("Forgot Password", style: TextStyle(letterSpacing: 1,
                                   fontSize: 12.0,
-                                  color: Colors.white,fontFamily: 'Architect',)),),
+                                  color: setTheme.accentColor, fontFamily: 'Architect',)),),
                             ),
                           )],
                         ),
@@ -128,10 +129,10 @@ class LoginPage extends State<loginPageState>{
                                       }
                                     }
                                   },
-                                  color: Colors.green[600],
+                                  color: setTheme.primaryColor,
                                   child: Text("Next", style: TextStyle(letterSpacing: 1,
                                     fontSize: SizeConfig.ButtonTextSize,
-                                    color: Colors.white,fontFamily: 'Architect',)),),
+                                    color: setTheme.accentColor, fontFamily: 'Architect',)),),
                               ),
                             )],
                             ),
