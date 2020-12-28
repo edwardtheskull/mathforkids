@@ -23,7 +23,7 @@ class ConnectPage extends State<connectPageState>{
             ),
           ),
           centerTitle:true,
-          backgroundColor: Colors.green[600],
+          backgroundColor: setTheme.primaryColor
         ),
         body:  Center(
           child: Container(width: MediaQuery.of(context).size.width*0.8,
@@ -32,7 +32,7 @@ class ConnectPage extends State<connectPageState>{
                 Expanded(child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text("Code:",
-                    style: TextStyle(fontSize: SizeConfig.TextFontSize, color: setTheme.primaryTextTheme.headline6.color,
+                    style: TextStyle(fontSize: SizeConfig.TextFontSize, color: setTheme.accentColor,
                         fontWeight: FontWeight.bold, fontFamily: 'Architect'
                     ),
                   ),

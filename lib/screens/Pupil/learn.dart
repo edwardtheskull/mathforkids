@@ -10,10 +10,8 @@ class LearnPage extends State<learnPageState>{
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return MaterialApp(
-        theme: setTheme,
-      home: Scaffold(
-      //  backgroundColor: Color.fromRGBO(31, 69, 82, 1),
+    return Scaffold(
+        backgroundColor: setTheme.scaffoldBackgroundColor,
         appBar: AppBar(
           title: Text(
             "Learn",
@@ -21,10 +19,11 @@ class LearnPage extends State<learnPageState>{
               fontSize: SizeConfig.AppbarFontSize,
               fontFamily: "Architect",
               fontWeight: FontWeight.bold,
+                color: setTheme.primaryTextTheme.headline6.color
             ),
           ),
           centerTitle:true,
-          backgroundColor: Colors.green[600],
+          backgroundColor: setTheme.primaryColor
         ),
         body:  Column(mainAxisAlignment: MainAxisAlignment.center,
             children: [Row(mainAxisAlignment: MainAxisAlignment.center, children: [ButtonTheme(minWidth: SizeConfig.SquareButton, height: SizeConfig.SquareButton,
@@ -34,9 +33,9 @@ class LearnPage extends State<learnPageState>{
                   onPressed: (){
                     Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnQPageState()));
                   },
-                  color: Colors.green[600],
+                  color: setTheme.buttonColor,
                   child: Text("+", style: TextStyle(letterSpacing: 1,
-                      fontSize: SizeConfig.LargeButtonTextSize,
+                      fontSize: SizeConfig.LargeButtonTextSize, color: setTheme.accentColor,
                       fontFamily: 'Architect')),),
               ),
             ),
@@ -47,9 +46,9 @@ class LearnPage extends State<learnPageState>{
                     onPressed: (){
                       Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnQPageState()));
                     },
-                    color: Colors.green[600],
+                    color: setTheme.buttonColor,
                     child: Text("-", style: TextStyle(letterSpacing: 1,
-                      fontSize: SizeConfig.LargeButtonTextSize,
+                      fontSize: SizeConfig.LargeButtonTextSize, color: setTheme.accentColor,
                       fontFamily: 'Architect',)),),
                 ),
               ),
@@ -62,9 +61,9 @@ class LearnPage extends State<learnPageState>{
                     onPressed: (){
                       Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnQPageState()));
                     },
-                    color: Colors.green[600],
+                    color: setTheme.buttonColor,
                     child: Text("x", style: TextStyle(letterSpacing: 1,
-                        fontSize: SizeConfig.LargeButtonTextSize,
+                        fontSize: SizeConfig.LargeButtonTextSize, color: setTheme.accentColor,
                        fontFamily: 'Architect')),),
                 ),
               ),
@@ -75,15 +74,15 @@ class LearnPage extends State<learnPageState>{
                       onPressed: (){
                         Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnQPageState()));
                       },
-                      color: Colors.green[600],
+                      color: setTheme.buttonColor,
                       child: Text("/", style: TextStyle(letterSpacing: 1,
-                        fontSize: SizeConfig.LargeButtonTextSize,
+                        fontSize: SizeConfig.LargeButtonTextSize, color: setTheme.accentColor,
                         fontFamily: 'Architect',)),),
                   ),
                 ),
               ],
               ),
             ])
-    ));
+    );
   }
 }
