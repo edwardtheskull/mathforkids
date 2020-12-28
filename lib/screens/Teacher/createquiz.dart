@@ -48,8 +48,6 @@ class createquizPage extends State<createquizPageState>{
                             labelText: 'Name', focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
                         ),
                       ),
-                      SwitchListTile(title: const Text('test'), value:test, onChanged: (bool value) { setState(() {
-                        test = value;}); },),
                       Row(
                         children: [
                           Padding(
