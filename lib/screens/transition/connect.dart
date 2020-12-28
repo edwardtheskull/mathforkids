@@ -32,7 +32,7 @@ class ConnectPage extends State<connectPageState>{
                 Expanded(child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text("Code:",
-                    style: TextStyle(fontSize: SizeConfig.TextFontSize, color: Colors.white,
+                    style: TextStyle(fontSize: SizeConfig.TextFontSize, color: setTheme.primaryTextTheme.headline6.color,
                         fontWeight: FontWeight.bold, fontFamily: 'Architect'
                     ),
                   ),
@@ -64,7 +64,7 @@ class ConnectPage extends State<connectPageState>{
                             },
                             color: setTheme.buttonColor,
                             child: Text("Connect", style: TextStyle(letterSpacing: 1,
-                              fontSize: SizeConfig.ButtonTextSize,fontFamily: 'Architect')),),
+                              fontSize: SizeConfig.ButtonTextSize,fontFamily: 'Architect', color: setTheme.accentColor,)),),
                         ),
                       ),
                     ],
