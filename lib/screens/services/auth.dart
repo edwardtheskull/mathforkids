@@ -2,7 +2,6 @@ import 'package:mathforkids/screens/Authenticate/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mathforkids/screens/services/database.dart';
 
-
 class AuthService{
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -15,7 +14,6 @@ class AuthService{
     return _auth.onAuthStateChanged
     .map(_userFromFirebaseUser);
   }
-
 
   //sign in
   Future signIn() async{
@@ -49,7 +47,7 @@ class AuthService{
       AuthResult res = await _auth.createUserWithEmailAndPassword(email: username, password: password);
       FirebaseUser user = res.user;
 
-      await DatabaseService(uid: user.uid).updateUserData(name, role);
+      await DatabaseService(uid: user.uid).updateUserData(name, role, username);
       return _userFromFirebaseUser(user);
     } catch(e){
       print(e.toString());

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mathforkids/utils/Imports.dart';
 import 'package:mathforkids/screens/services/database.dart';
 import 'package:provider/provider.dart';
@@ -125,7 +126,11 @@ class LoginPage extends State<loginPageState>{
                                       } else {
                                         print('signed in');
                                         print(res.uid);
-                                        Navigator.push(context, new MaterialPageRoute(builder: (context) => new studentPageState()));
+                                        var role = await DatabaseService().getRole(textname.text);
+                                        if(role == 'Teacher')
+                                          Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherPageState()));
+                                        else
+                                          Navigator.push(context, new MaterialPageRoute(builder: (context) => new studentPageState()));
                                       }
                                     }
                                   },
@@ -136,7 +141,7 @@ class LoginPage extends State<loginPageState>{
                               ),
                             )],
                             ),
-
+                            //UserList(),
                           ],
                         ),
                       ]),

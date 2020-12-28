@@ -12,6 +12,7 @@ class _UserListState extends State<UserList> {
   Widget build(BuildContext context) {
     final users = Provider.of<List<User>>(context);
     users.forEach((user){
+      print(user.username);
       print(user.name);
       print(user.role);
     });
