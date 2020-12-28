@@ -13,6 +13,7 @@ class ConnectPage extends State<connectPageState>{
     return Scaffold(
       backgroundColor: setTheme.scaffoldBackgroundColor,
         appBar: AppBar(
+            iconTheme: IconThemeData(color: setTheme.accentColor),
           title: Text(
             "Math for Kids",
             style: TextStyle(

@@ -13,6 +13,7 @@ class LearnPage extends State<learnPageState>{
     return Scaffold(
         backgroundColor: setTheme.scaffoldBackgroundColor,
         appBar: AppBar(
+            iconTheme: IconThemeData(color: setTheme.accentColor),
           title: Text(
             "Learn",
             style: TextStyle(

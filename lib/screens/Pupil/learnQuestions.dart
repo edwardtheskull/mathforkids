@@ -9,20 +9,23 @@ class learnQPageState extends StatefulWidget {
 class LearnQPage extends State<learnQPageState> {
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Container(
       child: Scaffold(
-          backgroundColor: Color.fromRGBO(31, 69, 82, 1),
+          backgroundColor: setTheme.scaffoldBackgroundColor,
           appBar: AppBar(
+            iconTheme: IconThemeData(color: setTheme.accentColor),
             title: Text(
               "Math for Kids",
               style: TextStyle(
                 fontSize: SizeConfig.AppbarFontSize,
                 fontFamily: "Architect",
                 fontWeight: FontWeight.bold,
+                  color: setTheme.primaryTextTheme.headline6.color
               ),
             ),
             centerTitle: true,
-            backgroundColor: Colors.green[600],
+              backgroundColor: setTheme.primaryColor
           ),
           body: Container(
             child: Column(children: [
@@ -33,7 +36,7 @@ class LearnQPage extends State<learnQPageState> {
                       "Addition",
                       style: TextStyle(
                           fontSize: SizeConfig.MiniTextFontSize,
-                          color: Colors.white,
+                          color: setTheme.accentColor,
                           fontWeight: FontWeight.bold,
                           fontFamily: 'Architect'),
                     ),
@@ -47,19 +50,19 @@ class LearnQPage extends State<learnQPageState> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0),
                       ),
-                      color: Color.fromRGBO(31, 69, 82, 1),
+                      color: setTheme.scaffoldBackgroundColor,
                       elevation: 10,
                       child: Column(mainAxisSize: MainAxisSize.min, children: [
                         ListTile(
                             leading: Icon(
                               Icons.add_circle,
-                              color: Colors.green,
+                              color: setTheme.buttonColor,
                               size: SizeConfig.SmallIconSize,
                             ),
                             title: Text('Addition',
-                                style: TextStyle(color: Colors.white, fontSize: SizeConfig.MiniTextFontSize, fontFamily: "Architect")),
+                                style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize, fontFamily: "Architect")),
                             subtitle: Text('Easy',
-                                style: TextStyle(color: Colors.white, fontSize: SizeConfig.XSMiniTextFontSize, fontFamily: "Architect")),
+                                style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.XSMiniTextFontSize, fontFamily: "Architect")),
                             trailing: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
@@ -67,7 +70,7 @@ class LearnQPage extends State<learnQPageState> {
                                     child: Text(
                                       "Take quiz",
                                       style: TextStyle(
-                                          color: Colors.green, fontSize: SizeConfig.MiniTextFontSize, fontFamily: "Architect"),
+                                          color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize, fontFamily: "Architect"),
                                     ),
                                     onTap: () {}),
                               ],
@@ -82,19 +85,19 @@ class LearnQPage extends State<learnQPageState> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0),
                       ),
-                      color: Color.fromRGBO(31, 69, 82, 1),
+                      color: setTheme.scaffoldBackgroundColor,
                       elevation: 10,
                       child: Column(mainAxisSize: MainAxisSize.min, children: [
                         ListTile(
                           leading: Icon(
                             Icons.add_circle,
-                            color: Colors.green,
+                            color: setTheme.buttonColor,
                             size: SizeConfig.SmallIconSize,
                           ),
                           title: Text('Addition',
-                              style: TextStyle(color: Colors.white, fontSize:  SizeConfig.MiniTextFontSize, fontFamily: "Architect")),
+                              style: TextStyle(color: setTheme.accentColor, fontSize:  SizeConfig.MiniTextFontSize, fontFamily: "Architect")),
                           subtitle: Text('Intermediate',
-                              style: TextStyle(color: Colors.white, fontSize: SizeConfig.XSMiniTextFontSize, fontFamily: "Architect")),
+                              style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.XSMiniTextFontSize, fontFamily: "Architect")),
                           trailing: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
@@ -102,7 +105,7 @@ class LearnQPage extends State<learnQPageState> {
                                   child: Text(
                                     "Take quiz",
                                     style: TextStyle(
-                                        color: Colors.green, fontSize: SizeConfig.MiniTextFontSize, fontFamily: "Architect"),
+                                        color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize, fontFamily: "Architect"),
                                   ),
                                   onTap: () {}),
                             ],
@@ -118,19 +121,19 @@ class LearnQPage extends State<learnQPageState> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0),
                       ),
-                      color: Color.fromRGBO(31, 69, 82, 1),
+                      color: setTheme.scaffoldBackgroundColor,
                       elevation: 10,
                       child: Column(mainAxisSize: MainAxisSize.min, children: [
                         ListTile(
                             leading: Icon(
                               Icons.add_circle,
-                              color: Colors.green,
+                              color: setTheme.buttonColor,
                               size: SizeConfig.SmallIconSize,
                             ),
                             title: Text('Addition',
-                                style: TextStyle(color: Colors.white, fontSize:  SizeConfig.MiniTextFontSize, fontFamily: "Architect")),
+                                style: TextStyle(color: setTheme.accentColor, fontSize:  SizeConfig.MiniTextFontSize, fontFamily: "Architect")),
                             subtitle: Text('Hard',
-                                style: TextStyle(color: Colors.white, fontSize:  SizeConfig.XSMiniTextFontSize, fontFamily: "Architect")),
+                                style: TextStyle(color: setTheme.accentColor, fontSize:  SizeConfig.XSMiniTextFontSize, fontFamily: "Architect")),
                             trailing: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
@@ -138,7 +141,7 @@ class LearnQPage extends State<learnQPageState> {
                                     child: Text(
                                       "Take quiz",
                                       style: TextStyle(
-                                          color: Colors.green, fontSize: SizeConfig.MiniTextFontSize, fontFamily: "Architect"),
+                                          color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize, fontFamily: "Architect"),
                                     ),
                                     onTap: () {}),
                               ],
@@ -146,82 +149,6 @@ class LearnQPage extends State<learnQPageState> {
                       ])),
                 ),
               ),
-              /*Row(
-                    children: [ButtonTheme(minWidth: MediaQuery.of(context).size.width*0.955, height: MediaQuery.of(context).size.height/8,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: RaisedButton(elevation: 3,
-                          onPressed: (){
-                            Navigator.push(context, new MaterialPageRoute(builder: (context) => new studentPageState()));
-                          },
-                          color: Colors.transparent,
-                          child: Text("Addition - Easy", style: TextStyle(letterSpacing: 1,
-                            fontSize: 20,
-                            color: Colors.white,fontFamily: 'Architect',)),),
-                      ),
-                    )],
-                  ),
-                  Row(
-                    children: [ButtonTheme(minWidth: MediaQuery.of(context).size.width*0.955, height: MediaQuery.of(context).size.height/8,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: RaisedButton(elevation: 3,
-                          onPressed: (){
-                            Navigator.push(context, new MaterialPageRoute(builder: (context) => new studentPageState()));
-                          },
-                          color: Colors.transparent,
-                          child: Text("Addition - Easy", style: TextStyle(letterSpacing: 1,
-                            fontSize: 20,
-                            color: Colors.white,fontFamily: 'Architect',)),),
-                      ),
-                    )],
-                  ),
-                  Row(
-                    children: [ButtonTheme(minWidth: MediaQuery.of(context).size.width*0.955, height: MediaQuery.of(context).size.height/8,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: RaisedButton(elevation: 3,
-                          onPressed: (){
-                            Navigator.push(context, new MaterialPageRoute(builder: (context) => new studentPageState()));
-                          },
-                          color: Colors.transparent,
-                          child: Text("Addition - Normal", style: TextStyle(letterSpacing: 1,
-                            fontSize: 20,
-                            color: Colors.white,fontFamily: 'Architect',)),),
-                      ),
-                    )],
-                  ),
-                  Row(
-                    children: [ButtonTheme(minWidth: MediaQuery.of(context).size.width*0.955, height: MediaQuery.of(context).size.height/8,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: RaisedButton(elevation: 3,
-                          onPressed: (){
-                            Navigator.push(context, new MaterialPageRoute(builder: (context) => new studentPageState()));
-                          },
-                          color: Colors.transparent,
-                          child: Text("Addition - Normal", style: TextStyle(letterSpacing: 1,
-                            fontSize: 20,
-                            color: Colors.white,fontFamily: 'Architect',)),),
-                      ),
-                    )],
-                  ),
-                  Row(
-                    children: [ButtonTheme(minWidth: MediaQuery.of(context).size.width*0.955, height: MediaQuery.of(context).size.height/8,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: RaisedButton(elevation: 3,
-                          onPressed: (){
-                            Navigator.push(context, new MaterialPageRoute(builder: (context) => new studentPageState()));
-                          },
-                          color: Colors.transparent,
-                          child: Text("Addition - Hard", style: TextStyle(letterSpacing: 1,
-                            fontSize: 20,
-                            color: Colors.white,fontFamily: 'Architect',)),),
-                      ),
-                    )],
-                  ),
-                    */
             ]),
           )),
     );
