@@ -15,7 +15,7 @@ class dispResultPage extends State<DispStudTestResState> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-        backgroundColor: Color.fromRGBO(31, 69, 82, 1),
+        backgroundColor: setTheme.scaffoldBackgroundColor,
         appBar: AppBar(
           title: Text(
             "Math for Kids",
@@ -23,10 +23,11 @@ class dispResultPage extends State<DispStudTestResState> {
               fontSize: SizeConfig.AppbarFontSize,
               fontFamily: "Architect",
               fontWeight: FontWeight.bold,
+                color: setTheme.primaryTextTheme.headline6.color
             ),
           ),
           centerTitle: true,
-          backgroundColor: Colors.green[600],
+          backgroundColor: setTheme.primaryColor
         ),
         body: MyDynamicList()
     );
@@ -41,13 +42,15 @@ class MyDynamicList extends StatelessWidget{
         itemCount: tests.length,
         itemBuilder: (context, index) {
           return Card(
-            color: Colors.black,
+            color: setTheme.scaffoldBackgroundColor,
+
             child: ListTile(
+                hoverColor: Colors.blue,
                 leading: tests[index].blabla(tests[index].passed),
                 title: Text(tests[index].name, style: TextStyle(
-                    color: Colors.white, fontSize: SizeConfig.MiniTextFontSize)),
+                    color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
                 subtitle: Text(tests[index].date, style: TextStyle(
-                    color: Colors.white, fontSize: SizeConfig.XSMiniTextFontSize)),
+                    color: setTheme.accentColor, fontSize: SizeConfig.XSMiniTextFontSize)),
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -55,7 +58,7 @@ class MyDynamicList extends StatelessWidget{
                         child: Text(
                           "More info",
                           style: TextStyle(
-                              color: Colors.green, fontSize: SizeConfig.MiniTextFontSize),
+                              color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize),
                         ),
                         onTap: () {Navigator.push(context, new MaterialPageRoute(builder: (context) => new specTestResultState()));}),
                   ],

@@ -13,6 +13,7 @@ class ConnectPage extends State<connectPageState>{
     return Scaffold(
       backgroundColor: setTheme.scaffoldBackgroundColor,
         appBar: AppBar(
+            iconTheme: IconThemeData(color: setTheme.accentColor),
           title: Text(
             "Math for Kids",
             style: TextStyle(
@@ -23,7 +24,7 @@ class ConnectPage extends State<connectPageState>{
             ),
           ),
           centerTitle:true,
-          backgroundColor: Colors.green[600],
+          backgroundColor: setTheme.primaryColor
         ),
         body:  Center(
           child: Container(width: MediaQuery.of(context).size.width*0.8,
@@ -32,7 +33,7 @@ class ConnectPage extends State<connectPageState>{
                 Expanded(child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text("Code:",
-                    style: TextStyle(fontSize: SizeConfig.TextFontSize, color: Colors.white,
+                    style: TextStyle(fontSize: SizeConfig.TextFontSize, color: setTheme.accentColor,
                         fontWeight: FontWeight.bold, fontFamily: 'Architect'
                     ),
                   ),
@@ -64,7 +65,7 @@ class ConnectPage extends State<connectPageState>{
                             },
                             color: setTheme.buttonColor,
                             child: Text("Connect", style: TextStyle(letterSpacing: 1,
-                              fontSize: SizeConfig.ButtonTextSize,fontFamily: 'Architect')),),
+                              fontSize: SizeConfig.ButtonTextSize,fontFamily: 'Architect', color: setTheme.accentColor,)),),
                         ),
                       ),
                     ],

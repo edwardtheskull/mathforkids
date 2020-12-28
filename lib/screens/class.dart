@@ -17,8 +17,9 @@ class _ClassState extends State<Class> {
     return Scaffold(
       backgroundColor: setTheme.scaffoldBackgroundColor,
       appBar: AppBar(
+        iconTheme: IconThemeData(color: setTheme.accentColor),
         centerTitle:true,
-        backgroundColor: Colors.green[600],
+        backgroundColor: setTheme.primaryColor,
         title: Text("Class",
         style: TextStyle(
           fontSize: SizeConfig.AppbarFontSize,
@@ -38,7 +39,7 @@ class _ClassState extends State<Class> {
                 onTap: () {
                   print(Students[index]);
                 },
-                title: Text(Students[index], style: TextStyle(color: setTheme.primaryTextTheme.headline6.color),),
+                title: Text(Students[index], style: TextStyle(color: setTheme.accentColor),),
                 leading: CircleAvatar(
                   backgroundImage: AssetImage('images/no-profile-picture.png'),
                 ),
