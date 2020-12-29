@@ -170,15 +170,16 @@ class createquestionPage extends State<createquestionPageState>{
             padding: const EdgeInsets.symmetric(vertical: 16.0),
             child: Row(
               children: [
-                Expanded(child: MCTextFields(i)),
-                SizedBox(width: 16,),
-                // we need add button at last friends row only
-                _addRemoveButton(i == MClist.length-1, i),
                 Checkbox(value: Answers[i], onChanged: (bool value){
                   setState(() {
                     Answers[i] = value;
                   });
-                })
+                }),
+                Expanded(child: MCTextFields(i)),
+                SizedBox(width: 16,),
+                // we need add button at last friends row only
+                _addRemoveButton(i == MClist.length-1, i),
+
               ],
             ),
           )
