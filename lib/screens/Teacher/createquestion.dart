@@ -136,30 +136,35 @@ class createquestionPage extends State<createquestionPageState>{
             backgroundColor: Colors.green[600],
           ),
           body:
-          Form(
-            key: formkey,
-            child: Padding(padding: const EdgeInsets.all(16.0),
-              child: Column(
-                children: [
-                  TextFormField(decoration: InputDecoration(hintText: 'Write question'),),
-                  Text('Add alternative'),
-                  ..._getalternatives2(),
-                  Expanded(child: Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      RaisedButton(elevation: 5,
-                        onPressed: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => createquizPageState()));
-                        },
-                        color: Colors.green[600],
-                        child: Text("Save question", style: TextStyle(letterSpacing: 1,
-                            fontSize: SizeConfig.ButtonTextSize,
-                            color: Colors.white,fontFamily: 'Architect')),),
-                    ],
-                  ),)
-                ],
+          SingleChildScrollView(
+            child: Form(
+              key: formkey,
+              child: Padding(padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    TextFormField(decoration: InputDecoration(hintText: 'Write question'),),
+                    Text('Add alternative'),
+                    ..._getalternatives2(),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Expanded(child: Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          RaisedButton(elevation: 5,
+                            onPressed: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => createquizPageState()));
+                            },
+                            color: Colors.green[600],
+                            child: Text("Save question", style: TextStyle(letterSpacing: 1,
+                                fontSize: SizeConfig.ButtonTextSize,
+                                color: Colors.white,fontFamily: 'Architect')),),
+                        ],
+                      ),),
+                    )
+                  ],
+
+                ),
 
               ),
-
             ),
           ));
     }
