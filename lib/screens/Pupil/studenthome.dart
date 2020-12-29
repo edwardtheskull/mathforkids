@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mathforkids/main.dart';
 import 'package:mathforkids/utils/Imports.dart';
 import 'package:mathforkids/screens/services/auth.dart';
 import 'package:mathforkids/ChangeTheme.dart';
@@ -32,7 +33,7 @@ class StudentPage extends State<studentPageState>{
               label: Text('logout'),
               onPressed: () async{
                 await _auth.signOut();
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => loginPageState()));
+                Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
                 },
               )
             ],
