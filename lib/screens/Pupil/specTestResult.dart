@@ -4,18 +4,21 @@ import 'package:mathforkids/screens/Pupil/testInfo.dart';
 import 'package:mathforkids/utils/Imports.dart';
 
 class specTestResultState extends StatefulWidget {
-  final TestInfo test;
-
-  specTestResultState({Key key, @required this.test}) : super(key: key);
+  final TestInfo tests;
+  specTestResultState({Key key, @required this.tests,}) : super(key: key);
 
   @override
-  specTestPage createState() => specTestPage();
+  specTestPage createState() => specTestPage(tests);
+
 }
 
 class specTestPage extends State<specTestResultState> {
+  TestInfo tests;
+  specTestPage(this.tests);
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+
     return Scaffold(
         backgroundColor: setTheme.scaffoldBackgroundColor,
         appBar: AppBar(
@@ -29,7 +32,26 @@ class specTestPage extends State<specTestResultState> {
             ),
             centerTitle: true,
             backgroundColor: setTheme.primaryColor),
-        body: MyDynamicList());
+        body: Center(
+            child: Column(
+              children: [
+                Container(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 20, 0, 6),
+                    child: Text("${tests.testName}", style: TextStyle(
+                        fontSize: SizeConfig.HeaderTextFontSize,
+                        fontFamily: "Architect",
+                        backgroundColor: Colors.green[600],
+                        color: Colors.white),),
+                  ),
+                ),
+                Container( height: SizeConfig.screenHeight,
+                  child: MyDynamicList(),
+                ),
+              ],
+            )
+        ),
+    );
   }
 }
 class MyDynamicList extends StatelessWidget{
@@ -69,7 +91,6 @@ class MyDynamicList extends StatelessWidget{
                                     FlatButton(onPressed: ()=> Navigator.pop(context), child: Text("close"))
                                   ],
                                 );
-
                               });}),
                     ],
                   )
@@ -80,3 +101,4 @@ class MyDynamicList extends StatelessWidget{
     }
   }
 }
+

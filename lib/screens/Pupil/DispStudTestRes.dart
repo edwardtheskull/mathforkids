@@ -47,7 +47,7 @@ class MyDynamicList extends StatelessWidget{
             child: ListTile(
                 hoverColor: Colors.blue,
                 leading: tests[index].whatIcon(tests[index].studP),
-                title: Text(tests[index].name, style: TextStyle(
+                title: Text(tests[index].testName, style: TextStyle(
                     color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
                 subtitle: Text(tests[index].date, style: TextStyle(
                     color: setTheme.accentColor, fontSize: SizeConfig.XSMiniTextFontSize)),
@@ -60,7 +60,7 @@ class MyDynamicList extends StatelessWidget{
                           style: TextStyle(
                               color: Colors.green, fontSize: SizeConfig.MiniTextFontSize),
                         ),
-                        onTap: () {Navigator.push(context, new MaterialPageRoute(builder: (context) => new specTestResultState(test: tests[index])));}),
+                        onTap: () {Navigator.push(context, new MaterialPageRoute(builder: (context) => new specTestResultState(tests: tests[index])));}),
                   ],
                 )
             )

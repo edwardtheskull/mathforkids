@@ -6,15 +6,15 @@ import 'package:mathforkids/screens/Pupil/data.dart';
 class TestInfo{
   String type;
   String header;
-  String name;
+  String testName;
   bool passed;
   String date;
-  int testID;
+  String testID;
   int maxP;
   int minP;
   int studP;
   List<Questions> questions;
-  TestInfo({this.date, this.type, this.name,this.maxP, this.minP, this.studP});
+  TestInfo({this.date, this.type, this.testName,this.maxP, this.minP, this.studP});
 
   CircleAvatar whatIcon( int testP){
     if(testP >= minP){
@@ -30,21 +30,22 @@ class TestInfo{
       backgroundColor: Colors.red,
     );
   }
+
+
 }
 
 class Questions{
   String name;
-  String type;
   String qst;
-  int answer;
-  int stdAnswer;
-  int points;
+  String answer;
+  String stdAnswer;
+  String points;
   bool passed;
   String trailer;
 
-  Questions({this.name, this.answer, this.qst, this.stdAnswer, this.type});
+  Questions({this.name, this.answer, this.qst, this.stdAnswer});
 
-  CircleAvatar whatIcon( int stdAns){
+  CircleAvatar whatIcon( String stdAns){
     if(stdAnswer == answer){
       passed = true;
       trailer = "passed";
