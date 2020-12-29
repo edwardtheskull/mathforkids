@@ -41,6 +41,15 @@ class LoginPage extends State<loginPageState>{
               ),
             ),
             centerTitle:true,
+            actions: <Widget>[
+              FlatButton.icon(
+                icon: Icon(Icons.person),
+                label: Text('Register'),
+                onPressed: () async{
+                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new registerPageState()));
+                },
+              )
+            ],
             backgroundColor: setTheme.primaryColor,
           ),
           body: SingleChildScrollView(
@@ -50,7 +59,7 @@ class LoginPage extends State<loginPageState>{
                   key: _formKey,
                   child: Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [Row(children: [
-                          Expanded(child: Text("email/username:",
+                          Expanded(child: Text("Email:",
                             style: TextStyle(fontSize: SizeConfig.TextFontSize, color: setTheme.accentColor,
                                 fontWeight: FontWeight.bold, fontFamily: 'Architect'
                             ),
