@@ -1,3 +1,4 @@
+import 'package:mathforkids/main.dart';
 import 'package:mathforkids/utils/Imports.dart';
 
 
@@ -32,7 +33,7 @@ class teacherPage extends State<teacherPageState>{
                 label: Text('logout'),
                 onPressed: () async{
                   await _auth.signOut();
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => loginPageState()));
+                  Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
                 },
               )
             ],

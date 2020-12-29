@@ -25,7 +25,8 @@ class RegisterPage extends State<registerPageState>{
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return load ? Loading() : Scaffold(
+    return load ? Loading() : MaterialApp(
+        home: Scaffold(
         backgroundColor: setTheme.scaffoldBackgroundColor,
         appBar: AppBar(
           iconTheme: IconThemeData(color: setTheme.accentColor),
@@ -39,6 +40,15 @@ class RegisterPage extends State<registerPageState>{
             ),
           ),
           centerTitle:true,
+          actions: <Widget>[
+            FlatButton.icon(
+              icon: Icon(Icons.person),
+              label: Text('Login'),
+              onPressed: () async{
+                Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
+              },
+            )
+          ],
           backgroundColor: setTheme.primaryColor,
         ),
         body: SingleChildScrollView(
@@ -182,6 +192,7 @@ class RegisterPage extends State<registerPageState>{
             ),
           ),
         )
+      ),
     );
   }
 }
