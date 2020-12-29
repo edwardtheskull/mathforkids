@@ -1,4 +1,5 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:mathforkids/utils/Imports.dart';
 
 class createquestionPageState extends StatefulWidget {
@@ -14,6 +15,7 @@ class createquestionPage extends State<createquestionPageState>{
   String Dropdownquestionvalue;
   createquestionPage(this.Dropdownquestionvalue);
   static List<String> MClist = [null];
+  List<bool> Answers = [true];
   TextEditingController _nameController;
   @override
   void initState() {
@@ -46,16 +48,25 @@ class createquestionPage extends State<createquestionPageState>{
           body:
           Form(
             key: formkey,
-            child: Padding(padding: const EdgeInsets.all(16.0),
+            child: SingleChildScrollView(child: Padding(
+              padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
                   TextFormField(decoration: InputDecoration(hintText: 'Enter question'),),
                   Text('Add alternative'),
-                  ..._getalternatives()
+                  ..._getalternatives(),
+                  RaisedButton(elevation: 5,
+                    onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => createquizPageState()));
+                    },
+                    color: Colors.green[600],
+                    child: Text("Save question", style: TextStyle(letterSpacing: 1,
+                        fontSize: SizeConfig.ButtonTextSize,
+                        color: Colors.white,fontFamily: 'Architect')),)
                 ],
               ),
-
-            ),
+            ))
+            ,
           ));
     }
     else if(Dropdownquestionvalue == 'Written answer'){
@@ -78,13 +89,31 @@ class createquestionPage extends State<createquestionPageState>{
           Form(
             key: formkey,
             child: Padding(padding: const EdgeInsets.all(16.0),
-              child: Column(
+              child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  TextFormField(decoration: InputDecoration(hintText: 'Enter question'),),
-                  TextFormField(decoration: InputDecoration(hintText: 'Enter Answer'),)
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: TextFormField(decoration: InputDecoration(hintText: 'Enter question'),),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: TextFormField(decoration: InputDecoration(hintText: 'Enter Answer'),),
+                  ),
+                  Expanded(child: Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      RaisedButton(elevation: 5,
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => createquizPageState()));
+                        },
+                        color: Colors.green[600],
+                        child: Text("Save question", style: TextStyle(letterSpacing: 1,
+                            fontSize: SizeConfig.ButtonTextSize,
+                            color: Colors.white,fontFamily: 'Architect')),),
+                    ],
+                  ),)
                 ],
               ),
-
             ),
           ));
     }
@@ -110,8 +139,21 @@ class createquestionPage extends State<createquestionPageState>{
             child: Padding(padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: [
-                  TextFormField(decoration: InputDecoration(hintText: 'Pairing'),),
+                  TextFormField(decoration: InputDecoration(hintText: 'Write question'),),
+                  Expanded(child: Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      RaisedButton(elevation: 5,
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => createquizPageState()));
+                        },
+                        color: Colors.green[600],
+                        child: Text("Save question", style: TextStyle(letterSpacing: 1,
+                            fontSize: SizeConfig.ButtonTextSize,
+                            color: Colors.white,fontFamily: 'Architect')),),
+                    ],
+                  ),)
                 ],
+
               ),
 
             ),
@@ -132,6 +174,11 @@ class createquestionPage extends State<createquestionPageState>{
                 SizedBox(width: 16,),
                 // we need add button at last friends row only
                 _addRemoveButton(i == MClist.length-1, i),
+                Checkbox(value: Answers[i], onChanged: (bool value){
+                  setState(() {
+                    Answers[i] = value;
+                  });
+                })
               ],
             ),
           )
@@ -140,14 +187,17 @@ class createquestionPage extends State<createquestionPageState>{
     return MCTextFieldsList;
   }
 
+
   Widget _addRemoveButton(bool add, int index){
     return InkWell(
       onTap: (){
         if(add){
           // add new text-fields at the top of all friends textfields
           MClist.insert(0, null);
+          Answers.insert(0, true);
         }
-        else MClist.removeAt(index);
+        else{ MClist.removeAt(index);
+        Answers.removeAt(index);}
         setState((){
         });
       },
