@@ -34,7 +34,7 @@ class teacherPage extends State<teacherPageState>{
                   onSelected: (choice){
                     if(choice == Constants.Logout)
                     {
-                      Navigator.pushReplacement(context, new MaterialPageRoute(builder: (context) => new MyStatefulWidget()));
+                      Navigator.pushAndRemoveUntil(context,  new MaterialPageRoute(builder: (context) => new MyStatefulWidget()), (route) => false);
                     }
                     else if(choice == Constants.ChangeTheme)
                     {
