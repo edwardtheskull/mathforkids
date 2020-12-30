@@ -19,6 +19,7 @@ TextEditingController textrole = new TextEditingController();
 class RegisterPage extends State<registerPageState>{
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
+  String header = "Register";
   bool load = false;
   String password = '';
   String error = '';
@@ -28,29 +29,45 @@ class RegisterPage extends State<registerPageState>{
     return load ? Loading() : MaterialApp(
         home: Scaffold(
         backgroundColor: setTheme.scaffoldBackgroundColor,
-        appBar: AppBar(
-          iconTheme: IconThemeData(color: setTheme.accentColor),
-          title: Text(
-            "Register",
-            style: TextStyle(
-              fontSize: SizeConfig.AppbarFontSize,
-              color: setTheme.primaryTextTheme.headline6.color,
-              fontFamily: "Architect",
-              fontWeight: FontWeight.bold,
+            appBar: AppBar(
+                iconTheme: IconThemeData(color:setTheme.accentColor),
+                backgroundColor: setTheme.primaryColor,
+                title: Text(
+                  header,
+                  style: TextStyle(
+                    fontSize: SizeConfig.AppbarFontSize,
+                    fontFamily: "Architect",
+                    fontWeight: FontWeight.bold,
+                      color: setTheme.accentColor
+                  ),
+                ),
+                centerTitle:true,
+                actions: <Widget>[
+                  PopupMenuButton<String>(
+                    color: setTheme.primaryColor,
+                    onSelected: (choice){
+                      if(choice == Constants.Logout)
+                      {
+                        Navigator.pushReplacement(context, new MaterialPageRoute(builder: (context) => new MyStatefulWidget()));
+                      }
+                      else if(choice == Constants.ChangeTheme)
+                      {
+                        setState(() {
+                          switchTheme();
+                        });
+                      }
+                    },
+                    itemBuilder: (BuildContext context){
+                      return Constants.Outlogged.map((choice){
+                        return PopupMenuItem<String>(
+                          value: choice,
+                          child: Text(choice, style: TextStyle(color: setTheme.accentColor)),
+                        );
+                      }).toList();
+                    },
+                  ),
+                ]
             ),
-          ),
-          centerTitle:true,
-          actions: <Widget>[
-            FlatButton.icon(
-              icon: Icon(Icons.person),
-              label: Text('Login'),
-              onPressed: () async{
-                Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
-              },
-            )
-          ],
-          backgroundColor: setTheme.primaryColor,
-        ),
         body: SingleChildScrollView(
           child: Center(
             child: Container(height: SizeConfig.ScreenHeight, width: MediaQuery.of(context).size.width*0.8,

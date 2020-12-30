@@ -1,4 +1,6 @@
 
+import 'dart:collection';
+
 import 'package:flutter/cupertino.dart';
 import 'package:mathforkids/utils/Imports.dart';
 
@@ -15,17 +17,22 @@ class createquestionPage extends State<createquestionPageState>{
   String Dropdownquestionvalue;
   createquestionPage(this.Dropdownquestionvalue);
   static List<String> Pairs = [null];
+  Map QA = Map<String, String>();
   static List<String> Matches = [null];
   static List<String> MClist = [null];
   List<bool> Answers = [true];
+  List<String> Written = [null];
+  TextEditingController _nameController2;
   TextEditingController _nameController;
   @override
   void initState() {
     super.initState();
     _nameController = TextEditingController();
+    _nameController2 = TextEditingController();
   }
   @override
   void dispose() {
+    _nameController2.dispose();
     _nameController.dispose();
     super.dispose();
   }
@@ -54,12 +61,19 @@ class createquestionPage extends State<createquestionPageState>{
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  TextFormField(decoration: InputDecoration(hintText: 'Enter question'),),
+                  TextFormField(decoration: InputDecoration(hintText: 'Enter question'),
+                  controller: _nameController,),
                   Text('Add alternative'),
                   ..._getalternatives(),
                   RaisedButton(elevation: 5,
                     onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => createquizPageState()));
+                      for(int i=0; i < MClist.length; i++){
+                        if(i == 0){
+                          QA = {_nameController.text : 'Question'};
+                        }
+                       QA = {MClist[i]: Matches[i].toString()};
+                      }
+                      Navigator.pop(context, QA);
                     },
                     color: Colors.green[600],
                     child: Text("Save question", style: TextStyle(letterSpacing: 1,
@@ -96,17 +110,20 @@ class createquestionPage extends State<createquestionPageState>{
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: TextFormField(decoration: InputDecoration(hintText: 'Enter question'),),
+                    child: TextFormField(decoration: InputDecoration(hintText: 'Enter question'),
+                        controller: _nameController),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: TextFormField(decoration: InputDecoration(hintText: 'Enter Answer'),),
+                    child: TextFormField(decoration: InputDecoration(hintText: 'Enter Answer'),
+                    controller: _nameController2,),
                   ),
                   Expanded(child: Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       RaisedButton(elevation: 5,
                         onPressed: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => createquizPageState()));
+                        QA = {_nameController.text : _nameController2.text};
+                          Navigator.of(context).pop(Written);
                         },
                         color: Colors.green[600],
                         child: Text("Save question", style: TextStyle(letterSpacing: 1,
@@ -142,7 +159,8 @@ class createquestionPage extends State<createquestionPageState>{
               child: Padding(padding: const EdgeInsets.all(16.0),
                 child: Column(
                   children: [
-                    TextFormField(decoration: InputDecoration(hintText: 'Write question'),),
+                    TextFormField(decoration: InputDecoration(hintText: 'Write question'),
+                        controller: _nameController),
                     Text('Add alternative'),
                     ..._getalternatives2(),
                     Padding(
@@ -151,7 +169,13 @@ class createquestionPage extends State<createquestionPageState>{
                         children: [
                           RaisedButton(elevation: 5,
                             onPressed: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => createquizPageState()));
+                              for(int i=0; i < Pairs.length; i++){
+                                if(i == 0){
+                                  QA = {_nameController.text : 'Question'};
+                                }
+                                QA = {Pairs[i]: Matches[i]};
+                              }
+                              Navigator.pop(context);
                             },
                             color: Colors.green[600],
                             child: Text("Save question", style: TextStyle(letterSpacing: 1,

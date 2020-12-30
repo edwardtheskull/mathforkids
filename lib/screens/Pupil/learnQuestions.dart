@@ -8,24 +8,53 @@ class learnQPageState extends StatefulWidget {
 
 class LearnQPage extends State<learnQPageState> {
   @override
+  String header = "Math for Kids";
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Container(
       child: Scaffold(
           backgroundColor: setTheme.scaffoldBackgroundColor,
           appBar: AppBar(
-            iconTheme: IconThemeData(color: setTheme.accentColor),
-            title: Text(
-              "Math for Kids",
-              style: TextStyle(
-                fontSize: SizeConfig.AppbarFontSize,
-                fontFamily: "Architect",
-                fontWeight: FontWeight.bold,
-                  color: setTheme.primaryTextTheme.headline6.color
+              leading: IconButton(icon: Icon(Icons.arrow_back),
+                onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnPageState())),
               ),
-            ),
-            centerTitle: true,
-              backgroundColor: setTheme.primaryColor
+              iconTheme: IconThemeData(color:setTheme.accentColor),
+              backgroundColor: setTheme.primaryColor,
+              title: Text(
+                header,
+                style: TextStyle(
+                  fontSize: SizeConfig.AppbarFontSize,
+                  fontFamily: "Architect",
+                  fontWeight: FontWeight.bold,
+                    color: setTheme.accentColor
+                ),
+              ),
+              centerTitle:true,
+              actions: <Widget>[
+                PopupMenuButton<String>(
+                  color: setTheme.primaryColor,
+                  onSelected: (choice){
+                    if(choice == Constants.Logout)
+                    {
+                      Navigator.pushReplacement(context, new MaterialPageRoute(builder: (context) => new MyStatefulWidget()));
+                    }
+                    else if(choice == Constants.ChangeTheme)
+                    {
+                      setState(() {
+                        switchTheme();
+                      });
+                    }
+                  },
+                  itemBuilder: (BuildContext context){
+                    return Constants.choices.map((choice){
+                      return PopupMenuItem<String>(
+                        value: choice,
+                        child: Text(choice, style: TextStyle(color: setTheme.accentColor)),
+                      );
+                    }).toList();
+                  },
+                ),
+              ]
           ),
           body: Container(
             child: Column(children: [

@@ -9,6 +9,7 @@ class teacherPageState extends StatefulWidget{
 
 class teacherPage extends State<teacherPageState>{
   final AuthService _auth = AuthService();
+  String header = "Math for Kids";
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -16,28 +17,42 @@ class teacherPage extends State<teacherPageState>{
       home: Scaffold(
          backgroundColor: setTheme.scaffoldBackgroundColor,
           appBar: AppBar(
-            iconTheme: IconThemeData(color: setTheme.accentColor),
-            title: Text(
-              "Math for Kids",
-              style: TextStyle(
-                fontSize: SizeConfig.AppbarFontSize,
-                fontFamily: "Architect",
-                fontWeight: FontWeight.bold,
-                  color: setTheme.primaryTextTheme.headline6.color
+              iconTheme: IconThemeData(color:setTheme.accentColor),
+              backgroundColor: setTheme.primaryColor,
+              title: Text(
+                header,
+                style: TextStyle(
+                  fontSize: SizeConfig.AppbarFontSize,
+                  fontFamily: "Architect",
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            centerTitle:true,
-            actions: <Widget>[
-              FlatButton.icon(
-                icon: Icon(Icons.person),
-                label: Text('logout'),
-                onPressed: () async{
-                  await _auth.signOut();
-                  Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
-                },
-              )
-            ],
-            backgroundColor: setTheme.primaryColor,
+              centerTitle:true,
+              actions: <Widget>[
+                PopupMenuButton<String>(
+                  color: setTheme.primaryColor,
+                  onSelected: (choice){
+                    if(choice == Constants.Logout)
+                    {
+                      Navigator.pushReplacement(context, new MaterialPageRoute(builder: (context) => new MyStatefulWidget()));
+                    }
+                    else if(choice == Constants.ChangeTheme)
+                    {
+                      setState(() {
+                        switchTheme();
+                      });
+                    }
+                  },
+                  itemBuilder: (BuildContext context){
+                    return Constants.choices.map((choice){
+                      return PopupMenuItem<String>(
+                        value: choice,
+                        child: Text(choice, style: TextStyle(color: setTheme.accentColor)),
+                      );
+                    }).toList();
+                  },
+                ),
+              ]
           ),
           body:  Column(mainAxisAlignment: MainAxisAlignment.center,
               children: [Row(mainAxisAlignment: MainAxisAlignment.center, children: [ButtonTheme(minWidth: SizeConfig.ButtonWidth, height: SizeConfig.ButtonHeight,
@@ -79,14 +94,6 @@ class teacherPage extends State<teacherPageState>{
                   ),
                 )],
                 ),
-                Switch(
-                    value: dark,
-                    onChanged: (state){
-                      setState(() {
-                        dark = state;
-                        switchTheme();
-                      });
-                    }),
               ])
       ),
     );

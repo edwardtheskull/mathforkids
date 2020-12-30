@@ -3,6 +3,7 @@ import 'package:mathforkids/main.dart';
 import 'package:mathforkids/utils/Imports.dart';
 import 'package:mathforkids/screens/services/auth.dart';
 import 'package:mathforkids/ChangeTheme.dart';
+import 'package:mathforkids/Constants.dart';
 
 class studentPageState extends StatefulWidget{
   @override
@@ -11,6 +12,7 @@ class studentPageState extends StatefulWidget{
 
 class StudentPage extends State<studentPageState>{
   final AuthService _auth = AuthService();
+  String header = "Math for Kids";
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -18,8 +20,10 @@ class StudentPage extends State<studentPageState>{
     theme: setTheme,
     home: Scaffold(
         appBar: AppBar(
+            iconTheme: IconThemeData(color:setTheme.accentColor),
+            backgroundColor: setTheme.primaryColor,
           title: Text(
-            "Math for Kids",
+           header,
             style: TextStyle(
               fontSize: SizeConfig.AppbarFontSize,
               fontFamily: "Architect",
@@ -27,16 +31,31 @@ class StudentPage extends State<studentPageState>{
             ),
           ),
           centerTitle:true,
-            actions: <Widget>[
-              FlatButton.icon(
-              icon: Icon(Icons.person),
-              label: Text('logout'),
-              onPressed: () async{
-                await _auth.signOut();
-                Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
-                },
-              )
-            ],
+          actions: <Widget>[
+        PopupMenuButton<String>(
+          color: setTheme.scaffoldBackgroundColor,
+        onSelected: (choice){
+          if(choice == Constants.Logout)
+          {
+            Navigator.pushReplacement(context, new MaterialPageRoute(builder: (context) => new MyStatefulWidget()));
+          }
+          else if(choice == Constants.ChangeTheme)
+          {
+            setState(() {
+              switchTheme();
+            });
+           }
+          },
+      itemBuilder: (BuildContext context){
+        return Constants.choices.map((choice){
+          return PopupMenuItem<String>(
+            value: choice,
+            child: Text(choice, style: TextStyle(color: setTheme.accentColor)),
+          );
+        }).toList();
+      },
+    ),
+          ]
         ),
         body:  Column(mainAxisAlignment: MainAxisAlignment.center,
             children: [Row(mainAxisAlignment: MainAxisAlignment.center, children: [ButtonTheme(minWidth: SizeConfig.ButtonWidth, height: SizeConfig.ButtonHeight,
@@ -92,17 +111,10 @@ class StudentPage extends State<studentPageState>{
                 ),
               )],
               ),
-              Switch(
-                value: dark,
-                onChanged: (state){
-                  setState(() {
-                    dark = state;
-                    switchTheme();
-                  });
-                }),
             ])
     ));
   }
 }
+
 
 
