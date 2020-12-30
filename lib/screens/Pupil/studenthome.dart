@@ -33,11 +33,11 @@ class StudentPage extends State<studentPageState>{
           centerTitle:true,
           actions: <Widget>[
         PopupMenuButton<String>(
-          color: setTheme.scaffoldBackgroundColor,
+          color: setTheme.primaryColor,
         onSelected: (choice){
           if(choice == Constants.Logout)
           {
-            Navigator.pushReplacement(context, new MaterialPageRoute(builder: (context) => new MyStatefulWidget()));
+            Navigator.pushAndRemoveUntil(context,  new MaterialPageRoute(builder: (context) => new MyStatefulWidget()), (route) => false);
           }
           else if(choice == Constants.ChangeTheme)
           {
