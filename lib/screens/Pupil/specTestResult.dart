@@ -22,6 +22,9 @@ class specTestPage extends State<specTestResultState> {
     return Scaffold(
         backgroundColor: setTheme.scaffoldBackgroundColor,
       appBar: AppBar(
+          leading: IconButton(icon: Icon(Icons.arrow_back),
+            onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new DispStudTestResState())),
+          ),
           iconTheme: IconThemeData(color:setTheme.accentColor),
           backgroundColor: setTheme.primaryColor,
           title: Text(

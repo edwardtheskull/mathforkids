@@ -18,6 +18,9 @@ class dispResultPage extends State<DispStudTestResState> {
     return Scaffold(
         backgroundColor: setTheme.scaffoldBackgroundColor,
         appBar: AppBar(
+            leading: IconButton(icon: Icon(Icons.arrow_back),
+              onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new studentPageState())),
+        ),
             iconTheme: IconThemeData(color:setTheme.accentColor),
             backgroundColor: setTheme.primaryColor,
             title: Text(
