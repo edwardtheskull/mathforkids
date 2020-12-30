@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'package:mathforkids/screens/Teacher/createquestion.dart';
 import 'package:mathforkids/utils/Imports.dart';
 
@@ -9,6 +10,8 @@ class createquizPageState extends StatefulWidget{
 
 class createquizPage extends State<createquizPageState>{
   bool test = false;
+  static List<String> Written = [null];
+  Map QA = new Map<String, String>();
   final formKey = GlobalKey<FormState>();
   String Dropdownquestionvalue = "Multiple choice";
   static List<String> multiplechoiceanswers = [null];
@@ -65,7 +68,10 @@ class createquizPage extends State<createquizPageState>{
                             padding: const EdgeInsets.all(8.0),
                             child: RaisedButton(
                               onPressed: () async{
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => createquestionPageState(Dropdownquestionvalue: Dropdownquestionvalue),));
+                                  QA = await Navigator.push(context, MaterialPageRoute<HashMap<String, String>>(builder: (context) => createquestionPageState(Dropdownquestionvalue: Dropdownquestionvalue),));
+                                setState(() {
+
+                                });
                               },
                               color: setTheme.buttonColor,
                               child: Text("Add Question", style: TextStyle(
