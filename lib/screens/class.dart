@@ -10,24 +10,49 @@ class _ClassState extends State<Class> {
   List<String> Students = ["Casper", "Gabriel", "Oskar", "Rasmus", "Tim", "Viktor"];
 
 
-
+  String header = "Class";
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
       backgroundColor: setTheme.scaffoldBackgroundColor,
       appBar: AppBar(
-        iconTheme: IconThemeData(color: setTheme.accentColor),
-        centerTitle:true,
-        backgroundColor: setTheme.primaryColor,
-        title: Text("Class",
-        style: TextStyle(
-          fontSize: SizeConfig.AppbarFontSize,
-          color: setTheme.primaryTextTheme.headline6.color,
-          fontFamily: "Architect",
-          fontWeight: FontWeight.bold,),
+          backgroundColor: setTheme.primaryColor,
+          title: Text(
+            header,
+            style: TextStyle(
+              fontSize: SizeConfig.AppbarFontSize,
+              fontFamily: "Architect",
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          centerTitle:true,
+          actions: <Widget>[
+            PopupMenuButton<String>(
+              color: setTheme.primaryColor,
+              onSelected: (choice){
+                if(choice == Constants.Logout)
+                {
+                  Navigator.pushReplacement(context, new MaterialPageRoute(builder: (context) => new MyStatefulWidget()));
+                }
+                else if(choice == Constants.ChangeTheme)
+                {
+                  setState(() {
+                    switchTheme();
+                  });
+                }
+              },
+              itemBuilder: (BuildContext context){
+                return Constants.choices.map((choice){
+                  return PopupMenuItem<String>(
+                    value: choice,
+                    child: Text(choice),
+                  );
+                }).toList();
+              },
+            ),
+          ]
       ),
-    ),
       body: ListView.builder(
         itemCount: Students.length,
         itemBuilder: (context, index){

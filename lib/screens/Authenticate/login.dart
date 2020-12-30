@@ -19,6 +19,7 @@ class LoginPage extends State<loginPageState>{
   String email = '';
   String password = '';
   String error = '';
+  String header = "Login";
   TextEditingController textname = new TextEditingController();
   TextEditingController textpassword = new TextEditingController();
   MediaQueryData queryData;
@@ -30,28 +31,43 @@ class LoginPage extends State<loginPageState>{
       child: MaterialApp(
         home: Scaffold(
           backgroundColor: setTheme.scaffoldBackgroundColor,
-          appBar: AppBar(
-            title: Text(
-              "Login",
-              style: TextStyle(
-                fontSize: SizeConfig.AppbarFontSize,
-                fontFamily: "Architect",
-                fontWeight: FontWeight.bold,
-                  color: setTheme.primaryTextTheme.headline6.color
-              ),
+            appBar: AppBar(
+                backgroundColor: setTheme.primaryColor,
+                title: Text(
+                  header,
+                  style: TextStyle(
+                    fontSize: SizeConfig.AppbarFontSize,
+                    fontFamily: "Architect",
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                centerTitle:true,
+                actions: <Widget>[
+                  PopupMenuButton<String>(
+                    color: setTheme.primaryColor,
+                    onSelected: (choice){
+                      if(choice == Constants.Logout)
+                      {
+                        Navigator.pushReplacement(context, new MaterialPageRoute(builder: (context) => new MyStatefulWidget()));
+                      }
+                      else if(choice == Constants.ChangeTheme)
+                      {
+                        setState(() {
+                          switchTheme();
+                        });
+                      }
+                    },
+                    itemBuilder: (BuildContext context){
+                      return Constants.Outlogged.map((choice){
+                        return PopupMenuItem<String>(
+                          value: choice,
+                          child: Text(choice),
+                        );
+                      }).toList();
+                    },
+                  ),
+                ]
             ),
-            centerTitle:true,
-            actions: <Widget>[
-              FlatButton.icon(
-                icon: Icon(Icons.person),
-                label: Text('Register'),
-                onPressed: () async{
-                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new registerPageState()));
-                },
-              )
-            ],
-            backgroundColor: setTheme.primaryColor,
-          ),
           body: SingleChildScrollView(
             child: Center(
                 child: Container(width: MediaQuery.of(context).size.width*0.8, height: SizeConfig.SmallScreenHeight,

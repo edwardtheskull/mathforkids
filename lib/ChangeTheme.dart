@@ -1,7 +1,7 @@
 import 'package:mathforkids/utils/Imports.dart';
 import 'package:flutter/material.dart';
 
-bool dark = true;
+bool dark = false;
 
 ThemeData lightTheme = ThemeData(
     primaryColor: Colors.green[600],
@@ -36,8 +36,14 @@ ThemeData setTheme = ThemeData(
 void switchTheme()
 {
   if(dark)
-    setTheme = darkTheme;
+    {
+      dark = false;
+      setTheme = darkTheme;
+    }
   else
-    setTheme = lightTheme;
+    {
+      dark = true;
+      setTheme = lightTheme;
+    }
 }
 

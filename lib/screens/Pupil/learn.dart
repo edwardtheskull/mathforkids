@@ -8,23 +8,47 @@ class learnPageState extends StatefulWidget{
 
 class LearnPage extends State<learnPageState>{
   @override
+  String header = "Math for Kids";
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
         backgroundColor: setTheme.scaffoldBackgroundColor,
         appBar: AppBar(
-            iconTheme: IconThemeData(color: setTheme.accentColor),
-          title: Text(
-            "Learn",
-            style: TextStyle(
-              fontSize: SizeConfig.AppbarFontSize,
-              fontFamily: "Architect",
-              fontWeight: FontWeight.bold,
-                color: setTheme.primaryTextTheme.headline6.color
+            backgroundColor: setTheme.primaryColor,
+            title: Text(
+              header,
+              style: TextStyle(
+                fontSize: SizeConfig.AppbarFontSize,
+                fontFamily: "Architect",
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          centerTitle:true,
-          backgroundColor: setTheme.primaryColor
+            centerTitle:true,
+            actions: <Widget>[
+              PopupMenuButton<String>(
+                color: setTheme.primaryColor,
+                onSelected: (choice){
+                  if(choice == Constants.Logout)
+                  {
+                    Navigator.pushReplacement(context, new MaterialPageRoute(builder: (context) => new MyStatefulWidget()));
+                  }
+                  else if(choice == Constants.ChangeTheme)
+                  {
+                    setState(() {
+                      switchTheme();
+                    });
+                  }
+                },
+                itemBuilder: (BuildContext context){
+                  return Constants.choices.map((choice){
+                    return PopupMenuItem<String>(
+                      value: choice,
+                      child: Text(choice),
+                    );
+                  }).toList();
+                },
+              ),
+            ]
         ),
         body:  Column(mainAxisAlignment: MainAxisAlignment.center,
             children: [Row(mainAxisAlignment: MainAxisAlignment.center, children: [ButtonTheme(minWidth: SizeConfig.SquareButton, height: SizeConfig.SquareButton,

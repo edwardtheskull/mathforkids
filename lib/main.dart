@@ -70,14 +70,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>{
                   ),
                 )],
                 ),
-                Switch(
-                    value: dark,
-                    onChanged: (state){
-                      setState(() {
-                        dark = state;
-                        switchTheme();
-                      });
-                    }),
               ],
             )
           )

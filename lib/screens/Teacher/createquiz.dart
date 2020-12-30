@@ -15,22 +15,47 @@ class createquizPage extends State<createquizPageState>{
   final formKey = GlobalKey<FormState>();
   String Dropdownquestionvalue = "Multiple choice";
   static List<String> multiplechoiceanswers = [null];
+  String header = "Create Quiz";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: setTheme.scaffoldBackgroundColor,
         appBar: AppBar(
-          title: Text(
-            "Create Quiz",
-            style: TextStyle(
-              fontSize: SizeConfig.AppbarFontSize,
-              color: setTheme.accentColor,
-              fontFamily: "Architect",
-              fontWeight: FontWeight.bold,
+            backgroundColor: setTheme.primaryColor,
+            title: Text(
+              header,
+              style: TextStyle(
+                fontSize: SizeConfig.AppbarFontSize,
+                fontFamily: "Architect",
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          centerTitle:true,
-          backgroundColor: setTheme.primaryColor,
+            centerTitle:true,
+            actions: <Widget>[
+              PopupMenuButton<String>(
+                color: setTheme.primaryColor,
+                onSelected: (choice){
+                  if(choice == Constants.Logout)
+                  {
+                    Navigator.pushReplacement(context, new MaterialPageRoute(builder: (context) => new MyStatefulWidget()));
+                  }
+                  else if(choice == Constants.ChangeTheme)
+                  {
+                    setState(() {
+                      switchTheme();
+                    });
+                  }
+                },
+                itemBuilder: (BuildContext context){
+                  return Constants.choices.map((choice){
+                    return PopupMenuItem<String>(
+                      value: choice,
+                      child: Text(choice),
+                    );
+                  }).toList();
+                },
+              ),
+            ]
         ),
         body:  Scrollbar(
           child: Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start,
