@@ -1,5 +1,7 @@
 import 'package:mathforkids/utils/Imports.dart';
 import 'package:mathforkids/ChangeTheme.dart';
+import 'package:mathforkids/screens/services/database.dart';
+import 'package:mathforkids/screens/services/loggedinuser.dart';
 
 class connectPageState extends StatefulWidget{
   @override
@@ -15,7 +17,17 @@ class ConnectPage extends State<connectPageState>{
       backgroundColor: setTheme.scaffoldBackgroundColor,
         appBar: AppBar(
             leading: IconButton(icon: Icon(Icons.arrow_back),
-              onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new studentPageState())),
+              onPressed: () async {
+                if(activerole == 'Teacher')
+                  {
+                    print("teach");
+                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherPageState()));
+                  }
+                else
+                  {
+                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new studentPageState()));
+                  }
+              }
             ),
             iconTheme: IconThemeData(color:setTheme.accentColor),
             backgroundColor: setTheme.primaryColor,

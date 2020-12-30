@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:mathforkids/screens/services/user_list.dart';
 import 'package:mathforkids/screens/services/load.dart';
 import 'package:mathforkids/screens/Authenticate/reset.dart';
+import 'package:mathforkids/screens/services/loggedinuser.dart';
 
 
 class loginPageState extends StatefulWidget{
@@ -154,6 +155,7 @@ class LoginPage extends State<loginPageState>{
                                         print('signed in');
                                         print(res.uid);
                                         var role = await DatabaseService().getRole(textname.text);
+                                        activerole = role;
                                         if(role == 'Teacher')
                                           Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherPageState()));
                                         else
