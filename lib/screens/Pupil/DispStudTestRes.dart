@@ -29,7 +29,66 @@ class dispResultPage extends State<DispStudTestResState> {
           centerTitle: true,
           backgroundColor: setTheme.primaryColor
         ),
-        body: MyDynamicList()
+        body: Center(
+            child: Column(
+              children: [
+                  Container(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 20, 0, 6),
+                      child: Text("Most Recent quiz", style: TextStyle(
+                          fontSize: SizeConfig.HeaderTextFontSize,
+                          fontFamily: "Architect",
+                          backgroundColor: Colors.green[600],
+                          color: Colors.white),),
+                    ),
+                  ),
+                Container(height: SizeConfig.screenHeight/5,
+                  child: ListView.builder(
+                    itemCount: 1,
+                    itemBuilder: (context, index,){
+                      return Card(
+                          color: setTheme.scaffoldBackgroundColor,
+
+                          child: ListTile(
+                              hoverColor: Colors.blue,
+                              leading: tests.last.whatIcon(tests.last.studP),
+                              title: Text(tests.last.testName, style: TextStyle(
+                                  color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
+                              subtitle: Text(tests.last.date, style: TextStyle(
+                                  color: setTheme.accentColor, fontSize: SizeConfig.XSMiniTextFontSize)),
+                              trailing: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  InkWell(
+                                      child: Text(
+                                        "${tests.last.studP}/${tests.last.maxP}",
+                                        style: TextStyle(
+                                            color: Colors.green, fontSize: SizeConfig.MiniTextFontSize),
+                                      ),
+                                      onTap: () {Navigator.push(context, new MaterialPageRoute(builder: (context) => new specTestResultState(tests: tests.last)));}),
+                                ],
+                              )
+                          )
+                      );
+                    },
+                    ),
+                ),
+                  Container(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 20, 0, 6),
+                      child: Text("earlier quizzes", style: TextStyle(
+                        fontSize: SizeConfig.HeaderTextFontSize,
+                        fontFamily: "Architect",
+                        backgroundColor: Colors.green[600],
+                        color: Colors.white),),
+                  ),
+                ),
+                Container(height: SizeConfig.screenHeight,
+                    child: MyDynamicList()
+                ),
+              ],
+            )
+        )
     );
   }
 }
