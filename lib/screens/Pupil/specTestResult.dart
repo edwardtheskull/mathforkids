@@ -22,6 +22,7 @@ class specTestPage extends State<specTestResultState> {
     return Scaffold(
         backgroundColor: setTheme.scaffoldBackgroundColor,
       appBar: AppBar(
+          iconTheme: IconThemeData(color:setTheme.accentColor),
           backgroundColor: setTheme.primaryColor,
           title: Text(
             header,
@@ -51,7 +52,7 @@ class specTestPage extends State<specTestResultState> {
                 return Constants.choices.map((choice){
                   return PopupMenuItem<String>(
                     value: choice,
-                    child: Text(choice),
+                    child: Text(choice, style: TextStyle(color: setTheme.accentColor),),
                   );
                 }).toList();
               },

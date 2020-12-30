@@ -18,6 +18,7 @@ class dispResultPage extends State<DispStudTestResState> {
     return Scaffold(
         backgroundColor: setTheme.scaffoldBackgroundColor,
         appBar: AppBar(
+            iconTheme: IconThemeData(color:setTheme.accentColor),
             backgroundColor: setTheme.primaryColor,
             title: Text(
               header,
@@ -47,7 +48,7 @@ class dispResultPage extends State<DispStudTestResState> {
                   return Constants.choices.map((choice){
                     return PopupMenuItem<String>(
                       value: choice,
-                      child: Text(choice),
+                      child: Text(choice, style: TextStyle(color: setTheme.accentColor),),
                     );
                   }).toList();
                 },
