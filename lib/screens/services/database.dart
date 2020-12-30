@@ -9,11 +9,18 @@ class DatabaseService {
   final CollectionReference mathCollection = Firestore.instance.collection('users');
 
   Future updateUserData(String name, String role, String username) async{
-    return await mathCollection.document(uid).setData({
+    resultColl();
+    return await Firestore.instance.collection('users').document(uid).setData({
       'name': name,
       'role' : role,
       'username': username,
-    });
+    });   Firestore.instance.collection('users').document(uid).collection('result1').document("res1").setData({});
+  }
+  Future resultColl()async{
+    return await Firestore.instance.collection('users').document(uid).collection('result1').document("res1").setData({
+        'quizid': '331562615',
+        'result': '33',
+        });
   }
 
   List<User> _userListFromSnapshot(QuerySnapshot snapshot) {
