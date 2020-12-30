@@ -17,6 +17,10 @@ class _ClassState extends State<Class> {
     return Scaffold(
       backgroundColor: setTheme.scaffoldBackgroundColor,
       appBar: AppBar(
+          leading: IconButton(icon: Icon(Icons.arrow_back),
+            onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new studentPageState())),
+          ),
+          iconTheme: IconThemeData(color:setTheme.accentColor),
           backgroundColor: setTheme.primaryColor,
           title: Text(
             header,
@@ -24,6 +28,7 @@ class _ClassState extends State<Class> {
               fontSize: SizeConfig.AppbarFontSize,
               fontFamily: "Architect",
               fontWeight: FontWeight.bold,
+                color: setTheme.accentColor
             ),
           ),
           centerTitle:true,
@@ -46,7 +51,7 @@ class _ClassState extends State<Class> {
                 return Constants.choices.map((choice){
                   return PopupMenuItem<String>(
                     value: choice,
-                    child: Text(choice),
+                    child: Text(choice, style: TextStyle(color: setTheme.accentColor)),
                   );
                 }).toList();
               },

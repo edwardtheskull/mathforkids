@@ -32,6 +32,7 @@ class LoginPage extends State<loginPageState>{
         home: Scaffold(
           backgroundColor: setTheme.scaffoldBackgroundColor,
             appBar: AppBar(
+                iconTheme: IconThemeData(color:setTheme.accentColor),
                 backgroundColor: setTheme.primaryColor,
                 title: Text(
                   header,
@@ -39,6 +40,7 @@ class LoginPage extends State<loginPageState>{
                     fontSize: SizeConfig.AppbarFontSize,
                     fontFamily: "Architect",
                     fontWeight: FontWeight.bold,
+                      color: setTheme.accentColor
                   ),
                 ),
                 centerTitle:true,
@@ -61,7 +63,7 @@ class LoginPage extends State<loginPageState>{
                       return Constants.Outlogged.map((choice){
                         return PopupMenuItem<String>(
                           value: choice,
-                          child: Text(choice),
+                          child: Text(choice, style: TextStyle(color: setTheme.accentColor)),
                         );
                       }).toList();
                     },

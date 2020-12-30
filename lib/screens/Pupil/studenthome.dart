@@ -20,6 +20,8 @@ class StudentPage extends State<studentPageState>{
     theme: setTheme,
     home: Scaffold(
         appBar: AppBar(
+            iconTheme: IconThemeData(color:setTheme.accentColor),
+            backgroundColor: setTheme.primaryColor,
           title: Text(
            header,
             style: TextStyle(
@@ -48,7 +50,7 @@ class StudentPage extends State<studentPageState>{
         return Constants.choices.map((choice){
           return PopupMenuItem<String>(
             value: choice,
-            child: Text(choice),
+            child: Text(choice, style: TextStyle(color: setTheme.accentColor)),
           );
         }).toList();
       },
