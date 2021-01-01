@@ -103,7 +103,10 @@ class createquestionPage extends State<createquestionPageState>{
                       GlobQL[_nameController.text] = QA;
                       QA.clear();
                       _nameController.clear();
-                      _nameController2.clear();
+                      MClist.clear();
+                      Answers.clear();
+                      MClist = [null];
+                      Answers = [true];
                       Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => createquizPageState()), (route) => false);
                     },
                     color: setTheme.primaryColor,
@@ -266,7 +269,10 @@ class createquestionPage extends State<createquestionPageState>{
                               GlobQL[_nameController.text] = QA;
                               QA.clear();
                               _nameController.clear();
-                              _nameController2.clear();
+                              Pairs.clear();
+                              Matches.clear();
+                              Pairs = [null];
+                              Matches = [null];
                               Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => createquizPageState()), (route) => false);
                             },
                             color: setTheme.primaryColor,
