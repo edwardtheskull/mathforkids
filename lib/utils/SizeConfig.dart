@@ -30,6 +30,9 @@ class SizeConfig {
   static double ScreenHeight;
   static double SmallScreenHeight;
   static double Createquestionbutton;
+  static double XSScreenHeight;
+  static double HalfScreenHeight;
+  static double SpecTestScreenHeight;
 
   double ShortestLength;
   double LongestLength;
@@ -87,18 +90,30 @@ class SizeConfig {
     {
         ScreenHeight = MediaQuery.of(context).size.height*0.93;
         SmallScreenHeight = ScreenHeight * 0.8;
+        
+         XSScreenHeight = ScreenHeight * 0.13;
+         HalfScreenHeight = ScreenHeight * 0.62;
+         SpecTestScreenHeight = ScreenHeight * 0.83;
 
     }
     else if(ShortestLength < 650 && ShortestLength > 350)
     {
           ScreenHeight = MediaQuery.of(context).size.height*1.22;
           SmallScreenHeight = ScreenHeight * 0.6;
+
+          XSScreenHeight = ScreenHeight * 0.13;
+          HalfScreenHeight = ScreenHeight * 0.4;
+          SpecTestScreenHeight = ScreenHeight * 0.60;
     }
     else if(ShortestLength < 350)
     {
           SmallButtonWidth = MediaQuery.of(context).size.width/1.8;
           ScreenHeight = MediaQuery.of(context).size.height*1.6;
           SmallScreenHeight = ScreenHeight * 0.6;
+
+           XSScreenHeight = ScreenHeight * 0.13;
+           HalfScreenHeight = ScreenHeight * 0.4;
+           SpecTestScreenHeight = ScreenHeight * 0.60;
     }
     else
     {
@@ -110,6 +125,11 @@ class SizeConfig {
       SmallButtonWidth = MediaQuery.of(context).size.width/2.3;
       ScreenHeight = MediaQuery.of(context).size.height*0.9;
       SmallScreenHeight = ScreenHeight;
+
+       XSScreenHeight = ScreenHeight * 0.13;
+       HalfScreenHeight = ScreenHeight * 0.8;
+       SpecTestScreenHeight = ScreenHeight;
+
     }
   }
 }

@@ -132,7 +132,7 @@ class LoginPage extends State<loginPageState>{
                                 },
                                 color: setTheme.scaffoldBackgroundColor,
                                 child: Text("Forgot Password", style: TextStyle(letterSpacing: 1,
-                                  fontSize: 12.0,
+                                  fontSize: SizeConfig.XSMiniTextFontSize,
                                   color: setTheme.accentColor, fontFamily: 'Architect',)),),
                             ),
                           )],

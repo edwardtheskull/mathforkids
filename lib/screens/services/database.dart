@@ -16,7 +16,7 @@ class DatabaseService {
       'username': username,
     });   Firestore.instance.collection('users').document(uid).collection('result1').document("res1").setData({});
   }
-  Future resultColl()async{
+  Future resultColl() async{
     return await Firestore.instance.collection('users').document(uid).collection('result1').document("res1").setData({
         'quizid': '331562615',
         'result': '33',
