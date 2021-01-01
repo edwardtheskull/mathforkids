@@ -41,7 +41,7 @@ class createquestionPage extends State<createquestionPageState>{
   Widget build(BuildContext context) {
     if(Dropdownquestionvalue == 'Multiple choice'){
       return Scaffold(
-          backgroundColor: Color.fromRGBO(31, 69, 82, 1),
+          backgroundColor: setTheme.scaffoldBackgroundColor,
           appBar: AppBar(
               iconTheme: IconThemeData(color:setTheme.accentColor),
               backgroundColor: setTheme.primaryColor,
@@ -106,7 +106,7 @@ class createquestionPage extends State<createquestionPageState>{
                       _nameController2.clear();
                       Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => createquizPageState()), (route) => false);
                     },
-                    color: Colors.green[600],
+                    color: setTheme.primaryColor,
                     child: Text("Save question", style: TextStyle(letterSpacing: 1,
                         fontSize: SizeConfig.ButtonTextSize,
                         color: Colors.white,fontFamily: 'Architect')),)
@@ -118,7 +118,7 @@ class createquestionPage extends State<createquestionPageState>{
     }
     else if(Dropdownquestionvalue == 'Written answer'){
       return Scaffold(
-          backgroundColor: Color.fromRGBO(31, 69, 82, 1),
+          backgroundColor: setTheme.scaffoldBackgroundColor,
           appBar: AppBar(
               iconTheme: IconThemeData(color:setTheme.accentColor),
               backgroundColor: setTheme.primaryColor,
@@ -187,10 +187,10 @@ class createquestionPage extends State<createquestionPageState>{
                         _nameController2.clear();
                         Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => createquizPageState()), (route) => false);
                         },
-                        color: Colors.green[600],
+                        color: setTheme.primaryColor,
                         child: Text("Save question", style: TextStyle(letterSpacing: 1,
                             fontSize: SizeConfig.ButtonTextSize,
-                            color: Colors.white,fontFamily: 'Architect')),),
+                            color: setTheme.accentColor,fontFamily: 'Architect')),),
                     ],
                   ),)
                 ],
@@ -200,7 +200,7 @@ class createquestionPage extends State<createquestionPageState>{
     }
     else{
       return Scaffold(
-          backgroundColor: Color.fromRGBO(31, 69, 82, 1),
+          backgroundColor: setTheme.scaffoldBackgroundColor,
           appBar: AppBar(
               iconTheme: IconThemeData(color:setTheme.accentColor),
               backgroundColor: setTheme.primaryColor,
@@ -269,10 +269,10 @@ class createquestionPage extends State<createquestionPageState>{
                               _nameController2.clear();
                               Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => createquizPageState()), (route) => false);
                             },
-                            color: Colors.green[600],
+                            color: setTheme.primaryColor,
                             child: Text("Save question", style: TextStyle(letterSpacing: 1,
                                 fontSize: SizeConfig.ButtonTextSize,
-                                color: Colors.white,fontFamily: 'Architect')),),
+                                color: setTheme.accentColor,fontFamily: 'Architect')),),
                         ],
                       ),),
                     )
@@ -331,7 +331,7 @@ class createquestionPage extends State<createquestionPageState>{
         width: 30,
         height: 30,
         decoration: BoxDecoration(
-          color: (add) ? Colors.green : Colors.red,
+          color: (add) ? setTheme.primaryColor : Colors.red,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Icon(
@@ -379,7 +379,7 @@ class createquestionPage extends State<createquestionPageState>{
         width: 30,
         height: 30,
         decoration: BoxDecoration(
-          color: (add) ? Colors.green : Colors.red,
+          color: (add) ? setTheme.primaryColor : Colors.red,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Icon(

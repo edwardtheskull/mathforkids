@@ -90,41 +90,48 @@ class MyDynamicList extends StatelessWidget{
       return ListView.builder(
         itemCount: questions.length,
         itemBuilder: (context, index) {
-          return Card(
-              color: setTheme.scaffoldBackgroundColor,
+          return Container(
+            child: InkWell(
+              child: Container(
+                  child: Card(
+                      color: setTheme.scaffoldBackgroundColor,
 
-              child: ListTile(
-                  hoverColor: Colors.blue,
-                  leading: questions[index].whatIcon(questions[index].stdAnswer),
-                  title: Text(questions[index].name, style: TextStyle(
-                      color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
-                  subtitle: Text("${questions[index].qst}=${questions[index].stdAnswer}", style: TextStyle(
-                      color: setTheme.accentColor, fontSize: SizeConfig.XSMiniTextFontSize)),
-                  trailing: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      InkWell(
-                          child: Text(
-                            questions[index].trailer,
-                            style: TextStyle(
-                                color: Colors.green, fontSize: SizeConfig.MiniTextFontSize),
-                          ),
-                          onTap: () {showDialog(
-                              context: context,
-                              builder: (context){
-                                return AlertDialog(
-                                  title: Text(questions[index].qst),
-                                  content: Text("Your answer: ${questions[index].qst}= ${questions[index].stdAnswer}\n"
-                                      "Right Answer: ${questions[index].qst}= ${questions[index].answer}"),
-                                  actions: [
-                                    FlatButton(onPressed: ()=> Navigator.pop(context), child: Text("close"))
-                                  ],
-                                );
-                              });}),
-                    ],
-                  )
-              )
-          );
+                      child: ListTile(
+                          hoverColor: Colors.blue,
+                          leading: questions[index].whatIcon(questions[index].stdAnswer),
+                          title: Text(questions[index].name, style: TextStyle(
+                              color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
+                          subtitle: Text("${questions[index].qst}=${questions[index].stdAnswer}", style: TextStyle(
+                              color: setTheme.accentColor, fontSize: SizeConfig.XSMiniTextFontSize)),
+                          trailing: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              InkWell(
+                                  child: Text(
+                                    questions[index].trailer,
+                                    style: TextStyle(
+                                        color: Colors.green, fontSize: SizeConfig.MiniTextFontSize),
+                                  ),
+                                  ),
+                            ],
+                          )
+                      )
+                  ),
+                ),
+                onTap: () {showDialog(
+                    context: context,
+                    builder: (context){
+                      return AlertDialog(
+                        title: Text(questions[index].qst),
+                        content: Text("Your answer: ${questions[index].qst}= ${questions[index].stdAnswer}\n"
+                            "Right Answer: ${questions[index].qst}= ${questions[index].answer}"),
+                        actions: [
+                          FlatButton(onPressed: ()=> Navigator.pop(context), child: Text("close"))
+                        ],
+                      );
+                    });}
+              ),
+            );
         },
       );
     }
