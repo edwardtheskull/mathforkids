@@ -127,8 +127,8 @@ class SizeConfig {
       SmallScreenHeight = ScreenHeight;
 
        XSScreenHeight = ScreenHeight * 0.13;
-       HalfScreenHeight = ScreenHeight * 0.4;
-       SpecTestScreenHeight = ScreenHeight * 0.60;
+       HalfScreenHeight = ScreenHeight * 0.8;
+       SpecTestScreenHeight = ScreenHeight;
 
     }
   }
