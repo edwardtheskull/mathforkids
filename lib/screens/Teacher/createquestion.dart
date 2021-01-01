@@ -95,6 +95,9 @@ class createquestionPage extends State<createquestionPageState>{
                   RaisedButton(elevation: 5,
                     onPressed: (){
                       for(int i=0; i < MClist.length; i++){
+                        if(i==0){
+                          QA = {'Type' : Dropdownquestionvalue};
+                        }
                           QA = {MClist[i]: Answers[i]};
                       }
                       GlobQL[_nameController.text] = QA;
@@ -176,6 +179,7 @@ class createquestionPage extends State<createquestionPageState>{
                     children: [
                       RaisedButton(elevation: 5,
                         onPressed: (){
+                        QA = {'Type' : Dropdownquestionvalue};
                         QA = {_nameController.text : _nameController2.text};
                         GlobQL[_nameController.text] = QA;
                         QA.clear();
@@ -254,6 +258,9 @@ class createquestionPage extends State<createquestionPageState>{
                           RaisedButton(elevation: 5,
                             onPressed: (){
                               for(int i=0; i < Pairs.length; i++){
+                                if(i==0){
+                                  QA = {'Type' : Dropdownquestionvalue};
+                                }
                                 QA = {Pairs[i]: Matches[i]};
                               }
                               GlobQL[_nameController.text] = QA;
