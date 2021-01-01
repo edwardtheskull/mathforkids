@@ -95,9 +95,18 @@ class createquestionPage extends State<createquestionPageState>{
                   RaisedButton(elevation: 5,
                     onPressed: (){
                       for(int i=0; i < MClist.length; i++){
+                        if(i==0){
+                          QA = {'Type' : Dropdownquestionvalue};
+                        }
                           QA = {MClist[i]: Answers[i]};
                       }
                       GlobQL[_nameController.text] = QA;
+                      QA.clear();
+                      _nameController.clear();
+                      MClist.clear();
+                      Answers.clear();
+                      MClist = [null];
+                      Answers = [true];
                       Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => createquizPageState()), (route) => false);
                     },
                     color: setTheme.primaryColor,
@@ -173,8 +182,12 @@ class createquestionPage extends State<createquestionPageState>{
                     children: [
                       RaisedButton(elevation: 5,
                         onPressed: (){
+                        QA = {'Type' : Dropdownquestionvalue};
                         QA = {_nameController.text : _nameController2.text};
                         GlobQL[_nameController.text] = QA;
+                        QA.clear();
+                        _nameController.clear();
+                        _nameController2.clear();
                         Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => createquizPageState()), (route) => false);
                         },
                         color: setTheme.primaryColor,
@@ -248,9 +261,18 @@ class createquestionPage extends State<createquestionPageState>{
                           RaisedButton(elevation: 5,
                             onPressed: (){
                               for(int i=0; i < Pairs.length; i++){
+                                if(i==0){
+                                  QA = {'Type' : Dropdownquestionvalue};
+                                }
                                 QA = {Pairs[i]: Matches[i]};
                               }
                               GlobQL[_nameController.text] = QA;
+                              QA.clear();
+                              _nameController.clear();
+                              Pairs.clear();
+                              Matches.clear();
+                              Pairs = [null];
+                              Matches = [null];
                               Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => createquizPageState()), (route) => false);
                             },
                             color: setTheme.primaryColor,
