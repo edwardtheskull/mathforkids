@@ -71,36 +71,39 @@ class dispResultPage extends State<DispStudTestResState> {
                             color: Colors.white),),
                       ),
                     ),
-                  Container(height:SizeConfig.XSScreenHeight,
-                    child: ListView.builder(
-                      itemCount: 1,
-                      itemBuilder: (context, index,){
-                        return Card(
-                            color: setTheme.scaffoldBackgroundColor,
+                  Container(
+                    child: InkWell(
+                      child: Container(height:SizeConfig.XSScreenHeight,
+                        child: ListView.builder(
+                          itemCount: 1,
+                          itemBuilder: (context, index,){
+                            return Card(
+                                color: setTheme.scaffoldBackgroundColor,
 
-                            child: ListTile(
-                                hoverColor: Colors.blue,
-                                leading: tests.last.whatIcon(tests.last.studP),
-                                title: Text(tests.last.testName, style: TextStyle(
-                                    color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
-                                subtitle: Text(tests.last.date, style: TextStyle(
-                                    color: setTheme.accentColor, fontSize: SizeConfig.XSMiniTextFontSize)),
-                                trailing: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    InkWell(
-                                        child: Text(
-                                          "${tests.last.studP}/${tests.last.maxP}",
-                                          style: TextStyle(
-                                              color: Colors.green, fontSize: SizeConfig.MiniTextFontSize),
-                                        ),
-                                        onTap: () {Navigator.push(context, new MaterialPageRoute(builder: (context) => new specTestResultState(tests: tests.last)));}),
-                                  ],
+                                child: ListTile(
+                                    hoverColor: Colors.blue,
+                                    leading: tests.last.whatIcon(tests.last.studP),
+                                    title: Text(tests.last.testName, style: TextStyle(
+                                        color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
+                                    subtitle: Text(tests.last.date, style: TextStyle(
+                                        color: setTheme.accentColor, fontSize: SizeConfig.XSMiniTextFontSize)),
+                                    trailing: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Text(
+                                                "${tests.last.studP}/${tests.last.maxP}",
+                                                style: TextStyle(
+                                                    color: Colors.green, fontSize: SizeConfig.MiniTextFontSize),
+                                              ),
+                                            ],
+                                    )
                                 )
-                            )
-                        );
-                      },
+                            );
+                          },
+                          ),
                       ),
+                        onTap: () {Navigator.push(context, new MaterialPageRoute(builder: (context) => new specTestResultState(tests: tests.last)));}
+                    ),
                   ),
                     Container(
                       child: Padding(
@@ -111,9 +114,10 @@ class dispResultPage extends State<DispStudTestResState> {
                           color: Colors.white),),
                     ),
                   ),
-                  Container(height:SizeConfig.HalfScreenHeight,
-                      child: MyDynamicList()
-                  ),
+                    Container(height:SizeConfig.HalfScreenHeight,
+                        child: MyDynamicList()
+                    ),
+
                 ],
               ),
             )
@@ -129,28 +133,32 @@ class MyDynamicList extends StatelessWidget{
       return ListView.builder(
         itemCount: tests.length,
         itemBuilder: (context, index) {
-          return Card(
-            color: setTheme.scaffoldBackgroundColor,
-            child: ListTile(
-                hoverColor: Colors.blue,
-                leading: tests[index].whatIcon(tests[index].studP),
-                title: Text(tests[index].testName, style: TextStyle(
-                    color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
-                subtitle: Text(tests[index].date, style: TextStyle(
-                    color: setTheme.accentColor, fontSize: SizeConfig.XSMiniTextFontSize)),
-                trailing: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    InkWell(
-                        child: Text(
-                          "${tests[index].studP}/${tests[index].maxP}",
-                          style: TextStyle(
-                              color: Colors.green, fontSize: SizeConfig.MiniTextFontSize),
-                        ),
-                        onTap: () {Navigator.push(context, new MaterialPageRoute(builder: (context) => new specTestResultState(tests: tests[index])));}),
-                  ],
-                )
-            )
+          return Container(
+            child: InkWell(
+              child: Container(
+                child: Card(
+                  color: setTheme.scaffoldBackgroundColor,
+                  child: ListTile(
+                      hoverColor: Colors.blue,
+                      leading: tests[index].whatIcon(tests[index].studP),
+                      title: Text(tests[index].testName, style: TextStyle(
+                          color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
+                      subtitle: Text(tests[index].date, style: TextStyle(
+                          color: setTheme.accentColor, fontSize: SizeConfig.XSMiniTextFontSize)),
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            "${tests[index].studP}/${tests[index].maxP}",
+                            style: TextStyle(
+                                color: Colors.green, fontSize: SizeConfig.MiniTextFontSize),
+                          ),
+                        ],
+                      )
+                  )
+                ),
+              ),
+                onTap: () {Navigator.push(context, new MaterialPageRoute(builder: (context) => new specTestResultState(tests: tests.last)));}),
           );
         },
       );
