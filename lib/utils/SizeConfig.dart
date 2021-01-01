@@ -92,8 +92,8 @@ class SizeConfig {
         SmallScreenHeight = ScreenHeight * 0.8;
         
          XSScreenHeight = ScreenHeight * 0.13;
-         HalfScreenHeight = ScreenHeight * 0.4;
-         SpecTestScreenHeight = ScreenHeight * 0.60;
+         HalfScreenHeight = ScreenHeight * 0.62;
+         SpecTestScreenHeight = ScreenHeight * 0.83;
 
     }
     else if(ShortestLength < 650 && ShortestLength > 350)
