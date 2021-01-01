@@ -17,6 +17,7 @@ class _ResetScreenState extends State<ResetScreen>{
   String email = '';
   String password = '';
   String error = '';
+  String header = 'Reset Password';
   TextEditingController textemail = new TextEditingController();
   TextEditingController textpassword = new TextEditingController();
   MediaQueryData queryData;
@@ -26,18 +27,45 @@ class _ResetScreenState extends State<ResetScreen>{
     return load ? Loading() : StreamProvider<List<User>>.value(
       value: DatabaseService().users,
       child: Scaffold(
-          backgroundColor: Color.fromRGBO(31, 69, 82, 1),
+          backgroundColor: setTheme.scaffoldBackgroundColor,
           appBar: AppBar(
-            title: Text(
-              "Reset Password",
-              style: TextStyle(
-                fontSize: SizeConfig.AppbarFontSize,
-                fontFamily: "Architect",
-                fontWeight: FontWeight.bold,
+              iconTheme: IconThemeData(color:setTheme.accentColor),
+              backgroundColor: setTheme.primaryColor,
+              title: Text(
+                header,
+                style: TextStyle(
+                    fontSize: SizeConfig.AppbarFontSize,
+                    fontFamily: "Architect",
+                    fontWeight: FontWeight.bold,
+                    color: setTheme.accentColor
+                ),
               ),
-            ),
-            centerTitle:true,
-            backgroundColor: Colors.green[600],
+              centerTitle:true,
+              actions: <Widget>[
+                PopupMenuButton<String>(
+                  color: setTheme.primaryColor,
+                  onSelected: (choice){
+                    if(choice == Constants.Logout)
+                    {
+                      Navigator.pushReplacement(context, new MaterialPageRoute(builder: (context) => new MyStatefulWidget()));
+                    }
+                    else if(choice == Constants.ChangeTheme)
+                    {
+                      setState(() {
+                        switchTheme();
+                      });
+                    }
+                  },
+                  itemBuilder: (BuildContext context){
+                    return Constants.Outlogged.map((choice){
+                      return PopupMenuItem<String>(
+                        value: choice,
+                        child: Text(choice, style: TextStyle(color: setTheme.accentColor)),
+                      );
+                    }).toList();
+                  },
+                ),
+              ]
           ),
           body: SingleChildScrollView(
             child: Center(
@@ -46,8 +74,8 @@ class _ResetScreenState extends State<ResetScreen>{
                   key: _formKey,
                   child: Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [Row(children: [
-                        Expanded(child: Text("email/username:",
-                          style: TextStyle(fontSize: SizeConfig.TextFontSize, color: Colors.white,
+                        Expanded(child: Text("Email:",
+                          style: TextStyle(fontSize: SizeConfig.TextFontSize, color: setTheme.accentColor,
                               fontWeight: FontWeight.bold, fontFamily: 'Architect'
                           ),
                         ),
@@ -56,12 +84,12 @@ class _ResetScreenState extends State<ResetScreen>{
                       ),
                         Row(
                           children: [
-                            Expanded(child: TextFormField(controller: textemail, style: TextStyle(color: Colors.white, fontFamily: 'Architect', fontSize: SizeConfig.TextFieldFontSize), cursorColor: Colors.white,
+                            Expanded(child: TextFormField(controller: textemail, style: TextStyle(color: setTheme.accentColor, fontFamily: 'Architect', fontSize: SizeConfig.TextFieldFontSize), cursorColor: setTheme.accentColor,
                               validator: (val) => val.isEmpty ? 'Enter mail' : null,
                               obscureText: false,
-                              decoration: InputDecoration(enabledBorder: const OutlineInputBorder(borderSide: const BorderSide(color: Colors.white)),
-                                  border: OutlineInputBorder(), labelStyle: TextStyle(color: Colors.white),
-                                  focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Colors.white))
+                              decoration: InputDecoration(enabledBorder:  OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor)),
+                                  border: OutlineInputBorder(), labelStyle: TextStyle(color: setTheme.accentColor),
+                                  focusedBorder: OutlineInputBorder(borderSide:  BorderSide(color: setTheme.accentColor))
                               ),
                             ),),
                           ],
@@ -80,10 +108,10 @@ class _ResetScreenState extends State<ResetScreen>{
                                         Navigator.pushReplacementNamed(context, '/screens/Authenticate/login');
                                       }
                                     },
-                                    color: Colors.green[600],
+                                    color: setTheme.primaryColor,
                                     child: Text("Next", style: TextStyle(letterSpacing: 1,
                                       fontSize: SizeConfig.ButtonTextSize,
-                                      color: Colors.white,fontFamily: 'Architect',)),),
+                                      color: setTheme.accentColor, fontFamily: 'Architect',)),),
                                 ),
                               )],
                             ),

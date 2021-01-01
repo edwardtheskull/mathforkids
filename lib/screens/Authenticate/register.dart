@@ -56,9 +56,12 @@ class RegisterPage extends State<registerPageState>{
                           switchTheme();
                         });
                       }
+                      else if (choice == Constants.Login){
+                        Navigator.pushReplacement(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
+                      }
                     },
                     itemBuilder: (BuildContext context){
-                      return Constants.Outlogged.map((choice){
+                      return Constants.signinOnReg.map((choice){
                         return PopupMenuItem<String>(
                           value: choice,
                           child: Text(choice, style: TextStyle(color: setTheme.accentColor)),
@@ -167,7 +170,7 @@ class RegisterPage extends State<registerPageState>{
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: DropdownButton<String>(value: dropdownvalue, dropdownColor: Color.fromRGBO(31, 69, 82, 1), style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize, fontFamily:"Architect" ), underline: Container(color: Colors.transparent),
+                              child: DropdownButton<String>(value: dropdownvalue, dropdownColor: setTheme.scaffoldBackgroundColor, style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize, fontFamily:"Architect" ), underline: Container(color: Colors.transparent),
                                 onChanged: (String newValue) {
                                   setState(() {
                                     dropdownvalue = newValue;
