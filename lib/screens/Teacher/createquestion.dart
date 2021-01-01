@@ -98,6 +98,9 @@ class createquestionPage extends State<createquestionPageState>{
                           QA = {MClist[i]: Answers[i]};
                       }
                       GlobQL[_nameController.text] = QA;
+                      QA.clear();
+                      _nameController.clear();
+                      _nameController2.clear();
                       Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => createquizPageState()), (route) => false);
                     },
                     color: Colors.green[600],
@@ -175,6 +178,9 @@ class createquestionPage extends State<createquestionPageState>{
                         onPressed: (){
                         QA = {_nameController.text : _nameController2.text};
                         GlobQL[_nameController.text] = QA;
+                        QA.clear();
+                        _nameController.clear();
+                        _nameController2.clear();
                         Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => createquizPageState()), (route) => false);
                         },
                         color: Colors.green[600],
@@ -251,6 +257,9 @@ class createquestionPage extends State<createquestionPageState>{
                                 QA = {Pairs[i]: Matches[i]};
                               }
                               GlobQL[_nameController.text] = QA;
+                              QA.clear();
+                              _nameController.clear();
+                              _nameController2.clear();
                               Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => createquizPageState()), (route) => false);
                             },
                             color: Colors.green[600],
