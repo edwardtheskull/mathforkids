@@ -1,6 +1,6 @@
 
 import 'dart:collection';
-
+import 'package:mathforkids/screens/Teacher/Temp.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mathforkids/utils/Imports.dart';
 
@@ -37,22 +37,49 @@ class createquestionPage extends State<createquestionPageState>{
     super.dispose();
   }
   @override
+  String header = 'Math for Kids';
   Widget build(BuildContext context) {
     if(Dropdownquestionvalue == 'Multiple choice'){
       return Scaffold(
           backgroundColor: Color.fromRGBO(31, 69, 82, 1),
           appBar: AppBar(
-            title: Text(
-              "Create Quiz",
-              style: TextStyle(
-                fontSize: 30,
-                color: Colors.white,
-                fontFamily: "Architect",
-                fontWeight: FontWeight.bold,
+              iconTheme: IconThemeData(color:setTheme.accentColor),
+              backgroundColor: setTheme.primaryColor,
+              title: Text(
+                header,
+                style: TextStyle(
+                    fontSize: SizeConfig.AppbarFontSize,
+                    fontFamily: "Architect",
+                    fontWeight: FontWeight.bold,
+                    color: setTheme.accentColor
+                ),
               ),
-            ),
-            centerTitle:true,
-            backgroundColor: Colors.green[600],
+              centerTitle:true,
+              actions: <Widget>[
+                PopupMenuButton<String>(
+                  color: setTheme.primaryColor,
+                  onSelected: (choice){
+                    if(choice == Constants.Logout)
+                    {
+                      Navigator.pushReplacement(context, new MaterialPageRoute(builder: (context) => new MyStatefulWidget()));
+                    }
+                    else if(choice == Constants.ChangeTheme)
+                    {
+                      setState(() {
+                        switchTheme();
+                      });
+                    }
+                  },
+                  itemBuilder: (BuildContext context){
+                    return Constants.choices.map((choice){
+                      return PopupMenuItem<String>(
+                        value: choice,
+                        child: Text(choice, style: TextStyle(color: setTheme.accentColor),),
+                      );
+                    }).toList();
+                  },
+                ),
+              ]
           ),
           body:
           Form(
@@ -68,12 +95,10 @@ class createquestionPage extends State<createquestionPageState>{
                   RaisedButton(elevation: 5,
                     onPressed: (){
                       for(int i=0; i < MClist.length; i++){
-                        if(i == 0){
-                          QA = {_nameController.text : 'Question'};
-                        }
-                       QA = {MClist[i]: Matches[i].toString()};
+                          QA = {MClist[i]: Answers[i]};
                       }
-                      Navigator.pop(context, QA);
+                      GlobQL[_nameController.text] = QA;
+                      Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => createquizPageState()), (route) => false);
                     },
                     color: Colors.green[600],
                     child: Text("Save question", style: TextStyle(letterSpacing: 1,
@@ -89,17 +114,43 @@ class createquestionPage extends State<createquestionPageState>{
       return Scaffold(
           backgroundColor: Color.fromRGBO(31, 69, 82, 1),
           appBar: AppBar(
-            title: Text(
-              "Create Quiz",
-              style: TextStyle(
-                fontSize: 30,
-                color: Colors.white,
-                fontFamily: "Architect",
-                fontWeight: FontWeight.bold,
+              iconTheme: IconThemeData(color:setTheme.accentColor),
+              backgroundColor: setTheme.primaryColor,
+              title: Text(
+                header,
+                style: TextStyle(
+                    fontSize: SizeConfig.AppbarFontSize,
+                    fontFamily: "Architect",
+                    fontWeight: FontWeight.bold,
+                    color: setTheme.accentColor
+                ),
               ),
-            ),
-            centerTitle:true,
-            backgroundColor: Colors.green[600],
+              centerTitle:true,
+              actions: <Widget>[
+                PopupMenuButton<String>(
+                  color: setTheme.primaryColor,
+                  onSelected: (choice){
+                    if(choice == Constants.Logout)
+                    {
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => new MyStatefulWidget()));
+                    }
+                    else if(choice == Constants.ChangeTheme)
+                    {
+                      setState(() {
+                        switchTheme();
+                      });
+                    }
+                  },
+                  itemBuilder: (BuildContext context){
+                    return Constants.choices.map((choice){
+                      return PopupMenuItem<String>(
+                        value: choice,
+                        child: Text(choice, style: TextStyle(color: setTheme.accentColor),),
+                      );
+                    }).toList();
+                  },
+                ),
+              ]
           ),
           body:
           Form(
@@ -123,7 +174,8 @@ class createquestionPage extends State<createquestionPageState>{
                       RaisedButton(elevation: 5,
                         onPressed: (){
                         QA = {_nameController.text : _nameController2.text};
-                          Navigator.of(context).pop(Written);
+                        GlobQL[_nameController.text] = QA;
+                        Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => createquizPageState()), (route) => false);
                         },
                         color: Colors.green[600],
                         child: Text("Save question", style: TextStyle(letterSpacing: 1,
@@ -140,17 +192,43 @@ class createquestionPage extends State<createquestionPageState>{
       return Scaffold(
           backgroundColor: Color.fromRGBO(31, 69, 82, 1),
           appBar: AppBar(
-            title: Text(
-              "Create Quiz",
-              style: TextStyle(
-                fontSize: 30,
-                color: Colors.white,
-                fontFamily: "Architect",
-                fontWeight: FontWeight.bold,
+              iconTheme: IconThemeData(color:setTheme.accentColor),
+              backgroundColor: setTheme.primaryColor,
+              title: Text(
+                header,
+                style: TextStyle(
+                    fontSize: SizeConfig.AppbarFontSize,
+                    fontFamily: "Architect",
+                    fontWeight: FontWeight.bold,
+                    color: setTheme.accentColor
+                ),
               ),
-            ),
-            centerTitle:true,
-            backgroundColor: Colors.green[600],
+              centerTitle:true,
+              actions: <Widget>[
+                PopupMenuButton<String>(
+                  color: setTheme.primaryColor,
+                  onSelected: (choice){
+                    if(choice == Constants.Logout)
+                    {
+                      Navigator.pushReplacement(context, new MaterialPageRoute(builder: (context) => new MyStatefulWidget()));
+                    }
+                    else if(choice == Constants.ChangeTheme)
+                    {
+                      setState(() {
+                        switchTheme();
+                      });
+                    }
+                  },
+                  itemBuilder: (BuildContext context){
+                    return Constants.choices.map((choice){
+                      return PopupMenuItem<String>(
+                        value: choice,
+                        child: Text(choice, style: TextStyle(color: setTheme.accentColor),),
+                      );
+                    }).toList();
+                  },
+                ),
+              ]
           ),
           body:
           SingleChildScrollView(
@@ -170,12 +248,10 @@ class createquestionPage extends State<createquestionPageState>{
                           RaisedButton(elevation: 5,
                             onPressed: (){
                               for(int i=0; i < Pairs.length; i++){
-                                if(i == 0){
-                                  QA = {_nameController.text : 'Question'};
-                                }
                                 QA = {Pairs[i]: Matches[i]};
                               }
-                              Navigator.pop(context);
+                              GlobQL[_nameController.text] = QA;
+                              Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => createquizPageState()), (route) => false);
                             },
                             color: Colors.green[600],
                             child: Text("Save question", style: TextStyle(letterSpacing: 1,
