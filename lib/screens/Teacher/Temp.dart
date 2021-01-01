@@ -5,7 +5,7 @@ import 'package:mathforkids/utils/Imports.dart';
 Map GlobQA;
 Map GlobQL = new Map<String, Map>();
 String QuizName = '';
-TextEditingController TXC = new TextEditingController(text: 'test');
+TextEditingController TXC = new TextEditingController(text: '');
 
 
 String Test(String s){
