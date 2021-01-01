@@ -157,6 +157,7 @@ class LoginPage extends State<loginPageState>{
                                       } else {
                                         print('signed in');
                                         print(res.uid);
+                                        //DatabaseService().createQuiz('quizz22', new Map());
                                         var role = await DatabaseService().getRole(textname.text);
                                         activerole = role;
                                         if(role == 'Teacher')
