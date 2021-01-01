@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 bool dark = false;
 
 ThemeData lightTheme = ThemeData(
-    primaryColor: Colors.green[600],
+    primaryColor: Color.fromRGBO(204, 221, 231, 1),
     primaryTextTheme: TextTheme(headline6: TextStyle(color: Colors.black)),
     brightness: Brightness.light,
-    scaffoldBackgroundColor: Colors.grey[300],
-    buttonColor: Colors.green[600],
+    scaffoldBackgroundColor: Colors.grey[200],
+    buttonColor: Color.fromRGBO(204, 221, 231, 1),
     buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.normal),
-    accentColor: Colors.black
+    accentColor: Colors.black,
 );
 
 ThemeData darkTheme = ThemeData(
@@ -20,7 +20,7 @@ ThemeData darkTheme = ThemeData(
     scaffoldBackgroundColor: Color.fromRGBO(31, 69, 82, 1),
     buttonColor: Colors.green[600],
     buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.normal),
-    accentColor: Colors.white
+    accentColor: Colors.white,
 );
 
 ThemeData setTheme = ThemeData(
@@ -30,7 +30,7 @@ ThemeData setTheme = ThemeData(
   scaffoldBackgroundColor: Color.fromRGBO(31, 69, 82, 1),
   buttonColor: Colors.green[600],
   buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.normal),
-    accentColor: Colors.white
+    accentColor: Colors.white,
 );
 
 void switchTheme()
