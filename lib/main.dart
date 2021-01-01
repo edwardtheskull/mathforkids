@@ -22,6 +22,7 @@ class MyStatefulWidget extends StatefulWidget{
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget>{
   TextEditingController textInput = new TextEditingController();
+  String header = 'Math for Kids';
   @override
   Widget build(BuildContext context){
     SizeConfig().init(context);
@@ -32,17 +33,39 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>{
       child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
-            title: Text(
-              "Math for Kids",
-              style: TextStyle(
-                fontSize: SizeConfig.AppbarFontSize,
-                fontFamily: "Architect",
-                fontWeight: FontWeight.bold,
-                  color: setTheme.primaryTextTheme.headline6.color
+              iconTheme: IconThemeData(color:setTheme.accentColor),
+              backgroundColor: setTheme.primaryColor,
+              title: Text(
+                header,
+                style: TextStyle(
+                    fontSize: SizeConfig.AppbarFontSize,
+                    fontFamily: "Architect",
+                    fontWeight: FontWeight.bold,
+                    color: setTheme.accentColor
+                ),
               ),
-            ),
-            centerTitle:true,
-            backgroundColor: setTheme.primaryColor,
+              centerTitle:true,
+              actions: <Widget>[
+                PopupMenuButton<String>(
+                  color: setTheme.primaryColor,
+                  onSelected: (choice){
+                    if(choice == Constants.ChangeTheme)
+                    {
+                      setState(() {
+                        switchTheme();
+                      });
+                    }
+                  },
+                  itemBuilder: (BuildContext context){
+                    return Constants.Outlogged.map((choice){
+                      return PopupMenuItem<String>(
+                        value: choice,
+                        child: Text(choice, style: TextStyle(color: setTheme.accentColor)),
+                      );
+                    }).toList();
+                  },
+                ),
+              ]
           ),
           body:  Container(height: MediaQuery.of(context).size.height, width: MediaQuery.of(context).size.width,
             child: Column(mainAxisAlignment: MainAxisAlignment.center,

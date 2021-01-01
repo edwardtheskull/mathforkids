@@ -59,9 +59,12 @@ class LoginPage extends State<loginPageState>{
                           switchTheme();
                         });
                       }
+                      else if (choice == Constants.Register){
+                        Navigator.pushReplacement(context, new MaterialPageRoute(builder: (context) => new registerPageState()));
+                      }
                     },
                     itemBuilder: (BuildContext context){
-                      return Constants.Outlogged.map((choice){
+                      return Constants.regOnSignin.map((choice){
                         return PopupMenuItem<String>(
                           value: choice,
                           child: Text(choice, style: TextStyle(color: setTheme.accentColor)),
