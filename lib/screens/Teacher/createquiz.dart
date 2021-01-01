@@ -1,26 +1,31 @@
 import 'dart:collection';
+import 'package:flutter/cupertino.dart';
 import 'package:mathforkids/screens/Teacher/createquestion.dart';
 import 'package:mathforkids/utils/Imports.dart';
+import 'package:mathforkids/screens/Teacher/Temp.dart';
 
 class createquizPageState extends StatefulWidget{
   @override
   createquizPage createState() => createquizPage();
 }
 
-
 class createquizPage extends State<createquizPageState>{
-  bool test = false;
-  static List<String> Written = [null];
-  Map QA = new Map<String, String>();
   final formKey = GlobalKey<FormState>();
   String Dropdownquestionvalue = "Multiple choice";
-  static List<String> multiplechoiceanswers = [null];
+  TextEditingController _controller;
   String header = "Create Quiz";
+
   @override
   Widget build(BuildContext context) {
+    _controller = TXC;
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
         backgroundColor: setTheme.scaffoldBackgroundColor,
         appBar: AppBar(
+            leading: IconButton(icon: Icon(Icons.arrow_back),
+              onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherPageState())),
+            ),
+            iconTheme: IconThemeData(color:setTheme.accentColor),
             backgroundColor: setTheme.primaryColor,
             title: Text(
               header,
@@ -50,7 +55,7 @@ class createquizPage extends State<createquizPageState>{
                   return Constants.choices.map((choice){
                     return PopupMenuItem<String>(
                       value: choice,
-                      child: Text(choice),
+                      child: Text(choice,style: TextStyle(color: setTheme.accentColor),),
                     );
                   }).toList();
                 },
@@ -70,7 +75,7 @@ class createquizPage extends State<createquizPageState>{
                         fontFamily: "Architect",
                       ),
                     ),
-                      TextField( style: TextStyle(color: setTheme.accentColor, fontFamily: 'Architect'), cursorColor: setTheme.accentColor,
+                      TextFormField(controller: _controller, style: TextStyle(color: setTheme.accentColor, fontFamily: 'Architect'), cursorColor: setTheme.accentColor,
                         decoration: InputDecoration(enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor)),
                             border: OutlineInputBorder(), labelStyle: TextStyle(color: setTheme.accentColor),
                            focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor))
@@ -92,11 +97,9 @@ class createquizPage extends State<createquizPageState>{
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: RaisedButton(
-                              onPressed: () async{
-                                  QA = await Navigator.push(context, MaterialPageRoute<HashMap<String, String>>(builder: (context) => createquestionPageState(Dropdownquestionvalue: Dropdownquestionvalue),));
-                                setState(() {
-
-                                });
+                              onPressed: () {
+                                QuizName = _controller.text;
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => createquestionPageState(Dropdownquestionvalue: Dropdownquestionvalue),));
                               },
                               color: setTheme.buttonColor,
                               child: Text("Add Question", style: TextStyle(
@@ -106,27 +109,34 @@ class createquizPage extends State<createquizPageState>{
                             ),
                           )
                         ],
-                      )
+                      ),
+                      Container(
+                        height: SizeConfig.screenHeight/2,
+                        child: _questionList(context),)
+                      ,
+
                     ],
                   ),
                 ),
                 ),
 
-                Expanded(child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: RaisedButton(
-                      onPressed: () async{
-                        confirmDialog(context);
-                      },
-                      color: setTheme.buttonColor,
-                      child: Text("Create Quiz", style: TextStyle(
-                        fontSize: SizeConfig.TextFontSize,
-                        color: setTheme.accentColor, fontFamily: 'Architect',
-                      ),),
+                Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(11.0),
+                      child: RaisedButton(
+                        onPressed: () async{
+                          confirmDialog(context);
+                        },
+                        color: setTheme.buttonColor,
+                        child: Text("Create Quiz", style: TextStyle(
+                          fontSize: SizeConfig.TextFontSize,
+                          color: setTheme.accentColor, fontFamily: 'Architect',
+                        ),),
+                      ),
                     ),
-                  ),
-                ),)
+                  ],
+                )
               ]),
         )
     );
@@ -160,6 +170,40 @@ class createquizPage extends State<createquizPageState>{
       },
     );
   }
+
+Widget _questionList(BuildContext context){
+    if(GlobQL.keys.isEmpty){
+      return Text('No Questions added');
+    }
+    else{
+      return ListView.builder(
+        itemCount: GlobQL.keys.toList().length,
+        itemBuilder: (context, index) {
+          return Card(
+              color: setTheme.scaffoldBackgroundColor,
+
+              child: ListTile(
+                  hoverColor: Colors.blue,
+                  title: Text(GlobQL.keys.elementAt(index).toString(), style: TextStyle(
+                      color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
+                 /* trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      InkWell(
+                          child: Text(
+                            "${tests[index].studP}/${tests[index].maxP}",
+                            style: TextStyle(
+                                color: Colors.green, fontSize: SizeConfig.MiniTextFontSize),
+                          ),
+                          onTap: () {Navigator.push(context, new MaterialPageRoute(builder: (context) => new specTestResultState(tests: tests[index])));}),
+                    ],
+                  )*/
+              )
+          );
+        },
+      );
+    }
+}
 
 }
 
