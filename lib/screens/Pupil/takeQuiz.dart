@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:mathforkids/main.dart';
 import 'package:mathforkids/utils/Imports.dart';
@@ -90,7 +92,7 @@ class TakeQuizPage extends State<takeQuizPageState>{
                 ),
               ),
               Container(height: SizeConfig.screenHeight/2,
-                child: MyFunction()
+                child: MyFunction(context),
 
               ),
 
@@ -113,18 +115,14 @@ class TakeQuizPage extends State<takeQuizPageState>{
           )),
     );
   }
-}
 
-
-class MyFunction extends StatelessWidget{
-  @override
-  Widget build(BuildContext context) {
-    if (questions.length > 0) {
+  Widget MyFunction(BuildContext context){
+    if (questions.length == 5) {
       return Padding(
         padding: const EdgeInsets.all(20.0),
         child: Container(width: SizeConfig.screenWidth*0.66,
           child: TextFormField( style: TextStyle(color: setTheme.accentColor, fontFamily: 'Architect', fontSize: SizeConfig.TextFieldFontSize), cursorColor: setTheme.accentColor,
-                decoration: InputDecoration(enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor)),
+            decoration: InputDecoration(enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor)),
                 border: OutlineInputBorder(), labelStyle: TextStyle(color: setTheme.accentColor),
                 focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor))
             ),
@@ -134,9 +132,26 @@ class MyFunction extends StatelessWidget{
 
       );
     }
-    else if(questions.length <3){
+    else if(questions.length >0) {
+      return ListView.builder(itemBuilder: (context, index) {
+        return Container(
+          child: InkWell(
+            child:
+            Container(
+              child: Card(
+                child: ListTile(
 
+                )
+              ),
+            ),
+            onTap: (){
 
+            },
+          ),
+        );
+      });
     }
   }
+
 }
+
