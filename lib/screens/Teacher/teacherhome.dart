@@ -15,16 +15,17 @@ class teacherPage extends State<teacherPageState>{
     SizeConfig().init(context);
     return MaterialApp(
       home: Scaffold(
-         backgroundColor: setTheme.scaffoldBackgroundColor,
+          backgroundColor: setTheme.scaffoldBackgroundColor,
           appBar: AppBar(
               iconTheme: IconThemeData(color:setTheme.accentColor),
               backgroundColor: setTheme.primaryColor,
               title: Text(
                 header,
                 style: TextStyle(
-                  fontSize: SizeConfig.AppbarFontSize,
-                  fontFamily: "Architect",
-                  fontWeight: FontWeight.bold,
+                    fontSize: SizeConfig.AppbarFontSize,
+                    fontFamily: "Architect",
+                    fontWeight: FontWeight.bold,
+                    color: setTheme.accentColor
                 ),
               ),
               centerTitle:true,
