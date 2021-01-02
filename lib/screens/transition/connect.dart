@@ -16,7 +16,9 @@ class ConnectPage extends State<connectPageState>{
     return Scaffold(
       backgroundColor: setTheme.scaffoldBackgroundColor,
         appBar: AppBar(
+          toolbarHeight: SizeConfig.AppBarSize,
             leading: IconButton(icon: Icon(Icons.arrow_back),
+              iconSize: SizeConfig.SmallIconSize,
               onPressed: () async {
                 if(activerole == 'Teacher')
                   {

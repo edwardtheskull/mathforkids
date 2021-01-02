@@ -33,6 +33,7 @@ class SizeConfig {
   static double XSScreenHeight;
   static double HalfScreenHeight;
   static double SpecTestScreenHeight;
+  static double AppBarSize;
 
   double ShortestLength;
   double LongestLength;
@@ -95,6 +96,8 @@ class SizeConfig {
          HalfScreenHeight = ScreenHeight * 0.62;
          SpecTestScreenHeight = ScreenHeight * 0.83;
 
+            AppBarSize = MediaQuery.of(context).size.height/14;
+
     }
     else if(ShortestLength < 650 && ShortestLength > 350)
     {
@@ -104,6 +107,8 @@ class SizeConfig {
           XSScreenHeight = ScreenHeight * 0.13;
           HalfScreenHeight = ScreenHeight * 0.4;
           SpecTestScreenHeight = ScreenHeight * 0.60;
+
+             AppBarSize = MediaQuery.of(context).size.height/14;
     }
     else if(ShortestLength < 350)
     {
@@ -114,6 +119,8 @@ class SizeConfig {
            XSScreenHeight = ScreenHeight * 0.13;
            HalfScreenHeight = ScreenHeight * 0.4;
            SpecTestScreenHeight = ScreenHeight * 0.60;
+
+              AppBarSize = MediaQuery.of(context).size.height/14;
     }
     else
     {
@@ -122,13 +129,15 @@ class SizeConfig {
       AppbarFontSize = SizeConfig.safeBlockHorizontal * 5;
       LargeButtonTextSize = 80;
       SmallIconSize = 80;
-      SmallButtonWidth = MediaQuery.of(context).size.width/2.3;
+      SmallButtonWidth = MediaQuery.of(context).size.width/2.5;
       ScreenHeight = MediaQuery.of(context).size.height*0.9;
       SmallScreenHeight = ScreenHeight;
 
        XSScreenHeight = ScreenHeight * 0.13;
        HalfScreenHeight = ScreenHeight * 0.8;
        SpecTestScreenHeight = ScreenHeight;
+
+       AppBarSize = MediaQuery.of(context).size.height/14;
 
     }
   }
