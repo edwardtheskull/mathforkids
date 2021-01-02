@@ -89,7 +89,8 @@ class _ResetScreenState extends State<ResetScreen>{
                               obscureText: false,
                               decoration: InputDecoration(enabledBorder:  OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor)),
                                   border: OutlineInputBorder(), labelStyle: TextStyle(color: setTheme.accentColor),
-                                  focusedBorder: OutlineInputBorder(borderSide:  BorderSide(color: setTheme.accentColor))
+                                  focusedBorder: OutlineInputBorder(borderSide:  BorderSide(color: setTheme.accentColor)),
+                                  errorStyle: TextStyle(fontSize: SizeConfig.TextFieldFontSize)
                               ),
                             ),),
                           ],

@@ -63,7 +63,6 @@ class ConnectPage extends State<connectPageState>{
                   return Constants.choices.map((choice){
                     return PopupMenuItem<String>(
                       value: choice,
-                      height: SizeConfig.ButtonHeight,
                       child: Text(choice, style: TextStyle(color: setTheme.accentColor)),
                     );
                   }).toList();

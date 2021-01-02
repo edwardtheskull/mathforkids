@@ -100,7 +100,8 @@ class LoginPage extends State<loginPageState>{
                               obscureText: false,
                               decoration: InputDecoration(enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor)),
                                 border: OutlineInputBorder(), labelStyle: TextStyle(color: setTheme.accentColor),
-                              focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor))
+                              focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor)),
+                                  errorStyle: TextStyle(fontSize: SizeConfig.TextFieldFontSize)
                               ),
                             ),),
                           ],
@@ -124,7 +125,8 @@ class LoginPage extends State<loginPageState>{
                               obscureText: true,
                               decoration: InputDecoration(enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor)),
                                 border: OutlineInputBorder(), labelStyle: TextStyle(color: setTheme.accentColor),
-                                focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor))
+                                focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor)),
+                                  errorStyle: TextStyle(fontSize: SizeConfig.TextFieldFontSize)
                               ),
                             ),),
                           ],
