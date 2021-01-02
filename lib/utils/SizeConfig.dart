@@ -97,7 +97,7 @@ class SizeConfig {
          SpecTestScreenHeight = ScreenHeight * 0.83;
 
             AppBarSize = MediaQuery.of(context).size.height/12;
-                TextFontSize = safeBlockHorizontal*4;
+               TextFieldFontSize = safeBlockHorizontal*4;
 
     }
     else if(ShortestLength < 650 && ShortestLength > 365)
@@ -110,7 +110,7 @@ class SizeConfig {
           SpecTestScreenHeight = ScreenHeight * 0.60;
 
              AppBarSize = MediaQuery.of(context).size.height/12;
-                 TextFontSize = safeBlockHorizontal*4;
+                TextFieldFontSize = safeBlockHorizontal*4;
     }
     else if(ShortestLength < 365 && ShortestLength > 350)
     {
@@ -122,7 +122,7 @@ class SizeConfig {
                   SpecTestScreenHeight = ScreenHeight * 0.60;
 
                      AppBarSize = MediaQuery.of(context).size.height/12;
-                         TextFontSize = safeBlockHorizontal*4;
+                        TextFieldFontSize = safeBlockHorizontal*4;
     }
     else if(ShortestLength < 350)
     {
