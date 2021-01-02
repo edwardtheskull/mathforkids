@@ -14,6 +14,7 @@ class studentresultPage extends State<studentresultPageState> {
     return Scaffold(
       backgroundColor: setTheme.scaffoldBackgroundColor,
       appBar: AppBar(
+          toolbarHeight: SizeConfig.AppBarSize,
           backgroundColor: setTheme.primaryColor,
           title: Text(
             header,
@@ -100,7 +101,6 @@ class studentresultPage extends State<studentresultPageState> {
               ),
             ),
             Container(
-              width: 400,
               child: Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15.0),

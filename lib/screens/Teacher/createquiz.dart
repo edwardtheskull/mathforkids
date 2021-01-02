@@ -22,7 +22,9 @@ class createquizPage extends State<createquizPageState>{
       resizeToAvoidBottomPadding: false,
         backgroundColor: setTheme.scaffoldBackgroundColor,
         appBar: AppBar(
+            toolbarHeight: SizeConfig.AppBarSize,
             leading: IconButton(icon: Icon(Icons.arrow_back),
+              iconSize: SizeConfig.SmallIconSize,
               onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherPageState())),
             ),
             iconTheme: IconThemeData(color:setTheme.accentColor),

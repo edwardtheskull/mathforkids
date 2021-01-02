@@ -18,7 +18,9 @@ class dispResultPage extends State<DispStudTestResState> {
     return Scaffold(
         backgroundColor: setTheme.scaffoldBackgroundColor,
         appBar: AppBar(
+            toolbarHeight: SizeConfig.AppBarSize,
             leading: IconButton(icon: Icon(Icons.arrow_back),
+              iconSize: SizeConfig.SmallIconSize,
               onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new studentPageState())),
         ),
             iconTheme: IconThemeData(color:setTheme.accentColor),

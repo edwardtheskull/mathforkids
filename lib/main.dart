@@ -33,6 +33,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>{
       child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
+              toolbarHeight: SizeConfig.AppBarSize,
               iconTheme: IconThemeData(color:setTheme.accentColor),
               backgroundColor: setTheme.primaryColor,
               title: Text(

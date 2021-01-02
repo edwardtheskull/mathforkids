@@ -20,6 +20,7 @@ class StudentPage extends State<studentPageState>{
     theme: setTheme,
     home: Scaffold(
         appBar: AppBar(
+            toolbarHeight: SizeConfig.AppBarSize,
             iconTheme: IconThemeData(color:setTheme.accentColor),
             backgroundColor: setTheme.primaryColor,
           title: Text(

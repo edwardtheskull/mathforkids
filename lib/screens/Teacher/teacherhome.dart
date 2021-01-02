@@ -17,6 +17,7 @@ class teacherPage extends State<teacherPageState>{
       home: Scaffold(
           backgroundColor: setTheme.scaffoldBackgroundColor,
           appBar: AppBar(
+              toolbarHeight: SizeConfig.AppBarSize,
               iconTheme: IconThemeData(color:setTheme.accentColor),
               backgroundColor: setTheme.primaryColor,
               title: Text(
