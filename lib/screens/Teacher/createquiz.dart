@@ -1,6 +1,7 @@
 import 'dart:collection';
 import 'package:flutter/cupertino.dart';
 import 'package:mathforkids/screens/Teacher/createquestion.dart';
+import 'package:mathforkids/screens/services/database.dart';
 import 'package:mathforkids/utils/Imports.dart';
 import 'package:mathforkids/screens/Teacher/Temp.dart';
 
@@ -144,7 +145,6 @@ class createquizPage extends State<createquizPageState>{
     );
   }
 
-
   confirmDialog (BuildContext context) async {
    return showDialog(
       context: context,
@@ -157,9 +157,10 @@ class createquizPage extends State<createquizPageState>{
             child: Text("YES"),
               onPressed: () {
               //Put your code here which you want to execute on Yes button click.
+              DatabaseService().createQuiz(_controller.text, GlobQL);
               Navigator.of(context).pop();
             },
-            ),
+          ),
 
           FlatButton(
             child: Text("NO"),

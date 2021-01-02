@@ -17,7 +17,7 @@ class createquestionPage extends State<createquestionPageState>{
   String Dropdownquestionvalue;
   createquestionPage(this.Dropdownquestionvalue);
   static List<String> Pairs = [null];
-  Map QA = Map<String, String>();
+  Map<String, String> QA = new Map<String, String>();
   static List<String> Matches = [null];
   static List<String> MClist = [null];
   List<bool> Answers = [true];
@@ -97,11 +97,14 @@ class createquestionPage extends State<createquestionPageState>{
                     onPressed: (){
                       for(int i=0; i < MClist.length; i++){
                         if(i==0){
-                          QA = {'Type' : Dropdownquestionvalue};
+                          QA['Type'] = Dropdownquestionvalue.toString();
                         }
-                          QA = {MClist[i]: Answers[i]};
+                          QA[MClist[i].toString()] = Answers[i].toString();
                       }
-                      GlobQL[_nameController.text] = QA;
+                      GlobQL[_nameController.text] = new Map<String, String>();
+                      QA.forEach((key, value) {
+                        (GlobQL[_nameController.text])[key] = value;
+                      });
                       QA.clear();
                       _nameController.clear();
                       MClist.clear();
@@ -183,9 +186,12 @@ class createquestionPage extends State<createquestionPageState>{
                     children: [
                       RaisedButton(elevation: 5,
                         onPressed: (){
-                        QA = {'Type' : Dropdownquestionvalue};
-                        QA = {_nameController.text : _nameController2.text};
-                        GlobQL[_nameController.text] = QA;
+                        QA['Type'] = Dropdownquestionvalue.toString();
+                        QA[_nameController.text] = _nameController2.text;
+                        GlobQL[_nameController.text] = new Map<String, String>();
+                        QA.forEach((key, value) {
+                          (GlobQL[_nameController.text])[key] = value;
+                        });
                         QA.clear();
                         _nameController.clear();
                         _nameController2.clear();
@@ -263,11 +269,14 @@ class createquestionPage extends State<createquestionPageState>{
                             onPressed: (){
                               for(int i=0; i < Pairs.length; i++){
                                 if(i==0){
-                                  QA = {'Type' : Dropdownquestionvalue};
+                                  QA['Type'] = Dropdownquestionvalue.toString();
                                 }
-                                QA = {Pairs[i]: Matches[i]};
+                                QA[Pairs[i].toString()] = Matches[i].toString();
                               }
-                              GlobQL[_nameController.text] = QA;
+                              GlobQL[_nameController.text] = new Map<String, String>();
+                              QA.forEach((key, value) {
+                                (GlobQL[_nameController.text])[key] = value;
+                              });
                               QA.clear();
                               _nameController.clear();
                               Pairs.clear();
