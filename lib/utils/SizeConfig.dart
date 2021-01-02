@@ -96,19 +96,33 @@ class SizeConfig {
          HalfScreenHeight = ScreenHeight * 0.62;
          SpecTestScreenHeight = ScreenHeight * 0.83;
 
-            AppBarSize = MediaQuery.of(context).size.height/14;
+            AppBarSize = MediaQuery.of(context).size.height/12;
+                TextFontSize = safeBlockHorizontal*4;
 
     }
-    else if(ShortestLength < 650 && ShortestLength > 350)
+    else if(ShortestLength < 650 && ShortestLength > 365)
     {
-          ScreenHeight = MediaQuery.of(context).size.height*1.07;
+          ScreenHeight = MediaQuery.of(context).size.height*1.22;
           SmallScreenHeight = ScreenHeight * 0.6;
             SmallIconSize = 25;
           XSScreenHeight = ScreenHeight * 0.13;
           HalfScreenHeight = ScreenHeight * 0.4;
           SpecTestScreenHeight = ScreenHeight * 0.60;
 
-             AppBarSize = MediaQuery.of(context).size.height/14;
+             AppBarSize = MediaQuery.of(context).size.height/12;
+                 TextFontSize = safeBlockHorizontal*4;
+    }
+    else if(ShortestLength < 365 && ShortestLength > 350)
+    {
+           ScreenHeight = MediaQuery.of(context).size.height*1.07;
+                  SmallScreenHeight = ScreenHeight * 0.6;
+                    SmallIconSize = 25;
+                  XSScreenHeight = ScreenHeight * 0.13;
+                  HalfScreenHeight = ScreenHeight * 0.4;
+                  SpecTestScreenHeight = ScreenHeight * 0.60;
+
+                     AppBarSize = MediaQuery.of(context).size.height/12;
+                         TextFontSize = safeBlockHorizontal*4;
     }
     else if(ShortestLength < 350)
     {
@@ -143,11 +157,11 @@ class SizeConfig {
     }
     else
     {
-         ButtonWidth = MediaQuery.of(context).size.width/2;
+         ButtonWidth = MediaQuery.of(context).size.width/1.9;
               ButtonTextSize = safeBlockHorizontal * 6;
               AppbarFontSize = SizeConfig.safeBlockHorizontal * 5;
               LargeButtonTextSize = 80;
-              SmallIconSize = 60;
+              SmallIconSize = 40;
               SmallButtonWidth = MediaQuery.of(context).size.width/2.5;
               ScreenHeight = MediaQuery.of(context).size.height;
               SmallScreenHeight = ScreenHeight;
