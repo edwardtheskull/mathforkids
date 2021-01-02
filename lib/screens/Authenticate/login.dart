@@ -34,7 +34,9 @@ class LoginPage extends State<loginPageState>{
         home: Scaffold(
           backgroundColor: setTheme.scaffoldBackgroundColor,
             appBar: AppBar(
+                toolbarHeight: SizeConfig.AppBarSize,
                 leading: IconButton(icon: Icon(Icons.arrow_back),
+                    iconSize: SizeConfig.SmallIconSize,
                     onPressed: () =>  Navigator.pushAndRemoveUntil(context, new MaterialPageRoute(builder: (context) => new MyStatefulWidget()), (route) => false)
                 ),
                 iconTheme: IconThemeData(color:setTheme.accentColor),

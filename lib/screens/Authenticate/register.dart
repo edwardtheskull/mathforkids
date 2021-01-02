@@ -30,8 +30,10 @@ class RegisterPage extends State<registerPageState>{
         home: Scaffold(
         backgroundColor: setTheme.scaffoldBackgroundColor,
             appBar: AppBar(
+                toolbarHeight: SizeConfig.AppBarSize,
                 leading: IconButton(icon: Icon(Icons.arrow_back),
-                  onPressed: () =>  Navigator.pushAndRemoveUntil(context, new MaterialPageRoute(builder: (context) => new MyStatefulWidget()), (route) => false)
+                    iconSize: SizeConfig.SmallIconSize,
+                    onPressed: () =>  Navigator.pushAndRemoveUntil(context, new MaterialPageRoute(builder: (context) => new MyStatefulWidget()), (route) => false)
                 ),
                 iconTheme: IconThemeData(color:setTheme.accentColor),
                 backgroundColor: setTheme.primaryColor,
