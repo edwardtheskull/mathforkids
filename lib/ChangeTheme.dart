@@ -20,7 +20,7 @@ ThemeData darkTheme = ThemeData(
     scaffoldBackgroundColor: Color.fromRGBO(31, 69, 82, 1),
     buttonColor: Colors.green[600],
     buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.normal),
-    accentColor: Colors.white,
+    accentColor: Colors.grey[200],
 );
 
 ThemeData setTheme = ThemeData(
@@ -30,7 +30,7 @@ ThemeData setTheme = ThemeData(
   scaffoldBackgroundColor: Color.fromRGBO(31, 69, 82, 1),
   buttonColor: Colors.green[600],
   buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.normal),
-    accentColor: Colors.white,
+    accentColor: Colors.grey[200],
 );
 
 void switchTheme()
