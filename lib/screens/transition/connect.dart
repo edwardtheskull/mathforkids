@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:mathforkids/utils/Imports.dart';
 import 'package:mathforkids/ChangeTheme.dart';
 import 'package:mathforkids/screens/services/database.dart';
@@ -62,6 +63,7 @@ class ConnectPage extends State<connectPageState>{
                   return Constants.choices.map((choice){
                     return PopupMenuItem<String>(
                       value: choice,
+                      height: SizeConfig.ButtonHeight,
                       child: Text(choice, style: TextStyle(color: setTheme.accentColor)),
                     );
                   }).toList();
