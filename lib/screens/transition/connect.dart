@@ -1,4 +1,5 @@
 import 'package:flutter/gestures.dart';
+import 'package:mathforkids/screens/Pupil/takeQuiz.dart';
 import 'package:mathforkids/utils/Imports.dart';
 import 'package:mathforkids/ChangeTheme.dart';
 import 'package:mathforkids/screens/services/database.dart';
@@ -12,6 +13,7 @@ class connectPageState extends StatefulWidget{
 class ConnectPage extends State<connectPageState>{
   @override
   String header = "Math for Kids";
+  int x = 2;
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
@@ -105,7 +107,7 @@ class ConnectPage extends State<connectPageState>{
                           padding: const EdgeInsets.all(10.0),
                           child: RaisedButton(elevation: 3,
                             onPressed: (){
-                              Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
+                              Navigator.push(context, new MaterialPageRoute(builder: (context) => new takeQuizPageState(code: x)));
                             },
                             color: setTheme.buttonColor,
                             child: Text("Connect", style: TextStyle(letterSpacing: 1,
