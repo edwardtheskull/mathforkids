@@ -16,7 +16,7 @@ class DatabaseService {
     DocumentSnapshot db = await Firestore.instance.document('quiz/quizzes').get();
     var num = db.data['num'];
     var order = 1;
-    //addQuizNum();
+    addQuizNum();
 
     questions.forEach((k, v) {
       if(v['Type'] == 'Written answer'){
