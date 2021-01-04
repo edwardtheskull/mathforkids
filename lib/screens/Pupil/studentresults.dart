@@ -15,6 +15,10 @@ class studentresultPage extends State<studentresultPageState> {
       backgroundColor: setTheme.scaffoldBackgroundColor,
       appBar: AppBar(
           toolbarHeight: SizeConfig.AppBarSize,
+          leading: IconButton(icon: Icon(Icons.arrow_back),
+            iconSize: SizeConfig.SmallIconSize,
+            onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherPageState())),
+          ),
           backgroundColor: setTheme.primaryColor,
           title: Text(
             header,

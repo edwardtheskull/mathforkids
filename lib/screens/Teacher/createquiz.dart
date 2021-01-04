@@ -160,7 +160,7 @@ class createquizPage extends State<createquizPageState>{
               DatabaseService().createQuiz(_controller.text, GlobQL);
               iterator = 0;
               QuizName = '';
-              Navigator.of(context).pop();
+              Navigator.push(context, new MaterialPageRoute(builder: (context) => new studentresultPageState()));
             },
           ),
 
@@ -189,16 +189,25 @@ Widget _questionList(BuildContext context){
 
               child: ListTile(
                   hoverColor: Colors.blue,
-                  title: Text(GlobQL.keys.elementAt(index).toString(), style: TextStyle(
+                  title: Text(GlobQL.values.elementAt(index)["Question"], style: TextStyle(
                       color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
-                 trailing: Container(
-                width: SizeConfig.SmallIconSize,
-                height: SizeConfig.SmallIconSize,
-                child: IconButton(icon: Icon(Icons.remove_circle, size: SizeConfig.SmallIconSize,), color: Colors.red, onPressed: (){
-
-                },
-                ),
-              ),
+                 trailing: InkWell(onTap: (){
+                   setState(() {
+                     GlobQL.remove(GlobQL.keys.elementAt(index));
+                   });
+                 },
+                   child: Container(
+                     width: SizeConfig.SmallIconSize,
+                     height: SizeConfig.SmallIconSize,
+                     decoration: BoxDecoration(
+                       color:  Colors.red,
+                       borderRadius: BorderRadius.circular(20),
+                     ),
+                     child: Icon(
+                     Icons.remove, color: setTheme.accentColor,
+                     ),
+                   ),
+                 ),
 
                  /* trailing: Row(
                     mainAxisSize: MainAxisSize.min,
