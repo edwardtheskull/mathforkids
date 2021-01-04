@@ -36,6 +36,7 @@ class createquizPage extends State<createquizPageState>{
                 fontSize: SizeConfig.AppbarFontSize,
                 fontFamily: "Architect",
                 fontWeight: FontWeight.bold,
+                color: setTheme.accentColor
               ),
             ),
             centerTitle:true,
