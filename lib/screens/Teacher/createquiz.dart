@@ -158,7 +158,6 @@ class createquizPage extends State<createquizPageState>{
               onPressed: () {
               //Put your code here which you want to execute on Yes button click.
               DatabaseService().createQuiz(_controller.text, GlobQL);
-              GlobQL.clear();
               iterator = 0;
               QuizName = '';
               Navigator.of(context).pop();
@@ -190,16 +189,28 @@ Widget _questionList(BuildContext context){
 
               child: ListTile(
                   hoverColor: Colors.blue,
-                  title: Text(GlobQL.keys.elementAt(index).toString(), style: TextStyle(
+                  title: Text(GlobQL.values.elementAt(index)["Question"], style: TextStyle(
                       color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
-                 trailing: Container(mainAxisAlignment: MainAxisAlignment.center,
-                width: SizeConfig.SmallIconSize,
-                height: SizeConfig.SmallIconSize,
-                child: IconButton(icon: Icon(Icons.remove_circle, size: SizeConfig.SmallIconSize,), color: Colors.red, onPressed: (){
+                 trailing: InkWell(
+                   onTap: (){
+                     setState(() {
+                       print(GlobQL.keys.elementAt(index).toString());
+                       GlobQL.remove(GlobQL.keys.elementAt(index));
+                     });
 
-                },
+                   },
+                   child: Container(
+                    width: SizeConfig.SmallIconSize,
+                    height: SizeConfig.SmallIconSize,
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                     borderRadius: BorderRadius.circular(20),
+                   ),
+                    child: Icon(
+                     Icons.remove, color: setTheme.accentColor,
                 ),
               ),
+                 ),
 
                  /* trailing: Row(
                     mainAxisSize: MainAxisSize.min,
