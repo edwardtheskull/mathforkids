@@ -85,7 +85,7 @@ class createquizPage extends State<createquizPageState>{
                            focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor))
                         ),
                       ),
-                      Row(
+                      Row(mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Padding(
                             padding: const EdgeInsets.all(8.0),
@@ -178,7 +178,7 @@ class createquizPage extends State<createquizPageState>{
 
 Widget _questionList(BuildContext context){
     if(GlobQL.keys.isEmpty){
-      return Text('No Questions added', style: TextStyle(color: setTheme.accentColor),);
+      return Text('No Questions added', style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize),);
     }
     else{
       return ListView.builder(
@@ -187,40 +187,43 @@ Widget _questionList(BuildContext context){
           return Card(
               color: setTheme.scaffoldBackgroundColor,
 
-              child: ListTile(
-                  hoverColor: Colors.blue,
-                  title: Text(GlobQL.values.elementAt(index)["Question"], style: TextStyle(
-                      color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
-                 trailing: InkWell(onTap: (){
-                   setState(() {
-                     GlobQL.remove(GlobQL.keys.elementAt(index));
-                   });
-                 },
-                   child: Container(
-                     width: SizeConfig.SmallIconSize,
-                     height: SizeConfig.SmallIconSize,
-                     decoration: BoxDecoration(
-                       color:  Colors.red,
-                       borderRadius: BorderRadius.circular(20),
-                     ),
-                     child: Icon(
-                     Icons.remove, color: setTheme.accentColor,
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: ListTile(
+                    hoverColor: Colors.blue,
+                    title: Text(GlobQL.values.elementAt(index)["Question"], style: TextStyle(
+                        color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
+                   trailing: InkWell(onTap: (){
+                     setState(() {
+                       GlobQL.remove(GlobQL.keys.elementAt(index));
+                     });
+                   },
+                     child: Container(
+                       width: SizeConfig.SmallIconSize,
+                       height: SizeConfig.SmallIconSize,
+                       decoration: BoxDecoration(
+                         color:  Colors.red,
+                         borderRadius: BorderRadius.circular(SizeConfig.SmallIconSize),
+                       ),
+                       child: Icon(
+                       Icons.remove, color: setTheme.accentColor,
+                       ),
                      ),
                    ),
-                 ),
 
-                 /* trailing: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      InkWell(
-                          child: Text(
-                            "${tests[index].studP}/${tests[index].maxP}",
-                            style: TextStyle(
-                                color: Colors.green, fontSize: SizeConfig.MiniTextFontSize),
-                          ),
-                          onTap: () {Navigator.push(context, new MaterialPageRoute(builder: (context) => new specTestResultState(tests: tests[index])));}),
-                    ],
-                  )*/
+                   /* trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        InkWell(
+                            child: Text(
+                              "${tests[index].studP}/${tests[index].maxP}",
+                              style: TextStyle(
+                                  color: Colors.green, fontSize: SizeConfig.MiniTextFontSize),
+                            ),
+                            onTap: () {Navigator.push(context, new MaterialPageRoute(builder: (context) => new specTestResultState(tests: tests[index])));}),
+                      ],
+                    )*/
+                ),
               ),
           );
         },
