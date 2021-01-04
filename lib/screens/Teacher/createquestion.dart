@@ -268,7 +268,7 @@ class createquestionPage extends State<createquestionPageState>{
                     ..._getalternatives2(),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Expanded(child: Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.end,
+                      child: Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           RaisedButton(elevation: 5,
                             onPressed: (){
@@ -298,7 +298,7 @@ class createquestionPage extends State<createquestionPageState>{
                                 fontSize: SizeConfig.ButtonTextSize,
                                 color: setTheme.accentColor,fontFamily: 'Architect')),),
                         ],
-                      ),),
+                      ),
                     )
                   ],
 

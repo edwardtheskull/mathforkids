@@ -134,7 +134,7 @@ class SizeConfig {
           SmallButtonWidth = MediaQuery.of(context).size.width/1.8;
           ScreenHeight = (MediaQuery.of(context).size.height);
           SmallScreenHeight = ScreenHeight * 0.6;
-            SmallWindowHeight = SmallScreenHeight/2.1;
+            SmallWindowHeight = SmallScreenHeight/1.4;
             SmallIconSize = 25;
            XSScreenHeight = ScreenHeight * 0.13;
            HalfScreenHeight = ScreenHeight * 0.5;
