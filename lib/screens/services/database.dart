@@ -16,21 +16,10 @@ class DatabaseService {
     db.data['questions'].forEach((k, v) {
       GlobQL[k] = new Map<String, String>();
       Map<String, String> t = caster(v);
-      (GlobQL[k])['Question'] = t['question'];
-      (GlobQL[k])['Type'] = t['type'];
-      if(k != 'type' && k != 'question') {
-        (GlobQL[k])[t[k]] = t[''];
-      }
+      t.forEach((key, value) {
+        (GlobQL[k])[key] = value;
+      });
     });
-  }
-
-  Map<String, String> caster(dynamic d){
-    return (d as Map<String, String>);
-  }
-
-  //CreateQuiz
-  Future addQuizNum() async{
-    return await Firestore.instance.collection('quiz').document('quizzes').updateData({'num': FieldValue.increment(1)});
   }
 
   Future createQuiz(String name, Map<String, Map<String, String>> questions) async{
@@ -38,25 +27,10 @@ class DatabaseService {
     var num = db.data['num'];
     var order = 1;
     addQuizNum();
-
     questions.forEach((k, v) {
-      print(k.toString());
-      if(v['Type'] == 'Written answer'){
-            createWritten(num, v, order);
-      }
-      else if(v['Type'] == 'Multiple choice'){
-        print(v.keys.length);
-        createMultipleQuestion(num, v['Question'], order);
-        for(int i = 0; i < (v.keys.length-2)/2; i++) {
-            createMultiple(num, v, order, i);
-        }
-      }
-      else{
-        createPairQuestion(num, v['Question'], order);
-          for(int i = 0; i < (v.keys.length-2)/2; i++){
-            createPair(num, v, order, i);
-        }
-      }
+      v.forEach((key, value) {
+        createQuestion(num, key.toString(), value.toString(), order);
+      });
       order++;
     });
     GlobQL.clear();
@@ -66,38 +40,19 @@ class DatabaseService {
     });
   }
 
-  Future createWritten(int num, Map map, int order) async{
+  Future createQuestion(int num, String k, String v, int order) async{
     return await Firestore.instance.collection('quiz').document((10000+num).toString()).collection('questions').document('question'+order.toString()).setData({
-      'question': map['Question'],
-      'correct': map['Answer'],
-      'type': 'Written',
-    });
+      k: v,
+    }, merge : true);
   }
 
-  Future createMultipleQuestion(int num, String question, int order) async {
-    return await Firestore.instance.collection('quiz').document((10000+num).toString()).collection('questions').document('question'+order.toString()).setData({
-      'question': question,
-      'type': 'Multiple',
-    });
-  }
-  Future createMultiple(int num, Map map, int order, int seq) async{
-    return await Firestore.instance.collection('quiz').document((10000+num).toString()).collection('questions').document('question'+order.toString()).collection('multiples').document('answer'+seq.toString()).setData({
-      'answer': map['Answer'+seq.toString()],
-      'correct': map['Alternative'+seq.toString()],
-    });
+  Map<String, String> caster(dynamic d){
+    return (d as Map<String, String>);
   }
 
-  Future createPairQuestion(int num, String question, int order) async{
-    return await Firestore.instance.collection('quiz').document((10000+num).toString()).collection('questions').document('question'+order.toString()).setData({
-      'question': question,
-      'type': 'Pair',
-    });
-  }
-  Future createPair(int num, Map map, int order, int seq) async{
-    return await Firestore.instance.collection('quiz').document((10000+num).toString()).collection('questions').document('question'+order.toString()).collection('pairs').document('pair'+seq.toString()).setData({
-      'input': map['Pair'+seq.toString()],
-      'input1': map['Matches'+seq.toString()],
-    });
+  //CreateQuiz
+  Future addQuizNum() async{
+    return await Firestore.instance.collection('quiz').document('quizzes').updateData({'num': FieldValue.increment(1)});
   }
 
   //user
