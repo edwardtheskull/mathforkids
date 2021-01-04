@@ -89,9 +89,9 @@ class createquestionPage extends State<createquestionPageState>{
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  TextFormField(style: TextStyle(color: setTheme.accentColor), decoration: InputDecoration(hintText: 'Enter question', hintStyle: TextStyle(color: setTheme.accentColor), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:setTheme.accentColor))),
+                  TextFormField(style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize), decoration: InputDecoration(hintText: 'Enter question', hintStyle: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:setTheme.accentColor))),
                   controller: _nameController,),
-                  Text('Add alternative', style: TextStyle(color: setTheme.accentColor)),
+                  Text('Add alternative', style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize)),
                   ..._getalternatives(),
                   RaisedButton(elevation: 5,
                     onPressed: (){
@@ -177,12 +177,12 @@ class createquestionPage extends State<createquestionPageState>{
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: TextFormField(decoration: InputDecoration(hintText: 'Enter question', hintStyle: TextStyle(color: setTheme.accentColor), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:setTheme.accentColor))), style: TextStyle(color: setTheme.accentColor),
+                    child: TextFormField(decoration: InputDecoration(hintText: 'Enter question', hintStyle: TextStyle(color: setTheme.accentColor), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:setTheme.accentColor))), style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize),
                         controller: _nameController),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: TextFormField(decoration: InputDecoration(hintText: 'Enter Answer', hintStyle: TextStyle(color: setTheme.accentColor), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:setTheme.accentColor))), style: TextStyle(color: setTheme.accentColor),
+                    child: TextFormField(decoration: InputDecoration(hintText: 'Enter Answer', hintStyle: TextStyle(color: setTheme.accentColor), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:setTheme.accentColor))), style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize),
                     controller: _nameController2,),
                   ),
                   Expanded(child: Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.end,
@@ -262,13 +262,13 @@ class createquestionPage extends State<createquestionPageState>{
               child: Padding(padding: const EdgeInsets.all(16.0),
                 child: Column(
                   children: [
-                    TextFormField(decoration: InputDecoration(hintText: 'Write question', hintStyle: TextStyle(color: setTheme.accentColor), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:setTheme.accentColor))), style: TextStyle(color: setTheme.accentColor),
+                    TextFormField(decoration: InputDecoration(hintText: 'Write question', hintStyle: TextStyle(color: setTheme.accentColor), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:setTheme.accentColor))), style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize),
                         controller: _nameController),
-                    Text('Add alternative', style: TextStyle(color:setTheme.accentColor),),
+                    Text('Add alternative', style: TextStyle(color:setTheme.accentColor, fontSize:SizeConfig.TextFieldFontSize ),),
                     ..._getalternatives2(),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Expanded(child: Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.end,
+                      child: Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           RaisedButton(elevation: 5,
                             onPressed: (){
@@ -298,7 +298,7 @@ class createquestionPage extends State<createquestionPageState>{
                                 fontSize: SizeConfig.ButtonTextSize,
                                 color: setTheme.accentColor,fontFamily: 'Architect')),),
                         ],
-                      ),),
+                      ),
                     )
                   ],
 
@@ -352,11 +352,11 @@ class createquestionPage extends State<createquestionPageState>{
         });
       },
       child: Container(
-        width: 30,
-        height: 30,
+        width: SizeConfig.SmallIconSize,
+        height: SizeConfig.SmallIconSize,
         decoration: BoxDecoration(
           color: (add) ? setTheme.primaryColor : Colors.red,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(SizeConfig.SmallIconSize),
         ),
         child: Icon(
           (add) ? Icons.add : Icons.remove, color: setTheme.accentColor,
@@ -400,11 +400,11 @@ class createquestionPage extends State<createquestionPageState>{
         });
       },
       child: Container(
-        width: 30,
-        height: 30,
+        width: SizeConfig.SmallIconSize,
+        height: SizeConfig.SmallIconSize,
         decoration: BoxDecoration(
           color: (add) ? setTheme.primaryColor : Colors.red,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(SizeConfig.SmallIconSize),
         ),
         child: Icon(
           (add) ? Icons.add : Icons.remove, color: setTheme.accentColor,
@@ -451,10 +451,8 @@ class _MCTextFieldState extends State<MCTextFields> {
       // save text field data in friends list at index
       // whenever text field value changes
       onChanged: (v) =>
-      createquestionPage.MClist[widget.index] = v,
-      decoration: InputDecoration(
-          hintText: 'Enter answer alternative', hintStyle: TextStyle(color:setTheme.accentColor), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:setTheme.accentColor))
-      ),
+      createquestionPage.MClist[widget.index] = v, style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize),
+      decoration: InputDecoration(hintText: 'Enter answer alternative', hintStyle: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:setTheme.accentColor))),
       validator: (v) {
         if (v
             .trim()
@@ -504,7 +502,7 @@ class _MTextFieldState extends State<MTextFields> {
       createquestionPage.Matches[widget.index] = v,
       decoration: InputDecoration(
           hintText: 'Enter match',
-          hintStyle: TextStyle(color: setTheme.accentColor), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:setTheme.accentColor))), style: TextStyle(color: setTheme.accentColor),
+          hintStyle: TextStyle(color: setTheme.accentColor), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:setTheme.accentColor))), style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize),
       validator: (v) {
         if (v
             .trim()
@@ -554,7 +552,7 @@ class _PTextFieldState extends State<PTextFields> {
       createquestionPage.Pairs[widget.index] = v,
       decoration: InputDecoration(
           hintText: 'Enter match',
-          hintStyle: TextStyle(color: setTheme.accentColor), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:setTheme.accentColor))), style: TextStyle(color: setTheme.accentColor),
+          hintStyle: TextStyle(color: setTheme.accentColor), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:setTheme.accentColor))), style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize),
       validator: (v) {
         if (v
             .trim()

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mathforkids/screens/Authenticate/user.dart';
+import 'package:mathforkids/screens/Teacher/Temp.dart';
 
 class DatabaseService {
   final String uid;
@@ -7,7 +8,27 @@ class DatabaseService {
 
   final CollectionReference mathCollection = Firestore.instance.collection('users');
 
-  //quiz
+  Future buildQuizFromDb(String code) async{
+    GlobQL.clear();
+    DocumentSnapshot db = await Firestore.instance.document('quiz/'+code).get();
+    GlobQL['Name'] = db.data['name'];
+    //GlobQL['Code'] = db.data['code'];
+    db.data['questions'].forEach((k, v) {
+      GlobQL[k] = new Map<String, String>();
+      Map<String, String> t = caster(v);
+      (GlobQL[k])['Question'] = t['question'];
+      (GlobQL[k])['Type'] = t['type'];
+      if(k != 'type' && k != 'question') {
+        (GlobQL[k])[t[k]] = t[''];
+      }
+    });
+  }
+
+  Map<String, String> caster(dynamic d){
+    return (d as Map<String, String>);
+  }
+
+  //CreateQuiz
   Future addQuizNum() async{
     return await Firestore.instance.collection('quiz').document('quizzes').updateData({'num': FieldValue.increment(1)});
   }
@@ -19,43 +40,36 @@ class DatabaseService {
     addQuizNum();
 
     questions.forEach((k, v) {
+      print(k.toString());
       if(v['Type'] == 'Written answer'){
-        v.forEach((key, value) {
-          if(key != 'Type'){
-            createWritten(num, v, key, order);
-          }
-        });
+            createWritten(num, v, order);
       }
       else if(v['Type'] == 'Multiple choice'){
-        var seq = 1;
-        createMultipleQuestion(num, k, order);
-        v.forEach((key, value) {
-          if(key != 'Type'){
-            createMultiple(num, v, key, order, seq++);
-          }
-        });
+        print(v.keys.length);
+        createMultipleQuestion(num, v['Question'], order);
+        for(int i = 0; i < (v.keys.length-2)/2; i++) {
+            createMultiple(num, v, order, i);
+        }
       }
       else{
-        var seq = 1;
-        createPairQuestion(num, k, order);
-        v.forEach((key, value) {
-          if(key != 'Type'){
-            createPair(num, v, key, order, seq++);
-          }
-        });
+        createPairQuestion(num, v['Question'], order);
+          for(int i = 0; i < (v.keys.length-2)/2; i++){
+            createPair(num, v, order, i);
+        }
       }
       order++;
     });
+    GlobQL.clear();
     return await Firestore.instance.collection('quiz').document((10000+num).toString()).setData({
       'code': (10000+num).toString(),
       'name': name,
     });
   }
 
-  Future createWritten(int num, Map map, String key, int order) async{
+  Future createWritten(int num, Map map, int order) async{
     return await Firestore.instance.collection('quiz').document((10000+num).toString()).collection('questions').document('question'+order.toString()).setData({
-      'question': key,
-      'correct': map[key],
+      'question': map['Question'],
+      'correct': map['Answer'],
       'type': 'Written',
     });
   }
@@ -66,11 +80,10 @@ class DatabaseService {
       'type': 'Multiple',
     });
   }
-
-  Future createMultiple(int num, Map map, String key, int order, int seq) async{
+  Future createMultiple(int num, Map map, int order, int seq) async{
     return await Firestore.instance.collection('quiz').document((10000+num).toString()).collection('questions').document('question'+order.toString()).collection('multiples').document('answer'+seq.toString()).setData({
-      'answer': key,
-      'correct': map[key],
+      'answer': map['Answer'+seq.toString()],
+      'correct': map['Alternative'+seq.toString()],
     });
   }
 
@@ -80,11 +93,10 @@ class DatabaseService {
       'type': 'Pair',
     });
   }
-
-  Future createPair(int num, Map map, String key, int order, int seq) async{
+  Future createPair(int num, Map map, int order, int seq) async{
     return await Firestore.instance.collection('quiz').document((10000+num).toString()).collection('questions').document('question'+order.toString()).collection('pairs').document('pair'+seq.toString()).setData({
-      'input': key,
-      'input1': map[key],
+      'input': map['Pair'+seq.toString()],
+      'input1': map['Matches'+seq.toString()],
     });
   }
 

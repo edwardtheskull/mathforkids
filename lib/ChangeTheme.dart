@@ -7,7 +7,7 @@ ThemeData lightTheme = ThemeData(
     primaryColor: Color.fromRGBO(115, 226, 167, 1),
     primaryTextTheme: TextTheme(headline6: TextStyle(color: Colors.black)),
     brightness: Brightness.light,
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: Colors.grey[200],
     buttonColor: Color.fromRGBO(115, 226, 167, 1),
     buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.normal),
     accentColor: Colors.black,
