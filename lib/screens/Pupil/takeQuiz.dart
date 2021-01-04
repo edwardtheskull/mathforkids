@@ -19,9 +19,12 @@ class takeQuizPageState extends StatefulWidget{
   TakeQuizPage createState() => TakeQuizPage();
 }
 
+
+
 class TakeQuizPage extends State<takeQuizPageState>{
   final AuthService _auth = AuthService();
   String header = "Math for Kids";
+  List<bool> cardsValue = [false, false];
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -133,25 +136,85 @@ class TakeQuizPage extends State<takeQuizPageState>{
       );
     }
     else if(questions.length >0) {
-      return ListView.builder(itemBuilder: (context, index) {
+      return ListView.builder(itemCount: cardsValue.length, itemBuilder: (context, index) {
         return Container(
-          child: InkWell(
-            child:
-            Container(
-              child: Card(
-                child: ListTile(
-
-                )
+              child: CustomQuestion(
+                text: '${questions[index].qst}',
+                isSelected: cardsValue[index],
+                onTap: () {
+                  setState(() {
+                    cardsValue[index] = !cardsValue[index];
+                    Text("text1");
+                  });
+                },
               ),
-            ),
-            onTap: (){
-
-            },
-          ),
-        );
+            );
       });
     }
   }
-
 }
+
+class CustomQuestion extends StatelessWidget{
+  final bool isSelected;
+  final String text;
+  final VoidCallback onTap;
+
+  const CustomQuestion({
+    this.isSelected,
+    this.text,
+    this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        child: Card(
+          color: isSelected ? Colors.white : Colors.red,
+          semanticContainer: true,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          margin: new EdgeInsets.all(0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(top: 5, right: 25, bottom: 10),
+                    child: Icon(
+                      Icons.lightbulb_outline,
+                      color: isSelected ? Colors.grey : Colors.white,
+                      size: 35,
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                    EdgeInsets.only(top: 0, right: 0, bottom: 20, left: 0),
+                    child: new Text(
+                      isSelected ? 'On' : 'Off',
+                      style: TextStyle(
+                          color: isSelected ? Colors.grey[800] : Colors.white),
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 8, left: 5),
+                child: Text(
+                  text,
+                  style: TextStyle(
+                      color: isSelected ? Colors.grey[800] : Colors.white,
+                      fontSize: 13),
+                ),
+              ),
+            ],
+          ),
+        ),
+      )
+    );
+  }}
 
