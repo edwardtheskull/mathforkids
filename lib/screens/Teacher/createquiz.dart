@@ -177,7 +177,7 @@ class createquizPage extends State<createquizPageState>{
 
 Widget _questionList(BuildContext context){
     if(GlobQL.keys.isEmpty){
-      return Text('No Questions added');
+      return Text('No Questions added', style: TextStyle(color: setTheme.accentColor),);
     }
     else{
       return ListView.builder(

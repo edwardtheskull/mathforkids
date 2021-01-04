@@ -89,9 +89,9 @@ class createquestionPage extends State<createquestionPageState>{
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  TextFormField(decoration: InputDecoration(hintText: 'Enter question'),
+                  TextFormField(style: TextStyle(color: setTheme.accentColor), decoration: InputDecoration(hintText: 'Enter question', hintStyle: TextStyle(color: setTheme.accentColor), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:setTheme.accentColor))),
                   controller: _nameController,),
-                  Text('Add alternative'),
+                  Text('Add alternative', style: TextStyle(color: setTheme.accentColor)),
                   ..._getalternatives(),
                   RaisedButton(elevation: 5,
                     onPressed: (){
@@ -99,12 +99,15 @@ class createquestionPage extends State<createquestionPageState>{
                         if(i==0){
                           QA['Type'] = Dropdownquestionvalue.toString();
                         }
-                          QA[MClist[i].toString()] = Answers[i].toString();
+                          QA['Alternative'+i.toString()] = MClist[i].toString();
+                          QA['Answer'+i.toString()]  = Answers[i].toString();
                       }
-                      GlobQL[_nameController.text] = new Map<String, String>();
+                      QA['Question'] = _nameController.text;
+                      GlobQL['Q'+iterator.toString()] = new Map<String, String>();
                       QA.forEach((key, value) {
-                        (GlobQL[_nameController.text])[key] = value;
+                        (GlobQL['Q'+iterator.toString()])[key] = value;
                       });
+                      iterator++;
                       QA.clear();
                       _nameController.clear();
                       MClist.clear();
@@ -116,7 +119,7 @@ class createquestionPage extends State<createquestionPageState>{
                     color: setTheme.primaryColor,
                     child: Text("Save question", style: TextStyle(letterSpacing: 1,
                         fontSize: SizeConfig.ButtonTextSize,
-                        color: Colors.white,fontFamily: 'Architect')),)
+                        color:setTheme.accentColor, fontFamily: 'Architect')),)
                 ],
               ),
             ))
@@ -174,7 +177,7 @@ class createquestionPage extends State<createquestionPageState>{
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: TextFormField(decoration: InputDecoration(hintText: 'Enter question'),
+                    child: TextFormField(decoration: InputDecoration(hintText: 'Enter question'), style: TextStyle(color: setTheme.accentColor),
                         controller: _nameController),
                   ),
                   Padding(
@@ -187,11 +190,13 @@ class createquestionPage extends State<createquestionPageState>{
                       RaisedButton(elevation: 5,
                         onPressed: (){
                         QA['Type'] = Dropdownquestionvalue.toString();
-                        QA[_nameController.text] = _nameController2.text;
-                        GlobQL[_nameController.text] = new Map<String, String>();
+                        QA['Answer'] = _nameController2.text;
+                        QA['Question'] = _nameController.text;
+                        GlobQL['Q'+iterator.toString()] = new Map<String, String>();
                         QA.forEach((key, value) {
-                          (GlobQL[_nameController.text])[key] = value;
+                          (GlobQL['Q'+iterator.toString()])[key] = value;
                         });
+                        iterator++;
                         QA.clear();
                         _nameController.clear();
                         _nameController2.clear();
@@ -271,12 +276,15 @@ class createquestionPage extends State<createquestionPageState>{
                                 if(i==0){
                                   QA['Type'] = Dropdownquestionvalue.toString();
                                 }
-                                QA[Pairs[i].toString()] = Matches[i].toString();
+                                QA['Pair'+i.toString()] = Pairs[i].toString();
+                                QA['Matches'+i.toString()] = Matches[i].toString();
                               }
-                              GlobQL[_nameController.text] = new Map<String, String>();
+                              QA['Question'] = _nameController.text;
+                              GlobQL['Q'+iterator.toString()] = new Map<String, String>();
                               QA.forEach((key, value) {
-                                (GlobQL[_nameController.text])[key] = value;
+                                (GlobQL['Q'+iterator.toString()])[key] = value;
                               });
+                              iterator++;
                               QA.clear();
                               _nameController.clear();
                               Pairs.clear();
@@ -351,7 +359,7 @@ class createquestionPage extends State<createquestionPageState>{
           borderRadius: BorderRadius.circular(20),
         ),
         child: Icon(
-          (add) ? Icons.add : Icons.remove, color: Colors.white,
+          (add) ? Icons.add : Icons.remove, color: setTheme.accentColor,
         ),
       ),
     );
@@ -445,7 +453,7 @@ class _MCTextFieldState extends State<MCTextFields> {
       onChanged: (v) =>
       createquestionPage.MClist[widget.index] = v,
       decoration: InputDecoration(
-          hintText: 'Enter answer alternative',
+          hintText: 'Enter answer alternative', hintStyle: TextStyle(color:setTheme.accentColor), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:setTheme.accentColor))
       ),
       validator: (v) {
         if (v

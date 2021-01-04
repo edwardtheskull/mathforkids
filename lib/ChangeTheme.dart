@@ -11,6 +11,7 @@ ThemeData lightTheme = ThemeData(
     buttonColor: Color.fromRGBO(115, 226, 167, 1),
     buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.normal),
     accentColor: Colors.black,
+    hintColor: Colors.black
 );
 
 ThemeData darkTheme = ThemeData(
@@ -21,6 +22,7 @@ ThemeData darkTheme = ThemeData(
     buttonColor: Colors.green[600],
     buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.normal),
     accentColor: Colors.grey[200],
+    hintColor: Colors.grey[200]
 );
 
 ThemeData setTheme = ThemeData(
@@ -31,6 +33,7 @@ ThemeData setTheme = ThemeData(
   buttonColor: Colors.green[600],
   buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.normal),
     accentColor: Colors.grey[200],
+    hintColor: Colors.grey[200]
 );
 
 void switchTheme()
