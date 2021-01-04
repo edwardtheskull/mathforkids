@@ -8,7 +8,27 @@ class DatabaseService {
 
   final CollectionReference mathCollection = Firestore.instance.collection('users');
 
-  //quiz
+  Future buildQuizFromDb(String code) async{
+    GlobQL.clear();
+    DocumentSnapshot db = await Firestore.instance.document('quiz/'+code).get();
+    GlobQL['Name'] = db.data['name'];
+    //GlobQL['Code'] = db.data['code'];
+    db.data['questions'].forEach((k, v) {
+      GlobQL[k] = new Map<String, String>();
+      Map<String, String> t = caster(v);
+      (GlobQL[k])['Question'] = t['question'];
+      (GlobQL[k])['Type'] = t['type'];
+      if(k != 'type' && k != 'question') {
+        (GlobQL[k])[t[k]] = t[''];
+      }
+    });
+  }
+
+  Map<String, String> caster(dynamic d){
+    return (d as Map<String, String>);
+  }
+
+  //CreateQuiz
   Future addQuizNum() async{
     return await Firestore.instance.collection('quiz').document('quizzes').updateData({'num': FieldValue.increment(1)});
   }
@@ -60,7 +80,6 @@ class DatabaseService {
       'type': 'Multiple',
     });
   }
-
   Future createMultiple(int num, Map map, int order, int seq) async{
     return await Firestore.instance.collection('quiz').document((10000+num).toString()).collection('questions').document('question'+order.toString()).collection('multiples').document('answer'+seq.toString()).setData({
       'answer': map['Answer'+seq.toString()],
@@ -74,7 +93,6 @@ class DatabaseService {
       'type': 'Pair',
     });
   }
-
   Future createPair(int num, Map map, int order, int seq) async{
     return await Firestore.instance.collection('quiz').document((10000+num).toString()).collection('questions').document('question'+order.toString()).collection('pairs').document('pair'+seq.toString()).setData({
       'input': map['Pair'+seq.toString()],
