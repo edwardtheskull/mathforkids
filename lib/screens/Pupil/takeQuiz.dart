@@ -94,15 +94,14 @@ class TakeQuizPage extends State<takeQuizPageState>{
                       color: Colors.white,),),
                 ),
               ),
-              Container(height: SizeConfig.screenHeight/2,
+              Container(height: SizeConfig.screenHeight*0.6,
                 child: MyFunction(context),
 
               ),
-
                   Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(11.0),
+                        padding: const EdgeInsets.all(6.0),
                         child: RaisedButton(
                           onPressed: () {},
                           color: setTheme.buttonColor,
@@ -135,21 +134,52 @@ class TakeQuizPage extends State<takeQuizPageState>{
 
       );
     }
-    else if(questions.length >0) {
+    else if(questions.length >1000) {
       return ListView.builder(itemCount: cardsValue.length, itemBuilder: (context, index) {
         return Container(
-              child: CustomQuestion(
-                text: '${questions[index].qst}',
-                isSelected: cardsValue[index],
-                onTap: () {
-                  setState(() {
-                    cardsValue[index] = !cardsValue[index];
-                    Text("text1");
-                  });
-                },
+              child: Padding(
+                padding: const EdgeInsets.all(6.0),
+                child: CustomQuestion(
+                  text: '${questions[index].qst}',
+                  nr : index+1,
+                  isSelected: cardsValue[index],
+                  onTap: () {
+                    setState(() {
+                      cardsValue[index] = !cardsValue[index];
+                      Text("text1");
+                    });
+                  },
+                ),
               ),
             );
       });
+    }
+    else{
+        return Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: GridView.builder(shrinkWrap: true,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: MediaQuery.of(context).size.width /
+                  (MediaQuery.of(context).size.height / 3),),
+              itemBuilder: (context, index) => Container(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20, right:20, top: 20, bottom: 20),
+                  child: CustomQuestion(
+                    text: '${questions[index].qst}',
+                    nr : index+1,
+                    isSelected: cardsValue[index],
+                    onTap: () {
+                      setState(() {
+                        cardsValue[index] = !cardsValue[index];
+                        Text("text1");
+                      });
+                    },
+
+                  ),
+                ),
+              ),
+          itemCount: cardsValue.length,
+          ),
+        );
     }
   }
 }
@@ -158,11 +188,13 @@ class CustomQuestion extends StatelessWidget{
   final bool isSelected;
   final String text;
   final VoidCallback onTap;
+  final int nr;
 
   const CustomQuestion({
     this.isSelected,
     this.text,
     this.onTap,
+    this.nr
   });
 
   @override
@@ -183,27 +215,23 @@ class CustomQuestion extends StatelessWidget{
             children: <Widget>[
               Row(
                 children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(top: 5, right: 25, bottom: 10),
-                    child: Icon(
-                      Icons.lightbulb_outline,
-                      color: isSelected ? Colors.grey : Colors.white,
-                      size: 35,
-                    ),
-                  ),
+
                   Padding(
                     padding:
                     EdgeInsets.only(top: 0, right: 0, bottom: 20, left: 0),
-                    child: new Text(
-                      isSelected ? 'On' : 'Off',
-                      style: TextStyle(
-                          color: isSelected ? Colors.grey[800] : Colors.white),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: new Text(
+                        "Alternative ${nr}",
+                        style: TextStyle(
+                            color: isSelected ? Colors.grey[800] : Colors.white),
+                      ),
                     ),
                   ),
                 ],
               ),
               Padding(
-                padding: EdgeInsets.only(top: 8, left: 5),
+                padding: EdgeInsets.all(10.0),
                 child: Text(
                   text,
                   style: TextStyle(
