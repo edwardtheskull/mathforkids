@@ -103,7 +103,7 @@ class createquizPage extends State<createquizPageState>{
                             child: RaisedButton(
                               onPressed: () {
                                 QuizName = _controller.text;
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => createquestionPageState(Dropdownquestionvalue: Dropdownquestionvalue),));
+                                Navigator.pushAndRemoveUntil(context,  new MaterialPageRoute(builder: (context) => new createquestionPageState(Dropdownquestionvalue: Dropdownquestionvalue)), (route) => false);
                               },
                               color: setTheme.buttonColor,
                               child: Text("Add Question", style: TextStyle(
@@ -115,10 +115,9 @@ class createquizPage extends State<createquizPageState>{
                         ],
                       ),
                       Container(
-                        height: SizeConfig.screenHeight/2,
+                        height: SizeConfig.SmallWindowHeight,
                         child: _questionList(context),)
                       ,
-
                     ],
                   ),
                 ),
@@ -161,6 +160,7 @@ class createquizPage extends State<createquizPageState>{
               DatabaseService().createQuiz(_controller.text, GlobQL);
               GlobQL.clear();
               iterator = 0;
+              QuizName = '';
               Navigator.of(context).pop();
             },
           ),
@@ -192,6 +192,15 @@ Widget _questionList(BuildContext context){
                   hoverColor: Colors.blue,
                   title: Text(GlobQL.keys.elementAt(index).toString(), style: TextStyle(
                       color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
+                 trailing: Container(mainAxisAlignment: MainAxisAlignment.center,
+                width: SizeConfig.SmallIconSize,
+                height: SizeConfig.SmallIconSize,
+                child: IconButton(icon: Icon(Icons.remove_circle, size: SizeConfig.SmallIconSize,), color: Colors.red, onPressed: (){
+
+                },
+                ),
+              ),
+
                  /* trailing: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -204,7 +213,7 @@ Widget _questionList(BuildContext context){
                           onTap: () {Navigator.push(context, new MaterialPageRoute(builder: (context) => new specTestResultState(tests: tests[index])));}),
                     ],
                   )*/
-              )
+              ),
           );
         },
       );

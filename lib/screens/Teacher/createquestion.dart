@@ -352,8 +352,8 @@ class createquestionPage extends State<createquestionPageState>{
         });
       },
       child: Container(
-        width: 30,
-        height: 30,
+        width: SizeConfig.SmallIconSize,
+        height: SizeConfig.SmallIconSize,
         decoration: BoxDecoration(
           color: (add) ? setTheme.primaryColor : Colors.red,
           borderRadius: BorderRadius.circular(20),
