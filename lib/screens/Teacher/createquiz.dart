@@ -159,6 +159,8 @@ class createquizPage extends State<createquizPageState>{
               onPressed: () {
               //Put your code here which you want to execute on Yes button click.
               DatabaseService().createQuiz(_controller.text, GlobQL);
+              GlobQL.clear();
+              iterator = 0;
               Navigator.of(context).pop();
             },
           ),

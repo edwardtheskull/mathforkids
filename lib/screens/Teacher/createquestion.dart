@@ -177,12 +177,12 @@ class createquestionPage extends State<createquestionPageState>{
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: TextFormField(decoration: InputDecoration(hintText: 'Enter question'), style: TextStyle(color: setTheme.accentColor),
+                    child: TextFormField(decoration: InputDecoration(hintText: 'Enter question', hintStyle: TextStyle(color: setTheme.accentColor), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:setTheme.accentColor))), style: TextStyle(color: setTheme.accentColor),
                         controller: _nameController),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: TextFormField(decoration: InputDecoration(hintText: 'Enter Answer'),
+                    child: TextFormField(decoration: InputDecoration(hintText: 'Enter Answer', hintStyle: TextStyle(color: setTheme.accentColor), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:setTheme.accentColor))), style: TextStyle(color: setTheme.accentColor),
                     controller: _nameController2,),
                   ),
                   Expanded(child: Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.end,
@@ -262,9 +262,9 @@ class createquestionPage extends State<createquestionPageState>{
               child: Padding(padding: const EdgeInsets.all(16.0),
                 child: Column(
                   children: [
-                    TextFormField(decoration: InputDecoration(hintText: 'Write question'),
+                    TextFormField(decoration: InputDecoration(hintText: 'Write question', hintStyle: TextStyle(color: setTheme.accentColor), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:setTheme.accentColor))), style: TextStyle(color: setTheme.accentColor),
                         controller: _nameController),
-                    Text('Add alternative'),
+                    Text('Add alternative', style: TextStyle(color:setTheme.accentColor),),
                     ..._getalternatives2(),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -407,7 +407,7 @@ class createquestionPage extends State<createquestionPageState>{
           borderRadius: BorderRadius.circular(20),
         ),
         child: Icon(
-          (add) ? Icons.add : Icons.remove, color: Colors.white,
+          (add) ? Icons.add : Icons.remove, color: setTheme.accentColor,
         ),
       ),
     );
@@ -503,8 +503,8 @@ class _MTextFieldState extends State<MTextFields> {
       onChanged: (v) =>
       createquestionPage.Matches[widget.index] = v,
       decoration: InputDecoration(
-          hintText: 'Enter match'
-      ),
+          hintText: 'Enter match',
+          hintStyle: TextStyle(color: setTheme.accentColor), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:setTheme.accentColor))), style: TextStyle(color: setTheme.accentColor),
       validator: (v) {
         if (v
             .trim()
@@ -553,8 +553,8 @@ class _PTextFieldState extends State<PTextFields> {
       onChanged: (v) =>
       createquestionPage.Pairs[widget.index] = v,
       decoration: InputDecoration(
-          hintText: 'Enter match'
-      ),
+          hintText: 'Enter match',
+          hintStyle: TextStyle(color: setTheme.accentColor), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:setTheme.accentColor))), style: TextStyle(color: setTheme.accentColor),
       validator: (v) {
         if (v
             .trim()
