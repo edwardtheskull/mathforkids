@@ -87,7 +87,6 @@ class SizeConfig {
     XSMiniTextFontSize = safeBlockHorizontal*4;
     SmallButtonWidth = MediaQuery.of(context).size.width/2.2;
     Createquestionbutton = safeBlockHorizontal*5;
-    XSHalfScreenSize = SmallWindowHeight*1.25;
 
 
     if(ShortestLength < 400 && LongestLength > 650 && ShortestLength < 650)
@@ -170,5 +169,6 @@ class SizeConfig {
           AppBarSize = MediaQuery.of(context).size.height/18;
           TextFieldFontSize = safeBlockHorizontal*3;
     }
+    XSHalfScreenSize = SmallWindowHeight*1.25;
   }
 }
