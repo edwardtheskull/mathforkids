@@ -70,28 +70,30 @@ class studentresultPage extends State<studentresultPageState> {
                 backgroundColor: setTheme.primaryColor,
                 color: setTheme.accentColor),),
           ),
-            Container(
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15.0),
-                ),
-                color: setTheme.scaffoldBackgroundColor,
-                elevation: 10,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                     ListTile(
-                      leading: Icon(
-                        Icons.add_circle,
-                        color: setTheme.buttonColor,
-                        size: SizeConfig.SmallIconSize,
+            SingleChildScrollView(
+              child: Container( width: SizeConfig.screenWidth, height: SizeConfig.SmallWindowHeight,
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  color: setTheme.scaffoldBackgroundColor,
+                  elevation: 10,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                       ListTile(
+                        leading: Icon(
+                          Icons.add_circle,
+                          color: setTheme.buttonColor,
+                          size: SizeConfig.SmallIconSize,
+                        ),
+                        title: Text('Addition',
+                            style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
+                        subtitle: Text(
+                            '2020-12-12', style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.XSMiniTextFontSize)),
                       ),
-                      title: Text('Addition',
-                          style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
-                      subtitle: Text(
-                          '2020-12-12', style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.XSMiniTextFontSize)),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
