@@ -96,8 +96,8 @@ class SizeConfig {
           SmallWindowHeight = SmallScreenHeight/1.5;
         SmallIconSize = 25;
          XSScreenHeight = ScreenHeight * 0.13;
-         HalfScreenHeight = ScreenHeight * 0.62;
-         SpecTestScreenHeight = ScreenHeight * 0.83;
+         HalfScreenHeight = ScreenHeight * 0.61;
+         SpecTestScreenHeight = ScreenHeight * 0.82;
 
             AppBarSize = MediaQuery.of(context).size.height/12;
                TextFieldFontSize = safeBlockHorizontal*4;
