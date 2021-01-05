@@ -35,6 +35,7 @@ class SizeConfig {
   static double SpecTestScreenHeight;
   static double AppBarSize;
   static double SmallWindowHeight;
+  static double XSHalfScreenSize;
 
   double ShortestLength;
   double LongestLength;
@@ -100,6 +101,7 @@ class SizeConfig {
 
             AppBarSize = MediaQuery.of(context).size.height/12;
                TextFieldFontSize = safeBlockHorizontal*4;
+                    XSHalfScreenSize = SmallWindowHeight*1.25;
 
     }
     else if(ShortestLength < 650 && ShortestLength > 365)
@@ -114,6 +116,7 @@ class SizeConfig {
 
              AppBarSize = MediaQuery.of(context).size.height/12;
                 TextFieldFontSize = safeBlockHorizontal*4;
+                XSHalfScreenSize = SmallWindowHeight*1.25;
 
     }
     else if(ShortestLength < 365 && ShortestLength > 350)
@@ -128,6 +131,7 @@ class SizeConfig {
 
                      AppBarSize = MediaQuery.of(context).size.height/12;
                         TextFieldFontSize = safeBlockHorizontal*4;
+                             XSHalfScreenSize = SmallWindowHeight*1.25;
     }
     else if(ShortestLength < 350)
     {
@@ -141,6 +145,7 @@ class SizeConfig {
            SpecTestScreenHeight = ScreenHeight * 0.70;
             SmallButtonWidth = MediaQuery.of(context).size.width/2.5;
               AppBarSize = MediaQuery.of(context).size.height/14;
+                   XSHalfScreenSize = SmallWindowHeight*1.25;
     }
     else if(LongestLength > 1000)
     {
@@ -160,6 +165,7 @@ class SizeConfig {
 
        AppBarSize = MediaQuery.of(context).size.height/18;
            TextFieldFontSize = safeBlockHorizontal*3;
+                XSHalfScreenSize = SmallWindowHeight*1.25;
 
     }
     else
@@ -180,6 +186,7 @@ class SizeConfig {
 
                 AppBarSize = MediaQuery.of(context).size.height/18;
                 TextFieldFontSize = safeBlockHorizontal*3;
+                     XSHalfScreenSize = SmallWindowHeight*1.25;
     }
   }
 }
