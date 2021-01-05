@@ -35,6 +35,7 @@ class SizeConfig {
   static double SpecTestScreenHeight;
   static double AppBarSize;
   static double SmallWindowHeight;
+  static double XSHalfScreenSize;
 
   double ShortestLength;
   double LongestLength;
@@ -85,7 +86,8 @@ class SizeConfig {
     MiniTextFontSize = safeBlockHorizontal*4.5;
     XSMiniTextFontSize = safeBlockHorizontal*4;
     SmallButtonWidth = MediaQuery.of(context).size.width/2.2;
-    Createquestionbutton = safeBlockHorizontal * 5;
+    Createquestionbutton = safeBlockHorizontal*5;
+    XSHalfScreenSize = SmallWindowHeight*1.25;
 
 
     if(ShortestLength < 400 && LongestLength > 650 && ShortestLength < 650)
