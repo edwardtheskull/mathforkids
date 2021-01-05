@@ -31,6 +31,7 @@ class dispResultPage extends State<DispStudTestResState> {
                 fontSize: SizeConfig.AppbarFontSize,
                 fontFamily: "Architect",
                 fontWeight: FontWeight.bold,
+                color: setTheme.accentColor,
               ),
             ),
             centerTitle:true,
@@ -70,7 +71,7 @@ class dispResultPage extends State<DispStudTestResState> {
                         child: Text("Most Recent quiz", style: TextStyle(
                             fontSize: SizeConfig.HeaderTextFontSize,
                             fontFamily: "Architect", fontWeight: FontWeight.bold,
-                            color: Colors.white),),
+                            color: setTheme.accentColor),),
                       ),
                     ),
                   Container(
@@ -113,7 +114,7 @@ class dispResultPage extends State<DispStudTestResState> {
                         child: Text("earlier quizzes", style: TextStyle(
                           fontSize: SizeConfig.HeaderTextFontSize,
                           fontFamily: "Architect", fontWeight: FontWeight.bold,
-                          color: Colors.white),),
+                          color: setTheme.accentColor),),
                     ),
                   ),
                     Container(height:SizeConfig.HalfScreenHeight,
