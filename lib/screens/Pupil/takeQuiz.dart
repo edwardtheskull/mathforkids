@@ -26,7 +26,7 @@ class takeQuizPageState extends StatefulWidget{
 class TakeQuizPage extends State<takeQuizPageState>{
   final AuthService _auth = AuthService();
   String header = "Math for Kids";
-  int i = 0;
+  int i = 1;
   List<bool> cardsValue;
   @override
   Widget build(BuildContext context) {
