@@ -26,7 +26,7 @@ class takeQuizPageState extends StatefulWidget{
 class TakeQuizPage extends State<takeQuizPageState>{
   final AuthService _auth = AuthService();
   String header = "Math for Kids";
-  final int i = 0;
+  int i = 0;
   List<bool> cardsValue;
   @override
   Widget build(BuildContext context) {
@@ -106,7 +106,13 @@ class TakeQuizPage extends State<takeQuizPageState>{
                       Padding(
                         padding: const EdgeInsets.all(6.0),
                         child: RaisedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            setState(() {
+                              i++;
+                              cardsValue.clear();
+                              cardsValue = [false];
+                            });
+                          },
                           color: setTheme.buttonColor,
                           child: Text("Next", style: TextStyle(
                             fontSize: SizeConfig.TextFontSize,
@@ -218,7 +224,6 @@ class CustomQuestion extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return InkWell(
       onTap: onTap,
       child: Container(
