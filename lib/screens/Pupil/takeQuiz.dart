@@ -27,7 +27,7 @@ class TakeQuizPage extends State<takeQuizPageState>{
   final AuthService _auth = AuthService();
   String header = "Math for Kids";
   int i = 1;
-  List<bool> cardsValue;
+  List<bool> cardsValue = new List<bool>();
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -145,7 +145,7 @@ class TakeQuizPage extends State<takeQuizPageState>{
     }
     else if(GlobQL['Q'+i.toString()]['Type'] == 'Multiple choice') {
       for(int j = 0; j<GlobQL['Q'+i.toString()].length - 2; j++){
-        cardsValue[j] = false;
+        cardsValue.add(false);
       }
 
       return ListView.builder(itemCount: GlobQL['Q'+i.toString()].length - 2, itemBuilder: (context, index) {

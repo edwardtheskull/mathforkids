@@ -111,8 +111,7 @@ class ConnectPage extends State<connectPageState>{
                           child: RaisedButton(elevation: 3,
                             onPressed: (){
                               DatabaseService().buildQuizFromDb(inputfield.text);
-                              print(GlobQL.toString());
-                           //   Navigator.push(context, new MaterialPageRoute(builder: (context) => new takeQuizPageState(code: x)));
+                              Navigator.push(context, new MaterialPageRoute(builder: (context) => new takeQuizPageState(code: x)));
                             },
                             color: setTheme.buttonColor,
                             child: Text("Connect", style: TextStyle(letterSpacing: 1,
