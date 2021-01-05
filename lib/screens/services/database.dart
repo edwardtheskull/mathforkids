@@ -41,7 +41,7 @@ class DatabaseService {
   }
 
   Future createQuestion(int num, String k, String v, int order) async{
-    return await Firestore.instance.collection('quiz').document((10000+num).toString()).collection('questions').document('question'+order.toString()).setData({
+    return await Firestore.instance.collection('quiz').document((10000+num).toString()).collection('questions').document('Q'+order.toString()).setData({
       k: v,
     }, merge : true);
   }
