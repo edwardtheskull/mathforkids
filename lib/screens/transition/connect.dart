@@ -1,9 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:mathforkids/screens/Pupil/takeQuiz.dart';
+import 'package:mathforkids/screens/Teacher/Temp.dart';
 import 'package:mathforkids/utils/Imports.dart';
 import 'package:mathforkids/ChangeTheme.dart';
 import 'package:mathforkids/screens/services/database.dart';
 import 'package:mathforkids/screens/services/loggedinuser.dart';
+
 
 class connectPageState extends StatefulWidget{
   @override
@@ -14,6 +16,7 @@ class ConnectPage extends State<connectPageState>{
   @override
   String header = "Math for Kids";
   int x = 2;
+  TextEditingController inputfield = new TextEditingController();
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
@@ -91,7 +94,7 @@ class ConnectPage extends State<connectPageState>{
                   children: [
                     Expanded(child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: TextField(style: TextStyle(color: setTheme.accentColor, fontFamily: 'Architect', fontSize: SizeConfig.TextFieldFontSize), cursorColor: setTheme.accentColor, obscureText: false,
+                      child: TextField(controller: inputfield, style: TextStyle(color: setTheme.accentColor, fontFamily: 'Architect', fontSize: SizeConfig.TextFieldFontSize), cursorColor: setTheme.accentColor, obscureText: false,
                         decoration: InputDecoration(enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor)),
                             border: OutlineInputBorder(), labelStyle: TextStyle(color: setTheme.accentColor),
                             focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor))
@@ -107,7 +110,9 @@ class ConnectPage extends State<connectPageState>{
                           padding: const EdgeInsets.all(10.0),
                           child: RaisedButton(elevation: 3,
                             onPressed: (){
-                              Navigator.push(context, new MaterialPageRoute(builder: (context) => new takeQuizPageState(code: x)));
+                              DatabaseService().buildQuizFromDb(inputfield.text);
+                              print(GlobQL.toString());
+                           //   Navigator.push(context, new MaterialPageRoute(builder: (context) => new takeQuizPageState(code: x)));
                             },
                             color: setTheme.buttonColor,
                             child: Text("Connect", style: TextStyle(letterSpacing: 1,

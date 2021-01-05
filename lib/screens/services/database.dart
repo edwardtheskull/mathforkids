@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mathforkids/screens/Authenticate/user.dart';
 import 'package:mathforkids/screens/Teacher/Temp.dart';
+import 'package:mathforkids/utils/Imports.dart';
 
 class DatabaseService {
   final String uid;
@@ -10,16 +11,19 @@ class DatabaseService {
 
   Future buildQuizFromDb(String code) async{
     GlobQL.clear();
-    DocumentSnapshot db = await Firestore.instance.document('quiz/'+code).get();
-    GlobQL['Name'] = db.data['name'];
+    var db = await Firestore.instance.collection('quiz/'+code+'/questions').getDocuments();
+    //GlobQL['Name'] = db.data['name'];
     //GlobQL['Code'] = db.data['code'];
-    db.data['questions'].forEach((k, v) {
-      GlobQL[k] = new Map<String, String>();
-      Map<String, String> t = caster(v);
-      t.forEach((key, value) {
-        (GlobQL[k])[key] = value;
+
+    var m = db.documents;
+
+    m.forEach((element) {
+      GlobQL[element.documentID] = new Map<String, String>();
+      element.data.forEach((key, value) {
+        (GlobQL[element.documentID])[key] = value;
       });
     });
+
   }
 
   Future createQuiz(String name, Map<String, Map<String, String>> questions) async{
