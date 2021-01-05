@@ -35,6 +35,7 @@ class specTestPage extends State<specTestResultState> {
               fontSize: SizeConfig.AppbarFontSize,
               fontFamily: "Architect",
               fontWeight: FontWeight.bold,
+              color: setTheme.accentColor
             ),
           ),
           centerTitle:true,
@@ -73,7 +74,7 @@ class specTestPage extends State<specTestResultState> {
                     child: Text("${tests.testName}", style: TextStyle(
                         fontSize: SizeConfig.HeaderTextFontSize,
                         fontFamily: "Architect", fontWeight: FontWeight.bold,
-                        color: Colors.white),),
+                        color: setTheme.accentColor),),
                   ),
                 ),
                 Container(height: SizeConfig.SpecTestScreenHeight,

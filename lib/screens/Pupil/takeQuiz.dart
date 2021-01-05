@@ -9,6 +9,7 @@ import 'package:mathforkids/Constants.dart';
 import 'package:mathforkids/screens/Pupil/data.dart';
 import 'package:mathforkids/screens/Pupil/testInfo.dart';
 import 'package:mathforkids/screens/Teacher/Temp.dart';
+import 'package:mathforkids/screens/services/loggedinuser.dart';
 
 
 
@@ -27,7 +28,7 @@ class TakeQuizPage extends State<takeQuizPageState>{
   final AuthService _auth = AuthService();
   String header = "Math for Kids";
   int i = 1;
-  List<bool> cardsValue;
+  List<bool> cardsValue = new List<bool>();
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -36,7 +37,18 @@ class TakeQuizPage extends State<takeQuizPageState>{
       backgroundColor: setTheme.scaffoldBackgroundColor,
       appBar: AppBar(
           leading: IconButton(icon: Icon(Icons.arrow_back),
-            onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new studentPageState())),
+              iconSize: SizeConfig.SmallIconSize,
+              onPressed: () async {
+                if(activerole == 'Teacher')
+                {
+                  print("teach");
+                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherPageState()));
+                }
+                else
+                {
+                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new studentPageState()));
+                }
+              }
           ),
           iconTheme: IconThemeData(color:setTheme.accentColor),
           backgroundColor: setTheme.primaryColor,
@@ -46,6 +58,7 @@ class TakeQuizPage extends State<takeQuizPageState>{
               fontSize: SizeConfig.AppbarFontSize,
               fontFamily: "Architect",
               fontWeight: FontWeight.bold,
+              color: setTheme.accentColor,
             ),
           ),
           centerTitle:true,
@@ -83,9 +96,8 @@ class TakeQuizPage extends State<takeQuizPageState>{
                   padding: const EdgeInsets.fromLTRB(0, 20, 0, 6),
                   child: Text("Quiz name", style: TextStyle(
                       fontSize: SizeConfig.HeaderTextFontSize,
-                      decoration: TextDecoration.underline,
                       fontFamily: "Architect", fontWeight: FontWeight.bold,
-                      color: Colors.white),),
+                      color: setTheme.accentColor),),
                 ),
               ),
               Container(
@@ -94,10 +106,10 @@ class TakeQuizPage extends State<takeQuizPageState>{
                   child: Text('${GlobQL['Q'+i.toString()]['Question']}' , style: TextStyle(
                       fontSize: SizeConfig.HeaderTextFontSize,
                       fontFamily: "Architect", fontWeight: FontWeight.bold,
-                      color: Colors.white,),),
+                      color: setTheme.accentColor,),),
                 ),
               ),
-              Container(height: SizeConfig.screenHeight*0.6,
+              Container(height: SizeConfig.XSHalfScreenSize,
                 child: MyFunction(context),
 
               ),
@@ -107,6 +119,14 @@ class TakeQuizPage extends State<takeQuizPageState>{
                         padding: const EdgeInsets.all(6.0),
                         child: RaisedButton(
                           onPressed: () {
+                            if(i == GlobQL.length){
+
+                            }
+                            else{
+                              i++;
+                              cardsValue.clear();
+                              cardsValue = [false];
+                            }
                             setState(() {
                               i++;
                               cardsValue.clear();
@@ -145,7 +165,7 @@ class TakeQuizPage extends State<takeQuizPageState>{
     }
     else if(GlobQL['Q'+i.toString()]['Type'] == 'Multiple choice') {
       for(int j = 0; j<GlobQL['Q'+i.toString()].length - 2; j++){
-        cardsValue[j] = false;
+        cardsValue.add(false);
       }
 
       return ListView.builder(itemCount: GlobQL['Q'+i.toString()].length - 2, itemBuilder: (context, index) {
@@ -228,7 +248,7 @@ class CustomQuestion extends StatelessWidget{
       onTap: onTap,
       child: Container(
         child: Card(
-          color: isSelected ? Colors.white : Colors.red,
+          color: isSelected ? setTheme.accentColor : Colors.red,
           semanticContainer: true,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
@@ -248,7 +268,7 @@ class CustomQuestion extends StatelessWidget{
                       child: new Text(
                         "Alternative ${nr}",
                         style: TextStyle(
-                            color: isSelected ? Colors.grey[800] : Colors.white),
+                            color: isSelected ? Colors.grey[800] : setTheme.accentColor),
                       ),
                     ),
                   ),
@@ -259,7 +279,7 @@ class CustomQuestion extends StatelessWidget{
                 child: Text(
                   text,
                   style: TextStyle(
-                      color: isSelected ? Colors.grey[800] : Colors.white,
+                      color: isSelected ? Colors.grey[800] : setTheme.accentColor,
                       fontSize: 13),
                 ),
               ),
@@ -291,7 +311,7 @@ class CustomPair extends StatelessWidget{
         onTap: onTap,
         child: Container(
           child: Card(
-            color: isSelected ? Colors.white : Colors.red,
+            color: isSelected ? setTheme.accentColor : Colors.red,
             semanticContainer: true,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
@@ -311,7 +331,7 @@ class CustomPair extends StatelessWidget{
                         child: new Text(
                           "Alternative ${nr}",
                           style: TextStyle(
-                              color: isSelected ? Colors.grey[800] : Colors.white),
+                              color: isSelected ? Colors.grey[800] : setTheme.accentColor),
                         ),
                       ),
                     ),
@@ -322,7 +342,7 @@ class CustomPair extends StatelessWidget{
                   child: Text(
                     text,
                     style: TextStyle(
-                        color: isSelected ? Colors.grey[800] : Colors.white,
+                        color: isSelected ? Colors.grey[800] : setTheme.accentColor,
                         fontSize: 13),
                   ),
                 ),
