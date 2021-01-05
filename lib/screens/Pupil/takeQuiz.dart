@@ -29,6 +29,8 @@ class TakeQuizPage extends State<takeQuizPageState>{
   String header = "Math for Kids";
   int i = 1;
   List<bool> cardsValue = new List<bool>();
+  Map<String, Map<String, String>> Answers = new Map<String, Map<String, String>>();
+  Map<String, String> Pairs = new Map<String, String>();
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -120,18 +122,16 @@ class TakeQuizPage extends State<takeQuizPageState>{
                         child: RaisedButton(
                           onPressed: () {
                             if(i == GlobQL.length){
-
+                                AddAnswers();
                             }
                             else{
-                              i++;
-                              cardsValue.clear();
-                              cardsValue = [false];
+                              setState(() {
+                                AddAnswers();
+                                i++;
+                                cardsValue.clear();
+                                cardsValue = [false];
+                              });
                             }
-                            setState(() {
-                              i++;
-                              cardsValue.clear();
-                              cardsValue = [false];
-                            });
                           },
                           color: setTheme.buttonColor,
                           child: Text("Next", style: TextStyle(
@@ -148,6 +148,11 @@ class TakeQuizPage extends State<takeQuizPageState>{
   }
 
   Widget MyFunction(BuildContext context){
+    int p = 0;
+    String pair1 = "";
+    String match1 = "";
+    int p1 = 0;
+    List<bool> correct = new List<bool>();
     if (GlobQL['Q'+i.toString()]['Type'] == 'Written answer' ) {
       return Padding(
         padding: const EdgeInsets.all(20.0),
@@ -166,6 +171,9 @@ class TakeQuizPage extends State<takeQuizPageState>{
     else if(GlobQL['Q'+i.toString()]['Type'] == 'Multiple choice') {
       for(int j = 0; j<GlobQL['Q'+i.toString()].length - 2; j++){
         cardsValue.add(false);
+      }
+      for(int j = 0; j<GlobQL['Q'+i.toString()].length - 2; j++){
+        correct.add(false);
       }
 
       return ListView.builder(itemCount: GlobQL['Q'+i.toString()].length - 2, itemBuilder: (context, index) {
@@ -204,12 +212,26 @@ class TakeQuizPage extends State<takeQuizPageState>{
                     nr : index+1,
                     isSelected: cardsValue[index],
                     onTap: () {
-                      setState(() {
-                        cardsValue[index] = !cardsValue[index];
-                        Text("text1");
-                      });
+                      if(correct[index] != true){
+                        if(p1 != index && p == 1){
+                          match1 = which(index);
+                          correct[index] = FixPairs(pair1, match1);
+                          correct[p1] = true;
+                          correct[index] = true;
+                          p = 0;
+                          p1 = 0;
+                        }
+                        else if(p == 0){
+                          pair1 = which(index);
+                          p1 = index;
+                          p++;
+                        }
+                        setState(() {
+                          cardsValue[index] = !cardsValue[index];
+                          Text("text1");
+                        });
+                      }
                     },
-
                   ),
                 ),
               ),
@@ -226,6 +248,15 @@ class TakeQuizPage extends State<takeQuizPageState>{
     else{
       return '${GlobQL['Q'+i.toString()]['Matches'+index.toString()]}';
     }
+  }
+
+  bool FixPairs(String Pair, String Match){
+        Pairs[Pair] = Match;
+      return true;
+  }
+
+  void AddAnswers(){
+      //Lägg till svar som i GlobQL
   }
 }
 
@@ -306,7 +337,6 @@ class CustomPair extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return InkWell(
         onTap: onTap,
         child: Container(
