@@ -72,7 +72,7 @@ class SizeConfig {
     print(screenHeight);
 
     TextFontSize = safeBlockHorizontal*6;
-    TextFieldFontSize = safeBlockHorizontal*5;
+    TextFieldFontSize = safeBlockHorizontal*4;
     ButtonWidth = MediaQuery.of(context).size.width/1.5;
     ButtonHeight = MediaQuery.of(context).size.height/9;
     ButtonTextSize = safeBlockHorizontal * 7;
@@ -81,7 +81,7 @@ class SizeConfig {
     SquareButton = MediaQuery.of(context).size.width/4.0;
     HeaderTextFontSize = safeBlockHorizontal*5.5;
     SmallTextFontSize = safeBlockHorizontal*5;
-    SmallIconSize = 40;
+    SmallIconSize = 25;
     MiniTextFontSize = safeBlockHorizontal*4.5;
     XSMiniTextFontSize = safeBlockHorizontal*4;
     SmallButtonWidth = MediaQuery.of(context).size.width/2.2;
@@ -92,94 +92,81 @@ class SizeConfig {
     {
         ScreenHeight = MediaQuery.of(context).size.height*0.93;
         SmallScreenHeight = ScreenHeight * 0.8;
-          SmallWindowHeight = SmallScreenHeight/1.5;
-        SmallIconSize = 25;
-         XSScreenHeight = ScreenHeight * 0.13;
-         HalfScreenHeight = ScreenHeight * 0.62;
-         SpecTestScreenHeight = ScreenHeight * 0.83;
-
-            AppBarSize = MediaQuery.of(context).size.height/12;
-               TextFieldFontSize = safeBlockHorizontal*4;
+        SmallWindowHeight = SmallScreenHeight/1.5;
+        XSScreenHeight = ScreenHeight * 0.13;
+        HalfScreenHeight = ScreenHeight * 0.60;
+        SpecTestScreenHeight = ScreenHeight * 0.81;
+        AppBarSize = MediaQuery.of(context).size.height/12;
 
     }
     else if(ShortestLength < 650 && ShortestLength > 365)
     {
-          ScreenHeight = MediaQuery.of(context).size.height*1.22;
-          SmallScreenHeight = ScreenHeight * 0.6;
-          SmallWindowHeight = SmallScreenHeight/1.6;
-            SmallIconSize = 25;
-          XSScreenHeight = ScreenHeight * 0.13;
-          HalfScreenHeight = ScreenHeight * 0.4;
-          SpecTestScreenHeight = ScreenHeight * 0.60;
-
-             AppBarSize = MediaQuery.of(context).size.height/12;
-                TextFieldFontSize = safeBlockHorizontal*4;
+        ScreenHeight = MediaQuery.of(context).size.height*1.22;
+        SmallScreenHeight = ScreenHeight * 0.6;
+        SmallWindowHeight = SmallScreenHeight/1.6;
+        XSScreenHeight = ScreenHeight * 0.13;
+        HalfScreenHeight = ScreenHeight * 0.4;
+        SpecTestScreenHeight = ScreenHeight * 0.60;
+        AppBarSize = MediaQuery.of(context).size.height/12;
 
     }
     else if(ShortestLength < 365 && ShortestLength > 350)
     {
-           ScreenHeight = MediaQuery.of(context).size.height*1.07;
-                  SmallScreenHeight = ScreenHeight * 0.6;
-                    SmallWindowHeight = SmallScreenHeight/2.1;
-                    SmallIconSize = 25;
-                  XSScreenHeight = ScreenHeight * 0.13;
-                  HalfScreenHeight = ScreenHeight * 0.4;
-                  SpecTestScreenHeight = ScreenHeight * 0.60;
-
-                     AppBarSize = MediaQuery.of(context).size.height/12;
-                        TextFieldFontSize = safeBlockHorizontal*4;
+         ScreenHeight = MediaQuery.of(context).size.height*1.07;
+         SmallScreenHeight = ScreenHeight * 0.6;
+         SmallWindowHeight = SmallScreenHeight/2.1;
+         XSScreenHeight = ScreenHeight * 0.13;
+         HalfScreenHeight = ScreenHeight * 0.4;
+         SpecTestScreenHeight = ScreenHeight * 0.60;
+         AppBarSize = MediaQuery.of(context).size.height/12;
     }
     else if(ShortestLength < 350)
     {
           SmallButtonWidth = MediaQuery.of(context).size.width/1.8;
           ScreenHeight = (MediaQuery.of(context).size.height);
           SmallScreenHeight = ScreenHeight * 0.6;
-            SmallWindowHeight = SmallScreenHeight/1.4;
-            SmallIconSize = 25;
-           XSScreenHeight = ScreenHeight * 0.13;
-           HalfScreenHeight = ScreenHeight * 0.5;
-           SpecTestScreenHeight = ScreenHeight * 0.70;
-            SmallButtonWidth = MediaQuery.of(context).size.width/2.5;
-              AppBarSize = MediaQuery.of(context).size.height/14;
+          SmallWindowHeight = SmallScreenHeight/1.4;
+          XSScreenHeight = ScreenHeight * 0.13;
+          HalfScreenHeight = ScreenHeight * 0.5;
+          SpecTestScreenHeight = ScreenHeight * 0.70;
+          SmallButtonWidth = MediaQuery.of(context).size.width/2.5;
+          AppBarSize = MediaQuery.of(context).size.height/14;
+          TextFieldFontSize = safeBlockHorizontal*5;
     }
     else if(LongestLength > 1000)
     {
-      ButtonWidth = MediaQuery.of(context).size.width/2;
-      ButtonTextSize = safeBlockHorizontal * 6;
-      AppbarFontSize = SizeConfig.safeBlockHorizontal * 5;
-      LargeButtonTextSize = 80;
-      SmallIconSize = 60;
-      SmallButtonWidth = MediaQuery.of(context).size.width/2.5;
-      ScreenHeight = MediaQuery.of(context).size.height*0.73;
-      SmallScreenHeight = ScreenHeight;
-        SmallWindowHeight = SmallScreenHeight/2.1;
-
-       XSScreenHeight = ScreenHeight * 0.13;
-       HalfScreenHeight = ScreenHeight*0.55;
-        SpecTestScreenHeight = ScreenHeight * 0.80;
-
-       AppBarSize = MediaQuery.of(context).size.height/18;
-           TextFieldFontSize = safeBlockHorizontal*3;
+          ButtonWidth = MediaQuery.of(context).size.width/2;
+          ButtonTextSize = safeBlockHorizontal * 6;
+          AppbarFontSize = SizeConfig.safeBlockHorizontal * 5;
+          LargeButtonTextSize = 80;
+          SmallIconSize = 60;
+          SmallButtonWidth = MediaQuery.of(context).size.width/2.5;
+          ScreenHeight = MediaQuery.of(context).size.height*0.73;
+          SmallScreenHeight = ScreenHeight;
+          SmallWindowHeight = SmallScreenHeight/2.1;
+          XSScreenHeight = ScreenHeight * 0.13;
+          HalfScreenHeight = ScreenHeight*0.55;
+          SpecTestScreenHeight = ScreenHeight * 0.80;
+          AppBarSize = MediaQuery.of(context).size.height/18;
+          TextFieldFontSize = safeBlockHorizontal*3;
 
     }
     else
     {
-         ButtonWidth = MediaQuery.of(context).size.width/1.9;
-              ButtonTextSize = safeBlockHorizontal * 6;
-              AppbarFontSize = SizeConfig.safeBlockHorizontal * 5;
-              LargeButtonTextSize = 80;
-              SmallIconSize = 40;
-              SmallButtonWidth = MediaQuery.of(context).size.width/2.5;
-              ScreenHeight = MediaQuery.of(context).size.height;
-              SmallScreenHeight = ScreenHeight;
-                SmallWindowHeight = SmallScreenHeight/2.1;
-
-               XSScreenHeight = ScreenHeight * 0.13;
-               HalfScreenHeight = ScreenHeight*0.55;
-                SpecTestScreenHeight = ScreenHeight * 0.80;
-
-                AppBarSize = MediaQuery.of(context).size.height/18;
-                TextFieldFontSize = safeBlockHorizontal*3;
+          ButtonWidth = MediaQuery.of(context).size.width/1.9;
+          ButtonTextSize = safeBlockHorizontal * 6;
+          AppbarFontSize = SizeConfig.safeBlockHorizontal * 5;
+          LargeButtonTextSize = 80;
+          SmallIconSize = 40;
+          SmallButtonWidth = MediaQuery.of(context).size.width/2.5;
+          ScreenHeight = MediaQuery.of(context).size.height;
+          SmallScreenHeight = ScreenHeight;
+          SmallWindowHeight = SmallScreenHeight/2.1;
+          XSScreenHeight = ScreenHeight * 0.13;
+          HalfScreenHeight = ScreenHeight*0.55;
+          SpecTestScreenHeight = ScreenHeight * 0.80;
+          AppBarSize = MediaQuery.of(context).size.height/18;
+          TextFieldFontSize = safeBlockHorizontal*3;
     }
   }
 }
