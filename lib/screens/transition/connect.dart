@@ -110,9 +110,9 @@ class ConnectPage extends State<connectPageState>{
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: RaisedButton(elevation: 3,
-                              onPressed: (){
-                                DatabaseService().buildQuizFromDb(inputfield.text);
-                                Navigator.push(context, new MaterialPageRoute(builder: (context) => new takeQuizPageState(code: x)));
+                              onPressed: () async {
+                                await DatabaseService().buildQuizFromDb(inputfield.text);
+                                Navigator.push(context, new MaterialPageRoute(builder: (context) => new takeQuizPageState()));
                               },
                               color: setTheme.buttonColor,
                               child: Text("Connect", style: TextStyle(letterSpacing: 1,

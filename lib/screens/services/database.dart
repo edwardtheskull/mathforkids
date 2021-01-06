@@ -9,21 +9,21 @@ class DatabaseService {
 
   final CollectionReference mathCollection = Firestore.instance.collection('users');
 
-  Future buildQuizFromDb(String code) async{
+  Future buildQuizFromDb(String code) async {
     GlobQL.clear();
+    var qui = await Firestore.instance.document('quiz/'+code).get();
+    GlobQL['info'] = new Map<String, String>();
+    (GlobQL['info'])['Name'] = qui.data['name'];
+    (GlobQL['info'])['Code'] = qui.data['code'];
+
     var db = await Firestore.instance.collection('quiz/'+code+'/questions').getDocuments();
-    //GlobQL['Name'] = db.data['name'];
-    //GlobQL['Code'] = db.data['code'];
-
     var m = db.documents;
-
     m.forEach((element) {
       GlobQL[element.documentID] = new Map<String, String>();
       element.data.forEach((key, value) {
         (GlobQL[element.documentID])[key] = value;
       });
     });
-
   }
 
   Future createQuiz(String name, Map<String, Map<String, String>> questions) async{
@@ -59,12 +59,15 @@ class DatabaseService {
     return await Firestore.instance.collection('quiz').document('quizzes').updateData({'num': FieldValue.increment(1)});
   }
 
+  Future saveResult(String max, String result, String quizzId, Map<String, String> answers) async {
+    return Firestore.instance.collection('users').document(uid).collection('results').document(quizzId).setData({
+      'max': max,
+      'result': result,
+    });
+  }
+
   //user
   Future updateUserData(String name, String role, String username) async{
-    Firestore.instance.collection('users').document(uid).collection('result1').document("res1").setData({
-      'quizid': '11111',
-      'result': '33',
-    });
     return await Firestore.instance.collection('users').document(uid).setData({
       'name': name,
       'role' : role,

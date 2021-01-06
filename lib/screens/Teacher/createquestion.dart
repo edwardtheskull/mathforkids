@@ -93,7 +93,7 @@ class createquestionPage extends State<createquestionPageState>{
                   children: [
                     TextFormField(style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize), decoration: InputDecoration(hintText: 'Enter question', hintStyle: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:setTheme.accentColor))),
                     controller: _nameController,),
-                    Text('Add alternative', style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize)),
+                    Text('\nCheckbox indicates correct answer/answers', style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize)),
                     ..._getalternatives(),
                     RaisedButton(elevation: 5,
                       onPressed: (){
@@ -267,7 +267,7 @@ class createquestionPage extends State<createquestionPageState>{
                   children: [
                     TextFormField(decoration: InputDecoration(hintText: 'Write question', hintStyle: TextStyle(color: setTheme.accentColor), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:setTheme.accentColor))), style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize),
                         controller: _nameController),
-                    Text('Add alternative', style: TextStyle(color:setTheme.accentColor, fontSize:SizeConfig.TextFieldFontSize ),),
+                    Text('\nEnter matching pairs', style: TextStyle(color:setTheme.accentColor, fontSize:SizeConfig.TextFieldFontSize ),),
                     ..._getalternatives2(),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -318,16 +318,11 @@ class createquestionPage extends State<createquestionPageState>{
     return showDialog(
       context: context,
       child: new AlertDialog(
-        title: new Text('Are you sure you want to quit?'),
-        content: new Text('Unsaved data will be lost.'),
+        title: new Text('Save question before of existing'),
         actions: <Widget>[
           new FlatButton(
             onPressed: () => Navigator.of(context).pop(false),
-            child: new Text('No'),
-          ),
-          new FlatButton(
-            onPressed: () =>  Navigator.pushReplacement(context, new MaterialPageRoute(builder: (context) => new createquizPageState())),
-            child: new Text('Yes'),
+            child: new Text('Okay'),
           ),
         ],
       ),
