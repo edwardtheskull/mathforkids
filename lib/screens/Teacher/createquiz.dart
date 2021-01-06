@@ -227,7 +227,7 @@ Widget _questionList(BuildContext context){
         itemCount: GlobQL.keys.toList().length,
         itemBuilder: (context, index) {
           return Card(
-              color: setTheme.scaffoldBackgroundColor,
+              color: setTheme.cardColor,
 
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
