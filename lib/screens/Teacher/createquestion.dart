@@ -326,8 +326,11 @@ class createquestionPage extends State<createquestionPageState>{
             child: new Text('No'),
           ),
           new FlatButton(
-            onPressed: () =>  Navigator.pushReplacement(context, new MaterialPageRoute(builder: (context) => new createquizPageState())),
-            child: new Text('Yes'),
+            onPressed: () {
+              dispose();
+              Navigator.pushReplacement(context, new MaterialPageRoute(builder: (context) => new createquizPageState()));
+             },
+            child: new Text('Yes')
           ),
         ],
       ),
