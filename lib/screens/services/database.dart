@@ -59,12 +59,15 @@ class DatabaseService {
     return await Firestore.instance.collection('quiz').document('quizzes').updateData({'num': FieldValue.increment(1)});
   }
 
+  Future saveResult(String max, String result, String quizzId) async {
+    return Firestore.instance.collection('users').document(uid).collection('results').document(quizzId).setData({
+      'max': max,
+      'result': result,
+    });
+  }
+
   //user
   Future updateUserData(String name, String role, String username) async{
-    Firestore.instance.collection('users').document(uid).collection('result1').document("res1").setData({
-      'quizid': '11111',
-      'result': '33',
-    });
     return await Firestore.instance.collection('users').document(uid).setData({
       'name': name,
       'role' : role,
