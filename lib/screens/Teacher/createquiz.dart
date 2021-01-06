@@ -28,8 +28,26 @@ class createquizPage extends State<createquizPageState>{
               toolbarHeight: SizeConfig.AppBarSize,
               leading: IconButton(icon: Icon(Icons.arrow_back),
                 iconSize: SizeConfig.SmallIconSize,
-                onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherPageState())),
-              ),
+                onPressed: () {
+                  return showDialog(
+                    context: context,
+                    child: new AlertDialog(
+                      title: new Text('Are you sure you want to quit?'),
+                      content: new Text('Unsaved data will be lost.'),
+                      actions: <Widget>[
+                        new FlatButton(
+                          onPressed: () => Navigator.of(context).pop(false),
+                          child: new Text('No'),
+                        ),
+                        new FlatButton(
+                            onPressed: () {
+                              GlobQL.clear();
+                              Navigator.pushAndRemoveUntil(context,  new MaterialPageRoute(builder: (context) => new teacherPageState()), (route) => false);
+                            }, child: new Text('Yes')
+                        )],
+                    ),
+                  ) ?? false;
+                }),
               iconTheme: IconThemeData(color:setTheme.accentColor),
               backgroundColor: setTheme.primaryColor,
               title: Text(
@@ -192,7 +210,7 @@ class createquizPage extends State<createquizPageState>{
             ),
             new FlatButton(
             onPressed: () {
-                dispose();
+                GlobQL.clear();
                 Navigator.pushAndRemoveUntil(context,  new MaterialPageRoute(builder: (context) => new teacherPageState()), (route) => false);
             }, child: new Text('Yes')
       )],
