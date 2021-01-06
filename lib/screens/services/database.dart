@@ -9,12 +9,12 @@ class DatabaseService {
 
   final CollectionReference mathCollection = Firestore.instance.collection('users');
 
-  Future buildQuizFromDb(String code) async{
+  Future buildQuizFromDb(String code) async {
     GlobQL.clear();
     var qui = await Firestore.instance.document('quiz/'+code).get();
     GlobQL['info'] = new Map<String, String>();
     (GlobQL['info'])['Name'] = qui.data['name'];
-    (GlobQL['Code'])['Code'] = qui.data['code'];
+    (GlobQL['info'])['Code'] = qui.data['code'];
 
     var db = await Firestore.instance.collection('quiz/'+code+'/questions').getDocuments();
     var m = db.documents;
@@ -24,7 +24,6 @@ class DatabaseService {
         (GlobQL[element.documentID])[key] = value;
       });
     });
-
   }
 
   Future createQuiz(String name, Map<String, Map<String, String>> questions) async{
