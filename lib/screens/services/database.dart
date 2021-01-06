@@ -9,9 +9,12 @@ class DatabaseService {
 
   final CollectionReference mathCollection = Firestore.instance.collection('users');
 
-  Future buildQuizFromDb(String code) async {
+  Future<bool> buildQuizFromDb(String code) async {
     GlobQL.clear();
     var qui = await Firestore.instance.document('quiz/'+code).get();
+    if (qui.data == null) {
+      return false;
+    }
     GlobQL['info'] = new Map<String, String>();
     (GlobQL['info'])['Name'] = qui.data['name'];
     (GlobQL['info'])['Code'] = qui.data['code'];
@@ -24,6 +27,7 @@ class DatabaseService {
         (GlobQL[element.documentID])[key] = value;
       });
     });
+    return true;
   }
 
   Future createQuiz(String name, Map<String, Map<String, String>> questions) async{
@@ -44,18 +48,18 @@ class DatabaseService {
     });
   }
 
-  Future createQuestion(int num, String k, String v, int order) async{
+  Future createQuestion(int num, String k, String v, int order) async {
     return await Firestore.instance.collection('quiz').document((10000+num).toString()).collection('questions').document('Q'+order.toString()).setData({
       k: v,
     }, merge : true);
   }
 
-  Map<String, String> caster(dynamic d){
+  Map<String, String> caster(dynamic d) {
     return (d as Map<String, String>);
   }
 
   //CreateQuiz
-  Future addQuizNum() async{
+  Future addQuizNum() async {
     return await Firestore.instance.collection('quiz').document('quizzes').updateData({'num': FieldValue.increment(1)});
   }
 
@@ -67,7 +71,7 @@ class DatabaseService {
   }
 
   //user
-  Future updateUserData(String name, String role, String username) async{
+  Future updateUserData(String name, String role, String username) async {
     return await Firestore.instance.collection('users').document(uid).setData({
       'name': name,
       'role' : role,

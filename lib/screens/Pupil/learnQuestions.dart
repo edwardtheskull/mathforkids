@@ -1,5 +1,5 @@
 import 'package:mathforkids/utils/Imports.dart';
-
+import 'package:mathforkids/screens/Teacher/Temp.dart';
 
 class learnQPageState extends StatefulWidget {
   @override
@@ -8,57 +8,90 @@ class learnQPageState extends StatefulWidget {
 
 class LearnQPage extends State<learnQPageState> {
   @override
+  Map<String, String> map;
   String header = "Math for Kids";
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Container(
-      child: Scaffold(
-          backgroundColor: setTheme.scaffoldBackgroundColor,
-          appBar: AppBar(
-              toolbarHeight: SizeConfig.AppBarSize,
-              leading: IconButton(icon: Icon(Icons.arrow_back),
-                iconSize: SizeConfig.SmallIconSize,
-                onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnPageState())),
+    map = { "10037":"Quiz 1", "10042":"Quiz 2", "10069":"Horryyy SHitt mann, skön quiz!"};
+    return Scaffold(
+        backgroundColor: setTheme.scaffoldBackgroundColor,
+        appBar: AppBar(
+            toolbarHeight: SizeConfig.AppBarSize,
+            leading: IconButton(icon: Icon(Icons.arrow_back),
+              iconSize: SizeConfig.SmallIconSize,
+              onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnPageState())),
+            ),
+            iconTheme: IconThemeData(color:setTheme.accentColor),
+            backgroundColor: setTheme.primaryColor,
+            title: Text(
+              header,
+              style: TextStyle(
+                fontSize: SizeConfig.AppbarFontSize,
+                fontFamily: "Architect",
+                fontWeight: FontWeight.bold,
+                  color: setTheme.accentColor
               ),
-              iconTheme: IconThemeData(color:setTheme.accentColor),
-              backgroundColor: setTheme.primaryColor,
-              title: Text(
-                header,
-                style: TextStyle(
-                  fontSize: SizeConfig.AppbarFontSize,
-                  fontFamily: "Architect",
-                  fontWeight: FontWeight.bold,
-                    color: setTheme.accentColor
-                ),
+            ),
+            centerTitle:true,
+            actions: <Widget>[
+              PopupMenuButton<String>(
+                color: setTheme.primaryColor,
+                onSelected: (choice){
+                  if(choice == Constants.Logout)
+                  {
+                    Navigator.pushAndRemoveUntil(context,  new MaterialPageRoute(builder: (context) => new MyStatefulWidget()), (route) => false);
+                  }
+                  else if(choice == Constants.ChangeTheme)
+                  {
+                    setState(() {
+                      switchTheme();
+                    });
+                  }
+                },
+                itemBuilder: (BuildContext context){
+                  return Constants.choices.map((choice){
+                    return PopupMenuItem<String>(
+                      value: choice,
+                      child: Text(choice, style: TextStyle(color: setTheme.accentColor)),
+                    );
+                  }).toList();
+                },
               ),
-              centerTitle:true,
-              actions: <Widget>[
-                PopupMenuButton<String>(
-                  color: setTheme.primaryColor,
-                  onSelected: (choice){
-                    if(choice == Constants.Logout)
-                    {
-                      Navigator.pushAndRemoveUntil(context,  new MaterialPageRoute(builder: (context) => new MyStatefulWidget()), (route) => false);
-                    }
-                    else if(choice == Constants.ChangeTheme)
-                    {
-                      setState(() {
-                        switchTheme();
-                      });
-                    }
-                  },
-                  itemBuilder: (BuildContext context){
-                    return Constants.choices.map((choice){
-                      return PopupMenuItem<String>(
-                        value: choice,
-                        child: Text(choice, style: TextStyle(color: setTheme.accentColor)),
-                      );
-                    }).toList();
-                  },
-                ),
-              ]
-          ),
-          body: Container(
+            ]
+        ),
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text("Tests you want to take!!!", style: TextStyle(fontFamily: 'Architect', fontSize: SizeConfig.SmallTextFontSize, color: setTheme.accentColor),),
+            ),
+            ListView.builder( shrinkWrap: true,
+                itemCount: map.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
+                    child: Card(
+                      color: setTheme.cardColor,
+                      child: ListTile(
+                        onTap: () {
+                          print(map.keys.toList()[index]);
+                        },
+                        leading: Icon(Icons.analytics, color: setTheme.primaryColor),
+                        title: Text(map.values.toList()[index], style: TextStyle(color: setTheme.accentColor, fontFamily: 'Architect'),),
+                        trailing: Text("Difficulty ", style: TextStyle(color: setTheme.accentColor, fontFamily: 'Architect'),),
+                      ),
+                  ),
+                );
+                }
+            ),
+          ],
+        ),
+
+        );
+
+
+
+    /*Container(
             child: Column(children: [
               Row(
                 children: [
@@ -182,6 +215,6 @@ class LearnQPage extends State<learnQPageState> {
               ),
             ]),
           )),
-    );
+    );*/
   }
 }
