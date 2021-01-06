@@ -15,10 +15,7 @@ import 'package:mathforkids/screens/services/loggedinuser.dart';
 
 
 class takeQuizPageState extends StatefulWidget{
-  final int code;
-  takeQuizPageState({Key key, @required this.code,}) : super(key: key);
   @override
-
   TakeQuizPage createState() => TakeQuizPage();
 }
 
@@ -28,9 +25,13 @@ class TakeQuizPage extends State<takeQuizPageState>{
   final AuthService _auth = AuthService();
   String header = "Math for Kids";
   int i = 1;
+  int score = 0;
+  Map<String, String> Results = new Map<String, String>();
+  TextEditingController controller = new TextEditingController();
   List<bool> cardsValue = new List<bool>();
-  Map<String, Map<String, String>> Answers = new Map<String, Map<String, String>>();
-  Map<String, String> Pairs = new Map<String, String>();
+  List<String> Pair = new List<String>();
+  List<String> Match = new List<String>();
+  Map<String, String> MCA = new Map<String,String>();
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -96,7 +97,7 @@ class TakeQuizPage extends State<takeQuizPageState>{
               Container(
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(0, 20, 0, 6),
-                  child: Text("Quiz name", style: TextStyle(
+                  child: Text(GlobQL['info']['Name'], style: TextStyle(
                       fontSize: SizeConfig.HeaderTextFontSize,
                       fontFamily: "Architect", fontWeight: FontWeight.bold,
                       color: setTheme.accentColor),),
@@ -121,8 +122,9 @@ class TakeQuizPage extends State<takeQuizPageState>{
                         padding: const EdgeInsets.all(6.0),
                         child: RaisedButton(
                           onPressed: () {
-                            if(i == GlobQL.length){
+                            if(i == GlobQL.length - 1){
                                 AddAnswers();
+                                confirmDialog(context);
                             }
                             else{
                               setState(() {
@@ -157,7 +159,7 @@ class TakeQuizPage extends State<takeQuizPageState>{
       return Padding(
         padding: const EdgeInsets.all(20.0),
         child: Container(width: SizeConfig.screenWidth*0.66,
-          child: TextFormField( style: TextStyle(color: setTheme.accentColor, fontFamily: 'Architect', fontSize: SizeConfig.TextFieldFontSize), cursorColor: setTheme.accentColor,
+          child: TextFormField(controller: controller, style: TextStyle(color: setTheme.accentColor, fontFamily: 'Architect', fontSize: SizeConfig.TextFieldFontSize), cursorColor: setTheme.accentColor,
             decoration: InputDecoration(enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor)),
                 border: OutlineInputBorder(), labelStyle: TextStyle(color: setTheme.accentColor),
                 focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor))
@@ -172,8 +174,8 @@ class TakeQuizPage extends State<takeQuizPageState>{
       for(int j = 0; j<GlobQL['Q'+i.toString()].length - 2; j++){
         cardsValue.add(false);
       }
-      for(int j = 0; j<GlobQL['Q'+i.toString()].length - 2; j++){
-        correct.add(false);
+      for(int j = 0; j< GlobQL['Q'+i.toString()].length - 2; j++){
+        MCA[GlobQL['Q'+i.toString()]['Alternative'+j.toString()]] = 'false';
       }
 
       return ListView.builder(itemCount: GlobQL['Q'+i.toString()].length - 2, itemBuilder: (context, index) {
@@ -183,10 +185,11 @@ class TakeQuizPage extends State<takeQuizPageState>{
                 child: CustomQuestion(
                   text: '${questions[index].qst}',
                   nr : index+1,
-                  isSelected: cardsValue[index],
+                  isSelected: cardsValue[index+1],
                   onTap: () {
                     setState(() {
-                     cardsValue[index] = !cardsValue[index];
+                     cardsValue[index+1] = !cardsValue[index+1];
+                     MCA[GlobQL['Q'+i.toString()]['Alternative'+(index+1).toString()]] = cardsValue[index+1].toString();
                       Text("text1");
                     });
                   },
@@ -198,6 +201,9 @@ class TakeQuizPage extends State<takeQuizPageState>{
     else{
       for(int j = 0; j<GlobQL['Q'+i.toString()].length - 2; j++){
         cardsValue[j] = false;
+      }
+      for(int j = 0; j<GlobQL['Q'+i.toString()].length - 2; j++){
+        correct.add(false);
       }
         return Padding(
           padding: const EdgeInsets.all(10.0),
@@ -215,7 +221,7 @@ class TakeQuizPage extends State<takeQuizPageState>{
                       if(correct[index] != true){
                         if(p1 != index && p == 1){
                           match1 = which(index);
-                          correct[index] = FixPairs(pair1, match1);
+                          correct[index] = FixPairs(pair1, match1, index + 1);
                           correct[p1] = true;
                           correct[index] = true;
                           p = 0;
@@ -250,13 +256,83 @@ class TakeQuizPage extends State<takeQuizPageState>{
     }
   }
 
-  bool FixPairs(String Pair, String Match){
-        Pairs[Pair] = Match;
-      return true;
+  bool FixPairs(String p, String m, index){
+        Pair[index] = p;
+        Match[index] = m;
+        return true;
   }
 
   void AddAnswers(){
-      //Lägg till svar som i GlobQL
+    int nr = 0;
+      if(GlobQL['Q'+i.toString()]['Type'] == 'Written answer'){
+        if(GlobQL['Q'+i.toString()]['Answer'] == controller.text){
+          Results['Q'+i.toString()] = 'true';
+          score++;
+        }
+        else{
+
+        }
+      }
+
+      else if(GlobQL['Q'+i.toString()]['Type'] == 'Multiple choice'){
+        for(int j = 1; j < GlobQL['Q'+i.toString()].length - 2; j++){
+          if(GlobQL['Q'+i.toString()]['Alternative'+j.toString()] == MCA['Alternative'+j.toString()]){
+            nr++;
+          }
+        }
+        if(nr == GlobQL['Q'+i.toString()].length - 2){
+          Results['Q'+i.toString()] = 'true';
+          score++;
+        }
+        else{
+          Results['Q'+i.toString()] = 'false';
+        }
+      }
+
+      else{
+        for(int j = 1; j < GlobQL['Q'+i.toString()].length - 2; j++){
+          if(GlobQL['Q'+i.toString()]['Pair'+j.toString()] == Pair[j] && GlobQL['Q'+i.toString()]['Pair'+j.toString()] == Match[j]){
+            nr++;
+          }
+        }
+        if(GlobQL['Q'+i.toString()].length == nr){
+          Results['Q'+i.toString()] = 'true';
+          score++;
+        }
+        else{
+          Results['Q'+i.toString()] = 'false';
+        }
+      }
+  }
+
+  confirmDialog (BuildContext context) async {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Quiz result'),
+          content: Text("You scored"),
+          actions: <Widget>[
+            Text("${score.toString()} '/' ${GlobQL.length - 1}"),
+            FlatButton(
+              child: Text("YES"),
+              onPressed: () {
+                if(activerole == 'Student'){
+
+                }
+              },
+            ),
+
+            FlatButton(
+              child: Text("NO"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 }
 
