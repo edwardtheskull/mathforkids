@@ -111,8 +111,23 @@ class ConnectPage extends State<connectPageState>{
                             padding: const EdgeInsets.all(10.0),
                             child: RaisedButton(elevation: 3,
                               onPressed: () async {
-                                await DatabaseService().buildQuizFromDb(inputfield.text);
-                                Navigator.push(context, new MaterialPageRoute(builder: (context) => new takeQuizPageState()));
+                                if (await DatabaseService().buildQuizFromDb(inputfield.text)) {
+                                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new takeQuizPageState()));
+                                } else {
+                                  return showDialog(
+                                    context: context,
+                                    child: new AlertDialog(
+                                      title: new Text('No quiz with that code exists.'),
+                                      actions: <Widget>[
+                                        new FlatButton(
+                                          onPressed: () => Navigator.of(context).pop(false),
+                                          child: new Text('Okay'),
+                                        ),
+                                      ],
+                                    ),
+                                  ) ?? false;
+                                  inputfield.clear();
+                                }
                               },
                               color: setTheme.buttonColor,
                               child: Text("Connect", style: TextStyle(letterSpacing: 1,
