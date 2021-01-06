@@ -193,7 +193,7 @@ class createquizPage extends State<createquizPageState>{
             new FlatButton(
             onPressed: () {
                 dispose();
-                Navigator.pushReplacement(context, new MaterialPageRoute(builder: (context) => new teacherPageState()));
+                Navigator.pushAndRemoveUntil(context,  new MaterialPageRoute(builder: (context) => new teacherPageState()), (route) => false);
             }, child: new Text('Yes')
       )],
       ),
