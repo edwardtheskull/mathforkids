@@ -48,18 +48,18 @@ class DatabaseService {
     });
   }
 
-  Future createQuestion(int num, String k, String v, int order) async{
+  Future createQuestion(int num, String k, String v, int order) async {
     return await Firestore.instance.collection('quiz').document((10000+num).toString()).collection('questions').document('Q'+order.toString()).setData({
       k: v,
     }, merge : true);
   }
 
-  Map<String, String> caster(dynamic d){
+  Map<String, String> caster(dynamic d) {
     return (d as Map<String, String>);
   }
 
   //CreateQuiz
-  Future addQuizNum() async{
+  Future addQuizNum() async {
     return await Firestore.instance.collection('quiz').document('quizzes').updateData({'num': FieldValue.increment(1)});
   }
 
@@ -71,7 +71,7 @@ class DatabaseService {
   }
 
   //user
-  Future updateUserData(String name, String role, String username) async{
+  Future updateUserData(String name, String role, String username) async {
     return await Firestore.instance.collection('users').document(uid).setData({
       'name': name,
       'role' : role,

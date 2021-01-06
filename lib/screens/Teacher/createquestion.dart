@@ -129,7 +129,7 @@ class createquestionPage extends State<createquestionPageState>{
             )),
       );
     }
-    else if(Dropdownquestionvalue == 'Written answer'){
+    else{
       return Scaffold(
           backgroundColor: setTheme.scaffoldBackgroundColor,
           appBar: AppBar(
@@ -217,7 +217,7 @@ class createquestionPage extends State<createquestionPageState>{
               ),
             ),
           ));
-    }
+    }/* Not enough time to implement pairing
     else{
       return Scaffold(
           backgroundColor: setTheme.scaffoldBackgroundColor,
@@ -312,7 +312,7 @@ class createquestionPage extends State<createquestionPageState>{
               ),
             ),
           ));
-    }
+    }*/
 
   }
 

@@ -115,7 +115,7 @@ class createquizPage extends State<createquizPageState>{
                                     Dropdownquestionvalue = newValue;
                                   });
                                 },
-                                items: <String>['Multiple choice','Written answer','Pair options'].map<DropdownMenuItem<String>>((String value) { return DropdownMenuItem<String>(value: value, child: Text(value),);
+                                items: <String>['Multiple choice','Written answer'].map<DropdownMenuItem<String>>((String value) { return DropdownMenuItem<String>(value: value, child: Text(value),);
                                 }).toList(),),
                             ),
                             Padding(
