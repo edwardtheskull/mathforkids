@@ -12,7 +12,7 @@ class LearnQPage extends State<learnQPageState> {
   String header = "Math for Kids";
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    map = { "10037":"Quiz 1", "10042":"Quiz 2",};
+    map = { "10037":"Quiz 1", "10042":"Quiz 2", "10069":"Horryyy SHitt mann, skön quiz!"};
     return Scaffold(
         backgroundColor: setTheme.scaffoldBackgroundColor,
         appBar: AppBar(
