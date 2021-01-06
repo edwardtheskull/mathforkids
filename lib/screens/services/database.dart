@@ -11,12 +11,13 @@ class DatabaseService {
 
   Future buildQuizFromDb(String code) async{
     GlobQL.clear();
+    var qui = await Firestore.instance.document('quiz/'+code).get();
+    GlobQL['info'] = new Map<String, String>();
+    (GlobQL['info'])['Name'] = qui.data['name'];
+    (GlobQL['Code'])['Code'] = qui.data['code'];
+
     var db = await Firestore.instance.collection('quiz/'+code+'/questions').getDocuments();
-    //GlobQL['Name'] = db.data['name'];
-    //GlobQL['Code'] = db.data['code'];
-
     var m = db.documents;
-
     m.forEach((element) {
       GlobQL[element.documentID] = new Map<String, String>();
       element.data.forEach((key, value) {
