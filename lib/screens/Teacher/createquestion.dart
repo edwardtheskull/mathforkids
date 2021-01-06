@@ -174,9 +174,8 @@ class createquestionPage extends State<createquestionPageState>{
           body:
           Form(
             key: formkey,
-            child: Padding(padding: const EdgeInsets.all(16.0),
-              child: Column(mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+            child: Padding(padding: const EdgeInsets.fromLTRB(20, 50, 20, 0),
+              child: Column(
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(10.0),
@@ -188,29 +187,32 @@ class createquestionPage extends State<createquestionPageState>{
                     child: TextFormField(decoration: InputDecoration(hintText: 'Enter Answer', hintStyle: TextStyle(color: setTheme.accentColor), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:setTheme.accentColor))), style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize),
                     controller: _nameController2,),
                   ),
-                  Expanded(child: Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      RaisedButton(elevation: 5,
-                        onPressed: (){
-                        QA['Type'] = Dropdownquestionvalue.toString();
-                        QA['Answer'] = _nameController2.text;
-                        QA['Question'] = _nameController.text;
-                        GlobQL['Q'+iterator.toString()] = new Map<String, String>();
-                        QA.forEach((key, value) {
-                          (GlobQL['Q'+iterator.toString()])[key] = value;
-                        });
-                        iterator++;
-                        QA.clear();
-                        _nameController.clear();
-                        _nameController2.clear();
-                        Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => createquizPageState()), (route) => false);
-                        },
-                        color: setTheme.primaryColor,
-                        child: Text("Save question", style: TextStyle(letterSpacing: 1,
-                            fontSize: SizeConfig.ButtonTextSize,
-                            color: setTheme.accentColor,fontFamily: 'Architect')),),
-                    ],
-                  ),)
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        RaisedButton(elevation: 5,
+                          onPressed: (){
+                          QA['Type'] = Dropdownquestionvalue.toString();
+                          QA['Answer'] = _nameController2.text;
+                          QA['Question'] = _nameController.text;
+                          GlobQL['Q'+iterator.toString()] = new Map<String, String>();
+                          QA.forEach((key, value) {
+                            (GlobQL['Q'+iterator.toString()])[key] = value;
+                          });
+                          iterator++;
+                          QA.clear();
+                          _nameController.clear();
+                          _nameController2.clear();
+                          Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => createquizPageState()), (route) => false);
+                          },
+                          color: setTheme.primaryColor,
+                          child: Text("Save question", style: TextStyle(letterSpacing: 1,
+                              fontSize: SizeConfig.ButtonTextSize,
+                              color: setTheme.accentColor,fontFamily: 'Architect')),),
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),

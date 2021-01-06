@@ -135,7 +135,7 @@ class createquizPage extends State<createquizPageState>{
                           ],
                         ),
                         Container(
-                          height: SizeConfig.SmallWindowHeight,
+                          height: SizeConfig.SecondSmallWindowHeight,
                           child: _questionList(context),)
                         ,
                       ],
@@ -146,7 +146,7 @@ class createquizPage extends State<createquizPageState>{
                   Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(11.0),
+                        padding: const EdgeInsets.all(18.0),
                         child: RaisedButton(
                           onPressed: () async{
                             confirmDialog(context);
