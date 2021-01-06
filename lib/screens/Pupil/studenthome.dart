@@ -75,20 +75,6 @@ class StudentPage extends State<studentPageState>{
                 child: ButtonTheme(minWidth: SizeConfig.ButtonWidth, height: SizeConfig.ButtonHeight,
                   child: RaisedButton(elevation: 3,
                     onPressed: (){
-                      Navigator.push(context, new MaterialPageRoute(builder: (context) => new Class()));
-                    },
-                    color: setTheme.buttonColor,
-                    child: Text("Class", style: TextStyle(letterSpacing: 1,
-                      fontSize: SizeConfig.ButtonTextSize,
-                      fontFamily: 'Architect',)),),
-                ),
-              )],
-              ),
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: ButtonTheme(minWidth: SizeConfig.ButtonWidth, height: SizeConfig.ButtonHeight,
-                  child: RaisedButton(elevation: 3,
-                    onPressed: (){
                       Navigator.push(context, new MaterialPageRoute(builder: (context) => new DispStudTestResState()));
                     },
                     color: setTheme.buttonColor,
