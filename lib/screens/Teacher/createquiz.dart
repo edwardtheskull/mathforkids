@@ -19,129 +19,132 @@ class createquizPage extends State<createquizPageState>{
   @override
   Widget build(BuildContext context) {
     _controller = TXC;
-    return Scaffold(
-      resizeToAvoidBottomPadding: false,
-        backgroundColor: setTheme.scaffoldBackgroundColor,
-        appBar: AppBar(
-            toolbarHeight: SizeConfig.AppBarSize,
-            leading: IconButton(icon: Icon(Icons.arrow_back),
-              iconSize: SizeConfig.SmallIconSize,
-              onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherPageState())),
-            ),
-            iconTheme: IconThemeData(color:setTheme.accentColor),
-            backgroundColor: setTheme.primaryColor,
-            title: Text(
-              header,
-              style: TextStyle(
-                fontSize: SizeConfig.AppbarFontSize,
-                fontFamily: "Architect",
-                fontWeight: FontWeight.bold,
-                color: setTheme.accentColor
+    return WillPopScope(
+      onWillPop: onWillCreatePop,
+      child: Scaffold(
+        resizeToAvoidBottomPadding: false,
+          backgroundColor: setTheme.scaffoldBackgroundColor,
+          appBar: AppBar(
+              toolbarHeight: SizeConfig.AppBarSize,
+              leading: IconButton(icon: Icon(Icons.arrow_back),
+                iconSize: SizeConfig.SmallIconSize,
+                onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherPageState())),
               ),
-            ),
-            centerTitle:true,
-            actions: <Widget>[
-              PopupMenuButton<String>(
-                color: setTheme.primaryColor,
-                onSelected: (choice){
-                  if(choice == Constants.Logout)
-                  {
-                    Navigator.pushReplacement(context, new MaterialPageRoute(builder: (context) => new MyStatefulWidget()));
-                  }
-                  else if(choice == Constants.ChangeTheme)
-                  {
-                    setState(() {
-                      switchTheme();
-                    });
-                  }
-                },
-                itemBuilder: (BuildContext context){
-                  return Constants.choices.map((choice){
-                    return PopupMenuItem<String>(
-                      value: choice,
-                      child: Text(choice,style: TextStyle(color: setTheme.accentColor),),
-                    );
-                  }).toList();
-                },
+              iconTheme: IconThemeData(color:setTheme.accentColor),
+              backgroundColor: setTheme.primaryColor,
+              title: Text(
+                header,
+                style: TextStyle(
+                  fontSize: SizeConfig.AppbarFontSize,
+                  fontFamily: "Architect",
+                  fontWeight: FontWeight.bold,
+                  color: setTheme.accentColor
+                ),
               ),
-            ]
-        ),
-        body:  Scrollbar(
-          child: Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [Text("Name:",
-                      style: TextStyle(fontSize: SizeConfig.TextFontSize,
-                        color: setTheme.accentColor,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: "Architect",
-                      ),
-                    ),
-                      TextFormField(controller: _controller, style: TextStyle(color: setTheme.accentColor, fontFamily: 'Architect'), cursorColor: setTheme.accentColor,
-                        decoration: InputDecoration(enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor)),
-                            border: OutlineInputBorder(), labelStyle: TextStyle(color: setTheme.accentColor),
-                           focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor))
+              centerTitle:true,
+              actions: <Widget>[
+                PopupMenuButton<String>(
+                  color: setTheme.primaryColor,
+                  onSelected: (choice){
+                    if(choice == Constants.Logout)
+                    {
+                      Navigator.pushReplacement(context, new MaterialPageRoute(builder: (context) => new MyStatefulWidget()));
+                    }
+                    else if(choice == Constants.ChangeTheme)
+                    {
+                      setState(() {
+                        switchTheme();
+                      });
+                    }
+                  },
+                  itemBuilder: (BuildContext context){
+                    return Constants.choices.map((choice){
+                      return PopupMenuItem<String>(
+                        value: choice,
+                        child: Text(choice,style: TextStyle(color: setTheme.accentColor),),
+                      );
+                    }).toList();
+                  },
+                ),
+              ]
+          ),
+          body:  Scrollbar(
+            child: Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [Text("Name:",
+                        style: TextStyle(fontSize: SizeConfig.TextFontSize,
+                          color: setTheme.accentColor,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Architect",
                         ),
                       ),
-                      Row(mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: DropdownButton<String>(value: Dropdownquestionvalue, dropdownColor: setTheme.scaffoldBackgroundColor, style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize, fontFamily:"Architect" ), underline: Container(height:2, color: setTheme.accentColor),
-                              onChanged: (String newValue) {
-                                setState(() {
-                                  Dropdownquestionvalue = newValue;
-                                });
-                              },
-                              items: <String>['Multiple choice','Written answer','Pair options'].map<DropdownMenuItem<String>>((String value) { return DropdownMenuItem<String>(value: value, child: Text(value),);
-                              }).toList(),),
+                        TextFormField(controller: _controller, style: TextStyle(color: setTheme.accentColor, fontFamily: 'Architect'), cursorColor: setTheme.accentColor,
+                          decoration: InputDecoration(enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor)),
+                              border: OutlineInputBorder(), labelStyle: TextStyle(color: setTheme.accentColor),
+                             focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: setTheme.accentColor))
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: RaisedButton(
-                              onPressed: () {
-                                QuizName = _controller.text;
-                                Navigator.pushAndRemoveUntil(context,  new MaterialPageRoute(builder: (context) => new createquestionPageState(Dropdownquestionvalue: Dropdownquestionvalue)), (route) => false);
-                              },
-                              color: setTheme.buttonColor,
-                              child: Text("Add Question", style: TextStyle(
-                                fontSize: SizeConfig.Createquestionbutton,
-                                color: setTheme.accentColor, fontFamily: 'Architect',
-                              ),),
+                        ),
+                        Row(mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: DropdownButton<String>(value: Dropdownquestionvalue, dropdownColor: setTheme.scaffoldBackgroundColor, style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize, fontFamily:"Architect" ), underline: Container(height:2, color: setTheme.accentColor),
+                                onChanged: (String newValue) {
+                                  setState(() {
+                                    Dropdownquestionvalue = newValue;
+                                  });
+                                },
+                                items: <String>['Multiple choice','Written answer','Pair options'].map<DropdownMenuItem<String>>((String value) { return DropdownMenuItem<String>(value: value, child: Text(value),);
+                                }).toList(),),
                             ),
-                          )
-                        ],
-                      ),
-                      Container(
-                        height: SizeConfig.SmallWindowHeight,
-                        child: _questionList(context),)
-                      ,
-                    ],
-                  ),
-                ),
-                ),
-
-                Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(11.0),
-                      child: RaisedButton(
-                        onPressed: () async{
-                          confirmDialog(context);
-                        },
-                        color: setTheme.buttonColor,
-                        child: Text("Create Quiz", style: TextStyle(
-                          fontSize: SizeConfig.TextFontSize,
-                          color: setTheme.accentColor, fontFamily: 'Architect',
-                        ),),
-                      ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: RaisedButton(
+                                onPressed: () {
+                                  QuizName = _controller.text;
+                                  Navigator.pushAndRemoveUntil(context,  new MaterialPageRoute(builder: (context) => new createquestionPageState(Dropdownquestionvalue: Dropdownquestionvalue)), (route) => false);
+                                },
+                                color: setTheme.buttonColor,
+                                child: Text("Add Question", style: TextStyle(
+                                  fontSize: SizeConfig.Createquestionbutton,
+                                  color: setTheme.accentColor, fontFamily: 'Architect',
+                                ),),
+                              ),
+                            )
+                          ],
+                        ),
+                        Container(
+                          height: SizeConfig.SmallWindowHeight,
+                          child: _questionList(context),)
+                        ,
+                      ],
                     ),
-                  ],
-                )
-              ]),
-        )
+                  ),
+                  ),
+
+                  Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(11.0),
+                        child: RaisedButton(
+                          onPressed: () async{
+                            confirmDialog(context);
+                          },
+                          color: setTheme.buttonColor,
+                          child: Text("Create Quiz", style: TextStyle(
+                            fontSize: SizeConfig.TextFontSize,
+                            color: setTheme.accentColor, fontFamily: 'Architect',
+                          ),),
+                        ),
+                      ),
+                    ],
+                  )
+                ]),
+          )
+      ),
     );
   }
 
@@ -174,6 +177,27 @@ class createquizPage extends State<createquizPageState>{
         );
       },
     );
+  }
+
+  Future<bool> onWillCreatePop() {
+    return showDialog(
+      context: context,
+      child: new AlertDialog(
+        title: new Text('Are you sure you want to quit?'),
+        content: new Text('Unsaved data will be lost.'),
+        actions: <Widget>[
+          new FlatButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: new Text('No'),
+            ),
+            new FlatButton(
+            onPressed: () {
+                dispose();
+                Navigator.pushAndRemoveUntil(context,  new MaterialPageRoute(builder: (context) => new teacherPageState()), (route) => false);
+            }, child: new Text('Yes')
+      )],
+      ),
+    ) ?? false;
   }
 
 Widget _questionList(BuildContext context){
