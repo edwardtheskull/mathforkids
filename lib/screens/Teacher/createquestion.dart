@@ -40,91 +40,94 @@ class createquestionPage extends State<createquestionPageState>{
   String header = 'Math for Kids';
   Widget build(BuildContext context) {
     if(Dropdownquestionvalue == 'Multiple choice'){
-      return Scaffold(
-          backgroundColor: setTheme.scaffoldBackgroundColor,
-          appBar: AppBar(
-              toolbarHeight: SizeConfig.AppBarSize,
-              iconTheme: IconThemeData(color:setTheme.accentColor),
-              backgroundColor: setTheme.primaryColor,
-              title: Text(
-                header,
-                style: TextStyle(
-                    fontSize: SizeConfig.AppbarFontSize,
-                    fontFamily: "Architect",
-                    fontWeight: FontWeight.bold,
-                    color: setTheme.accentColor
+      return WillPopScope(
+        onWillPop: onWillPop,
+        child: Scaffold(
+            backgroundColor: setTheme.scaffoldBackgroundColor,
+            appBar: AppBar(
+                toolbarHeight: SizeConfig.AppBarSize,
+                iconTheme: IconThemeData(color:setTheme.accentColor),
+                backgroundColor: setTheme.primaryColor,
+                title: Text(
+                  header,
+                  style: TextStyle(
+                      fontSize: SizeConfig.AppbarFontSize,
+                      fontFamily: "Architect",
+                      fontWeight: FontWeight.bold,
+                      color: setTheme.accentColor
+                  ),
                 ),
-              ),
-              centerTitle:true,
-              actions: <Widget>[
-                PopupMenuButton<String>(
-                  color: setTheme.primaryColor,
-                  onSelected: (choice){
-                    if(choice == Constants.Logout)
-                    {
-                      Navigator.pushReplacement(context, new MaterialPageRoute(builder: (context) => new MyStatefulWidget()));
-                    }
-                    else if(choice == Constants.ChangeTheme)
-                    {
-                      setState(() {
-                        switchTheme();
-                      });
-                    }
-                  },
-                  itemBuilder: (BuildContext context){
-                    return Constants.choices.map((choice){
-                      return PopupMenuItem<String>(
-                        value: choice,
-                        child: Text(choice, style: TextStyle(color: setTheme.accentColor),),
-                      );
-                    }).toList();
-                  },
-                ),
-              ]
-          ),
-          body:
-          Form(
-            key: formkey,
-            child: SingleChildScrollView(child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  TextFormField(style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize), decoration: InputDecoration(hintText: 'Enter question', hintStyle: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:setTheme.accentColor))),
-                  controller: _nameController,),
-                  Text('Add alternative', style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize)),
-                  ..._getalternatives(),
-                  RaisedButton(elevation: 5,
-                    onPressed: (){
-                      for(int i=0; i < MClist.length; i++){
-                        if(i==0){
-                          QA['Type'] = Dropdownquestionvalue.toString();
-                        }
-                          QA['Alternative'+i.toString()] = MClist[i].toString();
-                          QA['Answer'+i.toString()]  = Answers[i].toString();
-                      }
-                      QA['Question'] = _nameController.text;
-                      GlobQL['Q'+iterator.toString()] = new Map<String, String>();
-                      QA.forEach((key, value) {
-                        (GlobQL['Q'+iterator.toString()])[key] = value;
-                      });
-                      iterator++;
-                      QA.clear();
-                      _nameController.clear();
-                      MClist.clear();
-                      Answers.clear();
-                      MClist = [null];
-                      Answers = [true];
-                      Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => createquizPageState()), (route) => false);
-                    },
+                centerTitle:true,
+                actions: <Widget>[
+                  PopupMenuButton<String>(
                     color: setTheme.primaryColor,
-                    child: Text("Save question", style: TextStyle(letterSpacing: 1,
-                        fontSize: SizeConfig.ButtonTextSize,
-                        color:setTheme.accentColor, fontFamily: 'Architect')),)
-                ],
-              ),
-            ))
-            ,
-          ));
+                    onSelected: (choice){
+                      if(choice == Constants.Logout)
+                      {
+                        Navigator.pushReplacement(context, new MaterialPageRoute(builder: (context) => new MyStatefulWidget()));
+                      }
+                      else if(choice == Constants.ChangeTheme)
+                      {
+                        setState(() {
+                          switchTheme();
+                        });
+                      }
+                    },
+                    itemBuilder: (BuildContext context){
+                      return Constants.choices.map((choice){
+                        return PopupMenuItem<String>(
+                          value: choice,
+                          child: Text(choice, style: TextStyle(color: setTheme.accentColor),),
+                        );
+                      }).toList();
+                    },
+                  ),
+                ]
+            ),
+            body:
+            Form(
+              key: formkey,
+              child: SingleChildScrollView(child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    TextFormField(style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize), decoration: InputDecoration(hintText: 'Enter question', hintStyle: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:setTheme.accentColor))),
+                    controller: _nameController,),
+                    Text('Add alternative', style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize)),
+                    ..._getalternatives(),
+                    RaisedButton(elevation: 5,
+                      onPressed: (){
+                        for(int i=0; i < MClist.length; i++){
+                          if(i==0){
+                            QA['Type'] = Dropdownquestionvalue.toString();
+                          }
+                            QA['Alternative'+i.toString()] = MClist[i].toString();
+                            QA['Answer'+i.toString()]  = Answers[i].toString();
+                        }
+                        QA['Question'] = _nameController.text;
+                        GlobQL['Q'+iterator.toString()] = new Map<String, String>();
+                        QA.forEach((key, value) {
+                          (GlobQL['Q'+iterator.toString()])[key] = value;
+                        });
+                        iterator++;
+                        QA.clear();
+                        _nameController.clear();
+                        MClist.clear();
+                        Answers.clear();
+                        MClist = [null];
+                        Answers = [true];
+                        Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => createquizPageState()), (route) => false);
+                      },
+                      color: setTheme.primaryColor,
+                      child: Text("Save question", style: TextStyle(letterSpacing: 1,
+                          fontSize: SizeConfig.ButtonTextSize,
+                          color:setTheme.accentColor, fontFamily: 'Architect')),)
+                  ],
+                ),
+              ))
+              ,
+            )),
+      );
     }
     else if(Dropdownquestionvalue == 'Written answer'){
       return Scaffold(
@@ -311,6 +314,26 @@ class createquestionPage extends State<createquestionPageState>{
 
   }
 
+  Future<bool> onWillPop() {
+    return showDialog(
+      context: context,
+      child: new AlertDialog(
+        title: new Text('Are you sure?'),
+        content: new Text('Unsaved data will be lost.'),
+        actions: <Widget>[
+          new FlatButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: new Text('No'),
+          ),
+          new FlatButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            child: new Text('Yes'),
+          ),
+        ],
+      ),
+    ) ?? false;
+  }
+
   List<Widget> _getalternatives(){
     List<Widget> MCTextFieldsList = [];
     for(int i=0; i<MClist.length; i++){
@@ -494,6 +517,8 @@ class _MTextFieldState extends State<MTextFields> {
           createquestionPage.Matches[widget.index]
               ?? '';
     });
+
+
     return TextFormField(
       controller: _nameController,
       // save text field data in friends list at index
