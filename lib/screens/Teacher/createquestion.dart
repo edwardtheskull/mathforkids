@@ -318,19 +318,11 @@ class createquestionPage extends State<createquestionPageState>{
     return showDialog(
       context: context,
       child: new AlertDialog(
-        title: new Text('Are you sure you want to quit?'),
-        content: new Text('Unsaved data will be lost.'),
+        title: new Text('Save question before of existing'),
         actions: <Widget>[
           new FlatButton(
             onPressed: () => Navigator.of(context).pop(false),
-            child: new Text('No'),
-          ),
-          new FlatButton(
-            onPressed: () {
-              dispose();
-              Navigator.pushReplacement(context, new MaterialPageRoute(builder: (context) => new createquizPageState()));
-             },
-            child: new Text('Yes')
+            child: new Text('Okay'),
           ),
         ],
       ),
