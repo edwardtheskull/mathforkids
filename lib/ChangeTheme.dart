@@ -11,7 +11,8 @@ ThemeData lightTheme = ThemeData(
     buttonColor: Color.fromRGBO(115, 226, 167, 1),
     buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.normal),
     accentColor: Colors.black,
-    hintColor: Colors.black
+    hintColor: Colors.black,
+    cardColor: Colors.grey[300],
 );
 
 ThemeData darkTheme = ThemeData(
@@ -22,7 +23,8 @@ ThemeData darkTheme = ThemeData(
     buttonColor: Colors.green[600],
     buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.normal),
     accentColor: Colors.grey[200],
-    hintColor: Colors.grey[200]
+    hintColor: Colors.grey[200],
+    cardColor: Color.fromRGBO(31, 75, 92, 1),
 );
 
 ThemeData setTheme = ThemeData(
@@ -33,7 +35,8 @@ ThemeData setTheme = ThemeData(
   buttonColor: Colors.green[600],
   buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.normal),
     accentColor: Colors.grey[200],
-    hintColor: Colors.grey[200]
+    hintColor: Colors.grey[200],
+  cardColor: Color.fromRGBO(31, 75, 92, 1),
 );
 
 void switchTheme()

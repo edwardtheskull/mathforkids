@@ -71,7 +71,7 @@ class LearnQPage extends State<learnQPageState> {
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
                     child: Card(
-                      color: Color.fromRGBO(31, 69, 82, 0.5),
+                      color: setTheme.cardColor,
                       child: ListTile(
                         onTap: () {
                           print(map.keys.toList()[index]);
