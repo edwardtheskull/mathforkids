@@ -160,7 +160,12 @@ class LoginPage extends State<loginPageState>{
                                       setState(() => load = true);
                                       dynamic res = await _auth.signInWithEmailAndPassword(textname.text, textpassword.text);
                                       if(res == null){
-                                        print('error signing in');
+                                        showDialog(context: context,
+                                        builder: (BuildContext context){
+                                          return AlertDialog(
+                                            title: Text('Wrong email or password')
+                                          );
+                                        });
                                         setState(() => load = false);
                                       } else {
                                         print('signed in');
