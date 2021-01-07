@@ -116,6 +116,9 @@ class DatabaseService {
   Future getCreatedQuizzes() async {
     GlobQL.clear();
     var db = await Firestore.instance.collection('users').document(useid).collection('created').document('quizzes').get();
+    if (db.data == null) {
+      return;
+    }
     GlobQL['Quizzes'] = new Map<String, String>();
     db.data.forEach((k, v) {
       (GlobQL['Quizzes'])[k] = v;

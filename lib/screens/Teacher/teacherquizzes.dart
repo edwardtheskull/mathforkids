@@ -1,3 +1,4 @@
+import 'package:mathforkids/screens/Teacher/Temp.dart';
 import 'package:mathforkids/utils/Imports.dart';
 
 
@@ -61,91 +62,51 @@ class teacherQuizzesPage extends State<teacherQuizzesPageState> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
 
-          children:
-          [Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text("Previous quizzes", style: TextStyle(
-                  fontSize: SizeConfig.TextFontSize,
-                  fontFamily: "Architect",
-                  backgroundColor: setTheme.buttonColor,
-                  color: setTheme.accentColor),
-              ),
-            ),
+          children: [
             Container(
-              child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  color: setTheme.scaffoldBackgroundColor,
-                  elevation: 10,
-                  child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        ListTile(
-                          leading: Icon(
-                            Icons.calculate_rounded,
-                            color: setTheme.buttonColor,
-                            size: SizeConfig.SmallIconSize,
-                          ),
-                          title: Text('Blandat', style: TextStyle(
-                              color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
-                          subtitle: Text('2020-12-12', style: TextStyle(
-                              color: setTheme.accentColor, fontSize: SizeConfig.XSMiniTextFontSize)),
-                        ),
-                        ListTile(
-                         leading: Icon(
-                           Icons.remove_circle,
-                           color: setTheme.buttonColor,
-                           size: SizeConfig.SmallIconSize,
-                         ),
-                          title: Text('Subtraktion', style: TextStyle(
-                              color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
-                          subtitle: Text('2020-12-12', style: TextStyle(
-                              color: setTheme.accentColor, fontSize: SizeConfig.XSMiniTextFontSize)),
-                        ),
-                        ListTile(
-                          leading: Icon(
-                            Icons.add_circle,
-                            color: setTheme.buttonColor,
-                            size: 40,
-                          ),
-                          title: Text('addition', style: TextStyle(
-                              color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
-                          subtitle: Text('2020-12-12', style: TextStyle(
-                              color: setTheme.accentColor, fontSize: SizeConfig.XSMiniTextFontSize)),
-                        ),
-                         ListTile(
-                          leading:
-                          Padding(
-                            padding: const EdgeInsets.only(left:16.0),
-                            child: Text('/',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 20,
-                                  background: Paint()
-                                    ..strokeWidth = 25
-                                    ..color = setTheme.buttonColor
-                                    ..style = PaintingStyle.stroke
-                                    ..strokeJoin = StrokeJoin.round),
-                            ),
-                          ),
-
-                          title: Text('Division', style: TextStyle(
-                              color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
-                          subtitle: Text('2020-12-12', style: TextStyle(
-                              color: setTheme.accentColor, fontSize: SizeConfig.XSMiniTextFontSize)),
-                        ),
-                      ]
-                  )
+            child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text("Your quizzes", style: TextStyle(
+                    fontSize: SizeConfig.TextFontSize,
+                    fontFamily: "Architect",
+                    backgroundColor: setTheme.buttonColor,
+                    color: setTheme.accentColor),
+                ),
               ),
+          ),
+            Container(height: SizeConfig.SpecTestScreenHeight,
+              child: TeachQuizzList(context),
             ),
           ],
         ),
       ),
     );
   }
+  Widget TeachQuizzList(BuildContext context){
+    if (GlobQL['Quizzes'] != null) {
+      return ListView.builder(
+        itemCount: GlobQL['Quizzes'].length,
+        itemBuilder: (context, index) {
+          return Container(
+            child: InkWell(
+              child: Container(
+                child: Card(
+                    color: setTheme.scaffoldBackgroundColor,
+                    child: ListTile(
+                      title: Text(GlobQL['Quizzes'].values.toList()[index], style: TextStyle(
+                          color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
+                      trailing: Text('Code: '+GlobQL['Quizzes'].keys.toList()[index], style: TextStyle(
+                          color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
+                    )
+                ),
+              ),
+            ),
+          );
+        },
+      );
+    }
+  }
 }
-
 
 
 

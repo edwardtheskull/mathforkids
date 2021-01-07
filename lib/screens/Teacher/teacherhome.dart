@@ -1,5 +1,6 @@
 import 'package:mathforkids/main.dart';
 import 'package:mathforkids/screens/Teacher/teacherquizzes.dart';
+import 'package:mathforkids/screens/services/database.dart';
 import 'package:mathforkids/utils/Imports.dart';
 
 import 'Temp.dart';
@@ -90,7 +91,8 @@ class teacherPage extends State<teacherPageState>{
                   padding: const EdgeInsets.only(top: 20),
                   child: ButtonTheme(minWidth: SizeConfig.ButtonWidth, height: SizeConfig.ButtonHeight,
                     child: RaisedButton(elevation: 3,
-                      onPressed: (){
+                      onPressed: () async {
+                        await DatabaseService().getCreatedQuizzes();
                         Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherQuizzesPageState()));
                       },
                       color: setTheme.buttonColor,

@@ -42,6 +42,7 @@ class createquizPage extends State<createquizPageState>{
                         ),
                         new FlatButton(
                             onPressed: () {
+                              _controller.text = '';
                               GlobQL.clear();
                               Navigator.pushAndRemoveUntil(context,  new MaterialPageRoute(builder: (context) => new teacherPageState()), (route) => false);
                             }, child: new Text('Yes')
@@ -177,11 +178,12 @@ class createquizPage extends State<createquizPageState>{
           actions: <Widget>[
           FlatButton(
             child: Text("YES"),
-              onPressed: () {
+              onPressed: () async {
               //Put your code here which you want to execute on Yes button click.
-              DatabaseService().createQuiz(_controller.text, GlobQL);
+              await DatabaseService().createQuiz(_controller.text, GlobQL);
               iterator = 0;
               QuizName = '';
+              await DatabaseService().getCreatedQuizzes();
               Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherQuizzesPageState()));
             },
           ),
