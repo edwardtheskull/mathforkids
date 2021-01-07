@@ -328,6 +328,7 @@ class CustomQuestion extends StatelessWidget{
                       child: new Text(
                         "Alternative ${nr}",
                         style: TextStyle(
+                          fontSize: SizeConfig.TextFieldFontSize,
                             color: isSelected ? Colors.grey[800] : setTheme.accentColor),
                       ),
                     ),
@@ -340,7 +341,8 @@ class CustomQuestion extends StatelessWidget{
                   text,
                   style: TextStyle(
                       color: isSelected ? Colors.grey[800] : setTheme.accentColor,
-                      fontSize: 13),
+                    fontSize: SizeConfig.TextFieldFontSize,
+                  ),
                 ),
               ),
             ],
@@ -350,64 +352,3 @@ class CustomQuestion extends StatelessWidget{
     );
   }}
 
-
-class CustomPair extends StatelessWidget{
-  final bool isSelected;
-  final String text;
-  final VoidCallback onTap;
-  final int nr;
-
-  const CustomPair({
-    this.isSelected,
-    this.text,
-    this.onTap,
-    this.nr
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-        onTap: onTap,
-        child: Container(
-          child: Card(
-            color: isSelected ? setTheme.accentColor : Colors.red,
-            semanticContainer: true,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            margin: new EdgeInsets.all(0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-
-                    Padding(
-                      padding:
-                      EdgeInsets.only(top: 0, right: 0, bottom: 20, left: 0),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: new Text(
-                          "Alternative ${nr}",
-                          style: TextStyle(
-                              color: isSelected ? Colors.grey[800] : setTheme.accentColor),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: Text(
-                    text,
-                    style: TextStyle(
-                        color: isSelected ? Colors.grey[800] : setTheme.accentColor,
-                        fontSize: 13),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        )
-    );
-  }}
