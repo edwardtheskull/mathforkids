@@ -19,7 +19,7 @@ export 'package:mathforkids/screens/transition/connect.dart';
 export 'package:mathforkids/screens/Authenticate/register.dart';
 export 'package:mathforkids/screens/Authenticate/login.dart';
 export 'package:mathforkids/screens/Pupil/studenthome.dart';
-export 'package:mathforkids/screens/Pupil/studentresults.dart';
+export 'package:mathforkids/screens/Pupil/teacherquizzes.dart';
 export 'package:mathforkids/screens/Teacher/teacherhome.dart';
 export 'package:mathforkids/screens/Teacher/createquiz.dart';
 export 'package:mathforkids/screens/Pupil/learn.dart';

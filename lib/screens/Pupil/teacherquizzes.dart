@@ -1,12 +1,12 @@
 import 'package:mathforkids/utils/Imports.dart';
 
 
-class studentresultPageState extends StatefulWidget {
+class teacherQuizzesPageState extends StatefulWidget {
   @override
-  studentresultPage createState() => studentresultPage();
+  teacherQuizzesPage createState() => teacherQuizzesPage();
 }
 
-class studentresultPage extends State<studentresultPageState> {
+class teacherQuizzesPage extends State<teacherQuizzesPageState> {
   @override
   String header = "Math for Kids";
   Widget build(BuildContext context) {

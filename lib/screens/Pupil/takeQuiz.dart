@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:mathforkids/main.dart';
+import 'package:mathforkids/screens/Pupil/teacherquizzes.dart';
 import 'package:mathforkids/screens/Teacher/Temp.dart';
 import 'package:mathforkids/screens/services/database.dart';
 import 'package:mathforkids/utils/Imports.dart';
@@ -273,11 +274,11 @@ class TakeQuizPage extends State<takeQuizPageState>{
                 if(activerole == 'Student'){
                   DatabaseService().saveResult(Results.length.toString(), score.toString(), GlobQL['info']['Code'], Results);
                   GlobQL.clear();
-                  Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => studentresultPageState()), (route) => false);
+                  Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => DispStudTestResState()), (route) => false);
                 }
                 else{
                   GlobQL.clear();
-                  Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => teacherPageState()), (route) => false);
+                  Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => teacherQuizzesPageState()), (route) => false);
                 }
               },
             ),

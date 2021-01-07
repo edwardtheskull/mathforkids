@@ -1,4 +1,5 @@
 import 'package:mathforkids/main.dart';
+import 'package:mathforkids/screens/Pupil/teacherquizzes.dart';
 import 'package:mathforkids/utils/Imports.dart';
 
 
@@ -87,7 +88,7 @@ class teacherPage extends State<teacherPageState>{
                   child: ButtonTheme(minWidth: SizeConfig.ButtonWidth, height: SizeConfig.ButtonHeight,
                     child: RaisedButton(elevation: 3,
                       onPressed: (){
-                        Navigator.push(context, new MaterialPageRoute(builder: (context) => new studentresultPageState()));
+                        Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherQuizzesPageState()));
                       },
                       color: setTheme.buttonColor,
                       child: Text("Teacher Page", style: TextStyle(letterSpacing: 1,

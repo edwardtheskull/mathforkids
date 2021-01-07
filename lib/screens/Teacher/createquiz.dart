@@ -1,5 +1,6 @@
 import 'dart:collection';
 import 'package:flutter/cupertino.dart';
+import 'package:mathforkids/screens/Pupil/teacherquizzes.dart';
 import 'package:mathforkids/screens/Teacher/createquestion.dart';
 import 'package:mathforkids/screens/services/database.dart';
 import 'package:mathforkids/utils/Imports.dart';
@@ -181,7 +182,7 @@ class createquizPage extends State<createquizPageState>{
               DatabaseService().createQuiz(_controller.text, GlobQL);
               iterator = 0;
               QuizName = '';
-              Navigator.push(context, new MaterialPageRoute(builder: (context) => new studentresultPageState()));
+              Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherQuizzesPageState()));
             },
           ),
 
