@@ -99,7 +99,7 @@ class TakeQuizPage extends State<takeQuizPageState>{
             children: [
               Container(
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 16, 0, 6),
+                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 6),
                   child: Text(GlobQL['info']['Name'], style: TextStyle(
                       fontSize: SizeConfig.HeaderTextFontSize,
                       fontFamily: "Architect", fontWeight: FontWeight.bold,
@@ -119,41 +119,43 @@ class TakeQuizPage extends State<takeQuizPageState>{
                 child: MyFunction(context),
 
               ),
-                  Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(6.0),
-                        child: RaisedButton(
-                          onPressed: () {
-                            if(i == GlobQL.length - 1){
-                                AddAnswers();
-                                confirmDialog(context);
-                            }
-                            else{
-                              setState(() {
-                                AddAnswers();
-                                i++;
-                                controller.clear();
-                                cardsValue.clear();
-                                cardsValue = new List<bool>();
-                                Pair.clear();
-                                Pair = new List<String>();
-                                Match.clear();
-                                Match = new List<String>();
-                                MCA.clear();
-                                MCA = new Map<String, String>();
-                                q = 0;
-                              });
-                            }
-                          },
-                          color: setTheme.buttonColor,
-                          child: Text("Next", style: TextStyle(
-                            fontSize: SizeConfig.TextFontSize,
-                            color: setTheme.accentColor, fontFamily: 'Architect',
-                          ),),
+                  Container(height: SizeConfig.XSSH,
+                    child: Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(6.0),
+                          child: RaisedButton(
+                            onPressed: () {
+                              if(i == GlobQL.length - 1){
+                                  AddAnswers();
+                                  confirmDialog(context);
+                              }
+                              else{
+                                setState(() {
+                                  AddAnswers();
+                                  i++;
+                                  controller.clear();
+                                  cardsValue.clear();
+                                  cardsValue = new List<bool>();
+                                  Pair.clear();
+                                  Pair = new List<String>();
+                                  Match.clear();
+                                  Match = new List<String>();
+                                  MCA.clear();
+                                  MCA = new Map<String, String>();
+                                  q = 0;
+                                });
+                              }
+                            },
+                            color: setTheme.buttonColor,
+                            child: Text("Next", style: TextStyle(
+                              fontSize: SizeConfig.TextFontSize,
+                              color: setTheme.accentColor, fontFamily: 'Architect',
+                            ),),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   )
             ],
           )),
