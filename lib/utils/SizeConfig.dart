@@ -119,6 +119,7 @@ class SizeConfig {
     else if(ShortestLength < 365 && ShortestLength > 350)
     {
          ScreenHeight = MediaQuery.of(context).size.height*1.07;
+         SmallButtonWidth = MediaQuery.of(context).size.width/1.8;
          SmallScreenHeight = ScreenHeight * 0.6;
          SmallWindowHeight = SmallScreenHeight/2.1;
          SecondSmallWindowHeight = SmallWindowHeight;
@@ -130,8 +131,8 @@ class SizeConfig {
     }
     else if(ShortestLength < 350 && LongestLength < 500)
     {
-        SmallButtonWidth = MediaQuery.of(context).size.width/1.8;
         ScreenHeight = (MediaQuery.of(context).size.height)*1.17;
+        ButtonWidth = MediaQuery.of(context).size.width/1.45;
         SmallScreenHeight = ScreenHeight * 0.7;
         SmallWindowHeight = SmallScreenHeight/1.6;
         SecondSmallWindowHeight = SmallScreenHeight/3.3;
