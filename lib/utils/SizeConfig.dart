@@ -109,7 +109,7 @@ class SizeConfig {
     }
     else if(ShortestLength < 650 && ShortestLength > 470)
     {
-        ScreenHeight = MediaQuery.of(context).size.height*0.9;
+        ScreenHeight = MediaQuery.of(context).size.height*0.95;
         SecondScreenHeight = ScreenHeight;
         SmallScreenHeight = ScreenHeight * 0.6;
         SmallWindowHeight = SmallScreenHeight/1.6;
