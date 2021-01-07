@@ -63,41 +63,6 @@ class studentresultPage extends State<studentresultPageState> {
 
           children:
           [Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text("Most recent quiz", style: TextStyle(
-                fontSize: SizeConfig.TextFontSize,
-                fontFamily: "Architect",
-                backgroundColor: setTheme.primaryColor,
-                color: setTheme.accentColor),),
-          ),
-            SingleChildScrollView(
-              child: Container( width: SizeConfig.screenWidth, height: SizeConfig.SmallWindowHeight,
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  color: setTheme.scaffoldBackgroundColor,
-                  elevation: 10,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                       ListTile(
-                        leading: Icon(
-                          Icons.add_circle,
-                          color: setTheme.buttonColor,
-                          size: SizeConfig.SmallIconSize,
-                        ),
-                        title: Text('Addition',
-                            style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
-                        subtitle: Text(
-                            '2020-12-12', style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.XSMiniTextFontSize)),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text("Previous quizzes", style: TextStyle(
                   fontSize: SizeConfig.TextFontSize,
