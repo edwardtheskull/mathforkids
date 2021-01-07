@@ -64,18 +64,49 @@ class DatabaseService {
     return await Firestore.instance.collection('quiz').document('quizzes').updateData({'num': FieldValue.increment(1)});
   }
 
-  Future saveResult(String max, String result, String quizzId, Map<String, String> answers) async {
+  Future getQuizResults(String quizzId) async{
+    var db = await Firestore.instance.document('users'+useid+'/results'+quizzId+'/answers/specifics').get();
+
+    db.data.forEach((k, v) {
+      (GlobQL['Specifics'])[k] = v;
+    });
+
+    var db1 = await Firestore.instance.collection('quiz/'+quizzId+'/questions').getDocuments();
+    var m = db1.documents;
+
+    m.forEach((element) {
+      (GlobQL['Questions'])[element.documentID] = element.data['Question'];
+    });
+  }
+
+  Future getPrevResults() async{
+    var db = await Firestore.instance.collection('users').document(useid).collection('results').getDocuments();
+    var res = db.documents;
+    GlobQL.clear();
+
+    res.forEach((element) {
+      GlobQL[element.documentID] = new Map<String, String>();
+      (GlobQL[element.documentID])['Name'] = element.data['name'];
+      (GlobQL[element.documentID])['Code'] = element.documentID;
+      (GlobQL[element.documentID])['Max'] = element.data['max'];
+      (GlobQL[element.documentID])['Result'] = element.data['result'];
+    });
+  }
+
+  Future saveResult(String max, String result, String quizzId, String name, Map<String, String> answers) async {
+    print(answers.length);
     for (int i = 1; i <= answers.length; i++) {
       saveResultSpecifics(quizzId, 'Q'+i.toString(), answers['Q'+i.toString()]);
     }
     return Firestore.instance.collection('users').document(useid).collection('results').document(quizzId).setData({
       'max': max,
       'result': result,
+      'name': name,
     });
   }
 
   Future saveResultSpecifics(String quizzId, String k, String v) async {
-    return await Firestore.instance.collection('quiz').document(useid).collection('results').document(quizzId).collection('answers').document('specifics').setData({
+    return await Firestore.instance.collection('users').document(useid).collection('results').document(quizzId).collection('answers').document('specifics').setData({
       k: v,
     }, merge : true);
   }

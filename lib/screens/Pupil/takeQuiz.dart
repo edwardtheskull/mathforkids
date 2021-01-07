@@ -272,7 +272,7 @@ class TakeQuizPage extends State<takeQuizPageState>{
               child: Text("Submit"),
               onPressed: () {
                 if(activerole == 'Student'){
-                  DatabaseService().saveResult(Results.length.toString(), score.toString(), GlobQL['info']['Code'], Results);
+                  DatabaseService().saveResult(Results.length.toString(), score.toString(), GlobQL['info']['Code'], GlobQL['info']['Name'], Results);
                   GlobQL.clear();
                   Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => DispStudTestResState()), (route) => false);
                 }
