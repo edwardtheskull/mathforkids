@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:mathforkids/main.dart';
 import 'package:mathforkids/screens/Teacher/Temp.dart';
+import 'package:mathforkids/screens/services/database.dart';
 import 'package:mathforkids/utils/Imports.dart';
 import 'package:mathforkids/screens/services/auth.dart';
 import 'package:mathforkids/ChangeTheme.dart';
@@ -270,7 +271,11 @@ class TakeQuizPage extends State<takeQuizPageState>{
               child: Text("Submit"),
               onPressed: () {
                 if(activerole == 'Student'){
-
+                  DatabaseService().saveResult(Results.length.toString(), score.toString(), GlobQL['info']['Code'], Results);
+                  Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => studentresultPageState()), (route) => false);
+                }
+                else{
+                  Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => teacherPageState()), (route) => false);
                 }
               },
             ),
