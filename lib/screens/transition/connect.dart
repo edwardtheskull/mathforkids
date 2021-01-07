@@ -74,7 +74,7 @@ class ConnectPage extends State<connectPageState>{
         ),
         body:  SingleChildScrollView(
           child: Center(
-            child: Container(width: MediaQuery.of(context).size.width*0.8, height: SizeConfig.screenHeight,
+            child: Container(width: MediaQuery.of(context).size.width*0.8, height: SizeConfig.SmallScreenHeight,
               child: Column(mainAxisAlignment: MainAxisAlignment.center,
                 children: [Row(children: [
                   Expanded(child: Padding(

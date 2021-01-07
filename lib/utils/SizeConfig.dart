@@ -128,20 +128,35 @@ class SizeConfig {
          SpecTestScreenHeight = ScreenHeight * 0.60;
          AppBarSize = MediaQuery.of(context).size.height/12;
     }
-    else if(ShortestLength < 350)
+    else if(ShortestLength < 350 && LongestLength < 500)
     {
-          SmallButtonWidth = MediaQuery.of(context).size.width/1.8;
-          ScreenHeight = (MediaQuery.of(context).size.height)*1.17;
-          SmallScreenHeight = ScreenHeight * 0.7;
-          SmallWindowHeight = SmallScreenHeight/1.6;
-          SecondSmallWindowHeight = SmallScreenHeight/3.3;
-          XSScreenHeight = ScreenHeight * 0.13;
-          XSHalfScreenSize = (SmallWindowHeight*1.25)/1.3;
-          HalfScreenHeight = ScreenHeight * 0.39;
-          SpecTestScreenHeight = ScreenHeight * 0.60;
-          SmallButtonWidth = MediaQuery.of(context).size.width/2.5;
-          AppBarSize = MediaQuery.of(context).size.height/10;
-          TextFieldFontSize = safeBlockHorizontal*5;
+        SmallButtonWidth = MediaQuery.of(context).size.width/1.8;
+        ScreenHeight = (MediaQuery.of(context).size.height)*1.17;
+        SmallScreenHeight = ScreenHeight * 0.7;
+        SmallWindowHeight = SmallScreenHeight/1.6;
+        SecondSmallWindowHeight = SmallScreenHeight/3.3;
+        XSScreenHeight = ScreenHeight * 0.13;
+        XSHalfScreenSize = (SmallWindowHeight*1.25)/1.3;
+        HalfScreenHeight = ScreenHeight * 0.39;
+        SpecTestScreenHeight = ScreenHeight * 0.60;
+        SmallButtonWidth = MediaQuery.of(context).size.width/2.5;
+        AppBarSize = MediaQuery.of(context).size.height/10;
+        TextFieldFontSize = safeBlockHorizontal*5;
+    }
+     else if(ShortestLength < 350)
+     {
+              SmallButtonWidth = MediaQuery.of(context).size.width/1.8;
+              ScreenHeight = (MediaQuery.of(context).size.height)*1.17;
+              SmallScreenHeight = ScreenHeight * 0.7;
+              SmallWindowHeight = SmallScreenHeight/1.6;
+              SecondSmallWindowHeight = SmallScreenHeight/3.3;
+              XSScreenHeight = ScreenHeight * 0.13;
+              XSHalfScreenSize = (SmallWindowHeight*1.25)/1.3;
+              HalfScreenHeight = ScreenHeight * 0.39;
+              SpecTestScreenHeight = ScreenHeight * 0.60;
+              SmallButtonWidth = MediaQuery.of(context).size.width/2.5;
+              AppBarSize = MediaQuery.of(context).size.height/10;
+              TextFieldFontSize = safeBlockHorizontal*5;
     }
     else if(LongestLength > 1000)
     {
