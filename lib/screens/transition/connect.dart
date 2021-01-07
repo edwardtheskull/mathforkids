@@ -108,7 +108,8 @@ class ConnectPage extends State<connectPageState>{
                             padding: const EdgeInsets.all(10.0),
                             child: RaisedButton(elevation: 3,
                               onPressed: () async {
-                                if (await DatabaseService().buildQuizFromDb(inputfield.text)) {
+                                bool b = await DatabaseService().buildQuizFromDb(inputfield.text);
+                                if (b) {
                                   Navigator.push(context, new MaterialPageRoute(builder: (context) => new takeQuizPageState()));
                                 } else {
                                   return showDialog(
