@@ -346,8 +346,6 @@ class CustomQuestion extends StatelessWidget{
     );
   }}
 
-<<<<<<< Updated upstream
-=======
 
 class CustomPair extends StatelessWidget{
   final bool isSelected;
@@ -387,7 +385,7 @@ class CustomPair extends StatelessWidget{
                         padding: const EdgeInsets.all(8.0),
                         child: new Text(
                           "Alternative ${nr}",
-                          style: TextStyle(
+                          style: TextStyle(fontSize: SizeConfig.TextFieldFontSize,
                               color: isSelected ? Colors.grey[800] : setTheme.accentColor),
                         ),
                       ),
@@ -400,7 +398,7 @@ class CustomPair extends StatelessWidget{
                     text,
                     style: TextStyle(
                         color: isSelected ? Colors.grey[800] : setTheme.accentColor,
-                        fontSize: 13),
+                        fontSize: SizeConfig.TextFieldFontSize),
                   ),
                 ),
               ],
@@ -409,4 +407,4 @@ class CustomPair extends StatelessWidget{
         )
     );
   }}
->>>>>>> Stashed changes
+
