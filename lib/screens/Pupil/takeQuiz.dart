@@ -93,7 +93,7 @@ class TakeQuizPage extends State<takeQuizPageState>{
             children: [
               Container(
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 6),
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 6),
                   child: Text(GlobQL['info']['Name'], style: TextStyle(
                       fontSize: SizeConfig.HeaderTextFontSize,
                       fontFamily: "Architect", fontWeight: FontWeight.bold,
