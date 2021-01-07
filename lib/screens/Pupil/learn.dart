@@ -1,5 +1,5 @@
 import 'package:mathforkids/utils/Imports.dart';
-import 'package:mathforkids/ChangeTheme.dart';
+import 'file:///C:/Users/Gabriel/AndroidStudioProjects/mathforkids/lib/utils/ChangeTheme.dart';
 
 class learnPageState extends StatefulWidget{
   @override

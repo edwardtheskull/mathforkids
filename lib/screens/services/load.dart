@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:mathforkids/ChangeTheme.dart';
+import 'file:///C:/Users/Gabriel/AndroidStudioProjects/mathforkids/lib/utils/ChangeTheme.dart';
 
 class Loading extends StatelessWidget {
   @override

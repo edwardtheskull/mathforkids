@@ -1,5 +1,5 @@
 import 'package:mathforkids/main.dart';
-import 'package:mathforkids/screens/Pupil/teacherquizzes.dart';
+import 'file:///C:/Users/Gabriel/AndroidStudioProjects/mathforkids/lib/screens/Teacher/teacherquizzes.dart';
 import 'package:mathforkids/utils/Imports.dart';
 
 
