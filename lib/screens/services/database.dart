@@ -42,11 +42,28 @@ class DatabaseService {
       });
       order++;
     });
+    addToCreatedQuizzes(name, (10000+num).toString());
     GlobQL.clear();
     return await Firestore.instance.collection('quiz').document((10000+num).toString()).setData({
       'code': (10000+num).toString(),
       'name': name,
     });
+  }
+
+  Future buildLearnList(String type) async {
+    GlobQL.clear();
+    var db = await Firestore.instance.collection('quiz').document('quizzes').collection(type).getDocuments();
+    var docs = db.documents;
+    GlobQL['Quizzes'] = new Map<String,String>();
+    docs.forEach((element) {
+      (GlobQL['Quizzes'])[element['code']] = element['name'];
+    });
+  }
+
+  Future addToCreatedQuizzes(String name, String id) async {
+    return await Firestore.instance.collection('users').document(useid).collection('created').document('quizzes').setData({
+      id: name,
+    }, merge : true);
   }
 
   Future createQuestion(int num, String k, String v, int order) async {
@@ -93,6 +110,15 @@ class DatabaseService {
       (GlobQL[element.documentID])['Code'] = element.documentID;
       (GlobQL[element.documentID])['Max'] = element.data['max'];
       (GlobQL[element.documentID])['Result'] = element.data['result'];
+    });
+  }
+
+  Future getCreatedQuizzes() async {
+    GlobQL.clear();
+    var db = await Firestore.instance.collection('users').document(useid).collection('created').document('quizzes').get();
+    GlobQL['Quizzes'] = new Map<String, String>();
+    db.data.forEach((k, v) {
+      (GlobQL['Quizzes'])[k] = v;
     });
   }
 
