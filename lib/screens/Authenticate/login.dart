@@ -171,8 +171,9 @@ class LoginPage extends State<loginPageState>{
                                         print('signed in');
                                         print(res.uid);
                                         //DatabaseService().createQuiz('quizz22', new Map());
-                                        var role = await DatabaseService().getRole(textname.text);
+                                        var role = await DatabaseService().getRole(res.uid);
                                         activerole = role;
+                                        useid = res.uid;
                                         if(role == 'Teacher')
                                           Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherPageState()));
                                         else

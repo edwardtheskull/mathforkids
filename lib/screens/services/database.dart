@@ -10,11 +10,11 @@ class DatabaseService {
   final CollectionReference mathCollection = Firestore.instance.collection('users');
 
   Future<bool> buildQuizFromDb(String code) async {
-    GlobQL.clear();
     var qui = await Firestore.instance.document('quiz/'+code).get();
     if (qui.data == null) {
       return false;
     }
+    GlobQL.clear();
     GlobQL['info'] = new Map<String, String>();
     (GlobQL['info'])['Name'] = qui.data['name'];
     (GlobQL['info'])['Code'] = qui.data['code'];
@@ -64,10 +64,19 @@ class DatabaseService {
   }
 
   Future saveResult(String max, String result, String quizzId, Map<String, String> answers) async {
+    for (int i = 1; i <= answers.length; i++) {
+      saveResultSpecifics(quizzId, 'Q'+i.toString(), answers['Q'+i.toString()]);
+    }
     return Firestore.instance.collection('users').document(uid).collection('results').document(quizzId).setData({
       'max': max,
       'result': result,
     });
+  }
+
+  Future saveResultSpecifics(String quizzId, String k, String v) async {
+    return await Firestore.instance.collection('quiz').document(uid).collection('results').document(quizzId).collection('answers').document('specifics').setData({
+      k: v,
+    }, merge : true);
   }
 
   //user
@@ -95,14 +104,7 @@ class DatabaseService {
   }
 
   Future<String> getRole(String un) async {
-    var role;
-    QuerySnapshot qs = await mathCollection.getDocuments();
-    var list = qs.documents;
-    list.forEach((r) {
-      if (r.data['username'] == un) {
-        role = r.data['role'];
-      }
-    });
-    return role;
+    DocumentSnapshot qs = await mathCollection.document(un).get();
+    return qs.data['role'];
   }
 }
