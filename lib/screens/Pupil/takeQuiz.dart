@@ -1,13 +1,13 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:mathforkids/main.dart';
-import 'file:///C:/Users/Gabriel/AndroidStudioProjects/mathforkids/lib/screens/Teacher/teacherquizzes.dart';
+import 'package:mathforkids/screens/Teacher/teacherquizzes.dart';
 import 'package:mathforkids/screens/Teacher/Temp.dart';
 import 'package:mathforkids/screens/services/database.dart';
 import 'package:mathforkids/utils/Imports.dart';
 import 'package:mathforkids/screens/services/auth.dart';
-import 'file:///C:/Users/Gabriel/AndroidStudioProjects/mathforkids/lib/utils/ChangeTheme.dart';
-import 'file:///C:/Users/Gabriel/AndroidStudioProjects/mathforkids/lib/utils/Constants.dart';
+import 'package:mathforkids/utils/ChangeTheme.dart';
+import 'package:mathforkids/utils/Constants.dart';
 import 'package:mathforkids/screens/Pupil/data.dart';
 import 'package:mathforkids/screens/Pupil/testInfo.dart';
 import 'package:mathforkids/screens/Teacher/Temp.dart';

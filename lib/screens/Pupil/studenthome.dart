@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mathforkids/main.dart';
 import 'package:mathforkids/utils/Imports.dart';
 import 'package:mathforkids/screens/services/auth.dart';
-import 'file:///C:/Users/Gabriel/AndroidStudioProjects/mathforkids/lib/utils/ChangeTheme.dart';
-import 'file:///C:/Users/Gabriel/AndroidStudioProjects/mathforkids/lib/utils/Constants.dart';
+import 'package:mathforkids/utils/ChangeTheme.dart';
+import 'package:mathforkids/utils/Constants.dart';
 
 class studentPageState extends StatefulWidget{
   @override

@@ -1,8 +1,5 @@
-import 'package:flutter/gestures.dart';
 import 'package:mathforkids/screens/Pupil/takeQuiz.dart';
-import 'package:mathforkids/screens/Teacher/Temp.dart';
 import 'package:mathforkids/utils/Imports.dart';
-import 'file:///C:/Users/Gabriel/AndroidStudioProjects/mathforkids/lib/utils/ChangeTheme.dart';
 import 'package:mathforkids/screens/services/database.dart';
 import 'package:mathforkids/screens/services/loggedinuser.dart';
 
