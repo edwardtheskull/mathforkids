@@ -2,6 +2,8 @@ import 'package:mathforkids/main.dart';
 import 'package:mathforkids/screens/Teacher/teacherquizzes.dart';
 import 'package:mathforkids/utils/Imports.dart';
 
+import 'Temp.dart';
+
 
 class teacherPageState extends StatefulWidget{
   @override
@@ -74,6 +76,7 @@ class teacherPage extends State<teacherPageState>{
                   child: ButtonTheme(minWidth: SizeConfig.ButtonWidth, height: SizeConfig.ButtonHeight,
                     child: RaisedButton(elevation: 3,
                       onPressed: (){
+                        GlobQL.clear();
                         Navigator.push(context, new MaterialPageRoute(builder: (context) => new createquizPageState()));
                       },
                       color: setTheme.buttonColor,

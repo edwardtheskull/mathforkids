@@ -65,11 +65,12 @@ class DatabaseService {
   }
 
   Future getQuizResults(String quizzId) async{
-    var db = await Firestore.instance.document('users'+useid+'/results'+quizzId+'/answers/specifics').get();
-
+    var db = await Firestore.instance.document('users/'+useid+'/results/'+quizzId+'/answers/specifics').get();
+    GlobQL['Specifics'].clear();
     db.data.forEach((k, v) {
       (GlobQL['Specifics'])[k] = v;
     });
+    GlobQL['Questions'].clear();
 
     var db1 = await Firestore.instance.collection('quiz/'+quizzId+'/questions').getDocuments();
     var m = db1.documents;
@@ -83,6 +84,8 @@ class DatabaseService {
     var db = await Firestore.instance.collection('users').document(useid).collection('results').getDocuments();
     var res = db.documents;
     GlobQL.clear();
+    GlobQL['Questions'] = new Map<String, String>();
+    GlobQL['Specifics'] = new Map<String, String>();
 
     res.forEach((element) {
       GlobQL[element.documentID] = new Map<String, String>();

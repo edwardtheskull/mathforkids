@@ -1,20 +1,18 @@
-import 'package:mathforkids/screens/Pupil/data.dart';
+import 'package:mathforkids/screens/Teacher/Temp.dart';
 import 'package:mathforkids/utils/Imports.dart';
 import 'package:mathforkids/screens/Pupil/testInfo.dart';
 import 'package:mathforkids/utils/Imports.dart';
 
 class specTestResultState extends StatefulWidget {
-  final TestInfo tests;
-  specTestResultState({Key key, @required this.tests,}) : super(key: key);
-
+  final String quizzId;
+  specTestResultState({Key key, @required this.quizzId,}) : super(key: key);
   @override
-  specTestPage createState() => specTestPage(tests);
-
+  specTestPage createState() => specTestPage(quizzId);
 }
 
 class specTestPage extends State<specTestResultState> {
-  TestInfo tests;
-  specTestPage(this.tests);
+  String quizzId;
+  specTestPage(this.quizzId);
   @override
   String header = "Math for Kids";
   Widget build(BuildContext context) {
@@ -71,57 +69,40 @@ class specTestPage extends State<specTestResultState> {
                 Container(
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(0, 20, 0, 6),
-                    child: Text("${tests.testName}", style: TextStyle(
+                    child: Text("${GlobQL[quizzId]['Name'].toString()}", style: TextStyle(
                         fontSize: SizeConfig.HeaderTextFontSize,
                         fontFamily: "Architect", fontWeight: FontWeight.bold,
                         color: setTheme.accentColor),),
                   ),
                 ),
                 Container(height: SizeConfig.SpecTestScreenHeight,
-                  child: MyDynamicList(),
+                  child: MyDynamicList(context),
                 ),
               ],
             )
         ),
     );
   }
-}
-class MyDynamicList extends StatelessWidget{
-  @override
-  Widget build(BuildContext context) {
-    if (questions.length > 0) {
+  Widget MyDynamicList(BuildContext context){
+    if (GlobQL['Questions'].length > 0) {
       return ListView.builder(
-        itemCount: questions.length,
+        itemCount: GlobQL['Questions'].length,
         itemBuilder: (context, index) {
           return Container(
             child: InkWell(
-              child: Container(
+                child: Container(
                   child: Card(
                       color: setTheme.scaffoldBackgroundColor,
-
                       child: ListTile(
-                          hoverColor: Colors.blue,
-                          leading: questions[index].whatIcon(questions[index].stdAnswer),
-                          title: Text(questions[index].name, style: TextStyle(
+                          leading: CircleAvatar(
+                            backgroundColor: (GlobQL['Specifics']['Q'+(index+1).toString()] == 'true') ? Colors.green : Colors.red,
+                          ),
+                          title: Text(GlobQL['Questions']['Q'+(index+1).toString()], style: TextStyle(
                               color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
-                          subtitle: Text("${questions[index].qst}=${questions[index].stdAnswer}", style: TextStyle(
-                              color: setTheme.accentColor, fontSize: SizeConfig.XSMiniTextFontSize)),
-                          trailing: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              InkWell(
-                                  child: Text(
-                                    questions[index].trailer,
-                                    style: TextStyle(
-                                        color: Colors.green, fontSize: SizeConfig.MiniTextFontSize),
-                                  ),
-                                  ),
-                            ],
-                          )
                       )
                   ),
                 ),
-                onTap: () {showDialog(
+                /*onTap: () {showDialog(
                     context: context,
                     builder: (context){
                       return AlertDialog(
@@ -132,12 +113,11 @@ class MyDynamicList extends StatelessWidget{
                           FlatButton(onPressed: ()=> Navigator.pop(context), child: Text("close"))
                         ],
                       );
-                    });}
-              ),
-            );
+                    });}*/
+            ),
+          );
         },
       );
     }
   }
 }
-

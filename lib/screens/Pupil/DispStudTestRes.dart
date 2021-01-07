@@ -1,8 +1,8 @@
-import 'package:mathforkids/screens/Pupil/data.dart';
 import 'package:mathforkids/screens/Pupil/testInfo.dart';
+import 'package:mathforkids/screens/Teacher/Temp.dart';
+import 'package:mathforkids/screens/services/database.dart';
 import 'package:mathforkids/utils/Imports.dart';
 import 'specTestResult.dart';
-import 'package:mathforkids/screens/Pupil/data.dart';
 import 'package:mathforkids/screens/Pupil/testInfo.dart';
 
 class DispStudTestResState extends StatefulWidget {
@@ -65,62 +65,18 @@ class dispResultPage extends State<DispStudTestResState> {
             child: Container(height:SizeConfig.screenHeight,
               child: Column(
                 children: [
-                    Container(
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 20, 0, 6),
-                        child: Text("Most Recent quiz", style: TextStyle(
-                            fontSize: SizeConfig.HeaderTextFontSize,
-                            fontFamily: "Architect", fontWeight: FontWeight.bold,
-                            color: setTheme.accentColor),),
-                      ),
-                    ),
                   Container(
-                    child: InkWell(
-                      child: Container(height:SizeConfig.XSScreenHeight,
-                        child: ListView.builder(
-                          itemCount: 1,
-                          itemBuilder: (context, index,){
-                            return Card(
-                                color: setTheme.scaffoldBackgroundColor,
-
-                                child: ListTile(
-                                    hoverColor: Colors.blue,
-                                    leading: tests.last.whatIcon(tests.last.studP),
-                                    title: Text(tests.last.testName, style: TextStyle(
-                                        color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
-                                    subtitle: Text(tests.last.date, style: TextStyle(
-                                        color: setTheme.accentColor, fontSize: SizeConfig.XSMiniTextFontSize)),
-                                    trailing: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              Text(
-                                                "${tests.last.studP}/${tests.last.maxP}",
-                                                style: TextStyle(
-                                                    color: Colors.green, fontSize: SizeConfig.MiniTextFontSize),
-                                              ),
-                                            ],
-                                    )
-                                )
-                            );
-                          },
-                          ),
-                      ),
-                        onTap: () {Navigator.push(context, new MaterialPageRoute(builder: (context) => new specTestResultState(tests: tests.last)));}
-                    ),
-                  ),
-                    Container(
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 20, 0, 6),
-                        child: Text("earlier quizzes", style: TextStyle(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 20, 0, 6),
+                      child: Text("Earlier quizzes", style: TextStyle(
                           fontSize: SizeConfig.HeaderTextFontSize,
                           fontFamily: "Architect", fontWeight: FontWeight.bold,
                           color: setTheme.accentColor),),
                     ),
                   ),
-                    Container(height:SizeConfig.HalfScreenHeight,
-                        child: MyDynamicList()
-                    ),
-
+                  Container(height:SizeConfig.HalfScreenHeight,
+                      child: MyDynamicList()
+                  ),
                 ],
               ),
             )
@@ -132,9 +88,9 @@ class dispResultPage extends State<DispStudTestResState> {
 class MyDynamicList extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    if (tests.length > 0) {
+    if (GlobQL.length > 0) {
       return ListView.builder(
-        itemCount: tests.length,
+        itemCount: GlobQL.length-2,
         itemBuilder: (context, index) {
           return Container(
             child: InkWell(
@@ -143,16 +99,16 @@ class MyDynamicList extends StatelessWidget{
                   color: setTheme.scaffoldBackgroundColor,
                   child: ListTile(
                       hoverColor: Colors.blue,
-                      leading: tests[index].whatIcon(tests[index].studP),
-                      title: Text(tests[index].testName, style: TextStyle(
+                      leading: CircleAvatar(
+                        backgroundColor: (GlobQL.values.toList()[index+2]['Max'] == GlobQL.values.toList()[index+2]['Result']) ? Colors.green : Colors.red,
+                      ),
+                      title: Text(GlobQL.values.toList()[index+2]['Name'].toString(), style: TextStyle(
                           color: setTheme.accentColor, fontSize: SizeConfig.MiniTextFontSize)),
-                      subtitle: Text(tests[index].date, style: TextStyle(
-                          color: setTheme.accentColor, fontSize: SizeConfig.XSMiniTextFontSize)),
                       trailing: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            "${tests[index].studP}/${tests[index].maxP}",
+                            "${GlobQL.values.toList()[index+2]['Result']}/${GlobQL.values.toList()[index+2]['Max']}",
                             style: TextStyle(
                                 color: Colors.green, fontSize: SizeConfig.MiniTextFontSize),
                           ),
@@ -161,7 +117,9 @@ class MyDynamicList extends StatelessWidget{
                   )
                 ),
               ),
-                onTap: () {Navigator.push(context, new MaterialPageRoute(builder: (context) => new specTestResultState(tests: tests.last)));}),
+                onTap: () async{
+                await DatabaseService().getQuizResults(GlobQL.values.toList()[index+2]['Code']);
+                Navigator.push(context, new MaterialPageRoute(builder: (context) => new specTestResultState(quizzId: GlobQL.values.toList()[index+2]['Code'])));}),
           );
         },
       );

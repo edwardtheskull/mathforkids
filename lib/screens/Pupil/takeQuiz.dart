@@ -8,20 +8,14 @@ import 'package:mathforkids/utils/Imports.dart';
 import 'package:mathforkids/screens/services/auth.dart';
 import 'package:mathforkids/utils/ChangeTheme.dart';
 import 'package:mathforkids/utils/Constants.dart';
-import 'package:mathforkids/screens/Pupil/data.dart';
 import 'package:mathforkids/screens/Pupil/testInfo.dart';
 import 'package:mathforkids/screens/Teacher/Temp.dart';
 import 'package:mathforkids/screens/services/loggedinuser.dart';
-
-
-
 
 class takeQuizPageState extends StatefulWidget{
   @override
   TakeQuizPage createState() => TakeQuizPage();
 }
-
-
 
 class TakeQuizPage extends State<takeQuizPageState>{
   final AuthService _auth = AuthService();
@@ -247,14 +241,12 @@ class TakeQuizPage extends State<takeQuizPageState>{
             nr++;
             print(GlobQL['Q'+i.toString()]['Answer'+j.toString()]);
           }
-
         }
 
         if(((GlobQL['Q'+i.toString()].length - 2)/2).toInt() == nr){
           Results['Q'+i.toString()] = 'true';
           score++;
         }
-
         else{
           Results['Q'+i.toString()] = 'false';
         }
@@ -272,10 +264,10 @@ class TakeQuizPage extends State<takeQuizPageState>{
             Text("${score.toString()} / ${GlobQL.length - 1}"),
             FlatButton(
               child: Text("Submit"),
-              onPressed: () {
+              onPressed: () async{
                 if(activerole == 'Student'){
-                  DatabaseService().saveResult(Results.length.toString(), score.toString(), GlobQL['info']['Code'], GlobQL['info']['Name'], Results);
-                  GlobQL.clear();
+                  await DatabaseService().saveResult(Results.length.toString(), score.toString(), GlobQL['info']['Code'], GlobQL['info']['Name'], Results);
+                  await DatabaseService().getPrevResults();
                   Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => DispStudTestResState()), (route) => false);
                 }
                 else{
@@ -354,3 +346,67 @@ class CustomQuestion extends StatelessWidget{
     );
   }}
 
+<<<<<<< Updated upstream
+=======
+
+class CustomPair extends StatelessWidget{
+  final bool isSelected;
+  final String text;
+  final VoidCallback onTap;
+  final int nr;
+
+  const CustomPair({
+    this.isSelected,
+    this.text,
+    this.onTap,
+    this.nr
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+        onTap: onTap,
+        child: Container(
+          child: Card(
+            color: isSelected ? setTheme.accentColor : Colors.red,
+            semanticContainer: true,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            margin: new EdgeInsets.all(0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+
+                    Padding(
+                      padding:
+                      EdgeInsets.only(top: 0, right: 0, bottom: 20, left: 0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: new Text(
+                          "Alternative ${nr}",
+                          style: TextStyle(
+                              color: isSelected ? Colors.grey[800] : setTheme.accentColor),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Text(
+                    text,
+                    style: TextStyle(
+                        color: isSelected ? Colors.grey[800] : setTheme.accentColor,
+                        fontSize: 13),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        )
+    );
+  }}
+>>>>>>> Stashed changes

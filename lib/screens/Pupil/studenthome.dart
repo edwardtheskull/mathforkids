@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mathforkids/main.dart';
+import 'package:mathforkids/screens/Teacher/Temp.dart';
+import 'package:mathforkids/screens/services/database.dart';
 import 'package:mathforkids/utils/Imports.dart';
 import 'package:mathforkids/screens/services/auth.dart';
 import 'package:mathforkids/utils/ChangeTheme.dart';
@@ -74,7 +76,8 @@ class StudentPage extends State<studentPageState>{
                 padding: const EdgeInsets.only(top: 20),
                 child: ButtonTheme(minWidth: SizeConfig.ButtonWidth, height: SizeConfig.ButtonHeight,
                   child: RaisedButton(elevation: 3,
-                    onPressed: (){
+                    onPressed: () async{
+                      await DatabaseService().getPrevResults();
                       Navigator.push(context, new MaterialPageRoute(builder: (context) => new DispStudTestResState()));
                     },
                     color: setTheme.buttonColor,

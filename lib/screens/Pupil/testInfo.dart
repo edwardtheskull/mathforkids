@@ -1,7 +1,4 @@
 import 'package:mathforkids/utils/Imports.dart';
-import 'package:mathforkids/screens/Pupil/data.dart';
-
-
 
 class TestInfo{
   String type;
@@ -30,8 +27,6 @@ class TestInfo{
       backgroundColor: Colors.red,
     );
   }
-
-
 }
 
 class Questions{
@@ -59,6 +54,4 @@ class Questions{
       backgroundColor: Colors.red,
     );
   }
-
-
 }
