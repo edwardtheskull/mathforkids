@@ -178,16 +178,16 @@ class SizeConfig {
           LargeButtonTextSize = 80;
           SmallIconSize = 40;
           SmallButtonWidth = MediaQuery.of(context).size.width/2.5;
-          ScreenHeight = MediaQuery.of(context).size.height*0.73;
+          ScreenHeight = MediaQuery.of(context).size.height*.85;
           SecondScreenHeight = ScreenHeight;
           SmallScreenHeight = ScreenHeight;
           SmallWindowHeight = SmallScreenHeight/2.1;
-          SecondSmallWindowHeight = SmallWindowHeight/0.5;
+          SecondSmallWindowHeight = SmallWindowHeight*1.48;
           XSScreenHeight = ScreenHeight * 0.13;
           XSSH = XSScreenHeight;
-          XSHalfScreenSize = SmallWindowHeight*2;
-          HalfScreenHeight = ScreenHeight*0.55;
-          SpecTestScreenHeight = ScreenHeight * 0.80;
+          XSHalfScreenSize = SmallWindowHeight*1.75;
+          HalfScreenHeight = ScreenHeight*0.78;
+          SpecTestScreenHeight = ScreenHeight;
           AppBarSize = MediaQuery.of(context).size.height/18;
           TextFieldFontSize = safeBlockHorizontal*3;
 
