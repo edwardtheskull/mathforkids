@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mathforkids/screens/Authenticate/user.dart';
 import 'package:mathforkids/screens/Teacher/Temp.dart';
 import 'package:mathforkids/utils/Imports.dart';
+import 'package:mathforkids/screens/services/loggedinuser.dart';
 
 class DatabaseService {
   final String uid;
@@ -67,14 +68,14 @@ class DatabaseService {
     for (int i = 1; i <= answers.length; i++) {
       saveResultSpecifics(quizzId, 'Q'+i.toString(), answers['Q'+i.toString()]);
     }
-    return Firestore.instance.collection('users').document(uid).collection('results').document(quizzId).setData({
+    return Firestore.instance.collection('users').document(useid).collection('results').document(quizzId).setData({
       'max': max,
       'result': result,
     });
   }
 
   Future saveResultSpecifics(String quizzId, String k, String v) async {
-    return await Firestore.instance.collection('quiz').document(uid).collection('results').document(quizzId).collection('answers').document('specifics').setData({
+    return await Firestore.instance.collection('quiz').document(useid).collection('results').document(quizzId).collection('answers').document('specifics').setData({
       k: v,
     }, merge : true);
   }
