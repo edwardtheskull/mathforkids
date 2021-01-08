@@ -165,7 +165,6 @@ class LoginPage extends State<loginPageState>{
                                         });
                                         setState(() => load = false);
                                       } else {
-                                        //DatabaseService().createQuiz('quizz22', new Map());
                                         var role = await DatabaseService().getRole(res.uid);
                                         activerole = role;
                                         useid = res.uid;

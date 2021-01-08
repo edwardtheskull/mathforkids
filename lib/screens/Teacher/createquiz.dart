@@ -206,14 +206,13 @@ class createquizPage extends State<createquizPageState>{
           FlatButton(
             child: Text("YES"),
               onPressed: () async {
-              //Put your code here which you want to execute on Yes button click.
-              await DatabaseService().createQuiz(_controller.text, GlobQL);
-              iterator = 0;
-              QuizName = '';
-              _controller.text = '';
-              await DatabaseService().getCreatedQuizzes();
-              Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherQuizzesPageState()));
-            },
+                await DatabaseService().createQuiz(_controller.text, GlobQL);
+                iterator = 0;
+                QuizName = '';
+                _controller.text = '';
+                await DatabaseService().getCreatedQuizzes();
+                Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherQuizzesPageState()));
+              },
           ),
 
           FlatButton(
