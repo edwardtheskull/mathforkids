@@ -20,6 +20,7 @@ class teacherQuizzesPage extends State<teacherQuizzesPageState> {
             iconSize: SizeConfig.SmallIconSize,
             onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherPageState())),
           ),
+          iconTheme: IconThemeData(color:setTheme.accentColor),
           backgroundColor: setTheme.primaryColor,
           title: Text(
             header,
@@ -27,6 +28,7 @@ class teacherQuizzesPage extends State<teacherQuizzesPageState> {
               fontSize: SizeConfig.AppbarFontSize,
               fontFamily: "Architect",
               fontWeight: FontWeight.bold,
+                color:setTheme.accentColor
             ),
           ),
           centerTitle:true,
@@ -49,7 +51,7 @@ class teacherQuizzesPage extends State<teacherQuizzesPageState> {
                 return Constants.choices.map((choice){
                   return PopupMenuItem<String>(
                     value: choice,
-                    child: Text(choice),
+                    child: Text(choice, style: TextStyle(color: setTheme.accentColor)),
                   );
                 }).toList();
               },

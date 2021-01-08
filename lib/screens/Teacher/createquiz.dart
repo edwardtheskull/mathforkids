@@ -183,6 +183,7 @@ class createquizPage extends State<createquizPageState>{
               await DatabaseService().createQuiz(_controller.text, GlobQL);
               iterator = 0;
               QuizName = '';
+              _controller.text = '';
               await DatabaseService().getCreatedQuizzes();
               Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherQuizzesPageState()));
             },
