@@ -63,7 +63,6 @@ class teacherQuizzesPage extends State<teacherQuizzesPageState> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
-
           children: [
             Container(
             child: Padding(
