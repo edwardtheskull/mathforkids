@@ -107,6 +107,7 @@ class ConnectPage extends State<connectPageState>{
                             padding: const EdgeInsets.all(10.0),
                             child: RaisedButton(elevation: 3,
                               onPressed: () async {
+                              if(inputfield.text.isNotEmpty){
                                 bool b = await DatabaseService().buildQuizFromDb(inputfield.text);
                                 if (b) {
                                   Navigator.push(context, new MaterialPageRoute(builder: (context) => new takeQuizPageState()));
@@ -124,6 +125,7 @@ class ConnectPage extends State<connectPageState>{
                                     ),
                                   ) ?? false;
                                   inputfield.clear();
+                                  }
                                 }
                               },
                               color: setTheme.buttonColor,
