@@ -39,6 +39,7 @@ class SizeConfig {
   static double SecondSmallWindowHeight;
   static double SecondScreenHeight;
   static double XSSH;
+  static double TeacherPageHeight;
 
   double ShortestLength;
   double LongestLength;
@@ -105,6 +106,7 @@ class SizeConfig {
         HalfScreenHeight = ScreenHeight * 0.60;
         SpecTestScreenHeight = ScreenHeight * 0.81;
         AppBarSize = MediaQuery.of(context).size.height/12;
+        TeacherPageHeight = ScreenHeight * 0.81;
 
     }
       else if(ShortestLength < 650 && ShortestLength > 470 && LongestLength > 800)
@@ -120,6 +122,7 @@ class SizeConfig {
             HalfScreenHeight = ScreenHeight * 0.6;
             SpecTestScreenHeight = ScreenHeight * 0.83;
             AppBarSize = MediaQuery.of(context).size.height/12;
+                 TeacherPageHeight = ScreenHeight * 0.83;
 
         }
     else if(ShortestLength < 650 && ShortestLength > 470)
@@ -135,6 +138,7 @@ class SizeConfig {
         HalfScreenHeight = ScreenHeight * 0.6;
         SpecTestScreenHeight = ScreenHeight * 0.83;
         AppBarSize = MediaQuery.of(context).size.height/12;
+             TeacherPageHeight = ScreenHeight * 0.83;
 
     }
      else if(ShortestLength < 600 && ShortestLength > 365 && LongestLength < 600)
@@ -150,6 +154,7 @@ class SizeConfig {
                 HalfScreenHeight = ScreenHeight * 0.4;
                 SpecTestScreenHeight = ScreenHeight * 0.60;
                 AppBarSize = MediaQuery.of(context).size.height/12;
+                     TeacherPageHeight = ScreenHeight * 0.70;
 
             }
      else if(ShortestLength < 650 && ShortestLength > 365)
@@ -165,6 +170,7 @@ class SizeConfig {
             HalfScreenHeight = ScreenHeight * 0.4;
             SpecTestScreenHeight = ScreenHeight * 0.60;
             AppBarSize = MediaQuery.of(context).size.height/12;
+                 TeacherPageHeight = ScreenHeight * 0.60;
 
         }
     else if(ShortestLength < 365 && ShortestLength > 350)
@@ -181,6 +187,7 @@ class SizeConfig {
          HalfScreenHeight = ScreenHeight * 0.4;
          SpecTestScreenHeight = ScreenHeight * 0.60;
          AppBarSize = MediaQuery.of(context).size.height/12;
+              TeacherPageHeight = ScreenHeight * 0.60;
     }
     else if(ShortestLength < 350 && LongestLength < 500)
     {
@@ -198,6 +205,7 @@ class SizeConfig {
         SmallButtonWidth = MediaQuery.of(context).size.width/2.5;
         AppBarSize = MediaQuery.of(context).size.height/10;
         TextFieldFontSize = safeBlockHorizontal*5;
+             TeacherPageHeight = ScreenHeight * 0.52;
     }
      else if(ShortestLength < 350)
      {
@@ -214,6 +222,7 @@ class SizeConfig {
           SmallButtonWidth = MediaQuery.of(context).size.width/2.5;
           AppBarSize = MediaQuery.of(context).size.height/10;
           TextFieldFontSize = safeBlockHorizontal*5;
+               TeacherPageHeight = ScreenHeight * 0.6;
     }
       else if(LongestLength > 1500)
         {
@@ -235,6 +244,7 @@ class SizeConfig {
               SpecTestScreenHeight = ScreenHeight;
               AppBarSize = MediaQuery.of(context).size.height/18;
               TextFieldFontSize = safeBlockHorizontal*3;
+                   TeacherPageHeight = ScreenHeight;
 
         }
     else if(LongestLength > 1000)
@@ -257,6 +267,7 @@ class SizeConfig {
           SpecTestScreenHeight = ScreenHeight;
           AppBarSize = MediaQuery.of(context).size.height/18;
           TextFieldFontSize = safeBlockHorizontal*3;
+               TeacherPageHeight = ScreenHeight;
 
     }
     else
@@ -279,6 +290,7 @@ class SizeConfig {
           SpecTestScreenHeight = ScreenHeight * 0.80;
           AppBarSize = MediaQuery.of(context).size.height/18;
           TextFieldFontSize = safeBlockHorizontal*3;
+               TeacherPageHeight = ScreenHeight * 0.80;
     }
   }
 }

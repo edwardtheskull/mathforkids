@@ -76,7 +76,7 @@ class teacherQuizzesPage extends State<teacherQuizzesPageState> {
                 ),
               ),
           ),
-            Container(height: SizeConfig.SpecTestScreenHeight,
+            Container(height: SizeConfig.TeacherPageHeight,
               child: TeachQuizzList(context),
             ),
           ],
