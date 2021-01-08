@@ -10,7 +10,7 @@ class createquestionPageState extends StatefulWidget {
   createquestionPage createState() =>new createquestionPage(Dropdownquestionvalue);
 }
 
-class createquestionPage extends State<createquestionPageState>{
+class createquestionPage extends State<createquestionPageState> {
   final formkey = GlobalKey<FormState>();
   String Dropdownquestionvalue;
   createquestionPage(this.Dropdownquestionvalue);
@@ -94,27 +94,55 @@ class createquestionPage extends State<createquestionPageState>{
                     Text('\nCheckbox indicates correct answer/answers', style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize)),
                     ..._getalternatives(),
                     RaisedButton(elevation: 5,
-                      onPressed: (){
-                        for(int i=0; i < MClist.length; i++){
-                          if(i==0){
-                            QA['Type'] = Dropdownquestionvalue.toString();
+                      onPressed: () {
+                        bool b = true;
+                        if (_nameController.text.isEmpty){ b = false; }
+                        if (b) {
+                          for (int i = 0; i < MClist.length; i++) {
+                            if (MClist[i] == null || MClist[i].isEmpty) { b = false; break; }
                           }
-                            QA['Alternative'+i.toString()] = MClist[i].toString();
-                            QA['Answer'+i.toString()]  = Answers[i].toString();
                         }
-                        QA['Question'] = _nameController.text;
-                        GlobQL['Q'+iterator.toString()] = new Map<String, String>();
-                        QA.forEach((key, value) {
-                          (GlobQL['Q'+iterator.toString()])[key] = value;
-                        });
-                        iterator++;
-                        QA.clear();
-                        _nameController.clear();
-                        MClist.clear();
-                        Answers.clear();
-                        MClist = [null];
-                        Answers = [true];
-                        Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => createquizPageState()), (route) => false);
+                        if (b) {
+                          for (int i = 0; i < MClist.length; i++) {
+                            if (i == 0) {
+                              QA['Type'] = Dropdownquestionvalue.toString();
+                            }
+                            QA['Alternative' + i.toString()] =
+                                MClist[i].toString();
+                            QA['Answer' + i.toString()] = Answers[i].toString();
+                          }
+                          QA['Question'] = _nameController.text;
+                          GlobQL['Q' + iterator.toString()] =
+                              new Map<String, String>();
+                          QA.forEach((key, value) {
+                            (GlobQL['Q' + iterator.toString()])[key] = value;
+                          });
+                          iterator++;
+                          QA.clear();
+                          _nameController.clear();
+                          MClist.clear();
+                          Answers.clear();
+                          MClist = [null];
+                          Answers = [true];
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => createquizPageState()),
+                              (route) => false);
+                        } else {
+                          return showDialog(
+                            context: context,
+                            child: new AlertDialog(
+                              title: new Text('Please fill out all fields'),
+                              actions: <Widget>[
+                                new FlatButton(
+                                  onPressed: () => Navigator.of(context).pop(false),
+                                  child: new Text('Okay'),
+                                ),
+                              ],
+                            ),
+                          ) ?? false;
+                        }
                       },
                       color: setTheme.primaryColor,
                       child: Text("Save question", style: TextStyle(letterSpacing: 1,
@@ -191,18 +219,40 @@ class createquestionPage extends State<createquestionPageState>{
                       children: [
                         RaisedButton(elevation: 5,
                           onPressed: (){
-                          QA['Type'] = Dropdownquestionvalue.toString();
-                          QA['Answer'] = _nameController2.text;
-                          QA['Question'] = _nameController.text;
-                          GlobQL['Q'+iterator.toString()] = new Map<String, String>();
-                          QA.forEach((key, value) {
-                            (GlobQL['Q'+iterator.toString()])[key] = value;
-                          });
-                          iterator++;
-                          QA.clear();
-                          _nameController.clear();
-                          _nameController2.clear();
-                          Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => createquizPageState()), (route) => false);
+                          if (_nameController.text.isNotEmpty && _nameController2.text.isNotEmpty) {
+                              QA['Type'] = Dropdownquestionvalue.toString();
+                              QA['Answer'] = _nameController2.text;
+                              QA['Question'] = _nameController.text;
+                              GlobQL['Q' + iterator.toString()] =
+                                  new Map<String, String>();
+                              QA.forEach((key, value) {
+                                (GlobQL['Q' + iterator.toString()])[key] =
+                                    value;
+                              });
+                              iterator++;
+                              QA.clear();
+                              _nameController.clear();
+                              _nameController2.clear();
+                              Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          createquizPageState()),
+                                  (route) => false);
+                            } else {
+                              return showDialog(
+                                context: context,
+                                child: new AlertDialog(
+                                  title: new Text('Please enter a question and an answer'),
+                                  actions: <Widget>[
+                                    new FlatButton(
+                                      onPressed: () => Navigator.of(context).pop(false),
+                                      child: new Text('Okay'),
+                                    ),
+                                  ],
+                                ),
+                              ) ?? false;
+                            }
                           },
                           color: setTheme.primaryColor,
                           child: Text("Save question", style: TextStyle(letterSpacing: 1,

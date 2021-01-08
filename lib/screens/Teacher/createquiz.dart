@@ -150,7 +150,35 @@ class createquizPage extends State<createquizPageState>{
                         padding: const EdgeInsets.all(18.0),
                         child: RaisedButton(
                           onPressed: () async{
-                            confirmDialog(context);
+                            if (_controller.text.isEmpty) {
+                              return showDialog(
+                                context: context,
+                                child: new AlertDialog(
+                                  title: new Text('Please name your quiz'),
+                                  actions: <Widget>[
+                                    new FlatButton(
+                                      onPressed: () => Navigator.of(context).pop(false),
+                                      child: new Text('Okay'),
+                                    ),
+                                  ],
+                                ),
+                              ) ?? false;
+                            } else if (GlobQL.length != 0) {
+                              confirmDialog(context);
+                            } else {
+                              return showDialog(
+                                context: context,
+                                child: new AlertDialog(
+                                  title: new Text('Please add at least one question'),
+                                  actions: <Widget>[
+                                    new FlatButton(
+                                      onPressed: () => Navigator.of(context).pop(false),
+                                      child: new Text('Okay'),
+                                    ),
+                                  ],
+                                ),
+                              ) ?? false;
+                            }
                           },
                           color: setTheme.buttonColor,
                           child: Text("Create Quiz", style: TextStyle(
