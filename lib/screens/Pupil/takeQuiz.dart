@@ -40,17 +40,32 @@ class TakeQuizPage extends State<takeQuizPageState>{
         appBar: AppBar(
             leading: IconButton(icon: Icon(Icons.arrow_back),
                 iconSize: SizeConfig.SmallIconSize,
-                onPressed: () async {
-                  if(activerole == 'Teacher')
-                  {
-                    Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => teacherPageState()), (route) => false);
-                  }
-                  else
-                  {
-                    Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => studentPageState()), (route) => false);
-                  }
-                }
-            ),
+                onPressed: () {
+                  return showDialog(
+                    context: context,
+                    child: new AlertDialog(
+                      title: new Text('Are you sure you want to quit?'),
+                      content: new Text('Unsaved data will be lost.'),
+                      actions: <Widget>[
+                        new FlatButton(
+                          onPressed: () => Navigator.of(context).pop(false),
+                          child: new Text('No'),
+                        ),
+                        new FlatButton(
+                            onPressed: () {
+                              if(activerole == 'Teacher')
+                              {
+                                Navigator.pushAndRemoveUntil(context,  new MaterialPageRoute(builder: (context) => new teacherPageState()), (route) => false);
+                              }
+                              else
+                              {
+                                Navigator.pushAndRemoveUntil(context,  new MaterialPageRoute(builder: (context) => new studentPageState()), (route) => false);
+                              }
+                            }, child: new Text('Yes')
+                        )],
+                    ),
+                  ) ?? false;
+                }),
             iconTheme: IconThemeData(color:setTheme.accentColor),
             backgroundColor: setTheme.primaryColor,
             title: Text(
