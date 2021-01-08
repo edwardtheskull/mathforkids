@@ -71,16 +71,12 @@ class DatabaseService {
     }, merge : true);
   }
 
-  Map<String, String> caster(dynamic d) {
-    return (d as Map<String, String>);
-  }
-
   //CreateQuiz
   Future addQuizNum() async {
     return await Firestore.instance.collection('quiz').document('quizzes').updateData({'num': FieldValue.increment(1)});
   }
 
-  Future getQuizResults(String quizzId) async{
+  Future getQuizResults(String quizzId) async {
     var db = await Firestore.instance.document('users/'+useid+'/results/'+quizzId+'/answers/specifics').get();
     GlobQL['Specifics'].clear();
     db.data.forEach((k, v) {
@@ -109,19 +105,19 @@ class DatabaseService {
     });
   }
 
-  Future getPrevResults() async{
+  Future getPrevResults() async {
     var db = await Firestore.instance.collection('users').document(useid).collection('results').getDocuments();
     var res = db.documents;
     GlobQL.clear();
     GlobQL['Questions'] = new Map<String, String>();
     GlobQL['Specifics'] = new Map<String, String>();
 
-    res.forEach((element) {
-      GlobQL[element.documentID] = new Map<String, String>();
-      (GlobQL[element.documentID])['Name'] = element.data['name'];
-      (GlobQL[element.documentID])['Code'] = element.documentID;
-      (GlobQL[element.documentID])['Max'] = element.data['max'];
-      (GlobQL[element.documentID])['Result'] = element.data['result'];
+    res.forEach((e) {
+      GlobQL[e.documentID] = new Map<String, String>();
+      (GlobQL[e.documentID])['Name'] = e.data['name'];
+      (GlobQL[e.documentID])['Code'] = e.documentID;
+      (GlobQL[e.documentID])['Max'] = e.data['max'];
+      (GlobQL[e.documentID])['Result'] = e.data['result'];
     });
   }
 
@@ -141,7 +137,6 @@ class DatabaseService {
   }
 
   Future saveResult(String max, String result, String quizzId, String name, Map<String, String> answers) async {
-    print(answers.length);
     for (int i = 1; i <= answers.length; i++) {
       saveResultSpecifics(quizzId, 'Q'+i.toString(), answers['Q'+i.toString()]);
     }
@@ -160,11 +155,14 @@ class DatabaseService {
 
   //user
   Future updateUserData(String name, String role, String username) async {
-    return await Firestore.instance.collection('users').document(uid).setData({
-      'name': name,
-      'role' : role,
-      'username': username,
-    });
+      return await Firestore.instance
+          .collection('users')
+          .document(uid)
+          .setData({
+        'name': name,
+        'role': role,
+        'username': username,
+      });
   }
 
   List<User> _userListFromSnapshot(QuerySnapshot snapshot) {
