@@ -65,7 +65,7 @@ class LearnPage extends State<learnPageState>{
                 child: RaisedButton(elevation: 2,
                   onPressed: () async {
                     await DatabaseService().buildLearnList('addition');
-                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnQPageState()));
+                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnQPageState(type: 'addition')));
                   },
                   color: setTheme.buttonColor,
                   child: Text("+", style: TextStyle(letterSpacing: 1,
@@ -79,7 +79,7 @@ class LearnPage extends State<learnPageState>{
                   child: RaisedButton(elevation: 3,
                     onPressed: () async {
                       await DatabaseService().buildLearnList('subtraction');
-                      Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnQPageState()));
+                      Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnQPageState(type: 'subtraction')));
                     },
                     color: setTheme.buttonColor,
                     child: Text("-", style: TextStyle(letterSpacing: 1,
@@ -95,7 +95,7 @@ class LearnPage extends State<learnPageState>{
                   child: RaisedButton(elevation: 2,
                     onPressed: () async {
                       await DatabaseService().buildLearnList('multiplication');
-                      Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnQPageState()));
+                      Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnQPageState(type: 'multiplication')));
                     },
                     color: setTheme.buttonColor,
                     child: Text("x", style: TextStyle(letterSpacing: 1,
@@ -109,7 +109,7 @@ class LearnPage extends State<learnPageState>{
                     child: RaisedButton(elevation: 3,
                       onPressed: () async {
                         await DatabaseService().buildLearnList('division');
-                        Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnQPageState()));
+                        Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnQPageState(type: 'division')));
                       },
                       color: setTheme.buttonColor,
                       child: Text("/", style: TextStyle(letterSpacing: 1,

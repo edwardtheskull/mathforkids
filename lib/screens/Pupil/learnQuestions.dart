@@ -1,18 +1,22 @@
+import 'package:mathforkids/screens/Pupil/takeQuiz.dart';
+import 'package:mathforkids/screens/services/database.dart';
 import 'package:mathforkids/utils/Imports.dart';
 import 'package:mathforkids/screens/Teacher/Temp.dart';
 
 class learnQPageState extends StatefulWidget {
+  String type;
+  learnQPageState({Key key, @required this.type}) : super(key: key);
   @override
-  LearnQPage createState() => LearnQPage();
+  LearnQPage createState() => LearnQPage(type);
 }
 
 class LearnQPage extends State<learnQPageState> {
+  String type;
+  LearnQPage(this.type);
   @override
-  Map<String, String> map;
   String header = "Math for Kids";
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    map = { "10037":"Quiz 1", "10042":"Quiz 2", "10069":"Horryyy SHitt mann, skön quiz!"};
     return Scaffold(
         backgroundColor: setTheme.scaffoldBackgroundColor,
         appBar: AppBar(
@@ -66,19 +70,19 @@ class LearnQPage extends State<learnQPageState> {
               child: Text("Tests you want to take!!!", style: TextStyle(fontFamily: 'Architect', fontSize: SizeConfig.SmallTextFontSize, color: setTheme.accentColor),),
             ),
             ListView.builder( shrinkWrap: true,
-                itemCount: map.length,
+                itemCount: GlobQL['Quizzes'].length,
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
                     child: Card(
                       color: setTheme.cardColor,
                       child: ListTile(
-                        onTap: () {
-                          print(map.keys.toList()[index]);
+                        onTap: () async {
+                          await DatabaseService().buildQuizFromDb('quizzes/'+type+'/'+GlobQL['Quizzes'].keys.toList()[index]);
+                          Navigator.push(context, new MaterialPageRoute(builder: (context) => new takeQuizPageState()));
                         },
                         leading: Icon(Icons.analytics, color: setTheme.primaryColor),
-                        title: Text(map.values.toList()[index], style: TextStyle(color: setTheme.accentColor, fontFamily: 'Architect'),),
-                        trailing: Text("Difficulty ", style: TextStyle(color: setTheme.accentColor, fontFamily: 'Architect'),),
+                        title: Text(GlobQL['Quizzes'].values.toList()[index], style: TextStyle(color: setTheme.accentColor, fontFamily: 'Architect'),),
                       ),
                   ),
                 );
