@@ -90,8 +90,8 @@ class LearnQPage extends State<learnQPageState> {
                     await DatabaseService().buildQuizFromDb('quizzes/'+type+'/'+GlobQL['Quizzes'].keys.toList()[index]);
                     Navigator.push(context, new MaterialPageRoute(builder: (context) => new takeQuizPageState()));
                   },
-                  leading: Icon(Icons.analytics, color: setTheme.primaryColor),
-                  title: Text(GlobQL['Quizzes'].values.toList()[index], style: TextStyle(color: setTheme.accentColor, fontFamily: 'Architect'),),
+                  leading: Icon(Icons.analytics, color: setTheme.primaryColor, size: SizeConfig.SmallIconSize,),
+                  title: Text(GlobQL['Quizzes'].values.toList()[index], style: TextStyle(fontSize: SizeConfig.TextFontSize, color: setTheme.accentColor, fontFamily: 'Architect'),),
                 ),
               ),
             );

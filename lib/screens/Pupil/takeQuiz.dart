@@ -316,7 +316,7 @@ class TakeQuizPage extends State<takeQuizPageState>{
                 }
                 else{
                   GlobQL.clear();
-                  Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => teacherQuizzesPageState()), (route) => false);
+                  Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => teacherPageState()), (route) => false);
                 }
               },
             ),
