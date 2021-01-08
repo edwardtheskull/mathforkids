@@ -203,7 +203,7 @@ class SizeConfig {
         XSScreenHeight = ScreenHeight * 0.13;
         XSSH = (ScreenHeight * 0.13)/1.7;
         XSHalfScreenSize = (SmallWindowHeight*1.25)/1.3;
-        HalfScreenHeight = ScreenHeight * 0.33;
+        HalfScreenHeight = ScreenHeight * 0.5;
         SpecTestScreenHeight = ScreenHeight * 0.52;
         SmallButtonWidth = MediaQuery.of(context).size.width/2.5;
         AppBarSize = MediaQuery.of(context).size.height/10;
@@ -219,13 +219,13 @@ class SizeConfig {
           SmallWindowHeight = SmallScreenHeight/1.6;
           SecondSmallWindowHeight = SmallScreenHeight/1.7;
           XSScreenHeight = ScreenHeight * 0.13;
-          XSHalfScreenSize = (SmallWindowHeight*1.25)/0.9;
-          HalfScreenHeight = ScreenHeight * 0.39;
-          SpecTestScreenHeight = ScreenHeight * 0.60;
+          XSHalfScreenSize = (SmallWindowHeight*1.25)/0.85;
+          HalfScreenHeight = ScreenHeight * 0.75;
+          SpecTestScreenHeight = ScreenHeight * 0.75;
           SmallButtonWidth = MediaQuery.of(context).size.width/2.5;
           AppBarSize = MediaQuery.of(context).size.height/10;
           TextFieldFontSize = safeBlockHorizontal*5;
-               TeacherPageHeight = ScreenHeight * 0.6;
+               TeacherPageHeight = ScreenHeight * 0.7;
     }
       else if(LongestLength > 1500)
         {
