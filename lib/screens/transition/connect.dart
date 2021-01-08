@@ -25,7 +25,6 @@ class ConnectPage extends State<connectPageState>{
               onPressed: () async {
                 if(activerole == 'Teacher')
                   {
-                    print("teach");
                     Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherPageState()));
                   }
                 else

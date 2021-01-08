@@ -32,127 +32,129 @@ class TakeQuizPage extends State<takeQuizPageState>{
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Scaffold(
-      resizeToAvoidBottomPadding: false,
-      backgroundColor: setTheme.scaffoldBackgroundColor,
-      appBar: AppBar(
-          leading: IconButton(icon: Icon(Icons.arrow_back),
-              iconSize: SizeConfig.SmallIconSize,
-              onPressed: () async {
-                if(activerole == 'Teacher')
-                {
-                  print("teach");
-                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new teacherPageState()));
+    return WillPopScope(
+      onWillPop: onWillTakePop,
+      child: Scaffold(
+        resizeToAvoidBottomPadding: false,
+        backgroundColor: setTheme.scaffoldBackgroundColor,
+        appBar: AppBar(
+            leading: IconButton(icon: Icon(Icons.arrow_back),
+                iconSize: SizeConfig.SmallIconSize,
+                onPressed: () async {
+                  if(activerole == 'Teacher')
+                  {
+                    Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => teacherPageState()), (route) => false);
+                  }
+                  else
+                  {
+                    Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => studentPageState()), (route) => false);
+                  }
                 }
-                else
-                {
-                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new studentPageState()));
-                }
-              }
-          ),
-          iconTheme: IconThemeData(color:setTheme.accentColor),
-          backgroundColor: setTheme.primaryColor,
-          title: Text(
-            header,
-            style: TextStyle(
-              fontSize: SizeConfig.AppbarFontSize,
-              fontFamily: "Architect",
-              fontWeight: FontWeight.bold,
-              color: setTheme.accentColor,
             ),
-          ),
-          centerTitle:true,
-          actions: <Widget>[
-            PopupMenuButton<String>(
-              color: setTheme.primaryColor,
-              onSelected: (choice){
-                if(choice == Constants.Logout)
-                {
-                  Navigator.pushAndRemoveUntil(context,  new MaterialPageRoute(builder: (context) => new MyStatefulWidget()), (route) => false);
-                }
-                else if(choice == Constants.ChangeTheme)
-                {
-                  setState(() {
-                    switchTheme();
-                  });
-                }
-              },
-              itemBuilder: (BuildContext context){
-                return Constants.choices.map((choice){
-                  return PopupMenuItem<String>(
-                    value: choice,
-                    child: Text(choice, style: TextStyle(color: setTheme.accentColor),),
-                  );
-                }).toList();
-              },
+            iconTheme: IconThemeData(color:setTheme.accentColor),
+            backgroundColor: setTheme.primaryColor,
+            title: Text(
+              header,
+              style: TextStyle(
+                fontSize: SizeConfig.AppbarFontSize,
+                fontFamily: "Architect",
+                fontWeight: FontWeight.bold,
+                color: setTheme.accentColor,
+              ),
             ),
-          ]
-      ),
-      body: Center(
-          child: Column(
-            children: [
-              Container(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 6),
-                  child: Text(GlobQL['info']['Name'], style: TextStyle(
-                      fontSize: SizeConfig.HeaderTextFontSize,
-                      fontFamily: "Architect", fontWeight: FontWeight.bold,
-                      color: setTheme.accentColor),),
-                ),
+            centerTitle:true,
+            actions: <Widget>[
+              PopupMenuButton<String>(
+                color: setTheme.primaryColor,
+                onSelected: (choice){
+                  if(choice == Constants.Logout)
+                  {
+                    Navigator.pushAndRemoveUntil(context,  new MaterialPageRoute(builder: (context) => new MyStatefulWidget()), (route) => false);
+                  }
+                  else if(choice == Constants.ChangeTheme)
+                  {
+                    setState(() {
+                      switchTheme();
+                    });
+                  }
+                },
+                itemBuilder: (BuildContext context){
+                  return Constants.choices.map((choice){
+                    return PopupMenuItem<String>(
+                      value: choice,
+                      child: Text(choice, style: TextStyle(color: setTheme.accentColor),),
+                    );
+                  }).toList();
+                },
               ),
-              Container(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 6),
-                  child: Text('${GlobQL['Q'+i.toString()]['Question']}' , style: TextStyle(
-                      fontSize: SizeConfig.HeaderTextFontSize,
-                      fontFamily: "Architect", fontWeight: FontWeight.bold,
-                      color: setTheme.accentColor,),),
+            ]
+        ),
+        body: Center(
+            child: Column(
+              children: [
+                Container(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 6),
+                    child: Text(GlobQL['info']['Name'], style: TextStyle(
+                        fontSize: SizeConfig.HeaderTextFontSize,
+                        fontFamily: "Architect", fontWeight: FontWeight.bold,
+                        color: setTheme.accentColor),),
+                  ),
                 ),
-              ),
-              Container(height: SizeConfig.XSHalfScreenSize,
-                child: MyFunction(context),
+                Container(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 6),
+                    child: Text('${GlobQL['Q'+i.toString()]['Question']}' , style: TextStyle(
+                        fontSize: SizeConfig.HeaderTextFontSize,
+                        fontFamily: "Architect", fontWeight: FontWeight.bold,
+                        color: setTheme.accentColor,),),
+                  ),
+                ),
+                Container(height: SizeConfig.XSHalfScreenSize,
+                  child: MyFunction(context),
 
-              ),
-                  Container(height: SizeConfig.XSSH,
-                    child: Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(6.0),
-                          child: RaisedButton(
-                            onPressed: () {
-                              if(i == GlobQL.length - 1){
-                                  AddAnswers();
-                                  confirmDialog(context);
-                              }
-                              else{
-                                setState(() {
-                                  AddAnswers();
-                                  i++;
-                                  controller.clear();
-                                  cardsValue.clear();
-                                  cardsValue = new List<bool>();
-                                  Pair.clear();
-                                  Pair = new List<String>();
-                                  Match.clear();
-                                  Match = new List<String>();
-                                  MCA.clear();
-                                  MCA = new Map<String, String>();
-                                  q = 0;
-                                });
-                              }
-                            },
-                            color: setTheme.buttonColor,
-                            child: Text("Next", style: TextStyle(
-                              fontSize: SizeConfig.TextFontSize,
-                              color: setTheme.accentColor, fontFamily: 'Architect',
-                            ),),
+                ),
+                    Container(height: SizeConfig.XSSH,
+                      child: Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(6.0),
+                            child: RaisedButton(
+                              onPressed: () {
+                                if(i == GlobQL.length - 1){
+                                    AddAnswers();
+                                    confirmDialog(context);
+                                }
+                                else{
+                                  setState(() {
+                                    AddAnswers();
+                                    i++;
+                                    controller.clear();
+                                    cardsValue.clear();
+                                    cardsValue = new List<bool>();
+                                    Pair.clear();
+                                    Pair = new List<String>();
+                                    Match.clear();
+                                    Match = new List<String>();
+                                    MCA.clear();
+                                    MCA = new Map<String, String>();
+                                    q = 0;
+                                  });
+                                }
+                              },
+                              color: setTheme.buttonColor,
+                              child: Text("Next", style: TextStyle(
+                                fontSize: SizeConfig.TextFontSize,
+                                color: setTheme.accentColor, fontFamily: 'Architect',
+                              ),),
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  )
-            ],
-          )),
+                        ],
+                      ),
+                    )
+              ],
+            )),
+      ),
     );
   }
 
@@ -251,6 +253,33 @@ class TakeQuizPage extends State<takeQuizPageState>{
           Results['Q'+i.toString()] = 'false';
         }
       }
+  }
+
+  Future<bool> onWillTakePop() {
+    return showDialog(
+      context: context,
+      child: new AlertDialog(
+        title: new Text('Are you sure you want to quit?'),
+        content: new Text('Unsaved data will be lost.'),
+        actions: <Widget>[
+          new FlatButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: new Text('No'),
+          ),
+          new FlatButton(
+              onPressed: () {
+                if(activerole == 'Teacher')
+                {
+                  Navigator.pushAndRemoveUntil(context,  new MaterialPageRoute(builder: (context) => new teacherPageState()), (route) => false);
+                }
+                else
+                {
+                  Navigator.pushAndRemoveUntil(context,  new MaterialPageRoute(builder: (context) => new studentPageState()), (route) => false);
+                }
+              }, child: new Text('Yes')
+          )],
+      ),
+    ) ?? false;
   }
 
   confirmDialog (BuildContext context) async {
