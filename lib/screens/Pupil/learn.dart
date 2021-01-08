@@ -1,3 +1,4 @@
+import 'package:mathforkids/screens/services/database.dart';
 import 'package:mathforkids/utils/Imports.dart';
 import 'package:mathforkids/utils/ChangeTheme.dart';
 
@@ -62,7 +63,8 @@ class LearnPage extends State<learnPageState>{
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: RaisedButton(elevation: 2,
-                  onPressed: (){
+                  onPressed: () async {
+                    await DatabaseService().buildLearnList('addition');
                     Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnQPageState()));
                   },
                   color: setTheme.buttonColor,
@@ -75,7 +77,8 @@ class LearnPage extends State<learnPageState>{
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: RaisedButton(elevation: 3,
-                    onPressed: (){
+                    onPressed: () async {
+                      await DatabaseService().buildLearnList('subtraction');
                       Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnQPageState()));
                     },
                     color: setTheme.buttonColor,
@@ -90,7 +93,8 @@ class LearnPage extends State<learnPageState>{
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: RaisedButton(elevation: 2,
-                    onPressed: (){
+                    onPressed: () async {
+                      await DatabaseService().buildLearnList('multiplication');
                       Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnQPageState()));
                     },
                     color: setTheme.buttonColor,
@@ -103,7 +107,8 @@ class LearnPage extends State<learnPageState>{
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: RaisedButton(elevation: 3,
-                      onPressed: (){
+                      onPressed: () async {
+                        await DatabaseService().buildLearnList('division');
                         Navigator.push(context, new MaterialPageRoute(builder: (context) => new learnQPageState()));
                       },
                       color: setTheme.buttonColor,

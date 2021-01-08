@@ -31,7 +31,7 @@ class DatabaseService {
     return true;
   }
 
-  Future createQuiz(String name, Map<String, Map<String, String>> questions) async{
+  Future createQuiz(String name, Map<String, Map<String, String>> questions) async {
     DocumentSnapshot db = await Firestore.instance.document('quiz/quizzes').get();
     var num = db.data['num'];
     var order = 1;
