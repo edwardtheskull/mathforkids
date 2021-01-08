@@ -3,7 +3,6 @@ import 'package:mathforkids/screens/services/database.dart';
 import 'package:provider/provider.dart';
 import 'package:mathforkids/screens/services/load.dart';
 
-
 class ResetScreen extends StatefulWidget{
   @override
   _ResetScreenState createState() => _ResetScreenState();
@@ -105,7 +104,7 @@ class _ResetScreenState extends State<ResetScreen>{
                                       if(_formKey.currentState.validate()){
                                         setState(() => load = true);
                                         _auth.forgotPassword(textemail.text);
-                                        Navigator.pushReplacementNamed(context, '/screens/Authenticate/login');
+                                        Navigator.pushReplacement(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
                                       }
                                     },
                                     color: setTheme.primaryColor,
@@ -115,7 +114,6 @@ class _ResetScreenState extends State<ResetScreen>{
                                 ),
                               )],
                             ),
-
                           ],
                         ),
                       ]),
