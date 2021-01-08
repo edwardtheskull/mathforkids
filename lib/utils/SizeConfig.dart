@@ -107,6 +107,21 @@ class SizeConfig {
         AppBarSize = MediaQuery.of(context).size.height/12;
 
     }
+      else if(ShortestLength < 650 && ShortestLength > 470 && LongestLength > 800)
+        {
+            ScreenHeight = MediaQuery.of(context).size.height*0.85;
+            SecondScreenHeight = ScreenHeight;
+            SmallScreenHeight = ScreenHeight * 0.6;
+            SmallWindowHeight = SmallScreenHeight/1.6;
+            SecondSmallWindowHeight = SmallWindowHeight*1.5;
+            XSScreenHeight = ScreenHeight * 0.13;
+            XSSH = XSScreenHeight;
+            XSHalfScreenSize = SmallWindowHeight*1.9;
+            HalfScreenHeight = ScreenHeight * 0.6;
+            SpecTestScreenHeight = ScreenHeight * 0.83;
+            AppBarSize = MediaQuery.of(context).size.height/12;
+
+        }
     else if(ShortestLength < 650 && ShortestLength > 470)
     {
         ScreenHeight = MediaQuery.of(context).size.height*0.95;
@@ -122,6 +137,21 @@ class SizeConfig {
         AppBarSize = MediaQuery.of(context).size.height/12;
 
     }
+     else if(ShortestLength < 600 && ShortestLength > 365 && LongestLength < 600)
+            {
+                ScreenHeight = MediaQuery.of(context).size.height;
+                SecondScreenHeight = ScreenHeight;
+                SmallScreenHeight = ScreenHeight * 0.6;
+                SmallWindowHeight = SmallScreenHeight/1.6;
+                SecondSmallWindowHeight = SmallWindowHeight*0.9;
+                XSScreenHeight = ScreenHeight * 0.13;
+                XSSH = XSScreenHeight;
+                XSHalfScreenSize = SmallWindowHeight*1.6;
+                HalfScreenHeight = ScreenHeight * 0.4;
+                SpecTestScreenHeight = ScreenHeight * 0.60;
+                AppBarSize = MediaQuery.of(context).size.height/12;
+
+            }
      else if(ShortestLength < 650 && ShortestLength > 365)
         {
             ScreenHeight = MediaQuery.of(context).size.height*1.22;
