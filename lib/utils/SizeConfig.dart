@@ -103,7 +103,7 @@ class SizeConfig {
         XSScreenHeight = ScreenHeight * 0.13;
         XSSH = XSScreenHeight;
         XSHalfScreenSize = SmallWindowHeight*1.25;
-        HalfScreenHeight = ScreenHeight * 0.60;
+        HalfScreenHeight = ScreenHeight * 0.82;
         SpecTestScreenHeight = ScreenHeight * 0.81;
         AppBarSize = MediaQuery.of(context).size.height/12;
         TeacherPageHeight = ScreenHeight * 0.81;
@@ -167,7 +167,7 @@ class SizeConfig {
             XSScreenHeight = ScreenHeight * 0.13;
             XSSH = XSScreenHeight;
             XSHalfScreenSize = SmallWindowHeight*1.25;
-            HalfScreenHeight = ScreenHeight * 0.4;
+            HalfScreenHeight = ScreenHeight * 0.6;
             SpecTestScreenHeight = ScreenHeight * 0.60;
             AppBarSize = MediaQuery.of(context).size.height/12;
                  TeacherPageHeight = ScreenHeight * 0.60;
@@ -263,8 +263,8 @@ class SizeConfig {
           XSScreenHeight = ScreenHeight * 0.13;
           XSSH = XSScreenHeight;
           XSHalfScreenSize = SmallWindowHeight*1.75;
-          HalfScreenHeight = ScreenHeight*0.78;
-          SpecTestScreenHeight = ScreenHeight;
+          HalfScreenHeight = ScreenHeight*.95;
+          SpecTestScreenHeight = ScreenHeight*.95;
           AppBarSize = MediaQuery.of(context).size.height/18;
           TextFieldFontSize = safeBlockHorizontal*3;
                TeacherPageHeight = ScreenHeight;
