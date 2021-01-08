@@ -67,7 +67,7 @@ class LearnQPage extends State<learnQPageState> {
           children: [
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: Text("Tests you want to take!!!", style: TextStyle(fontFamily: 'Architect', fontSize: SizeConfig.SmallTextFontSize, color: setTheme.accentColor),),
+              child: Text("Advance your knowledge", style: TextStyle(fontFamily: 'Architect', fontSize: SizeConfig.SmallTextFontSize, color: setTheme.accentColor),),
             ),
             Container(
               child: learnQuizzes(context),
