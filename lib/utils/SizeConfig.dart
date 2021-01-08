@@ -115,12 +115,12 @@ class SizeConfig {
             SecondScreenHeight = ScreenHeight;
             SmallScreenHeight = ScreenHeight * 0.6;
             SmallWindowHeight = SmallScreenHeight/1.6;
-            SecondSmallWindowHeight = SmallWindowHeight*1.5;
+            SecondSmallWindowHeight = SmallWindowHeight*1.8;
             XSScreenHeight = ScreenHeight * 0.13;
             XSSH = XSScreenHeight;
-            XSHalfScreenSize = SmallWindowHeight*1.9;
-            HalfScreenHeight = ScreenHeight * 0.6;
-            SpecTestScreenHeight = ScreenHeight * 0.83;
+            XSHalfScreenSize = SmallWindowHeight*2.1;
+            HalfScreenHeight = ScreenHeight* .9 ;
+            SpecTestScreenHeight = ScreenHeight * .9;
             AppBarSize = MediaQuery.of(context).size.height/12;
                  TeacherPageHeight = ScreenHeight * 0.83;
 
