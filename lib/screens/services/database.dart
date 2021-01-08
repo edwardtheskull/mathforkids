@@ -88,8 +88,21 @@ class DatabaseService {
       (GlobQL['Specifics'])[k] = v;
     });
     GlobQL['Questions'].clear();
+    String path = 'quizzes/';
 
-    var db1 = await Firestore.instance.collection('quiz/'+quizzId+'/questions').getDocuments();
+    if (quizzId.contains('addi')) {
+      path += 'addition/'+quizzId;
+    } else if (quizzId.contains('subt')) {
+      path += 'subtraction/'+quizzId;
+    } else if (quizzId.contains('multi')) {
+      path += 'multiplication/'+quizzId;
+    } else if (quizzId.contains('divi')) {
+      path += 'division/'+quizzId;
+    } else {
+      path = quizzId;
+    }
+
+    var db1 = await Firestore.instance.collection('quiz/'+path+'/questions').getDocuments();
     var m = db1.documents;
 
     m.forEach((element) {
