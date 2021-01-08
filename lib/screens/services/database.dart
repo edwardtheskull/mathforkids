@@ -1,8 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mathforkids/screens/Authenticate/user.dart';
-import 'package:mathforkids/screens/Teacher/Temp.dart';
+import 'package:mathforkids/utils/Temp.dart';
 import 'package:mathforkids/utils/Imports.dart';
-import 'package:mathforkids/screens/services/loggedinuser.dart';
 
 class DatabaseService {
   final String uid;

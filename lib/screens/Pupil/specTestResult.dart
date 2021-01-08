@@ -1,6 +1,4 @@
-import 'package:mathforkids/screens/Teacher/Temp.dart';
-import 'package:mathforkids/utils/Imports.dart';
-import 'package:mathforkids/screens/Pupil/testInfo.dart';
+import 'package:mathforkids/utils/Temp.dart';
 import 'package:mathforkids/utils/Imports.dart';
 
 class specTestResultState extends StatefulWidget {

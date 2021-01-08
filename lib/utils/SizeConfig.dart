@@ -72,10 +72,6 @@ class SizeConfig {
       LongestLength = screenWidth;
     }
 
-
-    print(screenWidth);
-    print(screenHeight);
-
     TextFontSize = safeBlockHorizontal*6;
     TextFieldFontSize = safeBlockHorizontal*4;
     ButtonWidth = MediaQuery.of(context).size.width/1.5;

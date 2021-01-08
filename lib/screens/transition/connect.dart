@@ -1,8 +1,7 @@
 import 'package:mathforkids/screens/Pupil/takeQuiz.dart';
 import 'package:mathforkids/utils/Imports.dart';
 import 'package:mathforkids/screens/services/database.dart';
-import 'package:mathforkids/screens/services/loggedinuser.dart';
-
+import 'package:mathforkids/utils/Temp.dart';
 
 class connectPageState extends StatefulWidget{
   @override

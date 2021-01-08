@@ -1,10 +1,9 @@
-import 'dart:collection';
 import 'package:flutter/cupertino.dart';
 import 'package:mathforkids/screens/Teacher/teacherquizzes.dart';
 import 'package:mathforkids/screens/Teacher/createquestion.dart';
 import 'package:mathforkids/screens/services/database.dart';
 import 'package:mathforkids/utils/Imports.dart';
-import 'package:mathforkids/screens/Teacher/Temp.dart';
+import 'package:mathforkids/utils/Temp.dart';
 
 class createquizPageState extends StatefulWidget{
   @override

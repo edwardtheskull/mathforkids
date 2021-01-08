@@ -1,16 +1,12 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:mathforkids/main.dart';
-import 'package:mathforkids/screens/Teacher/teacherquizzes.dart';
-import 'package:mathforkids/screens/Teacher/Temp.dart';
+import 'package:mathforkids/utils/Temp.dart';
 import 'package:mathforkids/screens/services/database.dart';
 import 'package:mathforkids/utils/Imports.dart';
 import 'package:mathforkids/screens/services/auth.dart';
 import 'package:mathforkids/utils/ChangeTheme.dart';
 import 'package:mathforkids/utils/Constants.dart';
-import 'package:mathforkids/screens/Pupil/testInfo.dart';
-import 'package:mathforkids/screens/Teacher/Temp.dart';
-import 'package:mathforkids/screens/services/loggedinuser.dart';
 
 class takeQuizPageState extends StatefulWidget{
   @override
@@ -256,7 +252,6 @@ class TakeQuizPage extends State<takeQuizPageState>{
 
           if(GlobQL['Q'+i.toString()]['Answer'+j.toString()] == cardsValue[j].toString()){
             nr++;
-            print(GlobQL['Q'+i.toString()]['Answer'+j.toString()]);
           }
         }
 
@@ -346,7 +341,7 @@ class CustomQuestion extends StatelessWidget{
       onTap: onTap,
       child: Container(
         child: Card(
-          color: isSelected ? setTheme.accentColor : Colors.red,
+          color: isSelected ? setTheme.primaryColor : setTheme.cardColor,
           semanticContainer: true,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
@@ -367,7 +362,7 @@ class CustomQuestion extends StatelessWidget{
                         "Alternative ${nr}",
                         style: TextStyle(
                           fontSize: SizeConfig.TextFieldFontSize,
-                            color: isSelected ? Colors.grey[800] : setTheme.accentColor),
+                            color: isSelected ? setTheme.accentColor : setTheme.accentColor),
                       ),
                     ),
                   ),
@@ -378,7 +373,7 @@ class CustomQuestion extends StatelessWidget{
                 child: Text(
                   text,
                   style: TextStyle(
-                      color: isSelected ? Colors.grey[800] : setTheme.accentColor,
+                      color: isSelected ? setTheme.accentColor : setTheme.accentColor,
                     fontSize: SizeConfig.TextFieldFontSize,
                   ),
                 ),

@@ -1,13 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mathforkids/utils/Imports.dart';
 import 'package:mathforkids/screens/services/database.dart';
+import 'package:mathforkids/utils/Temp.dart';
 import 'package:provider/provider.dart';
-import 'package:mathforkids/screens/services/user_list.dart';
 import 'package:mathforkids/screens/services/load.dart';
 import 'package:mathforkids/screens/Authenticate/reset.dart';
-import 'package:mathforkids/screens/services/loggedinuser.dart';
 import 'package:mathforkids/main.dart';
-
 
 class loginPageState extends StatefulWidget{
   @override
@@ -168,8 +165,6 @@ class LoginPage extends State<loginPageState>{
                                         });
                                         setState(() => load = false);
                                       } else {
-                                        print('signed in');
-                                        print(res.uid);
                                         //DatabaseService().createQuiz('quizz22', new Map());
                                         var role = await DatabaseService().getRole(res.uid);
                                         activerole = role;

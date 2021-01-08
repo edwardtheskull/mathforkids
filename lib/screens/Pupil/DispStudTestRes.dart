@@ -1,9 +1,7 @@
-import 'package:mathforkids/screens/Pupil/testInfo.dart';
-import 'package:mathforkids/screens/Teacher/Temp.dart';
+import 'package:mathforkids/utils/Temp.dart';
 import 'package:mathforkids/screens/services/database.dart';
 import 'package:mathforkids/utils/Imports.dart';
 import 'specTestResult.dart';
-import 'package:mathforkids/screens/Pupil/testInfo.dart';
 
 class DispStudTestResState extends StatefulWidget {
   @override
