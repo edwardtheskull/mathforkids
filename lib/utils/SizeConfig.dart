@@ -263,8 +263,8 @@ class SizeConfig {
           XSScreenHeight = ScreenHeight * 0.13;
           XSSH = XSScreenHeight;
           XSHalfScreenSize = SmallWindowHeight*1.75;
-          HalfScreenHeight = ScreenHeight*0.78;
-          SpecTestScreenHeight = ScreenHeight;
+          HalfScreenHeight = ScreenHeight*.95;
+          SpecTestScreenHeight = ScreenHeight*.95;
           AppBarSize = MediaQuery.of(context).size.height/18;
           TextFieldFontSize = safeBlockHorizontal*3;
                TeacherPageHeight = ScreenHeight;
