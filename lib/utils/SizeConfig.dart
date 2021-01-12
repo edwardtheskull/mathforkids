@@ -88,9 +88,6 @@ class SizeConfig {
     SmallButtonWidth = MediaQuery.of(context).size.width/2.2;
     Createquestionbutton = safeBlockHorizontal*5;
 
-    print(ShortestLength);
-    print(LongestLength);
-
     if(ShortestLength < 400 && LongestLength > 650)
     {
         ScreenHeight = MediaQuery.of(context).size.height*0.93;
