@@ -245,6 +245,9 @@ class TakeQuizPage extends State<takeQuizPageState>{
           Results['Q'+i.toString()] = 'true';
           score++;
         }
+        else{
+          Results['Q'+i.toString()] = 'false';
+        }
       }
 
       else if(GlobQL['Q'+i.toString()]['Type'] == 'Multiple choice'){
@@ -307,6 +310,7 @@ class TakeQuizPage extends State<takeQuizPageState>{
                 if(activerole == 'Student'){
                   await DatabaseService().saveResult(Results.length.toString(), score.toString(), GlobQL['info']['Code'], GlobQL['info']['Name'], Results);
                   await DatabaseService().getPrevResults();
+                  print(Results.length);
                   Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(builder: (context) => DispStudTestResState()), (route) => false);
                 }
                 else{
