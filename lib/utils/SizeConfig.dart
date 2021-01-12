@@ -72,11 +72,6 @@ class SizeConfig {
       LongestLength = screenWidth;
     }
 
-    ShortestLength = 414;
-    LongestLength = 732;
-    print(ShortestLength);
-    print(LongestLength);
-
 
     TextFontSize = safeBlockHorizontal*6;
     TextFieldFontSize = safeBlockHorizontal*4;
