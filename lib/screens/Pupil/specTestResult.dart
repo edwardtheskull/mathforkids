@@ -67,7 +67,7 @@ class specTestPage extends State<specTestResultState> {
                 Container(
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(0, 20, 0, 6),
-                    child: Text("${GlobQL[quizzId]['Name'].toString()}", style: TextStyle(
+                    child: Text((GlobQL[quizzId] != null) ? GlobQL[quizzId]['Name'].toString() : 'QuizzName', style: TextStyle(
                         fontSize: SizeConfig.HeaderTextFontSize,
                         fontFamily: "Architect", fontWeight: FontWeight.bold,
                         color: setTheme.accentColor),),
@@ -82,7 +82,7 @@ class specTestPage extends State<specTestResultState> {
     );
   }
   Widget MyDynamicList(BuildContext context){
-    if (GlobQL['Questions'].length > 0) {
+    if (GlobQL['Questions'] != null && GlobQL['Questions'].length > 0) {
       return ListView.builder(
         itemCount: GlobQL['Questions'].length,
         itemBuilder: (context, index) {
