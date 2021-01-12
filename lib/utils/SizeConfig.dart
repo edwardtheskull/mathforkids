@@ -71,6 +71,7 @@ class SizeConfig {
       ShortestLength = screenHeight;
       LongestLength = screenWidth;
     }
+    
 
     TextFontSize = safeBlockHorizontal*6;
     TextFieldFontSize = safeBlockHorizontal*4;
