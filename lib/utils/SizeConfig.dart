@@ -146,7 +146,7 @@ class SizeConfig {
                 SecondScreenHeight = ScreenHeight;
                 SmallScreenHeight = ScreenHeight * 0.6;
                 SmallWindowHeight = SmallScreenHeight/1.6;
-                SecondSmallWindowHeight = SmallWindowHeight*0.9;
+                SecondSmallWindowHeight = SmallWindowHeight*0.97;
                 XSScreenHeight = ScreenHeight * 0.13;
                 XSSH = XSScreenHeight;
                 XSHalfScreenSize = SmallWindowHeight*1.6;
