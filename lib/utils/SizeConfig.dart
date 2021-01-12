@@ -88,6 +88,8 @@ class SizeConfig {
     SmallButtonWidth = MediaQuery.of(context).size.width/2.2;
     Createquestionbutton = safeBlockHorizontal*5;
 
+    print(ShortestLength);
+    print(LongestLength);
 
     if(ShortestLength < 400 && LongestLength > 650 && ShortestLength < 650)
     {
@@ -209,19 +211,20 @@ class SizeConfig {
      else if(ShortestLength < 350)
      {
           SmallButtonWidth = MediaQuery.of(context).size.width/1.8;
-          ScreenHeight = (MediaQuery.of(context).size.height);
+          ScreenHeight = (MediaQuery.of(context).size.height)*1.1;
           SecondScreenHeight = ScreenHeight;
           SmallScreenHeight = ScreenHeight * 0.7;
           SmallWindowHeight = SmallScreenHeight/1.6;
-          SecondSmallWindowHeight = SmallScreenHeight/1.7;
+          SecondSmallWindowHeight = SmallScreenHeight/2.1;
           XSScreenHeight = ScreenHeight * 0.13;
-          XSHalfScreenSize = (SmallWindowHeight*1.25)/0.85;
-          HalfScreenHeight = ScreenHeight * 0.75;
-          SpecTestScreenHeight = ScreenHeight * 0.75;
+          XSHalfScreenSize = (SmallWindowHeight*1.25)/1;
+          HalfScreenHeight = (MediaQuery.of(context).size.height) * 0.75;
+          SpecTestScreenHeight = (MediaQuery.of(context).size.height) * 0.75;
           SmallButtonWidth = MediaQuery.of(context).size.width/2.5;
           AppBarSize = MediaQuery.of(context).size.height/10;
           TextFieldFontSize = safeBlockHorizontal*5;
-               TeacherPageHeight = ScreenHeight * 0.7;
+               TeacherPageHeight = ScreenHeight * 0.6;
+               AppbarFontSize = 22;
     }
       else if(LongestLength > 1500)
         {
