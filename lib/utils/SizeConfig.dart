@@ -72,6 +72,12 @@ class SizeConfig {
       LongestLength = screenWidth;
     }
 
+    ShortestLength = 414;
+    LongestLength = 732;
+    print(ShortestLength);
+    print(LongestLength);
+
+
     TextFontSize = safeBlockHorizontal*6;
     TextFieldFontSize = safeBlockHorizontal*4;
     ButtonWidth = MediaQuery.of(context).size.width/1.5;
@@ -161,7 +167,7 @@ class SizeConfig {
             SecondScreenHeight = ScreenHeight;
             SmallScreenHeight = ScreenHeight * 0.6;
             SmallWindowHeight = SmallScreenHeight/1.6;
-            SecondSmallWindowHeight = SmallWindowHeight*1.3;
+            SecondSmallWindowHeight = SmallWindowHeight*1.4;
             XSScreenHeight = ScreenHeight * 0.13;
             XSSH = XSScreenHeight;
             XSHalfScreenSize = SmallWindowHeight*1.8;
