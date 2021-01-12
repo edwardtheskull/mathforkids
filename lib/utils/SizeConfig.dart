@@ -91,7 +91,7 @@ class SizeConfig {
     print(ShortestLength);
     print(LongestLength);
 
-    if(ShortestLength < 400 && LongestLength > 650 && ShortestLength < 650)
+    if(ShortestLength < 400 && LongestLength > 650)
     {
         ScreenHeight = MediaQuery.of(context).size.height*0.93;
         SecondScreenHeight = ScreenHeight;
@@ -152,7 +152,7 @@ class SizeConfig {
                 XSScreenHeight = ScreenHeight * 0.13;
                 XSSH = XSScreenHeight;
                 XSHalfScreenSize = SmallWindowHeight*1.6;
-                HalfScreenHeight = ScreenHeight * 0.4;
+                HalfScreenHeight = ScreenHeight * 0.7;
                 SpecTestScreenHeight = ScreenHeight * 0.60;
                 AppBarSize = MediaQuery.of(context).size.height/12;
                      TeacherPageHeight = ScreenHeight * 0.70;

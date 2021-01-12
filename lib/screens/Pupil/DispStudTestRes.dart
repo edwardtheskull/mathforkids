@@ -115,9 +115,9 @@ class MyDynamicList extends StatelessWidget{
                   )
                 ),
               ),
-                onTap: () async{
-                await DatabaseService().getQuizResults(GlobQL.values.toList()[index+2]['Code']);
-                Navigator.push(context, new MaterialPageRoute(builder: (context) => new specTestResultState(quizzId: GlobQL.values.toList()[index+2]['Code'])));
+                onTap: () async {
+                await DatabaseService().getQuizResults(GlobQL.values.toList()[((index != null) ? index : 0) +2]['Code']);
+                Navigator.push(context, new MaterialPageRoute(builder: (context) => new specTestResultState(quizzId: GlobQL.values.toList()[((index != null) ? index : 0)+2]['Code'])));
               }),
           );
         },

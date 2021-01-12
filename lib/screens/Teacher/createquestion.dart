@@ -156,115 +156,118 @@ class createquestionPage extends State<createquestionPageState> {
       );
     }
     else{
-      return Scaffold(
-          backgroundColor: setTheme.scaffoldBackgroundColor,
-          appBar: AppBar(
-              iconTheme: IconThemeData(color:setTheme.accentColor),
-              backgroundColor: setTheme.primaryColor,
-              title: Text(
-                header,
-                style: TextStyle(
-                    fontSize: SizeConfig.AppbarFontSize,
-                    fontFamily: "Architect",
-                    fontWeight: FontWeight.bold,
-                    color: setTheme.accentColor
-                ),
-              ),
-              centerTitle:true,
-              actions: <Widget>[
-                PopupMenuButton<String>(
-                  color: setTheme.primaryColor,
-                  onSelected: (choice){
-                    if(choice == Constants.Logout)
-                    {
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => new MyStatefulWidget()));
-                    }
-                    else if(choice == Constants.ChangeTheme)
-                    {
-                      setState(() {
-                        switchTheme();
-                      });
-                    }
-                  },
-                  itemBuilder: (BuildContext context){
-                    return Constants.choices.map((choice){
-                      return PopupMenuItem<String>(
-                        value: choice,
-                        child: Text(choice, style: TextStyle(color: setTheme.accentColor),),
-                      );
-                    }).toList();
-                  },
-                ),
-              ]
-          ),
-          body:
-          Form(
-            key: formkey,
-            child: Padding(padding: const EdgeInsets.fromLTRB(20, 50, 20, 0),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: TextFormField(decoration: InputDecoration(hintText: 'Enter question', hintStyle: TextStyle(color: setTheme.accentColor), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:setTheme.accentColor))), style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize),
-                        controller: _nameController),
+      return WillPopScope(
+        onWillPop: onWillPop,
+        child: Scaffold(
+            backgroundColor: setTheme.scaffoldBackgroundColor,
+            appBar: AppBar(
+                iconTheme: IconThemeData(color:setTheme.accentColor),
+                backgroundColor: setTheme.primaryColor,
+                title: Text(
+                  header,
+                  style: TextStyle(
+                      fontSize: SizeConfig.AppbarFontSize,
+                      fontFamily: "Architect",
+                      fontWeight: FontWeight.bold,
+                      color: setTheme.accentColor
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: TextFormField(decoration: InputDecoration(hintText: 'Enter Answer', hintStyle: TextStyle(color: setTheme.accentColor), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:setTheme.accentColor))), style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize),
-                    controller: _nameController2,),
+                ),
+                centerTitle:true,
+                actions: <Widget>[
+                  PopupMenuButton<String>(
+                    color: setTheme.primaryColor,
+                    onSelected: (choice){
+                      if(choice == Constants.Logout)
+                      {
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => new MyStatefulWidget()));
+                      }
+                      else if(choice == Constants.ChangeTheme)
+                      {
+                        setState(() {
+                          switchTheme();
+                        });
+                      }
+                    },
+                    itemBuilder: (BuildContext context){
+                      return Constants.choices.map((choice){
+                        return PopupMenuItem<String>(
+                          value: choice,
+                          child: Text(choice, style: TextStyle(color: setTheme.accentColor),),
+                        );
+                      }).toList();
+                    },
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Row(mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        RaisedButton(elevation: 5,
-                          onPressed: (){
-                          if (_nameController.text.isNotEmpty && _nameController2.text.isNotEmpty) {
-                              QA['Type'] = Dropdownquestionvalue.toString();
-                              QA['Answer'] = _nameController2.text;
-                              QA['Question'] = _nameController.text;
-                              GlobQL['Q' + iterator.toString()] =
-                                  new Map<String, String>();
-                              QA.forEach((key, value) {
-                                (GlobQL['Q' + iterator.toString()])[key] =
-                                    value;
-                              });
-                              iterator++;
-                              QA.clear();
-                              _nameController.clear();
-                              _nameController2.clear();
-                              Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          createquizPageState()),
-                                  (route) => false);
-                            } else {
-                              return showDialog(
-                                context: context,
-                                child: new AlertDialog(
-                                  title: new Text('Please enter a question and an answer'),
-                                  actions: <Widget>[
-                                    new FlatButton(
-                                      onPressed: () => Navigator.of(context).pop(false),
-                                      child: new Text('Okay'),
-                                    ),
-                                  ],
-                                ),
-                              ) ?? false;
-                            }
-                          },
-                          color: setTheme.primaryColor,
-                          child: Text("Save question", style: TextStyle(letterSpacing: 1,
-                              fontSize: SizeConfig.ButtonTextSize,
-                              color: setTheme.accentColor,fontFamily: 'Architect')),),
-                      ],
-                    ),
-                  )
-                ],
-              ),
+                ]
             ),
-          ));
+            body:
+            Form(
+              key: formkey,
+              child: Padding(padding: const EdgeInsets.fromLTRB(20, 50, 20, 0),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: TextFormField(decoration: InputDecoration(hintText: 'Enter question', hintStyle: TextStyle(color: setTheme.accentColor), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:setTheme.accentColor))), style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize),
+                          controller: _nameController),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: TextFormField(decoration: InputDecoration(hintText: 'Enter Answer', hintStyle: TextStyle(color: setTheme.accentColor), enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:setTheme.accentColor))), style: TextStyle(color: setTheme.accentColor, fontSize: SizeConfig.TextFieldFontSize),
+                      controller: _nameController2,),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          RaisedButton(elevation: 5,
+                            onPressed: (){
+                            if (_nameController.text.isNotEmpty && _nameController2.text.isNotEmpty) {
+                                QA['Type'] = Dropdownquestionvalue.toString();
+                                QA['Answer'] = _nameController2.text;
+                                QA['Question'] = _nameController.text;
+                                GlobQL['Q' + iterator.toString()] =
+                                    new Map<String, String>();
+                                QA.forEach((key, value) {
+                                  (GlobQL['Q' + iterator.toString()])[key] =
+                                      value;
+                                });
+                                iterator++;
+                                QA.clear();
+                                _nameController.clear();
+                                _nameController2.clear();
+                                Navigator.pushAndRemoveUntil(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            createquizPageState()),
+                                    (route) => false);
+                              } else {
+                                return showDialog(
+                                  context: context,
+                                  child: new AlertDialog(
+                                    title: new Text('Please enter a question and an answer'),
+                                    actions: <Widget>[
+                                      new FlatButton(
+                                        onPressed: () => Navigator.of(context).pop(false),
+                                        child: new Text('Okay'),
+                                      ),
+                                    ],
+                                  ),
+                                ) ?? false;
+                              }
+                            },
+                            color: setTheme.primaryColor,
+                            child: Text("Save question", style: TextStyle(letterSpacing: 1,
+                                fontSize: SizeConfig.ButtonTextSize,
+                                color: setTheme.accentColor,fontFamily: 'Architect')),),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            )),
+      );
     }/* Not enough time to implement pairing
     else{
       return Scaffold(
