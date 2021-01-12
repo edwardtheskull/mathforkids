@@ -202,7 +202,14 @@ class RegisterPage extends State<registerPageState>{
                                     setState(() => error = 'error');
                                     setState(() => load = false);
                                   } else {
-                                    Navigator.pushAndRemoveUntil(context, new MaterialPageRoute(builder: (context) => new loginPageState()), (route) => false);
+                                    print('user created');
+                                    textname.text = '';
+                                    textpassword.text = '';
+                                    textconfirmpassword.text = '';
+                                    textmail.text = '';
+                                    textnick.text = '';
+                                    textrole.text = '';
+                                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new loginPageState()));
                                   }
                                 }
                               },
